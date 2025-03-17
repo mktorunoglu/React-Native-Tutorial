@@ -17,16 +17,12 @@ const MyText: React.FC<{
     fontWeight,
     align,
 }) => {
-        return <Text
-            style={[{
-                color,
-                fontSize: size,
-                fontWeight: fontWeight,
-                textAlign: align,
-            }]}
-        >
-            {text}
-        </Text>;
+        return <Text style={[{
+            color,
+            fontSize: size,
+            fontWeight: fontWeight,
+            textAlign: align,
+        }]}>{text}</Text>;
     };
 
 export default MyText;

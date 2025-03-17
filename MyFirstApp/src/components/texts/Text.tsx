@@ -7,22 +7,25 @@ import { MyFontWeights } from '../../enums/FontWeights';
 const MyText: React.FC<{
     text: string;
     color?: MyColors;
-    size?: number;
+    fontSize?: number;
     fontWeight?: MyFontWeights;
-    align?: MyAligns;
+    textAlign?: MyAligns;
 }> = ({
     text,
     color,
-    size,
+    fontSize,
     fontWeight,
-    align,
+    textAlign,
 }) => {
-        return <Text style={[{
-            color,
-            fontSize: size,
-            fontWeight: fontWeight,
-            textAlign: align,
-        }]}>{text}</Text>;
+        return <Text
+            style={[{
+                color,
+                fontSize,
+                fontWeight,
+                textAlign,
+            }]}>
+            {text}
+        </Text>;
     };
 
 export default MyText;

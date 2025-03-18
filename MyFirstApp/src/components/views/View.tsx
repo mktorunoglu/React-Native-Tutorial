@@ -21,7 +21,7 @@ const MyView: React.FC<{
     isExpanded,
     isCenterItems,
     height,
-    width,
+    width = "100%",
     alignItems,
     justifyContent,
     backgroundColor,

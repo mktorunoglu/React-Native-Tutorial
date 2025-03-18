@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { DimensionValue, View } from 'react-native';
 import { MyAligns } from '../../enums/Aligns';
-import { MyColors } from '../../enums/Colors';
 
 const MyView: React.FC<{
     flexDirection?: undefined;
@@ -13,7 +12,7 @@ const MyView: React.FC<{
     width?: DimensionValue,
     alignItems?: MyAligns,
     justifyContent?: MyAligns,
-    backgroundColor?: MyColors;
+    backgroundColor?: string;
     children: ReactNode;
 }> = ({
     flexDirection,

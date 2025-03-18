@@ -4,6 +4,7 @@ import MyText from '../components/texts/Text';
 import MySafeAreaView from '../components/views/SafeAreaView';
 import MyView from '../components/views/View';
 import { MyColors } from '../enums/Colors';
+import ColorUtils from '../utils/ColorUtils';
 
 const LoginScreen: React.FC = () => {
     return (
@@ -21,7 +22,7 @@ const LoginScreen: React.FC = () => {
                 </MyView>
                 <MyView
                     isExpanded={true}
-                    backgroundColor={MyColors.Theme}>
+                    backgroundColor={ColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
                     <MyText
                         text="4" />
                 </MyView>

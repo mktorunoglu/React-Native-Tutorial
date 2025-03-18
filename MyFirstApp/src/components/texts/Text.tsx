@@ -1,15 +1,14 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { MyAligns } from '../../enums/Aligns';
-import { MyColors } from '../../enums/Colors';
 import { MyFontWeights } from '../../enums/FontWeights';
+import { MyTextAligns } from '../../enums/TextAligns';
 
 const MyText: React.FC<{
     text: string;
-    color?: MyColors;
+    color?: string;
     fontSize?: number;
     fontWeight?: MyFontWeights;
-    textAlign?: MyAligns;
+    textAlign?: MyTextAligns;
 }> = ({
     text,
     color,

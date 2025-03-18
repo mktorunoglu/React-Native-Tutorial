@@ -12,24 +12,15 @@ const LoginScreen: React.FC = () => {
                 isColumn={true}
                 isExpanded={true}>
                 <MyView
-                    height={100}
-                    backgroundColor={MyColors.Transparent}>
-                    <MyText
-                        text="1" />
-                </MyView>
-                <MyView
-                    backgroundColor={MyColors.Theme}>
-                    <MyText
-                        text="2" />
+                    isCenterItems={true}
+                    height="30%">
+                    <MyImage
+                        path={require("../../assets/logos/logo_kdpp.png")}
+                        height="100%"
+                        width="70%" />
                 </MyView>
                 <MyView
                     isExpanded={true}
-                    backgroundColor={MyColors.Grey}>
-                    <MyImage
-                        path={require("../../assets/logos/logo_kdpp.png")}
-                        height={100} />
-                </MyView>
-                <MyView
                     backgroundColor={MyColors.Theme}>
                     <MyText
                         text="4" />

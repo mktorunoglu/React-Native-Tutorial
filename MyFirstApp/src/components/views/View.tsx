@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { View } from 'react-native';
+import { DimensionValue, View } from 'react-native';
+import { MyAligns } from '../../enums/Aligns';
 import { MyColors } from '../../enums/Colors';
 
 const MyView: React.FC<{
@@ -7,8 +8,11 @@ const MyView: React.FC<{
     isColumn?: boolean;
     isRow?: boolean;
     isExpanded?: boolean;
-    height?: number,
-    width?: number,
+    isCenterItems?: boolean;
+    height?: DimensionValue,
+    width?: DimensionValue,
+    alignItems?: MyAligns,
+    justifyContent?: MyAligns,
     backgroundColor?: MyColors;
     children: ReactNode;
 }> = ({
@@ -16,8 +20,11 @@ const MyView: React.FC<{
     isColumn,
     isRow,
     isExpanded,
+    isCenterItems,
     height,
     width,
+    alignItems,
+    justifyContent,
     backgroundColor,
     children,
 }) => {
@@ -27,6 +34,8 @@ const MyView: React.FC<{
                 flex: isExpanded ? 1 : undefined,
                 height,
                 width,
+                alignItems: isCenterItems ? MyAligns.Center : alignItems,
+                justifyContent: isCenterItems ? MyAligns.Center : justifyContent,
                 backgroundColor,
             }]}>
             {children}

@@ -1,16 +1,19 @@
 import React from 'react';
-import { Image, ImageSourcePropType } from 'react-native';
+import { DimensionValue, Image, ImageSourcePropType } from 'react-native';
+import { MyFills } from '../../enums/Fills';
 
 const MyImage: React.FC<{
     url?: string;
     path?: ImageSourcePropType;
-    width?: number;
-    height?: number;
+    width?: DimensionValue;
+    height?: DimensionValue;
+    resizeMode?: MyFills;
 }> = ({
     url,
     path,
     height,
     width,
+    resizeMode = MyFills.Contain,
 }) => {
         return <Image
             source={
@@ -20,8 +23,7 @@ const MyImage: React.FC<{
                 height,
                 width,
             }]}
-            resizeMode="cover"
-        />;
+            resizeMode={resizeMode} />;
     };
 
 export default MyImage;

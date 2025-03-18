@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MySafeAreaView: React.FC<{
@@ -10,6 +11,7 @@ const MySafeAreaView: React.FC<{
             style={[{
                 flex: 1,
             }]}>
+            <StatusBar barStyle="dark-content" />
             {children}
         </SafeAreaView>;
     };

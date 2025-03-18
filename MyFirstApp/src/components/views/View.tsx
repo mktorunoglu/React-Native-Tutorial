@@ -13,7 +13,7 @@ const MyView: React.FC<{
     alignItems?: MyAligns,
     justifyContent?: MyAligns,
     backgroundColor?: string;
-    children: ReactNode;
+    children?: ReactNode;
 }> = ({
     flexDirection,
     isColumn,

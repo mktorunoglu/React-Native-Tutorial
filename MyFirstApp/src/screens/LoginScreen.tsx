@@ -1,4 +1,5 @@
 import React from 'react';
+import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyText from '../components/texts/Text';
 import MySafeAreaView from '../components/views/SafeAreaView';
@@ -20,6 +21,7 @@ const LoginScreen: React.FC = () => {
                         height="100%"
                         width="70%" />
                 </MyView>
+                <MyDivider />
                 <MyView
                     isExpanded={true}
                     backgroundColor={ColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>

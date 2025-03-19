@@ -1,12 +1,20 @@
 import React, { ReactNode } from 'react';
-import { ScrollView } from 'react-native';
+import { DimensionValue, ScrollView } from 'react-native';
 
 const MyScrollView: React.FC<{
-    paddingVertical?: number;
-    paddingHorizontal?: number;
+    margin?: DimensionValue,
+    marginVertical?: DimensionValue,
+    marginHorizontal?: DimensionValue,
+    padding?: DimensionValue,
+    paddingVertical?: DimensionValue,
+    paddingHorizontal?: DimensionValue,
     showScrollBar?: boolean;
     children: ReactNode;
 }> = ({
+    margin,
+    marginVertical,
+    marginHorizontal,
+    padding,
     paddingVertical,
     paddingHorizontal,
     showScrollBar = false,
@@ -16,6 +24,10 @@ const MyScrollView: React.FC<{
             showsVerticalScrollIndicator={showScrollBar}
             showsHorizontalScrollIndicator={showScrollBar}
             style={[{
+                margin,
+                marginVertical,
+                marginHorizontal,
+                padding,
                 paddingVertical,
                 paddingHorizontal,
             }]}>

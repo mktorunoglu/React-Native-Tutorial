@@ -8,6 +8,7 @@ import MyView from '../components/views/View';
 import { MyAligns } from '../enums/Aligns';
 import { MyColors } from '../enums/Colors';
 import { MyFontWeights } from '../enums/FontWeights';
+import { MyTextAligns } from '../enums/TextAligns';
 import ColorUtils from '../utils/ColorUtils';
 
 const LoginScreen: React.FC = () => {
@@ -27,42 +28,37 @@ const LoginScreen: React.FC = () => {
                 <MyDivider />
                 <MyView
                     isExpanded={true}
+                    isColumn={true}
+                    paddingHorizontal={20}
                     alignItems={MyAligns.Center}
                     backgroundColor={ColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
                     <MyView
-                        isColumn={true}
+                        height={20} />
+                    <MyText
+                        text="Kurumsal Dosya Paylaşım Platformu"
+                        fontSize={16}
+                        color={MyColors.Theme}
+                        fontWeight={MyFontWeights.Bold}
+                        textAlign={MyTextAligns.Center} />
+                    <MyView
+                        height={20} />
+                    <MyView
                         isExpanded={true}>
                         <MyView
-                            isExpanded={true}>
+                            borderRadius={10}
+                            borderWidth={1}
+                            borderColor={ColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}
+                            backgroundColor={MyColors.White}>
                             <MyScrollView
-                                paddingHorizontal={20}
-                                paddingVertical={20}
-                            >
-                                <MyView
-                                    height={100}
-                                    backgroundColor={MyColors.Black} />
-                                <MyView
-                                    height={20} />
-                                <MyView
-                                    height={100}
-                                    backgroundColor={MyColors.Black} />
-                                <MyView
-                                    height={20} />
-                                <MyView
-                                    height={100}
-                                    backgroundColor={MyColors.Black} />
-                                <MyView
-                                    height={20} />
-                                <MyView
-                                    height={100}
-                                    backgroundColor={MyColors.Black} />
-                                <MyView
-                                    height={20} />
-                                <MyView
-                                    height={100}
-                                    backgroundColor={MyColors.Black} />
-                                <MyView
-                                    height={40} />
+                                padding={20}>
+                                <MyText
+                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
+                                <MyText
+                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
+                                <MyText
+                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
+                                <MyText
+                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
                             </MyScrollView>
                         </MyView>
                     </MyView>
@@ -72,7 +68,8 @@ const LoginScreen: React.FC = () => {
                         text="Copyright © 2023, Tüm Hakları Saklıdır"
                         fontSize={12}
                         color={ColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
-                        fontWeight={MyFontWeights.W300} />
+                        fontWeight={MyFontWeights.W300}
+                        textAlign={MyTextAligns.Center} />
                     <MyView
                         height={10} />
                     <MyImage
@@ -83,7 +80,7 @@ const LoginScreen: React.FC = () => {
                         height={20} />
                 </MyView>
             </MyView>
-        </MySafeAreaView>
+        </MySafeAreaView >
     );
 };
 

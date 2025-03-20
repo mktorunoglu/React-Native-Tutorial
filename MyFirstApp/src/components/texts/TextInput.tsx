@@ -1,18 +1,24 @@
 import { TextInput } from 'react-native-paper';
 import { MyColors } from '../../enums/Colors';
 import { MyIcons } from '../../enums/Icons';
+import { MyKeyboardTypes } from '../../enums/KeyboardTypes';
+import { MyTextCapitalizes } from '../../enums/TextCapitalizes';
 import ColorUtils from '../../utils/ColorUtils';
 import MyIcon from '../icons/Icon';
 
 const MyTextInput: React.FC<{
     outlineColor?: string;
     backgroundColor?: string;
+    textCapitalize?: MyTextCapitalizes;
+    keyboardType?: MyKeyboardTypes;
     labelText?: string;
     rightIcon?: MyIcons;
     onPressRightIcon?: () => void;
 }> = ({
     outlineColor = ColorUtils.getColorWithOpacity(MyColors.Grey, 0.5),
     backgroundColor = MyColors.Transparent,
+    textCapitalize = MyTextCapitalizes.None,
+    keyboardType = MyKeyboardTypes.Default,
     labelText,
     rightIcon,
     onPressRightIcon,
@@ -21,6 +27,8 @@ const MyTextInput: React.FC<{
         return <TextInput
             mode="outlined"
             outlineColor={outlineColor}
+            autoCapitalize={textCapitalize}
+            keyboardType={keyboardType}
             label={labelText}
             right={rightIcon == null ? undefined : <TextInput.Icon
                 icon={() => <MyIcon

@@ -11,6 +11,7 @@ import { MyAligns } from '../enums/Aligns';
 import { MyColors } from '../enums/Colors';
 import { MyFontWeights } from '../enums/FontWeights';
 import { MyIcons } from '../enums/Icons';
+import { MyKeyboardTypes } from '../enums/KeyboardTypes';
 import { MyTextAligns } from '../enums/TextAligns';
 import ColorUtils from '../utils/ColorUtils';
 
@@ -55,6 +56,7 @@ const LoginScreen: React.FC = () => {
                             <MyScrollView
                                 padding={20}>
                                 <MyTextInput
+                                    keyboardType={MyKeyboardTypes.Url}
                                     labelText="Sunucu Adresi"
                                     rightIcon={MyIcons.Web} />
                                 <MyView
@@ -65,6 +67,7 @@ const LoginScreen: React.FC = () => {
                                 <MyView
                                     height={10} />
                                 <MyTextInput
+                                    keyboardType={MyKeyboardTypes.AndroidVisiblePassword}
                                     labelText="Şifre"
                                     rightIcon={MyIcons.EyeOutlined}
                                     onPressRightIcon={() => { }} />

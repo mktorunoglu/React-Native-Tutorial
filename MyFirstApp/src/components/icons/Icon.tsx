@@ -1,7 +1,8 @@
 import { Icon } from 'react-native-paper';
+import { MyIcons } from '../../enums/Icons';
 
 const MyIcon: React.FC<{
-    icon: string;
+    icon: MyIcons;
     color?: string;
     size?: number;
 }> = ({

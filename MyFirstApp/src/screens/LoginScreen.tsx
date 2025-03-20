@@ -1,5 +1,6 @@
 import MyButton from '../components/buttons/Button';
 import MyDivider from '../components/dividers/Divider';
+import MyIcon from '../components/icons/Icon';
 import MyImage from '../components/images/Image';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
@@ -54,15 +55,19 @@ const LoginScreen: React.FC = () => {
                             <MyScrollView
                                 padding={20}>
                                 <MyTextInput
-                                    labelText="Sunucu Adresi" />
+                                    labelText="Sunucu Adresi"
+                                    rightIcon={MyIcons.Web} />
                                 <MyView
                                     height={10} />
                                 <MyTextInput
-                                    labelText="Kullanıcı Kimliği" />
+                                    labelText="Kullanıcı Kimliği"
+                                    rightIcon={MyIcons.AccountOutlined} />
                                 <MyView
                                     height={10} />
                                 <MyTextInput
-                                    labelText="Şifre" />
+                                    labelText="Şifre"
+                                    rightIcon={MyIcons.EyeOutlined}
+                                    onPressRightIcon={() => { }} />
                                 <MyView
                                     height={20} />
                                 <MyButton

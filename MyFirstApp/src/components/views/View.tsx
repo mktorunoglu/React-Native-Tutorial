@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { DimensionValue, View } from 'react-native';
 import { MyAligns } from '../../enums/Aligns';
 

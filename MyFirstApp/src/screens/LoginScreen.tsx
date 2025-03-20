@@ -1,13 +1,15 @@
-import React from 'react';
+import MyButton from '../components/buttons/Button';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyText from '../components/texts/Text';
+import MyTextInput from '../components/texts/TextInput';
 import MySafeAreaView from '../components/views/SafeAreaView';
 import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
 import { MyAligns } from '../enums/Aligns';
 import { MyColors } from '../enums/Colors';
 import { MyFontWeights } from '../enums/FontWeights';
+import { MyIcons } from '../enums/Icons';
 import { MyTextAligns } from '../enums/TextAligns';
 import ColorUtils from '../utils/ColorUtils';
 
@@ -47,18 +49,26 @@ const LoginScreen: React.FC = () => {
                         <MyView
                             borderRadius={10}
                             borderWidth={1}
-                            borderColor={ColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}
+                            borderColor={ColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
                             backgroundColor={MyColors.White}>
                             <MyScrollView
                                 padding={20}>
-                                <MyText
-                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
-                                <MyText
-                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
-                                <MyText
-                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
-                                <MyText
-                                    text="Copyright © 2023, Tüm Hakları Saklıdır" />
+                                <MyTextInput
+                                    labelText="Sunucu Adresi" />
+                                <MyView
+                                    height={10} />
+                                <MyTextInput
+                                    labelText="Kullanıcı Kimliği" />
+                                <MyView
+                                    height={10} />
+                                <MyTextInput
+                                    labelText="Şifre" />
+                                <MyView
+                                    height={20} />
+                                <MyButton
+                                    icon={MyIcons.Login}
+                                    text="Giriş Yap"
+                                    onPress={() => { }} />
                             </MyScrollView>
                         </MyView>
                     </MyView>

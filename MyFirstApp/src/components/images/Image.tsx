@@ -1,4 +1,3 @@
-import React from 'react';
 import { DimensionValue, Image, ImageSourcePropType } from 'react-native';
 import { MyFills } from '../../enums/Fills';
 

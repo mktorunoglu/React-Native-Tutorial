@@ -37,6 +37,7 @@ const MyTextInput: React.FC<{
                 icon={() => <MyIcon
                     icon={rightIcon}
                     color={isThereRightIconFunction ? undefined : MyColors.Grey} />}
+                forceTextInputFocus={!isThereRightIconFunction}
                 color={isThereRightIconFunction ? undefined : MyColors.White}
                 onPress={onPressRightIcon} />}
             style={[{

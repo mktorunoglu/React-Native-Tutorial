@@ -3,4 +3,4 @@ export enum MyTextCapitalizes {
     Characters = "characters",
     Words = "words",
     Sentences = "sentences",
-}
+};

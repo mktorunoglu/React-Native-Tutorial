@@ -10,4 +10,4 @@ export enum MyFontWeights {
     W900 = 900,
     Normal = "normal",
     Bold = "bold",
-}
+};

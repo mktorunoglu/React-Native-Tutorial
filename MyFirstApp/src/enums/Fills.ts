@@ -5,4 +5,4 @@ export enum MyFills {
     None = "none",
     Repeat = "repeat",
     Stretch = "stretch",
-}
+};

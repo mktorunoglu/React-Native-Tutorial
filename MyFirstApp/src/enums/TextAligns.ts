@@ -4,4 +4,4 @@ export enum MyTextAligns {
     Right = "right",
     Center = "center",
     Justify = "justify",
-}
+};

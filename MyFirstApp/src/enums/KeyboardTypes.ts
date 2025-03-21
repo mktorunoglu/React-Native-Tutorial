@@ -1,15 +1,9 @@
 export enum MyKeyboardTypes {
-    AndroidVisiblePassword = "visible-password",
     Default = "default",
     EmailAddress = "email-address",
-    IosAsciiCapable = "ascii-capable",
-    IosNamePhonePad = "name-phone-pad",
-    IosNumbersAndPunctuation = "numbers-and-punctuation",
-    IosTwitter = "twitter",
-    IosWebSearch = "web-search",
     NumberPad = "number-pad",
     DecimalPad = "decimal-pad",
     Numeric = "numeric",
     PhonePad = "phone-pad",
     Url = "url",
-}
+};

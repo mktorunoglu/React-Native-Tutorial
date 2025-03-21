@@ -1,6 +1,6 @@
+import { observer } from "mobx-react-lite";
 import MyButton from '../components/buttons/Button';
 import MyDivider from '../components/dividers/Divider';
-import MyIcon from '../components/icons/Icon';
 import MyImage from '../components/images/Image';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
@@ -13,7 +13,10 @@ import { MyFontWeights } from '../enums/FontWeights';
 import { MyIcons } from '../enums/Icons';
 import { MyKeyboardTypes } from '../enums/KeyboardTypes';
 import { MyTextAligns } from '../enums/TextAligns';
+import ObservableValueModel from '../models/ObservableValueModel';
 import ColorUtils from '../utils/ColorUtils';
+
+const isPasswordVisible = new ObservableValueModel(false);
 
 const LoginScreen: React.FC = () => {
     return (
@@ -66,11 +69,7 @@ const LoginScreen: React.FC = () => {
                                     rightIcon={MyIcons.AccountOutlined} />
                                 <MyView
                                     height={10} />
-                                <MyTextInput
-                                    keyboardType={MyKeyboardTypes.AndroidVisiblePassword}
-                                    labelText="Şifre"
-                                    rightIcon={MyIcons.EyeOutlined}
-                                    onPressRightIcon={() => { }} />
+                                <PasswordTextInput_ />
                                 <MyView
                                     height={20} />
                                 <MyButton
@@ -101,5 +100,13 @@ const LoginScreen: React.FC = () => {
         </MySafeAreaView >
     );
 };
+
+const PasswordTextInput_ = observer(() => {
+    return <MyTextInput
+        isTextObscured={!isPasswordVisible.value}
+        labelText="Şifre"
+        rightIcon={isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined}
+        onPressRightIcon={() => isPasswordVisible.setValue(!isPasswordVisible.value)} />;
+});
 
 export default LoginScreen;

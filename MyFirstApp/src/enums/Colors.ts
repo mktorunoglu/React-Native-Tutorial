@@ -4,4 +4,4 @@ export enum MyColors {
     Theme = "#3A86F2", // #3A86F2
     Transparent = "transparent",
     White = "#FFFFFF", // #FFFFFF
-}
+};

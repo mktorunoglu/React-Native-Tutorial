@@ -11,6 +11,7 @@ const MyTextInput: React.FC<{
     backgroundColor?: string;
     textCapitalize?: MyTextCapitalizes;
     keyboardType?: MyKeyboardTypes;
+    isTextObscured?: boolean;
     labelText?: string;
     rightIcon?: MyIcons;
     onPressRightIcon?: () => void;
@@ -19,6 +20,7 @@ const MyTextInput: React.FC<{
     backgroundColor = MyColors.Transparent,
     textCapitalize = MyTextCapitalizes.None,
     keyboardType = MyKeyboardTypes.Default,
+    isTextObscured,
     labelText,
     rightIcon,
     onPressRightIcon,
@@ -29,6 +31,7 @@ const MyTextInput: React.FC<{
             outlineColor={outlineColor}
             autoCapitalize={textCapitalize}
             keyboardType={keyboardType}
+            secureTextEntry={isTextObscured}
             label={labelText}
             right={rightIcon == null ? undefined : <TextInput.Icon
                 icon={() => <MyIcon

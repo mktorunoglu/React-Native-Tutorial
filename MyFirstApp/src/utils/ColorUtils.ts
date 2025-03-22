@@ -1,13 +1,13 @@
-class ColorUtils {
-    private static instance: ColorUtils;
+class MyColorUtils {
+    private static instance: MyColorUtils;
 
     private constructor() { };
 
-    public static getInstance(): ColorUtils {
-        if (!ColorUtils.instance) {
-            ColorUtils.instance = new ColorUtils();
+    public static getInstance(): MyColorUtils {
+        if (!MyColorUtils.instance) {
+            MyColorUtils.instance = new MyColorUtils();
         }
-        return ColorUtils.instance;
+        return MyColorUtils.instance;
     };
 
     public getColorWithOpacity(color: string, opacity: number): string {
@@ -15,4 +15,4 @@ class ColorUtils {
     };
 };
 
-export default ColorUtils.getInstance();
+export default MyColorUtils.getInstance();

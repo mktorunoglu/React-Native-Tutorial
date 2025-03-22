@@ -3,7 +3,7 @@ import { MyColors } from '../../enums/Colors';
 import { MyIcons } from '../../enums/Icons';
 import { MyKeyboardTypes } from '../../enums/KeyboardTypes';
 import { MyTextCapitalizes } from '../../enums/TextCapitalizes';
-import ColorUtils from '../../utils/ColorUtils';
+import MyColorUtils from '../../utils/ColorUtils';
 import MyIcon from '../icons/Icon';
 
 const MyTextInput: React.FC<{
@@ -16,7 +16,7 @@ const MyTextInput: React.FC<{
     rightIcon?: MyIcons;
     onPressRightIcon?: () => void;
 }> = ({
-    outlineColor = ColorUtils.getColorWithOpacity(MyColors.Grey, 0.5),
+    outlineColor = MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.5),
     backgroundColor = MyColors.Transparent,
     textCapitalize = MyTextCapitalizes.None,
     keyboardType = MyKeyboardTypes.Default,

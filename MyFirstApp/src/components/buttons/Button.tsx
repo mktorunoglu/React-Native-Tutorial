@@ -1,7 +1,7 @@
 import { Button } from 'react-native-paper';
 import { MyColors } from '../../enums/Colors';
 import { MyFontWeights } from '../../enums/FontWeights';
-import ColorUtils from '../../utils/ColorUtils';
+import MyColorUtils from '../../utils/ColorUtils';
 import MyText from '../texts/Text';
 import MyView from '../views/View';
 
@@ -19,13 +19,13 @@ const MyButton: React.FC<{
     onPress,
 }) => {
         const isDisable = onPress == null;
-        const backgroundColor_ = isDisable ? ColorUtils.getColorWithOpacity(MyColors.Grey, 0.2) : backgroundColor;
-        const foregroundColor_ = isDisable ? ColorUtils.getColorWithOpacity(MyColors.Grey, 0.6) : foregroundColor;
+        const backgroundColor_ = isDisable ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2) : backgroundColor;
+        const foregroundColor_ = isDisable ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.6) : foregroundColor;
         return <Button
             mode="contained"
             onPress={onPress}
             buttonColor={backgroundColor_}
-            rippleColor={ColorUtils.getColorWithOpacity(foregroundColor_, 0.2)}
+            rippleColor={MyColorUtils.getColorWithOpacity(foregroundColor_, 0.2)}
             textColor={foregroundColor_}
             icon={icon}>
             {icon &&

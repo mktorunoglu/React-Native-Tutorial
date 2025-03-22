@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-class ObservableValueModel<T> {
+class MyObservableValueModel<T> {
     private _value: T;
 
     constructor(value: T) {
@@ -15,4 +15,4 @@ class ObservableValueModel<T> {
     setValue = (value: T) => this._value = value;
 };
 
-export default ObservableValueModel;
+export default MyObservableValueModel;

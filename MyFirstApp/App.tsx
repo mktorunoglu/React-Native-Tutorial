@@ -2,7 +2,7 @@ import React from 'react';
 import { DefaultTheme, PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MyColors } from './src/enums/Colors';
-import LoginScreen from './src/screens/LoginScreen';
+import MyLoginScreen from './src/screens/LoginScreen';
 
 const theme = {
   ...DefaultTheme,
@@ -17,7 +17,7 @@ const App: React.FC = () => {
   return <SafeAreaProvider>
     <PaperProvider
       theme={theme}>
-      <LoginScreen />
+      <MyLoginScreen />
     </PaperProvider>
   </SafeAreaProvider>;
 };

@@ -1,4 +1,4 @@
-import { observer } from "mobx-react-lite";
+import { observer } from 'mobx-react-lite';
 import MyButton from '../components/buttons/Button';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
@@ -12,13 +12,15 @@ import { MyColors } from '../enums/Colors';
 import { MyFontWeights } from '../enums/FontWeights';
 import { MyIcons } from '../enums/Icons';
 import { MyKeyboardTypes } from '../enums/KeyboardTypes';
+import { MyLocalizationTextKeys } from '../enums/LocalizationTextKeys';
 import { MyTextAligns } from '../enums/TextAligns';
-import ObservableValueModel from '../models/ObservableValueModel';
-import ColorUtils from '../utils/ColorUtils';
+import MyObservableValueModel from '../models/ObservableValueModel';
+import MyColorUtils from '../utils/ColorUtils';
+import LocalizationUtils from '../utils/LocalizationUtils';
 
-const isPasswordVisible = new ObservableValueModel(false);
+const isPasswordVisible = new MyObservableValueModel(false);
 
-const LoginScreen: React.FC = () => {
+const MyLoginScreen: React.FC = () => {
     return (
         <MySafeAreaView>
             <MyView
@@ -38,11 +40,11 @@ const LoginScreen: React.FC = () => {
                     isColumn={true}
                     paddingHorizontal={20}
                     alignItems={MyAligns.Center}
-                    backgroundColor={ColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
+                    backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
                     <MyView
                         height={20} />
                     <MyText
-                        text="Kurumsal Dosya Paylaşım Platformu"
+                        text={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppNameFull)}
                         fontSize={16}
                         color={MyColors.Theme}
                         fontWeight={MyFontWeights.Bold}
@@ -54,18 +56,18 @@ const LoginScreen: React.FC = () => {
                         <MyView
                             borderRadius={10}
                             borderWidth={1}
-                            borderColor={ColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
+                            borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
                             backgroundColor={MyColors.White}>
                             <MyScrollView
                                 padding={20}>
                                 <MyTextInput
                                     keyboardType={MyKeyboardTypes.Url}
-                                    labelText="Sunucu Adresi"
+                                    labelText={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ServerAddress)}
                                     rightIcon={MyIcons.Web} />
                                 <MyView
                                     height={10} />
                                 <MyTextInput
-                                    labelText="Kullanıcı Kimliği"
+                                    labelText={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.UserId)}
                                     rightIcon={MyIcons.AccountOutlined} />
                                 <MyView
                                     height={10} />
@@ -74,7 +76,7 @@ const LoginScreen: React.FC = () => {
                                     height={20} />
                                 <MyButton
                                     icon={MyIcons.Login}
-                                    text="Giriş Yap"
+                                    text={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
                                     onPress={() => { }} />
                             </MyScrollView>
                         </MyView>
@@ -82,9 +84,9 @@ const LoginScreen: React.FC = () => {
                     <MyView
                         height={20} />
                     <MyText
-                        text="Copyright © 2023, Tüm Hakları Saklıdır"
+                        text={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppCopyrightDescription)}
                         fontSize={12}
-                        color={ColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
+                        color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
                         fontWeight={MyFontWeights.W300}
                         textAlign={MyTextAligns.Center} />
                     <MyView
@@ -104,9 +106,9 @@ const LoginScreen: React.FC = () => {
 const PasswordTextInput_ = observer(() => {
     return <MyTextInput
         isTextObscured={!isPasswordVisible.value}
-        labelText="Şifre"
+        labelText={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Password)}
         rightIcon={isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined}
         onPressRightIcon={() => isPasswordVisible.setValue(!isPasswordVisible.value)} />;
 });
 
-export default LoginScreen;
+export default MyLoginScreen;

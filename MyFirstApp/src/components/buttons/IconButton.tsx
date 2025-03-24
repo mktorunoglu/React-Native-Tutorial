@@ -12,12 +12,16 @@ const MyIconButton: React.FC<{
     size,
     onPress,
 }) => {
+        const iconButton = <IconButton
+            icon={icon}
+            size={size}
+            onPress={onPress} />;
+        if (tooltip == null) {
+            return iconButton;
+        }
         return <MyTooltip
             text={tooltip}>
-            <IconButton
-                icon={icon}
-                size={size}
-                onPress={onPress} />
+            {iconButton}
         </MyTooltip>;
     };
 

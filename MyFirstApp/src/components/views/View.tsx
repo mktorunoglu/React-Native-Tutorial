@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { DimensionValue, View } from 'react-native';
 import { MyAligns } from '../../enums/Aligns';
+import { MyPositions } from '../../enums/Positions';
 
 const MyView: React.FC<{
     flexDirection?: undefined;
@@ -10,6 +11,12 @@ const MyView: React.FC<{
     isCenterItems?: boolean;
     height?: DimensionValue,
     width?: DimensionValue,
+    position?: MyPositions,
+    zIndex?: number,
+    top?: DimensionValue,
+    right?: DimensionValue,
+    bottom?: DimensionValue,
+    left?: DimensionValue,
     borderRadius?: number,
     borderWidth?: number,
     borderColor?: string,
@@ -31,6 +38,12 @@ const MyView: React.FC<{
     isCenterItems,
     height,
     width = "100%",
+    position,
+    zIndex,
+    top,
+    right,
+    bottom,
+    left,
     borderRadius,
     borderWidth,
     borderColor,
@@ -49,8 +62,14 @@ const MyView: React.FC<{
             style={[{
                 flexDirection: isColumn ? "column" : isRow ? "row" : flexDirection,
                 flex: isExpanded ? 1 : undefined,
+                position: zIndex == null ? position : MyPositions.Absolute,
                 height,
                 width,
+                zIndex,
+                top,
+                right,
+                bottom,
+                left,
                 borderRadius,
                 borderWidth,
                 borderColor,

@@ -6,5 +6,6 @@ export enum MyIcons {
     EyeOff = "eye-off",
     EyeOffOutlined = "eye-off-outline",
     Login = "login",
+    MoreVertical = "dots-vertical",
     Web = "web",
 };

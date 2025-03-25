@@ -8,6 +8,7 @@ import { MyRouteProps } from './src/constants/RouteProps';
 import { MyColors } from './src/enums/Colors';
 import { MyRoutes } from './src/enums/Routes';
 import MyLoginScreen from './src/screens/LoginScreen';
+import MySplashScreen from './src/screens/SplashScreen';
 
 const theme = {
   ...DefaultTheme,
@@ -29,10 +30,13 @@ const App: React.FC = () => {
       </Portal>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={MyRoutes.Login}
+          initialRouteName={MyRoutes.Splash}
           screenOptions={{
             headerShown: false,
           }}>
+          <Stack.Screen
+            name={MyRoutes.Splash}
+            component={MySplashScreen} />
           <Stack.Screen
             name={MyRoutes.Login}
             component={MyLoginScreen} />

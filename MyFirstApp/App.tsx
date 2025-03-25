@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { DefaultTheme, PaperProvider } from 'react-native-paper';
+import { DefaultTheme, PaperProvider, Portal } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import MyModal from './src/components/modals/Modal';
 import { MyRouteProps } from './src/constants/RouteProps';
 import { MyColors } from './src/enums/Colors';
 import { MyRoutes } from './src/enums/Routes';
@@ -23,6 +24,9 @@ const App: React.FC = () => {
   return <SafeAreaProvider>
     <PaperProvider
       theme={theme}>
+      <Portal>
+        <MyModal />
+      </Portal>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName={MyRoutes.Login}

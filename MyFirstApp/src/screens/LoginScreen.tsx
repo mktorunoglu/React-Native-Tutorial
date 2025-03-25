@@ -15,12 +15,14 @@ import { MyColors } from '../enums/Colors';
 import { MyFontWeights } from '../enums/FontWeights';
 import { MyIcons } from '../enums/Icons';
 import { MyKeyboardTypes } from '../enums/KeyboardTypes';
+import { MyLocalizations } from '../enums/Localizations';
 import { MyLocalizationTextKeys } from '../enums/LocalizationTextKeys';
 import { MyRoutes } from '../enums/Routes';
 import { MyTextAligns } from '../enums/TextAligns';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyColorUtils from '../utils/ColorUtils';
-import LocalizationUtils from '../utils/LocalizationUtils';
+import MyDialogUtils from '../utils/DialogUtils';
+import MyLocalizationUtils from '../utils/LocalizationUtils';
 
 const isPasswordVisible = new MyObservableValueModel(false);
 
@@ -48,8 +50,11 @@ const MyLoginScreen: React.FC<{
                             alignItems={MyAligns.FlexEnd}>
                             <MyIconButton
                                 icon={MyIcons.MoreVertical}
-                                tooltip={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Options)}
-                                onPress={() => { }} />
+                                tooltip={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Options)}
+                                onPress={() => MyDialogUtils.showModal({
+                                    view: <MyText
+                                        text="Example Modal. Click outside this area to dismissss." />,
+                                })} />
                         </MyView>
                     </MyView>
                     <MyDivider />
@@ -62,7 +67,7 @@ const MyLoginScreen: React.FC<{
                         <MyView
                             height={20} />
                         <MyText
-                            text={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppNameFull)}
+                            text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppNameFull)}
                             fontSize={16}
                             color={MyColors.Theme}
                             fontWeight={MyFontWeights.Bold}
@@ -80,12 +85,12 @@ const MyLoginScreen: React.FC<{
                                     padding={20}>
                                     <MyTextInput
                                         keyboardType={MyKeyboardTypes.Url}
-                                        labelText={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ServerAddress)}
+                                        labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ServerAddress)}
                                         rightIcon={MyIcons.Web} />
                                     <MyView
                                         height={10} />
                                     <MyTextInput
-                                        labelText={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.UserId)}
+                                        labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.UserId)}
                                         rightIcon={MyIcons.AccountOutlined} />
                                     <MyView
                                         height={10} />
@@ -94,15 +99,18 @@ const MyLoginScreen: React.FC<{
                                         height={20} />
                                     <MyButton
                                         icon={MyIcons.Login}
-                                        text={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
-                                        onPress={() => navigation.replace(MyRoutes.Login)} />
+                                        text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
+                                        onPress={() => {
+                                            MyLocalizationUtils.setLocalization(MyLocalizations.Turkish);
+                                            navigation.replace(MyRoutes.Login);
+                                        }} />
                                 </MyScrollView>
                             </MyView>
                         </MyView>
                         <MyView
                             height={20} />
                         <MyText
-                            text={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppCopyrightDescription)}
+                            text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppCopyrightDescription)}
                             fontSize={12}
                             color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
                             fontWeight={MyFontWeights.W300}
@@ -124,7 +132,7 @@ const MyLoginScreen: React.FC<{
 const PasswordTextInput_ = observer(() => {
     return <MyTextInput
         isTextObscured={!isPasswordVisible.value}
-        labelText={LocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Password)}
+        labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Password)}
         rightIcon={isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined}
         onPressRightIcon={() => isPasswordVisible.setValue(!isPasswordVisible.value)} />;
 });

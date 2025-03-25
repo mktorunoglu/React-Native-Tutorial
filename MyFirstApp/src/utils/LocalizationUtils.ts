@@ -16,6 +16,10 @@ class MyLocalizationUtils {
 
     private localization_ = MyLocalizations.English;
 
+    public setLocalization(localization: MyLocalizations) {
+        this.localization_ = localization;
+    };
+
     public getLocalizedText(localizationTextKey: MyLocalizationTextKeys): string {
         return MyLocalizationTexts[localizationTextKey][this.localization_];
     };

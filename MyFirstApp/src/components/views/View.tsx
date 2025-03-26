@@ -32,10 +32,10 @@ const MyView: React.FC<{
     children?: ReactNode;
 }> = ({
     flexDirection,
-    isColumn,
-    isRow,
-    isExpanded,
-    isCenterItems,
+    isColumn = false,
+    isRow = false,
+    isExpanded = false,
+    isCenterItems = false,
     height,
     width = "100%",
     position,
@@ -59,7 +59,7 @@ const MyView: React.FC<{
     children,
 }) => {
         return <View
-            style={[{
+            style={{
                 flexDirection: isColumn ? "column" : isRow ? "row" : flexDirection,
                 flex: isExpanded ? 1 : undefined,
                 position: zIndex == null ? position : MyPositions.Absolute,
@@ -82,7 +82,7 @@ const MyView: React.FC<{
                 alignItems: isCenterItems ? MyAligns.Center : alignItems,
                 justifyContent: isCenterItems ? MyAligns.Center : justifyContent,
                 backgroundColor,
-            }]}>
+            }}>
             {children}
         </View>;
     };

@@ -4,6 +4,7 @@ import MyButton from '../components/buttons/Button';
 import MyIconButton from '../components/buttons/IconButton';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
+import MyChangeLanguageModal from '../components/modals/ChangeLanguageModal';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
 import MySafeAreaView from '../components/views/SafeAreaView';
@@ -15,14 +16,13 @@ import { MyColors } from '../enums/Colors';
 import { MyFontWeights } from '../enums/FontWeights';
 import { MyIcons } from '../enums/Icons';
 import { MyKeyboardTypes } from '../enums/KeyboardTypes';
-import { MyLocalizations } from '../enums/Localizations';
 import { MyLocalizationTextKeys } from '../enums/LocalizationTextKeys';
 import { MyRoutes } from '../enums/Routes';
 import { MyTextAligns } from '../enums/TextAligns';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyColorUtils from '../utils/ColorUtils';
-import MyDialogUtils from '../utils/DialogUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
+import MyModalUtils from '../utils/ModalUtils';
 
 const isPasswordVisible = new MyObservableValueModel(false);
 
@@ -50,9 +50,9 @@ const MyLoginScreen: React.FC<{
                         <MyIconButton
                             icon={MyIcons.MoreVertical}
                             tooltip={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Options)}
-                            onPress={() => MyDialogUtils.showModal({
-                                view: <MyText
-                                    text="Example Modal. Click outside this area to dismissss." />,
+                            onPress={() => MyModalUtils.showModal({
+                                modal: <MyChangeLanguageModal
+                                    onChange={() => navigation.replace(MyRoutes.Login)} />,
                             })} />
                     </MyView>
                 </MyView>
@@ -99,10 +99,7 @@ const MyLoginScreen: React.FC<{
                                 <MyButton
                                     icon={MyIcons.Login}
                                     text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
-                                    onPress={() => {
-                                        MyLocalizationUtils.setLocalization(MyLocalizations.Turkish);
-                                        navigation.replace(MyRoutes.Login);
-                                    }} />
+                                    onPress={() => { }} />
                             </MyScrollView>
                         </MyView>
                     </MyView>

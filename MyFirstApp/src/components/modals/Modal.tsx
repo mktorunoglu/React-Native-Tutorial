@@ -1,21 +1,40 @@
 import { observer } from 'mobx-react-lite';
+import { ReactNode } from 'react';
 import { Modal } from 'react-native-paper';
 import { MyColors } from '../../enums/Colors';
-import MyDialogUtils from '../../utils/DialogUtils';
+import { MyPositions } from '../../enums/Positions';
+import MyColorUtils from '../../utils/ColorUtils';
+import MyModalUtils from '../../utils/ModalUtils';
 
-const MyModal: React.FC = () => {
-    return <Modal_ />;
-};
+const MyModal: React.FC<{
+    children: ReactNode,
+}> = ({
+    children,
+}) => {
+        return <Modal_
+            children={children} />;
+    };
 
-const Modal_ = observer(() => {
+const Modal_ = observer(({
+    children,
+}: {
+    children: ReactNode,
+}) => {
     return <Modal
-        visible={MyDialogUtils.isModalVisible.value}
-        onDismiss={MyDialogUtils.onDismissModal.value}
+        visible={MyModalUtils.isModalVisible.value}
+        onDismiss={MyModalUtils.onDismissModal.value}
         contentContainerStyle={{
             backgroundColor: MyColors.White,
-            padding: 20,
+            width: "100%",
+            position: MyPositions.Absolute,
+            bottom: 0,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+        }}
+        style={{
+            backgroundColor: MyColorUtils.getColorWithOpacity(MyColors.Black, 0.4),
         }}>
-        {MyDialogUtils.modalView.value}
+        {children}
     </Modal>;
 });
 

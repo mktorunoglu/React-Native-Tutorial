@@ -16,12 +16,12 @@ const MyText: React.FC<{
     textAlign,
 }) => {
         return <Text
-            style={[{
+            style={{
                 color,
                 fontSize,
                 fontWeight,
                 textAlign,
-            }]}>
+            }}>
             {text}
         </Text>;
     };

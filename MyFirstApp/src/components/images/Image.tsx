@@ -18,10 +18,10 @@ const MyImage: React.FC<{
             source={
                 url != null ? { uri: url } : path
             }
-            style={[{
+            style={{
                 height,
                 width,
-            }]}
+            }}
             resizeMode={resizeMode} />;
     };
 

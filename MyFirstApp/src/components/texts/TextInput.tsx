@@ -20,7 +20,7 @@ const MyTextInput: React.FC<{
     backgroundColor = MyColors.Transparent,
     textCapitalize = MyTextCapitalizes.None,
     keyboardType = MyKeyboardTypes.Default,
-    isTextObscured,
+    isTextObscured = false,
     labelText,
     rightIcon,
     onPressRightIcon,
@@ -40,9 +40,9 @@ const MyTextInput: React.FC<{
                 forceTextInputFocus={!isThereRightIconFunction}
                 color={isThereRightIconFunction ? undefined : MyColors.White}
                 onPress={onPressRightIcon} />}
-            style={[{
+            style={{
                 backgroundColor,
-            }]} />;
+            }} />;
     };
 
 export default MyTextInput;

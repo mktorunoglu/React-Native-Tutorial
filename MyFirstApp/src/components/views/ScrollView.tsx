@@ -23,14 +23,14 @@ const MyScrollView: React.FC<{
         return <ScrollView
             showsVerticalScrollIndicator={showScrollBar}
             showsHorizontalScrollIndicator={showScrollBar}
-            style={[{
+            style={{
                 margin,
                 marginVertical,
                 marginHorizontal,
                 padding,
                 paddingVertical,
                 paddingHorizontal,
-            }]}>
+            }}>
             {children}
         </ScrollView>;
     };

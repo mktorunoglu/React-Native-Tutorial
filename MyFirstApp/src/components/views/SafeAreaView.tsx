@@ -8,9 +8,9 @@ const MySafeAreaView: React.FC<{
     children,
 }) => {
         return <SafeAreaView
-            style={[{
+            style={{
                 flex: 1,
-            }]}>
+            }}>
             <StatusBar barStyle="dark-content" />
             {children}
         </SafeAreaView>;

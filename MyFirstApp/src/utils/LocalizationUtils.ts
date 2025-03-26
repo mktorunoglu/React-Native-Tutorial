@@ -16,22 +16,22 @@ class MyLocalizationUtils {
         return MyLocalizationUtils.instance;
     };
 
-    private localization_ = MyLocalizations.English;
+    public localization = MyLocalizations.English;
 
     public async initialize() {
         const localization = await MyStorageUtils.getData(MyKeys.Localization);
         if (localization != null) {
-            this.localization_ = localization as MyLocalizations;
+            this.localization = localization as MyLocalizations;
         }
     };
 
     public async setLocalization(localization: MyLocalizations) {
         await MyStorageUtils.storeData(MyKeys.Localization, localization);
-        this.localization_ = localization;
+        this.localization = localization;
     };
 
     public getLocalizedText(localizationTextKey: MyLocalizationTextKeys): string {
-        return MyLocalizationTexts[localizationTextKey][this.localization_];
+        return MyLocalizationTexts[localizationTextKey][this.localization];
     };
 };
 

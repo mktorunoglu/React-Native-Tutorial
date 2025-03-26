@@ -2,39 +2,39 @@ import { ReactElement } from "react";
 import MyView from "../components/views/View";
 import MyObservableValueModel from "../models/ObservableValueModel";
 
-class MyDialogUtils {
-    private static instance: MyDialogUtils;
+class MyModalUtils {
+    private static instance: MyModalUtils;
 
     private constructor() { };
 
-    public static getInstance(): MyDialogUtils {
-        if (!MyDialogUtils.instance) {
-            MyDialogUtils.instance = new MyDialogUtils();
+    public static getInstance(): MyModalUtils {
+        if (!MyModalUtils.instance) {
+            MyModalUtils.instance = new MyModalUtils();
         }
-        return MyDialogUtils.instance;
+        return MyModalUtils.instance;
     };
 
     public isModalVisible = new MyObservableValueModel(false);
-    public modalView = new MyObservableValueModel(<MyView />);
+    public modal = new MyObservableValueModel(<MyView />);
     public onDismissModal = new MyObservableValueModel(() => { });
 
     public showModal({
-        view,
+        modal,
         onDismiss = () => this.hideModal(),
     }: {
-        view: ReactElement,
+        modal: ReactElement,
         onDismiss?: () => void,
     }) {
-        this.modalView.setValue(view);
+        this.modal.setValue(modal);
         this.onDismissModal.setValue(onDismiss);
         this.isModalVisible.setValue(true);
     };
 
     public hideModal() {
-        this.modalView.setValue(<MyView />);
         this.isModalVisible.setValue(false);
+        this.modal.setValue(<MyView />);
         this.onDismissModal.setValue(() => { });
     };
 };
 
-export default MyDialogUtils.getInstance();
+export default MyModalUtils.getInstance();

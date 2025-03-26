@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import MyProgressModal from "../components/modals/ProgressModal";
 import MyView from "../components/views/View";
 import MyObservableValueModel from "../models/ObservableValueModel";
 
@@ -27,6 +28,12 @@ class MyModalUtils {
     }) {
         this.modal.setValue(modal);
         this.onDismissModal.setValue(onDismiss);
+        this.isModalVisible.setValue(true);
+    };
+
+    public showProgressModal() {
+        this.onDismissModal.setValue(() => { });
+        this.modal.setValue(<MyProgressModal />);
         this.isModalVisible.setValue(true);
     };
 

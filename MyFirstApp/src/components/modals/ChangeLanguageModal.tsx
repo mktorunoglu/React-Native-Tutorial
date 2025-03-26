@@ -28,8 +28,9 @@ const MyChangeLanguageModal: React.FC<{
                     [MyLocalizations.Turkish]: MyLocalizationTextKeys.Turkish,
                 }[localization])}
                 onPress={async () => {
-                    MyModalUtils.hideModal();
+                    MyModalUtils.showProgressModal();
                     await MyLocalizationUtils.setLocalization(localization);
+                    MyModalUtils.hideModal();
                     onChange();
                 }} />)}
         </MyModal>;

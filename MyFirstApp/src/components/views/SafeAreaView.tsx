@@ -11,7 +11,8 @@ const MySafeAreaView: React.FC<{
             style={{
                 flex: 1,
             }}>
-            <StatusBar barStyle="dark-content" />
+            <StatusBar
+                barStyle="dark-content" />
             {children}
         </SafeAreaView>;
     };

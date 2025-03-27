@@ -15,9 +15,7 @@ const MyImage: React.FC<{
     resizeMode = MyFills.Contain,
 }) => {
         return <Image
-            source={
-                url != null ? { uri: url } : path
-            }
+            source={url != null ? { uri: url } : path}
             style={{
                 height,
                 width,

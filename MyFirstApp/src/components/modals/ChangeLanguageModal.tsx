@@ -3,8 +3,7 @@ import { MyLocalizationTextKeys } from "../../enums/LocalizationTextKeys";
 import MyLocalizationUtils from "../../utils/LocalizationUtils";
 import MyModalUtils from "../../utils/ModalUtils";
 import MyModalSelectionButton from "../buttons/ModalSelectionButton";
-import MyText from "../texts/Text";
-import MyView from "../views/View";
+import MyModalHeader from "../headers/ModalHeader";
 import MyModal from "./Modal";
 
 const MyChangeLanguageModal: React.FC<{
@@ -13,13 +12,8 @@ const MyChangeLanguageModal: React.FC<{
     onChange,
 }) => {
         return <MyModal>
-            <MyView
-                isColumn={true}
-                isCenterItems={true}
-                padding={20}>
-                <MyText
-                    text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ChangeLanguage)} />
-            </MyView>
+            <MyModalHeader
+                text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ChangeLanguage)} />
             {Object.values(MyLocalizations).map((localization) => <MyModalSelectionButton
                 key={localization}
                 isSelected={MyLocalizationUtils.localization == localization}

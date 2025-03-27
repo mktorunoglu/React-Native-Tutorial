@@ -60,7 +60,7 @@ const MyView: React.FC<{
 }) => {
         return <View
             style={{
-                flexDirection: isColumn ? "column" : isRow ? "row" : flexDirection,
+                flexDirection: isColumn ? "column" : (isRow ? "row" : flexDirection),
                 flex: isExpanded ? 1 : undefined,
                 position: zIndex == null ? position : MyPositions.Absolute,
                 height,

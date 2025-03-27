@@ -1,6 +1,7 @@
 export enum MyIcons {
     Account = "account",
     AccountOutlined = "account-outline",
+    Earth = "earth",
     Eye = "eye",
     EyeOutlined = "eye-outline",
     EyeOff = "eye-off",

@@ -4,7 +4,7 @@ import MyButton from '../components/buttons/Button';
 import MyIconButton from '../components/buttons/IconButton';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
-import MyChangeLanguageModal from '../components/modals/ChangeLanguageModal';
+import MyOptionsModal from '../components/modals/OptionsModal';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
 import MySafeAreaView from '../components/views/SafeAreaView';
@@ -51,8 +51,8 @@ const MyLoginScreen: React.FC<{
                             icon={MyIcons.MoreVertical}
                             tooltip={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Options)}
                             onPress={() => MyModalUtils.showModal({
-                                modal: <MyChangeLanguageModal
-                                    onChange={() => navigation.replace(MyRoutes.Login)} />,
+                                modal: <MyOptionsModal
+                                    onChangeLanguage={() => navigation.replace(MyRoutes.Login)} />,
                             })} />
                     </MyView>
                 </MyView>

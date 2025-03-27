@@ -14,6 +14,8 @@ const MyTextInput: React.FC<{
     isTextObscured?: boolean;
     labelText?: string;
     rightIcon?: MyIcons;
+    value?: string;
+    onChangeText?: (text: string) => void;
     onPressRightIcon?: () => void;
 }> = ({
     outlineColor = MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.5),
@@ -23,6 +25,8 @@ const MyTextInput: React.FC<{
     isTextObscured = false,
     labelText,
     rightIcon,
+    value,
+    onChangeText,
     onPressRightIcon,
 }) => {
         const isThereRightIconFunction = onPressRightIcon != null;
@@ -40,6 +44,8 @@ const MyTextInput: React.FC<{
                 forceTextInputFocus={!isThereRightIconFunction}
                 color={isThereRightIconFunction ? undefined : MyColors.White}
                 onPress={onPressRightIcon} />}
+            value={value}
+            onChangeText={onChangeText}
             style={{
                 backgroundColor,
             }} />;

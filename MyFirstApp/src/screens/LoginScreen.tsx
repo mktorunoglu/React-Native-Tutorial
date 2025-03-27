@@ -18,11 +18,15 @@ import { MyKeyboardTypes } from '../enums/KeyboardTypes';
 import { MyLocalizationTextKeys } from '../enums/LocalizationTextKeys';
 import { MyRoutes } from '../enums/Routes';
 import { MyTextAligns } from '../enums/TextAligns';
+import { MyUrls } from '../enums/Urls';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
 
+const serverAddress = new MyObservableValueModel(MyUrls.DefaultServerAddressUrl as string);
+const userId = new MyObservableValueModel("");
+const password = new MyObservableValueModel("");
 const isPasswordVisible = new MyObservableValueModel(false);
 
 const MyLoginScreen: React.FC<{
@@ -80,24 +84,19 @@ const MyLoginScreen: React.FC<{
                         backgroundColor={MyColors.White}>
                         <MyScrollView
                             padding={20}>
-                            <MyTextInput
-                                keyboardType={MyKeyboardTypes.Url}
-                                labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ServerAddress)}
-                                rightIcon={MyIcons.Web} />
+                            <ServerAddressTextInput_ />
                             <MyView
                                 height={10} />
                             <MyTextInput
                                 labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.UserId)}
-                                rightIcon={MyIcons.AccountOutlined} />
+                                rightIcon={MyIcons.AccountOutlined}
+                                onChangeText={(text) => userId.setValue(text)} />
                             <MyView
                                 height={10} />
                             <PasswordTextInput_ />
                             <MyView
                                 height={20} />
-                            <MyButton
-                                icon={MyIcons.Login}
-                                text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
-                                onPress={() => { }} />
+                            <LoginButton_ />
                         </MyScrollView>
                     </MyView>
                 </MyView>
@@ -121,12 +120,30 @@ const MyLoginScreen: React.FC<{
         </MyView>;
     };
 
+const LoginButton_ = observer(() => {
+    return <MyButton
+        isDisable={serverAddress.value.length == 0 || userId.value.length == 0 || password.value.length == 0}
+        icon={MyIcons.Login}
+        text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
+        onPress={() => { }} />;
+});
+
+const ServerAddressTextInput_ = observer(() => {
+    return <MyTextInput
+        keyboardType={MyKeyboardTypes.Url}
+        labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ServerAddress)}
+        rightIcon={MyIcons.Web}
+        value={serverAddress.value}
+        onChangeText={(text) => serverAddress.setValue(text)} />;
+});
+
 const PasswordTextInput_ = observer(() => {
     return <MyTextInput
         isTextObscured={!isPasswordVisible.value}
         labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Password)}
         rightIcon={isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined}
-        onPressRightIcon={() => isPasswordVisible.setValue(!isPasswordVisible.value)} />;
+        onPressRightIcon={() => isPasswordVisible.setValue(!isPasswordVisible.value)}
+        onChangeText={(text) => password.setValue(text)} />;
 });
 
 export default MyLoginScreen;

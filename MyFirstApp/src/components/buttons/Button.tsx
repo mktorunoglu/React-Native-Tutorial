@@ -8,6 +8,7 @@ import MyView from '../views/View';
 
 const MyButton: React.FC<{
     isTextButton?: boolean,
+    isDisable?: boolean,
     borderRadius?: number,
     padding?: DimensionValue,
     paddingVertical?: DimensionValue,
@@ -16,9 +17,10 @@ const MyButton: React.FC<{
     foregroundColor?: string;
     icon?: string;
     text: string;
-    onPress?: () => void;
+    onPress: () => void;
 }> = ({
     isTextButton = false,
+    isDisable = false,
     borderRadius = 5,
     padding,
     paddingVertical,
@@ -29,11 +31,10 @@ const MyButton: React.FC<{
     text,
     onPress,
 }) => {
-        const isDisable = onPress == null;
         const backgroundColor_ = isTextButton ? MyColors.Transparent : (isDisable ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2) : backgroundColor);
         const foregroundColor_ = isDisable ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.6) : foregroundColor;
         return <Button
-            onPress={onPress}
+            onPress={isDisable ? undefined : onPress}
             buttonColor={backgroundColor_}
             rippleColor={MyColorUtils.getColorWithOpacity(foregroundColor_, 0.2)}
             textColor={foregroundColor_}

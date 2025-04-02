@@ -125,7 +125,9 @@ const LoginButton_ = observer(() => {
         isDisable={serverAddress.value.length == 0 || userId.value.length == 0 || password.value.length == 0}
         icon={MyIcons.Login}
         text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
-        onPress={() => { }} />;
+        onPress={async () => {
+
+        }} />;
 });
 
 const ServerAddressTextInput_ = observer(() => {

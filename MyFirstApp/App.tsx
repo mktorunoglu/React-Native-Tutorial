@@ -9,7 +9,7 @@ import { MyColors } from './src/enums/Colors';
 import { MyRoutes } from './src/enums/Routes';
 import MyLoginScreen from './src/screens/LoginScreen';
 import MySplashScreen from './src/screens/SplashScreen';
-import MyDialogUtils from './src/utils/ModalUtils';
+import MyModalUtils from './src/utils/ModalUtils';
 
 const theme = {
   ...DefaultTheme,
@@ -23,7 +23,7 @@ const theme = {
 const Stack = createStackNavigator<MyRouteProps>();
 
 const Modal_ = observer(() => {
-  return MyDialogUtils.modal.value;
+  return MyModalUtils.modal.value;
 });
 
 const App: React.FC = () => {

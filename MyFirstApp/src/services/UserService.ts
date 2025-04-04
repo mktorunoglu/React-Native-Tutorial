@@ -23,7 +23,7 @@ class MyUserService {
         password: string,
     }): Promise<MyResponseModel> {
         return await ApiUtils.request({
-            method: MyRequestMethods.Get,
+            method: MyRequestMethods.Post,
             url: MyApiUrls.UserApi + "/login/c",
             data: {
                 "userId": userId,

@@ -20,6 +20,7 @@ import { MyRoutes } from '../enums/Routes';
 import { MyTextAligns } from '../enums/TextAligns';
 import { MyUrls } from '../enums/Urls';
 import MyObservableValueModel from '../models/ObservableValueModel';
+import AuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
@@ -96,7 +97,8 @@ const MyLoginScreen: React.FC<{
                             <PasswordTextInput_ />
                             <MyView
                                 height={20} />
-                            <LoginButton_ />
+                            <LoginButton_
+                                navigation={navigation} />
                         </MyScrollView>
                     </MyView>
                 </MyView>
@@ -120,13 +122,26 @@ const MyLoginScreen: React.FC<{
         </MyView>;
     };
 
-const LoginButton_ = observer(() => {
+const LoginButton_ = observer(({
+    navigation,
+}: {
+    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Login>,
+}) => {
     return <MyButton
         isDisable={serverAddress.value.length == 0 || userId.value.length == 0 || password.value.length == 0}
         icon={MyIcons.Login}
         text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
         onPress={async () => {
-
+            MyModalUtils.showProgressModal();
+            const result = await AuthenticationUtils.login({
+                userId: userId.value,
+                password: password.value,
+                navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
+            });
+            MyModalUtils.hideModal();
+            if (!result) {
+                // dialog message
+            }
         }} />;
 });
 

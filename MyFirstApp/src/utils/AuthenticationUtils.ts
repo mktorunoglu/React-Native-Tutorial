@@ -1,4 +1,6 @@
+import { MyKeys } from "../enums/Keys";
 import UserService from "../services/UserService";
+import StorageUtils from "./StorageUtils";
 
 class MyAuthenticationUtils {
     private static instance: MyAuthenticationUtils;
@@ -15,16 +17,22 @@ class MyAuthenticationUtils {
     public async login({
         userId,
         password,
+        navigateToHomeScreen,
     }: {
         userId: string,
         password: string,
+        navigateToHomeScreen: () => void,
     }): Promise<boolean> {
         const response = await UserService.login({
             userId: userId,
             password: password,
         });
-        if(response.isSuccessful){
-            
+        if (response.isSuccessful) {
+            await StorageUtils.storeData(MyKeys.CurrentUserId, userId);
+            await StorageUtils.storeData(MyKeys.CurrentUserPassword, password);
+            await StorageUtils.storeData(MyKeys.CurrentUserToken, response.data["access_csrf_token"]);
+            navigateToHomeScreen();
+            return true;
         }
         return false;
     };

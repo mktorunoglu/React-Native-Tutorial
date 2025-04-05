@@ -10,16 +10,22 @@ import { MyFontWeights } from "../enums/FontWeights";
 import { MyLocalizationTextKeys } from "../enums/LocalizationTextKeys";
 import { MyRoutes } from "../enums/Routes";
 import { MyTextAligns } from "../enums/TextAligns";
+import MyAuthenticationUtils from "../utils/AuthenticationUtils";
 import MyColorUtils from "../utils/ColorUtils";
 import MyLocalizationUtils from "../utils/LocalizationUtils";
 
 const onInit = async ({
-    navigateFunction,
+    navigateToLoginScreen,
+    navigateToHomeScreen,
 }: {
-    navigateFunction: () => void,
+    navigateToLoginScreen: () => void,
+    navigateToHomeScreen: () => void,
 }) => {
     await MyLocalizationUtils.initialize();
-    navigateFunction();
+    await MyAuthenticationUtils.autoLogin({
+        navigateToLoginScreen: navigateToLoginScreen,
+        navigateToHomeScreen: navigateToHomeScreen,
+    });
 };
 
 const MySplashScreen: React.FC<{
@@ -29,7 +35,8 @@ const MySplashScreen: React.FC<{
 }) => {
         useEffect(() => {
             onInit({
-                navigateFunction: () => navigation.replace(MyRoutes.Login),
+                navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
+                navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
             });
         }, []);
         return <MyView

@@ -16,7 +16,7 @@ class MyStorageUtils {
         await AsyncStorage.setItem(key, value);
     };
 
-    public async getData(key: string) {
+    public async getData(key: string): Promise<string | null> {
         return await AsyncStorage.getItem(key);
     };
 };

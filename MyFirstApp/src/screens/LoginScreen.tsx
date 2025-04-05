@@ -133,13 +133,13 @@ const LoginButton_ = observer(({
         text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
         onPress={async () => {
             MyModalUtils.showProgressModal();
-            const result = await AuthenticationUtils.login({
+            const isLoginSuccessful = await AuthenticationUtils.login({
                 userId: userId.value,
                 password: password.value,
                 navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
             });
             MyModalUtils.hideModal();
-            if (!result) {
+            if (!isLoginSuccessful) {
                 // dialog message
             }
         }} />;

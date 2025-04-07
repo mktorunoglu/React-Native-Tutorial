@@ -24,16 +24,13 @@ class MyAuthenticationUtils {
     }) {
         const userId = await StorageUtils.getData(MyKeys.CurrentUserId);
         const password = await StorageUtils.getData(MyKeys.CurrentUserPassword);
-        if (userId !== null && password !== null) {
-            ServiceUtils.serverAddress = await StorageUtils.getData(MyKeys.CurrentServerAddress);
-            if (await this.login({
-                userId: userId,
-                password: password,
-                navigateToHomeScreen: navigateToHomeScreen,
-                isAutoLogin: true,
-            })) {
-                return;
-            }
+        if (userId !== null && password !== null && await this.login({
+            userId: userId,
+            password: password,
+            navigateToHomeScreen: navigateToHomeScreen,
+            isAutoLogin: true,
+        })) {
+            return;
         }
         navigateToLoginScreen();
     };
@@ -51,7 +48,7 @@ class MyAuthenticationUtils {
         navigateToHomeScreen: () => void,
         isAutoLogin?: boolean,
     }): Promise<boolean> {
-        ServiceUtils.serverAddress = serverAddress;
+        ServiceUtils.serverAddress = serverAddress ?? await StorageUtils.getData(MyKeys.CurrentServerAddress);
         const response = await UserService.login({
             userId: userId,
             password: password,

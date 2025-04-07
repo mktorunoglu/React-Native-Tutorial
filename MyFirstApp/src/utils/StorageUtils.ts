@@ -12,7 +12,7 @@ class MyStorageUtils {
         return MyStorageUtils.instance;
     };
 
-    public async storeData(key: string, value: any) {
+    public async storeData(key: string, value: string) {
         await AsyncStorage.setItem(key, value);
     };
 

@@ -140,8 +140,6 @@ const LoginButton_ = observer(({
                 navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
             });
             MyModalUtils.hideModal();
-            MyModalUtils.hideModal();
-            MyModalUtils.hideModal();
             if (!isLoginSuccessful) {
                 // dialog message
             }

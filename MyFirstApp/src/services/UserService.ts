@@ -1,7 +1,7 @@
-import { MyApiUrls } from "../enums/ApiUrls";
 import { MyRequestMethods } from "../enums/RequestMethods";
 import MyResponseModel from "../models/ResponseModel";
 import ApiUtils from "../utils/ApiUtils";
+import MyServiceUtils from "../utils/ServiceUtils";
 
 class MyUserService {
     private static instance: MyUserService;
@@ -24,7 +24,7 @@ class MyUserService {
     }): Promise<MyResponseModel> {
         return await ApiUtils.request({
             method: MyRequestMethods.Post,
-            url: MyApiUrls.UserApi + "/login/c",
+            url: MyServiceUtils.getUserApiUrl() + "/login/c",
             data: {
                 "userId": userId,
                 "password": password,

@@ -1,3 +1,3 @@
 export enum MyUrls {
-    DefaultServerAddressUrl = "https://kdpp.turksat.com.tr",
+    DefaultServerAddress = "https://kdpp.turksat.com.tr",
 };

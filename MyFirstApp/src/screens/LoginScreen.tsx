@@ -25,7 +25,7 @@ import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
 
-const serverAddress = new MyObservableValueModel(MyUrls.DefaultServerAddressUrl as string);
+const serverAddress = new MyObservableValueModel(MyUrls.DefaultServerAddress as string);
 const userId = new MyObservableValueModel("");
 const password = new MyObservableValueModel("");
 const isPasswordVisible = new MyObservableValueModel(false);
@@ -134,10 +134,13 @@ const LoginButton_ = observer(({
         onPress={async () => {
             MyModalUtils.showProgressModal();
             const isLoginSuccessful = await AuthenticationUtils.login({
+                serverAddress: serverAddress.value,
                 userId: userId.value,
                 password: password.value,
                 navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
             });
+            MyModalUtils.hideModal();
+            MyModalUtils.hideModal();
             MyModalUtils.hideModal();
             if (!isLoginSuccessful) {
                 // dialog message

@@ -1,5 +1,6 @@
 import { MyKeys } from "../enums/Keys";
 import UserService from "../services/UserService";
+import ServiceUtils from "./ServiceUtils";
 import StorageUtils from "./StorageUtils";
 
 class MyAuthenticationUtils {
@@ -23,34 +24,41 @@ class MyAuthenticationUtils {
     }) {
         const userId = await StorageUtils.getData(MyKeys.CurrentUserId);
         const password = await StorageUtils.getData(MyKeys.CurrentUserPassword);
-        if (userId !== null && password !== null && await this.login({
-            userId: userId,
-            password: password,
-            navigateToHomeScreen: navigateToHomeScreen,
-            isAutoLogin: true,
-        })) {
-            return;
+        if (userId !== null && password !== null) {
+            ServiceUtils.serverAddress = await StorageUtils.getData(MyKeys.CurrentServerAddress);
+            if (await this.login({
+                userId: userId,
+                password: password,
+                navigateToHomeScreen: navigateToHomeScreen,
+                isAutoLogin: true,
+            })) {
+                return;
+            }
         }
         navigateToLoginScreen();
     };
 
     public async login({
+        serverAddress,
         userId,
         password,
         navigateToHomeScreen,
         isAutoLogin = false,
     }: {
+        serverAddress?: string,
         userId: string,
         password: string,
         navigateToHomeScreen: () => void,
         isAutoLogin?: boolean,
     }): Promise<boolean> {
+        ServiceUtils.serverAddress = serverAddress;
         const response = await UserService.login({
             userId: userId,
             password: password,
         });
         if (response.isSuccessful) {
             if (!isAutoLogin) {
+                await StorageUtils.storeData(MyKeys.CurrentServerAddress, serverAddress);
                 await StorageUtils.storeData(MyKeys.CurrentUserId, userId);
                 await StorageUtils.storeData(MyKeys.CurrentUserPassword, password);
             }

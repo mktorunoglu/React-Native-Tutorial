@@ -18,6 +18,10 @@ export const MyLocalizationTexts = {
         [MyLocalizations.English]: "Options",
         [MyLocalizations.Turkish]: "Seçenekler",
     },
+    [MyLocalizationTextKeys.Logout]: {
+        [MyLocalizations.English]: "Logout",
+        [MyLocalizations.Turkish]: "Çıkış Yap",
+    },
     [MyLocalizationTextKeys.Login]: {
         [MyLocalizations.English]: "Login",
         [MyLocalizations.Turkish]: "Giriş Yap",

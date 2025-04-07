@@ -7,6 +7,7 @@ export enum MyIcons {
     EyeOff = "eye-off",
     EyeOffOutlined = "eye-off-outline",
     Login = "login",
+    Logout = "logout",
     MoreVertical = "dots-vertical",
     RadioboxBlank = "radiobox-blank",
     RadioboxMarked = "radiobox-marked",

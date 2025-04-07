@@ -13,6 +13,7 @@ class MyServiceUtils {
     };
 
     public serverAddress: string | null | undefined;
+    public token: string | undefined;
 
     private getApiUrl(apiUrl: string): string {
         return this.serverAddress + apiUrl;

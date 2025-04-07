@@ -31,6 +31,16 @@ class MyUserService {
             },
         });
     };
+
+    public async logout(): Promise<MyResponseModel> {
+        return await ApiUtils.request({
+            method: MyRequestMethods.Post,
+            url: MyServiceUtils.getUserApiUrl() + "/logout",
+            data: {
+                "isSessionDropped": false,
+            },
+        });
+    };
 };
 
 export default MyUserService.getInstance();

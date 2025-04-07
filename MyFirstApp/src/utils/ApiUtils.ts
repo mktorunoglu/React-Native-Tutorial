@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { MyRequestMethods } from "../enums/RequestMethods";
 import MyResponseModel from "../models/ResponseModel";
+import MyServiceUtils from "../utils/ServiceUtils";
 
 class MyApiUtils {
     private static instance: MyApiUtils;
@@ -34,7 +35,10 @@ class MyApiUtils {
                 method,
                 url,
                 data,
-                headers,
+                headers: {
+                    "X-CSRF-TOKEN": MyServiceUtils.token,
+                    ...headers,
+                },
             });
             return new MyResponseModel({
                 isSuccessful: response.status == 200,

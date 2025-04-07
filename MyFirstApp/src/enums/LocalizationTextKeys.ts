@@ -4,6 +4,7 @@ export enum MyLocalizationTextKeys {
     English,
     Options,
     Login,
+    Logout,
     Password,
     UserId,
     ServerAddress,

@@ -59,7 +59,7 @@ class MyAuthenticationUtils {
                 await StorageUtils.storeData(MyKeys.CurrentUserId, userId);
                 await StorageUtils.storeData(MyKeys.CurrentUserPassword, password);
             }
-            await StorageUtils.storeData(MyKeys.CurrentUserToken, response.data["access_csrf_token"]);
+            ServiceUtils.token = response.data["access_csrf_token"];
             navigateToHomeScreen();
             return true;
         }

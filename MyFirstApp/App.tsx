@@ -7,6 +7,7 @@ import MySafeAreaView from './src/components/views/SafeAreaView';
 import { MyRouteProps } from './src/constants/RouteProps';
 import { MyColors } from './src/enums/Colors';
 import { MyRoutes } from './src/enums/Routes';
+import MyHomeScreen from './src/screens/HomeScreen';
 import MyLoginScreen from './src/screens/LoginScreen';
 import MySplashScreen from './src/screens/SplashScreen';
 import MyModalUtils from './src/utils/ModalUtils';
@@ -48,7 +49,7 @@ const App: React.FC = () => {
               component={MyLoginScreen} />
             <Stack.Screen
               name={MyRoutes.Home}
-              component={MyLoginScreen} />
+              component={MyHomeScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </MySafeAreaView>

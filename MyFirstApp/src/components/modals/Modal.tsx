@@ -22,7 +22,7 @@ const Modal_ = observer(({
 }) => {
     return <Modal
         visible={MyModalUtils.isModalVisible.value}
-        onDismiss={MyModalUtils.onDismissModal.value}
+        onDismiss={() => MyModalUtils.hideModal()}
         contentContainerStyle={{
             backgroundColor: MyColors.White,
             width: "100%",

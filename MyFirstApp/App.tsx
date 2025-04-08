@@ -33,8 +33,8 @@ const App: React.FC = () => {
     <PaperProvider
       theme={theme}>
       <MySafeAreaView>
-        <MySnackbar />
         <Portal>
+          <MySnackbar />
           <Modal_ />
         </Portal>
         <NavigationContainer>

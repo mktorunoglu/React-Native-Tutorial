@@ -1,6 +1,6 @@
 import { MyRequestMethods } from "../enums/RequestMethods";
 import MyResponseModel from "../models/ResponseModel";
-import ApiUtils from "../utils/ApiUtils";
+import MyApiUtils from "../utils/ApiUtils";
 import MyServiceUtils from "../utils/ServiceUtils";
 
 class MyUserService {
@@ -22,7 +22,7 @@ class MyUserService {
         userId: string,
         password: string,
     }): Promise<MyResponseModel> {
-        return await ApiUtils.request({
+        return await MyApiUtils.request({
             method: MyRequestMethods.Post,
             url: MyServiceUtils.getUserApiUrl() + "/login/c",
             data: {
@@ -33,7 +33,7 @@ class MyUserService {
     };
 
     public async logout(): Promise<MyResponseModel> {
-        return await ApiUtils.request({
+        return await MyApiUtils.request({
             method: MyRequestMethods.Post,
             url: MyServiceUtils.getUserApiUrl() + "/logout",
             data: {

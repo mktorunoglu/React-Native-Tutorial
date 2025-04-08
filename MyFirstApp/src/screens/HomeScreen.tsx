@@ -5,7 +5,7 @@ import { MyRouteProps } from "../constants/RouteProps";
 import { MyIcons } from "../enums/Icons";
 import { MyLocalizationTextKeys } from '../enums/LocalizationTextKeys';
 import { MyRoutes } from "../enums/Routes";
-import AuthenticationUtils from "../utils/AuthenticationUtils";
+import MyAuthenticationUtils from "../utils/AuthenticationUtils";
 import MyLocalizationUtils from "../utils/LocalizationUtils";
 import MyModalUtils from '../utils/ModalUtils';
 
@@ -23,7 +23,7 @@ const MyHomeScreen: React.FC<{
                 tooltip={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Logout)}
                 onPress={async () => {
                     MyModalUtils.showProgressModal();
-                    await AuthenticationUtils.logout({
+                    await MyAuthenticationUtils.logout({
                         navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
                     });
                     MyModalUtils.hideModal();

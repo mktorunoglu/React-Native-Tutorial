@@ -20,7 +20,7 @@ import { MyRoutes } from '../enums/Routes';
 import { MyTextAligns } from '../enums/TextAligns';
 import { MyUrls } from '../enums/Urls';
 import MyObservableValueModel from '../models/ObservableValueModel';
-import AuthenticationUtils from '../utils/AuthenticationUtils';
+import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
@@ -134,7 +134,7 @@ const LoginButton_ = observer(({
         text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Login)}
         onPress={async () => {
             MyModalUtils.showProgressModal();
-            const isLoginSuccessful = await AuthenticationUtils.login({
+            const isLoginSuccessful = await MyAuthenticationUtils.login({
                 serverAddress: serverAddress.value,
                 userId: userId.value,
                 password: password.value,
@@ -143,7 +143,7 @@ const LoginButton_ = observer(({
             MyModalUtils.hideModal();
             if (!isLoginSuccessful) {
                 MySnackbarUtils.showSnackbar({
-                    text: "test",
+                    text: "Lorem Ipsum",
                 });
             }
         }} />;

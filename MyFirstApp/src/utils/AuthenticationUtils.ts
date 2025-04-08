@@ -1,7 +1,7 @@
 import { MyKeys } from "../enums/Keys";
-import UserService from "../services/UserService";
-import ServiceUtils from "./ServiceUtils";
-import StorageUtils from "./StorageUtils";
+import MyUserService from "../services/UserService";
+import MyServiceUtils from "./ServiceUtils";
+import MyStorageUtils from "./StorageUtils";
 
 class MyAuthenticationUtils {
     private static instance: MyAuthenticationUtils;
@@ -22,8 +22,8 @@ class MyAuthenticationUtils {
         navigateToLoginScreen: () => void,
         navigateToHomeScreen: () => void,
     }) {
-        const userId = await StorageUtils.getData(MyKeys.CurrentUserId) ?? "";
-        const password = await StorageUtils.getData(MyKeys.CurrentUserPassword) ?? "";
+        const userId = await MyStorageUtils.getData(MyKeys.CurrentUserId) ?? "";
+        const password = await MyStorageUtils.getData(MyKeys.CurrentUserPassword) ?? "";
         if (userId !== "" && password !== "" && await this.login({
             userId: userId,
             password: password,
@@ -48,18 +48,18 @@ class MyAuthenticationUtils {
         navigateToHomeScreen: () => void,
         isAutoLogin?: boolean,
     }): Promise<boolean> {
-        ServiceUtils.serverAddress = serverAddress ?? await StorageUtils.getData(MyKeys.CurrentServerAddress);
-        const response = await UserService.login({
+        MyServiceUtils.serverAddress = serverAddress ?? await MyStorageUtils.getData(MyKeys.CurrentServerAddress);
+        const response = await MyUserService.login({
             userId: userId,
             password: password,
         });
         if (response.isSuccessful && response.data["result"]) {
             if (!isAutoLogin) {
-                await StorageUtils.storeData(MyKeys.CurrentServerAddress, serverAddress!);
-                await StorageUtils.storeData(MyKeys.CurrentUserId, userId);
-                await StorageUtils.storeData(MyKeys.CurrentUserPassword, password);
+                await MyStorageUtils.storeData(MyKeys.CurrentServerAddress, serverAddress!);
+                await MyStorageUtils.storeData(MyKeys.CurrentUserId, userId);
+                await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
             }
-            ServiceUtils.token = response.data["access_csrf_token"];
+            MyServiceUtils.token = response.data["access_csrf_token"];
             navigateToHomeScreen();
             return true;
         }
@@ -71,10 +71,10 @@ class MyAuthenticationUtils {
     }: {
         navigateToLoginScreen: () => void,
     }): Promise<void> {
-        await UserService.logout();
-        await StorageUtils.storeData(MyKeys.CurrentServerAddress, "");
-        await StorageUtils.storeData(MyKeys.CurrentUserId, "");
-        await StorageUtils.storeData(MyKeys.CurrentUserPassword, "");
+        await MyUserService.logout();
+        await MyStorageUtils.storeData(MyKeys.CurrentServerAddress, "");
+        await MyStorageUtils.storeData(MyKeys.CurrentUserId, "");
+        await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, "");
         navigateToLoginScreen();
     };
 };

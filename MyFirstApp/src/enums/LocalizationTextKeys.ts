@@ -1,4 +1,5 @@
 export enum MyLocalizationTextKeys {
+    Okey,
     ChangeLanguage,
     Turkish,
     English,

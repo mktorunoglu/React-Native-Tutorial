@@ -143,7 +143,7 @@ const LoginButton_ = observer(({
             MyModalUtils.hideModal();
             if (!isLoginSuccessful) {
                 MySnackbarUtils.showSnackbar({
-                    text: "Lorem Ipsum",
+                    text: MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.CheckLoginInformation),
                 });
             }
         }} />;

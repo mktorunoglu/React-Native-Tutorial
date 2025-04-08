@@ -38,6 +38,8 @@ const Snackbar_ = observer(() => {
                     color={MySnackbarUtils.snackbarForegroundColor.value}
                     fontSize={16} />
             </MyView>
+            <MyView
+                width={10} />
             <MyButton
                 isTextButton={true}
                 foregroundColor={MySnackbarUtils.snackbarForegroundColor.value}

@@ -1,4 +1,5 @@
 export enum MyLocalizationTextKeys {
+    CheckLoginInformation,
     Okey,
     ChangeLanguage,
     Turkish,

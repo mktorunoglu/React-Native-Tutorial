@@ -24,6 +24,7 @@ import AuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
+import MySnackbarUtils from '../utils/SnackbarUtils';
 
 const serverAddress = new MyObservableValueModel(MyUrls.DefaultServerAddress as string);
 const userId = new MyObservableValueModel("");
@@ -141,7 +142,9 @@ const LoginButton_ = observer(({
             });
             MyModalUtils.hideModal();
             if (!isLoginSuccessful) {
-                // dialog message
+                MySnackbarUtils.showSnackbar({
+                    text: "test",
+                });
             }
         }} />;
 });

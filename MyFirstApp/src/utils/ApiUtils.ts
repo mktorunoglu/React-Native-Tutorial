@@ -40,6 +40,9 @@ class MyApiUtils {
                     ...headers,
                 },
             });
+            console.log("TEST api request url: " + url);
+            console.log("TEST api method: " + method);
+            console.log("TEST api response data: " + JSON.stringify(response.data));
             return new MyResponseModel({
                 isSuccessful: response.status == 200,
                 data: response.data,

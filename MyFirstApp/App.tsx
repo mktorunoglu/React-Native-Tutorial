@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { observer } from 'mobx-react-lite';
 import { DefaultTheme, PaperProvider, Portal } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import MySnackbar from './src/components/snackbars/Snackbar';
 import MySafeAreaView from './src/components/views/SafeAreaView';
 import { MyRouteProps } from './src/constants/RouteProps';
 import { MyColors } from './src/enums/Colors';
@@ -32,6 +33,7 @@ const App: React.FC = () => {
     <PaperProvider
       theme={theme}>
       <MySafeAreaView>
+        <MySnackbar />
         <Portal>
           <Modal_ />
         </Portal>

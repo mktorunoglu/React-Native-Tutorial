@@ -48,17 +48,12 @@ class MyAuthenticationUtils {
         navigateToHomeScreen: () => void,
         isAutoLogin?: boolean,
     }): Promise<boolean> {
-        console.log(serverAddress);
-        console.log(userId);
-        console.log(password);
         ServiceUtils.serverAddress = serverAddress ?? await StorageUtils.getData(MyKeys.CurrentServerAddress);
-        console.log(ServiceUtils.serverAddress);
         const response = await UserService.login({
             userId: userId,
             password: password,
         });
-        console.log("test1");
-        if (response.isSuccessful) {
+        if (response.isSuccessful && response.data["result"]) {
             if (!isAutoLogin) {
                 await StorageUtils.storeData(MyKeys.CurrentServerAddress, serverAddress!);
                 await StorageUtils.storeData(MyKeys.CurrentUserId, userId);
@@ -68,7 +63,6 @@ class MyAuthenticationUtils {
             navigateToHomeScreen();
             return true;
         }
-        console.log("test2");
         return false;
     };
 

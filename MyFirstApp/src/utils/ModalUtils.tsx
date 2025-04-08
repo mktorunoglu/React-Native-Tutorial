@@ -15,8 +15,8 @@ class MyModalUtils {
         return MyModalUtils.instance;
     };
 
-    public isModalVisible = new MyObservableValueModel(false);
     public modal = new MyObservableValueModel(<MyView />);
+    public isModalVisible = new MyObservableValueModel(false);
     public onDismissModal = new MyObservableValueModel(() => { });
 
     public showModal({

@@ -1,4 +1,9 @@
 export enum MyLocalizationTextKeys {
+    Profile,
+    Favorites,
+    Sharing,
+    Repos,
+    Home,
     CheckLoginInformation,
     Okey,
     ChangeLanguage,

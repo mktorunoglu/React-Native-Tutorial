@@ -2,7 +2,10 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { useState } from "react";
 import { BottomNavigation } from "react-native-paper";
 import { MyRouteProps } from "../constants/RouteProps";
+import { MyIcons } from "../enums/Icons";
+import { MyLocalizationTextKeys } from "../enums/LocalizationTextKeys";
 import { MyRoutes } from "../enums/Routes";
+import MyLocalizationUtils from "../utils/LocalizationUtils";
 import MyDashboardScreen from "./DashboardScreen";
 import MyFavoritesScreen from "./FavoritesScreen";
 import MyProfileScreen from "./ProfileScreen";
@@ -18,33 +21,33 @@ const MyHomeScreen: React.FC<{
         const [routes] = useState([
             {
                 key: MyRoutes.Dashboard,
-                title: "Home",
-                focusedIcon: "home",
-                unfocusedIcon: "home-outline",
+                title: MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Home),
+                focusedIcon: MyIcons.Home,
+                unfocusedIcon: MyIcons.HomeOutlined,
             },
             {
                 key: MyRoutes.Repos,
-                title: "Repos",
-                focusedIcon: "folder",
-                unfocusedIcon: "folder-outline",
+                title: MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Repos),
+                focusedIcon: MyIcons.Folder,
+                unfocusedIcon: MyIcons.FolderOutlined,
             },
             {
                 key: MyRoutes.Sharing,
-                title: "Sharing",
-                focusedIcon: "share-variant",
-                unfocusedIcon: "share-variant-outline",
+                title: MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Sharing),
+                focusedIcon: MyIcons.Share,
+                unfocusedIcon: MyIcons.ShareOutlined,
             },
             {
                 key: MyRoutes.Favorites,
-                title: "Favorites",
-                focusedIcon: "star",
-                unfocusedIcon: "star-outline",
+                title: MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Favorites),
+                focusedIcon: MyIcons.Star,
+                unfocusedIcon: MyIcons.StarOutlined,
             },
             {
                 key: MyRoutes.Profile,
-                title: "Profile",
-                focusedIcon: "account",
-                unfocusedIcon: "account-outline",
+                title: MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Profile),
+                focusedIcon: MyIcons.Account,
+                unfocusedIcon: MyIcons.AccountOutlined,
             },
         ]);
         return <BottomNavigation

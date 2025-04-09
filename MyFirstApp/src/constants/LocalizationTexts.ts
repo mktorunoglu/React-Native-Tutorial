@@ -2,6 +2,26 @@ import { MyLocalizations } from "../enums/Localizations";
 import { MyLocalizationTextKeys } from "../enums/LocalizationTextKeys";
 
 export const MyLocalizationTexts = {
+    [MyLocalizationTextKeys.Profile]: {
+        [MyLocalizations.English]: "Profile",
+        [MyLocalizations.Turkish]: "Profil",
+    },
+    [MyLocalizationTextKeys.Favorites]: {
+        [MyLocalizations.English]: "Favorites",
+        [MyLocalizations.Turkish]: "Favoriler",
+    },
+    [MyLocalizationTextKeys.Sharing]: {
+        [MyLocalizations.English]: "Sharing",
+        [MyLocalizations.Turkish]: "Paylaşım",
+    },
+    [MyLocalizationTextKeys.Repos]: {
+        [MyLocalizations.English]: "Repos",
+        [MyLocalizations.Turkish]: "Depolar",
+    },
+    [MyLocalizationTextKeys.Home]: {
+        [MyLocalizations.English]: "Home",
+        [MyLocalizations.Turkish]: "Ana Sayfa",
+    },
     [MyLocalizationTextKeys.CheckLoginInformation]: {
         [MyLocalizations.English]: "Please check your login information and try again.",
         [MyLocalizations.Turkish]: "Lütfen giriş bilgilerinizi kontrol edip tekrar deneyiniz.",

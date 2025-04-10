@@ -5,14 +5,14 @@ import { MyColors } from "../../enums/Colors";
 import MyColorUtils from "../../utils/ColorUtils";
 import MyModalUtils from "../../utils/ModalUtils";
 
-const MyTransparentModal: React.FC<{
-    children: ReactNode,
-}> = ({
+const MyTransparentModal = ({
     children,
+}: {
+    children: ReactNode,
 }) => {
-        return <Modal_
-            children={children} />;
-    };
+    return <Modal_
+        children={children} />;
+};
 
 const Modal_ = observer(({
     children,

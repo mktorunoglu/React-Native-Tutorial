@@ -1,17 +1,17 @@
 import { ReactElement } from "react";
 import { Tooltip } from "react-native-paper";
 
-const MyTooltip: React.FC<{
-    text?: string;
-    children: ReactElement;
-}> = ({
+const MyTooltip = ({
     text = "",
     children,
+}: {
+    text?: string;
+    children: ReactElement;
 }) => {
-        return <Tooltip
-            title={text}>
-            {children}
-        </Tooltip>;
-    };
+    return <Tooltip
+        title={text}>
+        {children}
+    </Tooltip>;
+};
 
 export default MyTooltip;

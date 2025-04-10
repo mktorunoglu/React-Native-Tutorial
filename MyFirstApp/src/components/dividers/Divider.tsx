@@ -1,6 +1,6 @@
 import { Divider } from "react-native-paper";
 
-const MyDivider: React.FC = () => {
+const MyDivider = () => {
     return <Divider
         bold={true} />;
 };

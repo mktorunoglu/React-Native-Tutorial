@@ -7,24 +7,24 @@ import { MyRouteProps } from "../constants/RouteProps";
 import { MyRoutes } from "../enums/Routes";
 import MyFileService from "../services/FileService";
 
-const MyReposScreen: React.FC<{
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
-}> = ({
+const MyReposScreen = ({
     navigation,
+}: {
+    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
 }) => {
-        return <MySafeAreaView>
-            <MyView
-                isExpanded={true}
-                isColumn={true}
-                isCenterItems={true}>
-                <MyResponseBuilder
-                    response={MyFileService.listOwnedRepo}
-                    builder={(response) => {
-                        return <MyText
-                            text="Repos" />;
-                    }} />
-            </MyView>
-        </MySafeAreaView>;
-    };
+    return <MySafeAreaView>
+        <MyView
+            isExpanded={true}
+            isColumn={true}
+            isCenterItems={true}>
+            <MyResponseBuilder
+                response={MyFileService.listOwnedRepo}
+                builder={(response) => {
+                    return <MyText
+                        text="Repos" />;
+                }} />
+        </MyView>
+    </MySafeAreaView>;
+};
 
 export default MyReposScreen;

@@ -6,14 +6,14 @@ import { MyPositions } from "../../enums/Positions";
 import MyColorUtils from "../../utils/ColorUtils";
 import MyModalUtils from "../../utils/ModalUtils";
 
-const MyModal: React.FC<{
-    children: ReactNode,
-}> = ({
+const MyModal = ({
     children,
+}: {
+    children: ReactNode,
 }) => {
-        return <Modal_
-            children={children} />;
-    };
+    return <Modal_
+        children={children} />;
+};
 
 const Modal_ = observer(({
     children,

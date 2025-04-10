@@ -5,20 +5,20 @@ import MyView from "../components/views/View";
 import { MyRouteProps } from "../constants/RouteProps";
 import { MyRoutes } from "../enums/Routes";
 
-const MyDashboardScreen: React.FC<{
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
-}> = ({
+const MyDashboardScreen = ({
     navigation,
+}: {
+    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
 }) => {
-        return <MySafeAreaView>
-            <MyView
-                isExpanded={true}
-                isColumn={true}
-                isCenterItems={true}>
-                <MyText
-                    text="Dashboard" />
-            </MyView>
-        </MySafeAreaView>;
-    };
+    return <MySafeAreaView>
+        <MyView
+            isExpanded={true}
+            isColumn={true}
+            isCenterItems={true}>
+            <MyText
+                text="Dashboard" />
+        </MyView>
+    </MySafeAreaView>;
+};
 
 export default MyDashboardScreen;

@@ -2,7 +2,7 @@ import { MyColors } from "../../enums/Colors";
 import MyProgressIndicator from "../indicators/ProgressIndicator";
 import MyTransparentModal from "./TransparentModal";
 
-const MyProgressModal: React.FC = () => {
+const MyProgressModal = () => {
     return <MyTransparentModal>
         <MyProgressIndicator
             color={MyColors.White} />

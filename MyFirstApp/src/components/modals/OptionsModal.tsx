@@ -7,22 +7,22 @@ import MyModalHeader from "../headers/ModalHeader";
 import MyChangeLanguageModal from "./ChangeLanguageModal";
 import MyModal from "./Modal";
 
-const MyOptionsModal: React.FC<{
-    onChangeLanguage: () => void,
-}> = ({
+const MyOptionsModal = ({
     onChangeLanguage,
+}: {
+    onChangeLanguage: () => void,
 }) => {
-        return <MyModal>
-            <MyModalHeader
-                text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Options)} />
-            <MyModalSelectionButton
-                icon={MyIcons.Earth}
-                text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ChangeLanguage)}
-                onPress={() => MyModalUtils.showModal({
-                    modal: <MyChangeLanguageModal
-                        onChange={onChangeLanguage} />,
-                })} />
-        </MyModal>;
-    };
+    return <MyModal>
+        <MyModalHeader
+            text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Options)} />
+        <MyModalSelectionButton
+            icon={MyIcons.Earth}
+            text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ChangeLanguage)}
+            onPress={() => MyModalUtils.showModal({
+                modal: <MyChangeLanguageModal
+                    onChange={onChangeLanguage} />,
+            })} />
+    </MyModal>;
+};
 
 export default MyOptionsModal;

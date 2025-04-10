@@ -10,28 +10,28 @@ import MyAuthenticationUtils from "../utils/AuthenticationUtils";
 import MyLocalizationUtils from "../utils/LocalizationUtils";
 import MyModalUtils from "../utils/ModalUtils";
 
-const MyProfileScreen: React.FC<{
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
-}> = ({
+const MyProfileScreen = ({
     navigation,
+}: {
+    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
 }) => {
-        return <MySafeAreaView>
-            <MyView
-                isExpanded={true}
-                isColumn={true}
-                isCenterItems={true}>
-                <MyIconButton
-                    icon={MyIcons.Logout}
-                    tooltip={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Logout)}
-                    onPress={async () => {
-                        MyModalUtils.showProgressModal();
-                        await MyAuthenticationUtils.logout({
-                            navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-                        });
-                        MyModalUtils.hideModal();
-                    }} />
-            </MyView>
-        </MySafeAreaView>;
-    };
+    return <MySafeAreaView>
+        <MyView
+            isExpanded={true}
+            isColumn={true}
+            isCenterItems={true}>
+            <MyIconButton
+                icon={MyIcons.Logout}
+                tooltip={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Logout)}
+                onPress={async () => {
+                    MyModalUtils.showProgressModal();
+                    await MyAuthenticationUtils.logout({
+                        navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
+                    });
+                    MyModalUtils.hideModal();
+                }} />
+        </MyView>
+    </MySafeAreaView>;
+};
 
 export default MyProfileScreen;

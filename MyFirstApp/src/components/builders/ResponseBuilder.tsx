@@ -6,21 +6,21 @@ import MyProgressIndicator from "../indicators/ProgressIndicator";
 
 const response_ = new MyObservableValueModel<MyResponseModel | null>(null);
 
-const MyResponseBuilder: React.FC<{
-    response: () => Promise<MyResponseModel>,
-    builder: (response: MyResponseModel) => ReactNode,
-}> = ({
+const MyResponseBuilder = ({
     response,
     builder,
+}: {
+    response: () => Promise<MyResponseModel>,
+    builder: (response: MyResponseModel) => ReactNode,
 }) => {
-        useEffect(() => {
-            getResponse({
-                response: response,
-            });
-        }, []);
-        return <Builder_
-            builder={builder} />;
-    };
+    useEffect(() => {
+        getResponse({
+            response: response,
+        });
+    }, []);
+    return <Builder_
+        builder={builder} />;
+};
 
 const getResponse = async ({
     response,

@@ -29,50 +29,50 @@ const onInit = async ({
     });
 };
 
-const MySplashScreen: React.FC<{
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Splash>,
-}> = ({
+const MySplashScreen = ({
     navigation,
+}: {
+    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Splash>,
 }) => {
-        useEffect(() => {
-            onInit({
-                navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-                navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
-            });
-        }, []);
-        return <MySafeAreaView>
+    useEffect(() => {
+        onInit({
+            navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
+            navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
+        });
+    }, []);
+    return <MySafeAreaView>
+        <MyView
+            isColumn={true}
+            isExpanded={true}
+            isCenterItems={true}>
+            <MyImage
+                path={require("../../assets/logos/logo_kdpp.png")}
+                height={100}
+                width="70%" />
+            <MyView
+                height={100} />
+            <MyProgressIndicator />
             <MyView
                 isColumn={true}
-                isExpanded={true}
-                isCenterItems={true}>
+                zIndex={1}
+                bottom={0}>
+                <MyText
+                    text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppCopyrightDescription)}
+                    fontSize={12}
+                    color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
+                    fontWeight={MyFontWeights.W300}
+                    textAlign={MyTextAligns.Center} />
+                <MyView
+                    height={10} />
                 <MyImage
-                    path={require("../../assets/logos/logo_kdpp.png")}
-                    height={100}
-                    width="70%" />
+                    path={require("../../assets/logos/logo_turksat.png")}
+                    height={25}
+                    width="100%" />
                 <MyView
-                    height={100} />
-                <MyProgressIndicator />
-                <MyView
-                    isColumn={true}
-                    zIndex={1}
-                    bottom={0}>
-                    <MyText
-                        text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.AppCopyrightDescription)}
-                        fontSize={12}
-                        color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
-                        fontWeight={MyFontWeights.W300}
-                        textAlign={MyTextAligns.Center} />
-                    <MyView
-                        height={10} />
-                    <MyImage
-                        path={require("../../assets/logos/logo_turksat.png")}
-                        height={25}
-                        width="100%" />
-                    <MyView
-                        height={20} />
-                </MyView>
+                    height={20} />
             </MyView>
-        </MySafeAreaView>;
-    };
+        </MyView>
+    </MySafeAreaView>;
+};
 
 export default MySplashScreen;

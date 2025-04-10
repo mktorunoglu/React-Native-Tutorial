@@ -6,28 +6,28 @@ import MyModalSelectionButton from "../buttons/ModalSelectionButton";
 import MyModalHeader from "../headers/ModalHeader";
 import MyModal from "./Modal";
 
-const MyChangeLanguageModal: React.FC<{
-    onChange: () => void,
-}> = ({
+const MyChangeLanguageModal = ({
     onChange,
+}: {
+    onChange: () => void,
 }) => {
-        return <MyModal>
-            <MyModalHeader
-                text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ChangeLanguage)} />
-            {Object.values(MyLocalizations).map((localization) => <MyModalSelectionButton
-                key={localization}
-                isSelected={MyLocalizationUtils.localization == localization}
-                text={MyLocalizationUtils.getLocalizedText({
-                    [MyLocalizations.English]: MyLocalizationTextKeys.English,
-                    [MyLocalizations.Turkish]: MyLocalizationTextKeys.Turkish,
-                }[localization])}
-                onPress={async () => {
-                    MyModalUtils.showProgressModal();
-                    await MyLocalizationUtils.setLocalization(localization);
-                    MyModalUtils.hideModal();
-                    onChange();
-                }} />)}
-        </MyModal>;
-    };
+    return <MyModal>
+        <MyModalHeader
+            text={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ChangeLanguage)} />
+        {Object.values(MyLocalizations).map((localization) => <MyModalSelectionButton
+            key={localization}
+            isSelected={MyLocalizationUtils.localization == localization}
+            text={MyLocalizationUtils.getLocalizedText({
+                [MyLocalizations.English]: MyLocalizationTextKeys.English,
+                [MyLocalizations.Turkish]: MyLocalizationTextKeys.Turkish,
+            }[localization])}
+            onPress={async () => {
+                MyModalUtils.showProgressModal();
+                await MyLocalizationUtils.setLocalization(localization);
+                MyModalUtils.hideModal();
+                onChange();
+            }} />)}
+    </MyModal>;
+};
 
 export default MyChangeLanguageModal;

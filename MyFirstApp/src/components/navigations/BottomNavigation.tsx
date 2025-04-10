@@ -8,7 +8,7 @@ const MyBottomNavigation = ({
   selectedIndex,
   onIndexChange,
   routeList,
-  scenes,
+  screenList,
 }: {
   selectedIndex: number,
   onIndexChange: (selectedIndex: number) => void,
@@ -18,7 +18,7 @@ const MyBottomNavigation = ({
     focusedIcon: MyIcons,
     unfocusedIcon: MyIcons,
   }[],
-  scenes: { [key: string]: () => ReactNode },
+  screenList: { [key: string]: () => ReactNode },
 }) => {
   return <BottomNavigation
     navigationState={{
@@ -26,7 +26,7 @@ const MyBottomNavigation = ({
       routes: routeList,
     }}
     onIndexChange={onIndexChange}
-    renderScene={BottomNavigation.SceneMap(scenes)} />;
+    renderScene={BottomNavigation.SceneMap(screenList)} />;
 };
 
 export default MyBottomNavigation;

@@ -1,10 +1,10 @@
-import { DimensionValue } from 'react-native';
-import { Button } from 'react-native-paper';
-import { MyColors } from '../../enums/Colors';
-import { MyFontWeights } from '../../enums/FontWeights';
-import MyColorUtils from '../../utils/ColorUtils';
-import MyText from '../texts/Text';
-import MyView from '../views/View';
+import { DimensionValue } from "react-native";
+import { Button } from "react-native-paper";
+import { MyColors } from "../../enums/Colors";
+import { MyFontWeights } from "../../enums/FontWeights";
+import MyColorUtils from "../../utils/ColorUtils";
+import MyText from "../texts/Text";
+import MyView from "../views/View";
 
 const MyButton: React.FC<{
     isTextButton?: boolean,

@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-import { DimensionValue, View } from 'react-native';
-import { MyAligns } from '../../enums/Aligns';
-import { MyPositions } from '../../enums/Positions';
+import { ReactNode } from "react";
+import { DimensionValue, View } from "react-native";
+import { MyAligns } from "../../enums/Aligns";
+import { MyPositions } from "../../enums/Positions";
 
 const MyView: React.FC<{
     flexDirection?: undefined;

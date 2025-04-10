@@ -1,10 +1,10 @@
-import { TextInput } from 'react-native-paper';
-import { MyColors } from '../../enums/Colors';
-import { MyIcons } from '../../enums/Icons';
-import { MyKeyboardTypes } from '../../enums/KeyboardTypes';
-import { MyTextCapitalizes } from '../../enums/TextCapitalizes';
-import MyColorUtils from '../../utils/ColorUtils';
-import MyIcon from '../icons/Icon';
+import { TextInput } from "react-native-paper";
+import { MyColors } from "../../enums/Colors";
+import { MyIcons } from "../../enums/Icons";
+import { MyKeyboardTypes } from "../../enums/KeyboardTypes";
+import { MyTextCapitalizes } from "../../enums/TextCapitalizes";
+import MyColorUtils from "../../utils/ColorUtils";
+import MyIcon from "../icons/Icon";
 
 const MyTextInput: React.FC<{
     outlineColor?: string;

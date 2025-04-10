@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
-import { Tooltip } from 'react-native-paper';
+import { ReactElement } from "react";
+import { Tooltip } from "react-native-paper";
 
 const MyTooltip: React.FC<{
     text?: string;

@@ -1,5 +1,5 @@
-import { Icon } from 'react-native-paper';
-import { MyIcons } from '../../enums/Icons';
+import { Icon } from "react-native-paper";
+import { MyIcons } from "../../enums/Icons";
 
 const MyIcon: React.FC<{
     icon: MyIcons;

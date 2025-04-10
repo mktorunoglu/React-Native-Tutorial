@@ -1,10 +1,10 @@
-import { observer } from 'mobx-react-lite';
-import { ReactNode } from 'react';
-import { Modal } from 'react-native-paper';
-import { MyColors } from '../../enums/Colors';
-import { MyPositions } from '../../enums/Positions';
-import MyColorUtils from '../../utils/ColorUtils';
-import MyModalUtils from '../../utils/ModalUtils';
+import { observer } from "mobx-react-lite";
+import { ReactNode } from "react";
+import { Modal } from "react-native-paper";
+import { MyColors } from "../../enums/Colors";
+import { MyPositions } from "../../enums/Positions";
+import MyColorUtils from "../../utils/ColorUtils";
+import MyModalUtils from "../../utils/ModalUtils";
 
 const MyModal: React.FC<{
     children: ReactNode,

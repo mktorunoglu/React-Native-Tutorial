@@ -1,5 +1,5 @@
-import { IconButton } from 'react-native-paper';
-import MyTooltip from '../tooltips/Tooltip';
+import { IconButton } from "react-native-paper";
+import MyTooltip from "../tooltips/Tooltip";
 
 const MyIconButton: React.FC<{
     icon: string;

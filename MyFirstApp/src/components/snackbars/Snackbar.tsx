@@ -1,12 +1,12 @@
-import { observer } from 'mobx-react-lite';
-import { Snackbar } from 'react-native-paper';
-import { MyLocalizationTextKeys } from '../../enums/LocalizationTextKeys';
-import MyLocalizationUtils from '../../utils/LocalizationUtils';
-import MySnackbarUtils from '../../utils/SnackbarUtils';
-import MyButton from '../buttons/Button';
-import MyIcon from '../icons/Icon';
-import MyText from '../texts/Text';
-import MyView from '../views/View';
+import { observer } from "mobx-react-lite";
+import { Snackbar } from "react-native-paper";
+import { MyLocalizationTextKeys } from "../../enums/LocalizationTextKeys";
+import MyLocalizationUtils from "../../utils/LocalizationUtils";
+import MySnackbarUtils from "../../utils/SnackbarUtils";
+import MyButton from "../buttons/Button";
+import MyIcon from "../icons/Icon";
+import MyText from "../texts/Text";
+import MyView from "../views/View";
 
 const MySnackbar: React.FC = () => {
     return <Snackbar_ />;

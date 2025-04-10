@@ -1,11 +1,11 @@
-// import { useState } from 'react';
-// import { BottomNavigation } from 'react-native-paper';
-// import { MyRoutes } from '../../enums/Routes';
-// import MyDashboardScreen from '../../screens/DashboardScreen';
-// import MyFavoritesScreen from '../../screens/FavoritesScreen';
-// import MyProfileScreen from '../../screens/ProfileScreen';
-// import MyReposScreen from '../../screens/ReposScreen';
-// import MySharingScreen from '../../screens/SharingScreen';
+// import { useState } from "react";
+// import { BottomNavigation } from "react-native-paper";
+// import { MyRoutes } from "../../enums/Routes";
+// import MyDashboardScreen from "../../screens/DashboardScreen";
+// import MyFavoritesScreen from "../../screens/FavoritesScreen";
+// import MyProfileScreen from "../../screens/ProfileScreen";
+// import MyReposScreen from "../../screens/ReposScreen";
+// import MySharingScreen from "../../screens/SharingScreen";
 
 // const MyBottomNavigationBar = () => {
 //     const [index, setIndex] = useState(0);

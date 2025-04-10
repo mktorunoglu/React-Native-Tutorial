@@ -1,4 +1,4 @@
-import { Divider } from 'react-native-paper';
+import { Divider } from "react-native-paper";
 
 const MyDivider: React.FC = () => {
     return <Divider

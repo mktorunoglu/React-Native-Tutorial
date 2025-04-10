@@ -1,5 +1,5 @@
-import { DimensionValue, Image, ImageSourcePropType } from 'react-native';
-import { MyFills } from '../../enums/Fills';
+import { DimensionValue, Image, ImageSourcePropType } from "react-native";
+import { MyFills } from "../../enums/Fills";
 
 const MyImage: React.FC<{
     url?: string;

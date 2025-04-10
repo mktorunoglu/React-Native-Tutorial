@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { DimensionValue, ScrollView } from 'react-native';
+import { ReactNode } from "react";
+import { DimensionValue, ScrollView } from "react-native";
 
 const MyScrollView: React.FC<{
     margin?: DimensionValue,

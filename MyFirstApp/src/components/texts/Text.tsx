@@ -1,6 +1,6 @@
-import { Text } from 'react-native-paper';
-import { MyFontWeights } from '../../enums/FontWeights';
-import { MyTextAligns } from '../../enums/TextAligns';
+import { Text } from "react-native-paper";
+import { MyFontWeights } from "../../enums/FontWeights";
+import { MyTextAligns } from "../../enums/TextAligns";
 
 const MyText: React.FC<{
     text: string;

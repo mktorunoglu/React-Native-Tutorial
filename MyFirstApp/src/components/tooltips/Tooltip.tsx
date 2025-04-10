@@ -5,8 +5,8 @@ const MyTooltip = ({
     text = "",
     children,
 }: {
-    text?: string;
-    children: ReactElement;
+    text?: string,
+    children: ReactElement,
 }) => {
     return <Tooltip
         title={text}>

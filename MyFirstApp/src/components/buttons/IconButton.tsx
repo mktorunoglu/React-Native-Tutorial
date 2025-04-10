@@ -7,10 +7,10 @@ const MyIconButton = ({
     size,
     onPress,
 }: {
-    icon: string;
-    tooltip?: string;
-    size?: number;
-    onPress?: () => void;
+    icon: string,
+    tooltip?: string,
+    size?: number,
+    onPress?: () => void,
 }) => {
     const iconButton = <IconButton
         icon={icon}

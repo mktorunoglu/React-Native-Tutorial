@@ -18,16 +18,16 @@ const MyTextInput = ({
     onChangeText,
     onPressRightIcon,
 }: {
-    outlineColor?: string;
-    backgroundColor?: string;
-    textCapitalize?: MyTextCapitalizes;
-    keyboardType?: MyKeyboardTypes;
-    isTextObscured?: boolean;
-    labelText?: string;
-    rightIcon?: MyIcons;
-    value?: string;
-    onChangeText?: (text: string) => void;
-    onPressRightIcon?: () => void;
+    outlineColor?: string,
+    backgroundColor?: string,
+    textCapitalize?: MyTextCapitalizes,
+    keyboardType?: MyKeyboardTypes,
+    isTextObscured?: boolean,
+    labelText?: string,
+    rightIcon?: MyIcons,
+    value?: string,
+    onChangeText?: (text: string) => void,
+    onPressRightIcon?: () => void,
 }) => {
     const isThereRightIconFunction = onPressRightIcon != null;
     return <TextInput

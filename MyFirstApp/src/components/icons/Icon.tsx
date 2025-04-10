@@ -6,9 +6,9 @@ const MyIcon = ({
     color,
     size = 24,
 }: {
-    icon: MyIcons;
-    color?: string;
-    size?: number;
+    icon: MyIcons,
+    color?: string,
+    size?: number,
 }) => {
     return <Icon
         source={icon}

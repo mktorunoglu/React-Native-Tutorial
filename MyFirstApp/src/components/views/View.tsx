@@ -31,11 +31,11 @@ const MyView = ({
     backgroundColor,
     children,
 }: {
-    flexDirection?: undefined;
-    isColumn?: boolean;
-    isRow?: boolean;
-    isExpanded?: boolean;
-    isCenterItems?: boolean;
+    flexDirection?: undefined,
+    isColumn?: boolean,
+    isRow?: boolean,
+    isExpanded?: boolean,
+    isCenterItems?: boolean,
     height?: DimensionValue,
     width?: DimensionValue,
     position?: MyPositions,
@@ -55,8 +55,8 @@ const MyView = ({
     paddingHorizontal?: DimensionValue,
     alignItems?: MyAligns,
     justifyContent?: MyAligns,
-    backgroundColor?: string;
-    children?: ReactNode;
+    backgroundColor?: string,
+    children?: ReactNode,
 }) => {
     return <View
         style={{

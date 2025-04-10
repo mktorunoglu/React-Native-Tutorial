@@ -8,11 +8,11 @@ const MyImage = ({
     width,
     resizeMode = MyFills.Contain,
 }: {
-    url?: string;
-    path?: ImageSourcePropType;
-    width?: DimensionValue;
-    height?: DimensionValue;
-    resizeMode?: MyFills;
+    url?: string,
+    path?: ImageSourcePropType,
+    width?: DimensionValue,
+    height?: DimensionValue,
+    resizeMode?: MyFills,
 }) => {
     return <Image
         source={url != null ? { uri: url } : path}

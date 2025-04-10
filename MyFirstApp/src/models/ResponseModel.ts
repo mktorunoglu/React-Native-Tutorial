@@ -15,7 +15,7 @@ class MyResponseModel {
         this.isSuccessful = isSuccessful;
         this.data = data;
         this.message = message;
-    }
-}
+    };
+};
 
 export default MyResponseModel;

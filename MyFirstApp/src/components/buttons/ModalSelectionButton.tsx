@@ -11,8 +11,8 @@ const MyModalSelectionButton = ({
 }: {
     isSelected?: boolean,
     icon?: MyIcons,
-    text: string;
-    onPress: () => void;
+    text: string,
+    onPress: () => void,
 }) => {
     return <MyView
         isColumn={true}>

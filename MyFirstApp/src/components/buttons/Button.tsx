@@ -25,11 +25,11 @@ const MyButton = ({
     padding?: DimensionValue,
     paddingVertical?: DimensionValue,
     paddingHorizontal?: DimensionValue,
-    backgroundColor?: string;
-    foregroundColor?: string;
-    icon?: string;
-    text: string;
-    onPress: () => void;
+    backgroundColor?: string,
+    foregroundColor?: string,
+    icon?: string,
+    text: string,
+    onPress: () => void,
 }) => {
     const backgroundColor_ = isTextButton ? MyColors.Transparent : (isDisable ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2) : backgroundColor);
     const foregroundColor_ = isDisable ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.6) : foregroundColor;

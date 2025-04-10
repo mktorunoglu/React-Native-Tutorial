@@ -9,11 +9,11 @@ const MyText = ({
     fontWeight,
     textAlign,
 }: {
-    text: string;
-    color?: string;
-    fontSize?: number;
-    fontWeight?: MyFontWeights;
-    textAlign?: MyTextAligns;
+    text: string,
+    color?: string,
+    fontSize?: number,
+    fontWeight?: MyFontWeights,
+    textAlign?: MyTextAligns,
 }) => {
     return <Text
         style={{

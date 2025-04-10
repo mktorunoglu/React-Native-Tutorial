@@ -94,52 +94,52 @@ class MyRepoModel {
         owner,
         path,
     }: {
-        autoSync?: boolean;
-        desc?: any;
-        encVersion?: number;
-        encrypted?: boolean;
-        fileCount?: number;
-        groupId?: number;
-        groupName?: string;
-        headCmmtId?: string;
-        id?: string;
-        isCorrupted?: boolean;
-        isOriginalOwner?: boolean;
-        isShared?: boolean;
-        isVirtual?: boolean;
-        lastModified?: number;
-        lastModifier?: string;
-        lastModify?: number;
-        lastSyncTime?: number;
-        magic?: string;
-        name?: string;
-        needDecrypt?: number;
-        originPath?: string;
-        originRepoId?: string;
-        originRepoName?: string;
-        parentGroupId?: number;
-        permission?: string;
-        randomKey?: any;
-        relayId?: any;
-        repaired?: boolean;
-        repoDesc?: any;
-        repoId?: string;
-        repoName?: string;
-        root?: string;
-        salt?: any;
-        shareType?: string;
-        size?: number;
-        smtime?: number;
-        status?: number;
-        storeId?: string;
-        timestamp?: number;
-        user?: string;
-        version?: number;
-        virtualPerm?: any;
-        worktree?: any;
-        worktreeInvalid?: boolean;
-        owner?: string;
-        path?: string;
+        autoSync?: boolean,
+        desc?: any,
+        encVersion?: number,
+        encrypted?: boolean,
+        fileCount?: number,
+        groupId?: number,
+        groupName?: string,
+        headCmmtId?: string,
+        id?: string,
+        isCorrupted?: boolean,
+        isOriginalOwner?: boolean,
+        isShared?: boolean,
+        isVirtual?: boolean,
+        lastModified?: number,
+        lastModifier?: string,
+        lastModify?: number,
+        lastSyncTime?: number,
+        magic?: string,
+        name?: string,
+        needDecrypt?: number,
+        originPath?: string,
+        originRepoId?: string,
+        originRepoName?: string,
+        parentGroupId?: number,
+        permission?: string,
+        randomKey?: any,
+        relayId?: any,
+        repaired?: boolean,
+        repoDesc?: any,
+        repoId?: string,
+        repoName?: string,
+        root?: string,
+        salt?: any,
+        shareType?: string,
+        size?: number,
+        smtime?: number,
+        status?: number,
+        storeId?: string,
+        timestamp?: number,
+        user?: string,
+        version?: number,
+        virtualPerm?: any,
+        worktree?: any,
+        worktreeInvalid?: boolean,
+        owner?: string,
+        path?: string,
     }) {
         this.autoSync = autoSync;
         this.desc = desc;
@@ -187,7 +187,7 @@ class MyRepoModel {
         this.worktreeInvalid = worktreeInvalid;
         this.owner = owner;
         this.path = path;
-    }
-}
+    };
+};
 
 export default MyRepoModel;

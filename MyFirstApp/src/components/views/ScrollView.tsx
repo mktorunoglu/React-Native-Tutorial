@@ -17,8 +17,8 @@ const MyScrollView = ({
     padding?: DimensionValue,
     paddingVertical?: DimensionValue,
     paddingHorizontal?: DimensionValue,
-    showScrollBar?: boolean;
-    children: ReactNode;
+    showScrollBar?: boolean,
+    children: ReactNode,
 }) => {
     return <ScrollView
         showsVerticalScrollIndicator={showScrollBar}

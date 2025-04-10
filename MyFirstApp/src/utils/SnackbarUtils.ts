@@ -16,11 +16,11 @@ class MySnackbarUtils {
     };
 
     public isSnackbarVisible = new MyObservableValueModel(false);
-    public snackbarIcon = new MyObservableValueModel(MyIcons.Information);
+    public snackbarIcon = new MyObservableValueModel<MyIcons | null>(null);
     public snackbarText = new MyObservableValueModel("");
-    public snackbarDurationMilliseconds = new MyObservableValueModel(3000);
-    public snackbarBackgroundColor = new MyObservableValueModel(MyColors.Theme);
-    public snackbarForegroundColor = new MyObservableValueModel(MyColors.White);
+    public snackbarDurationMilliseconds = new MyObservableValueModel<number | null>(null);
+    public snackbarBackgroundColor = new MyObservableValueModel<MyColors | null>(null);
+    public snackbarForegroundColor = new MyObservableValueModel<MyColors | null>(null);
 
     public showSnackbar({
         icon = MyIcons.Information,
@@ -38,19 +38,19 @@ class MySnackbarUtils {
         isSuccessful?: boolean,
     }) {
         this.hideSnackbar();
-        this.snackbarIcon.setValue(isSuccessful ? MyIcons.CheckCircle : icon);
-        this.snackbarText.setValue(text);
-        this.snackbarDurationMilliseconds.setValue(durationMilliseconds);
-        this.snackbarBackgroundColor.setValue(isSuccessful ? MyColors.Green : backgroundColor);
-        this.snackbarForegroundColor.setValue(foregroundColor);
+        this.snackbarIcon.value = isSuccessful ? MyIcons.CheckCircle : icon;
+        this.snackbarText.value = text;
+        this.snackbarDurationMilliseconds.value = durationMilliseconds;
+        this.snackbarBackgroundColor.value = isSuccessful ? MyColors.Green : backgroundColor;
+        this.snackbarForegroundColor.value = foregroundColor;
         TimerUtils.setTimer({
             durationMilliseconds: 100,
-            onFinished: () => this.isSnackbarVisible.setValue(true),
+            onFinished: () => this.isSnackbarVisible.value = true,
         });
     };
 
     public hideSnackbar() {
-        this.isSnackbarVisible.setValue(false);
+        this.isSnackbarVisible.value = false;
     };
 };
 

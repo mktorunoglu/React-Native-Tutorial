@@ -22,7 +22,7 @@ class MyUserService {
         userId: string,
         password: string,
     }): Promise<MyResponseModel> {
-        return await MyApiUtils.request({
+        const response = await MyApiUtils.request({
             method: MyRequestMethods.Post,
             url: MyServiceUtils.getUserApiUrl() + "/login/c",
             data: {
@@ -30,6 +30,11 @@ class MyUserService {
                 "password": password,
             },
         });
+        response.isSuccessful = response.data["result"] == true;
+        if (response.isSuccessful) {
+            response.data = response.data["access_csrf_token"];
+        }
+        return response;
     };
 
     public async logout(): Promise<MyResponseModel> {

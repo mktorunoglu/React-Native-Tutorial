@@ -27,7 +27,7 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
 import MySnackbarUtils from '../utils/SnackbarUtils';
 
-const serverAddress = new MyObservableValueModel(MyUrls.DefaultServerAddress as string);
+const serverAddress = new MyObservableValueModel<string>(MyUrls.DefaultServerAddress);
 const userId = new MyObservableValueModel("");
 const password = new MyObservableValueModel("");
 const isPasswordVisible = new MyObservableValueModel(false);
@@ -94,7 +94,7 @@ const MyLoginScreen: React.FC<{
                                 <MyTextInput
                                     labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.UserId)}
                                     rightIcon={MyIcons.AccountOutlined}
-                                    onChangeText={(text) => userId.setValue(text)} />
+                                    onChangeText={(text) => userId.value = text} />
                                 <MyView
                                     height={10} />
                                 <PasswordTextInput_ />
@@ -158,7 +158,7 @@ const ServerAddressTextInput_ = observer(() => {
         labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.ServerAddress)}
         rightIcon={MyIcons.Web}
         value={serverAddress.value}
-        onChangeText={(text) => serverAddress.setValue(text)} />;
+        onChangeText={(text) => serverAddress.value = text} />;
 });
 
 const PasswordTextInput_ = observer(() => {
@@ -166,8 +166,8 @@ const PasswordTextInput_ = observer(() => {
         isTextObscured={!isPasswordVisible.value}
         labelText={MyLocalizationUtils.getLocalizedText(MyLocalizationTextKeys.Password)}
         rightIcon={isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined}
-        onPressRightIcon={() => isPasswordVisible.setValue(!isPasswordVisible.value)}
-        onChangeText={(text) => password.setValue(text)} />;
+        onPressRightIcon={() => isPasswordVisible.value = !isPasswordVisible.value}
+        onChangeText={(text) => password.value = text} />;
 });
 
 export default MyLoginScreen;

@@ -12,11 +12,15 @@ class MyServiceUtils {
         return MyServiceUtils.instance;
     };
 
-    public serverAddress: string | null | undefined;
-    public token: string | undefined;
+    public serverAddress?: string | null;
+    public token?: string | null;
 
     private getApiUrl(apiUrl: string): string {
         return this.serverAddress + apiUrl;
+    };
+
+    public getFileApiUrl(): string {
+        return this.getApiUrl(MyApiUrls.FileApi);
     };
 
     public getUserApiUrl(): string {

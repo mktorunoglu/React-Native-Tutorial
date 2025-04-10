@@ -14,7 +14,7 @@ class MyModalUtils {
         return MyModalUtils.instance;
     };
 
-    public modal = new MyObservableValueModel(<MyProgressModal />);
+    public modal = new MyObservableValueModel<ReactElement | null>(null);
     public isModalVisible = new MyObservableValueModel(false);
 
     public showModal({
@@ -22,17 +22,17 @@ class MyModalUtils {
     }: {
         modal: ReactElement,
     }) {
-        this.modal.setValue(modal);
-        this.isModalVisible.setValue(true);
+        this.modal.value = modal;
+        this.isModalVisible.value = true;
     };
 
     public showProgressModal() {
-        this.modal.setValue(<MyProgressModal />);
-        this.isModalVisible.setValue(true);
+        this.modal.value = <MyProgressModal />;
+        this.isModalVisible.value = true;
     };
 
     public hideModal() {
-        this.isModalVisible.setValue(false);
+        this.isModalVisible.value = false;
     };
 };
 

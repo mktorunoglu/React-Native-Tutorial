@@ -53,13 +53,13 @@ class MyAuthenticationUtils {
             userId: userId,
             password: password,
         });
-        if (response.isSuccessful && response.data["result"]) {
+        if (response.isSuccessful) {
             if (!isAutoLogin) {
                 await MyStorageUtils.storeData(MyKeys.CurrentServerAddress, serverAddress!);
                 await MyStorageUtils.storeData(MyKeys.CurrentUserId, userId);
                 await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
             }
-            MyServiceUtils.token = response.data["access_csrf_token"];
+            MyServiceUtils.token = response.data;
             navigateToHomeScreen();
             return true;
         }

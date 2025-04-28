@@ -1,4 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import MyStatusBar from '../components/bars/StatusBar';
 import MyIconButton from '../components/buttons/IconButton';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
@@ -22,6 +23,7 @@ const MyProfileScreen = ({
       isColumn={true}
       isCenterItems={true}
       backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
+      <MyStatusBar />
       <MyIconButton
         icon={MyIcons.Logout}
         tooltip={MyLocalizationUtils.getLocalizedText(

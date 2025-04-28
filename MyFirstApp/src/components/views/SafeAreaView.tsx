@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
-import {StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import MyStatusBar from '../bars/StatusBar';
 
 const MySafeAreaView = ({children}: {children?: ReactNode}) => {
   return (
@@ -8,7 +8,7 @@ const MySafeAreaView = ({children}: {children?: ReactNode}) => {
       style={{
         flex: 1,
       }}>
-      <StatusBar barStyle="dark-content" />
+      <MyStatusBar />
       {children}
     </SafeAreaView>
   );

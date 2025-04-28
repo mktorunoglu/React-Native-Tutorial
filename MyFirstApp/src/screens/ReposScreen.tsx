@@ -1,4 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import MyStatusBar from '../components/bars/StatusBar';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyText from '../components/texts/Text';
 import MyView from '../components/views/View';
@@ -19,6 +20,7 @@ const MyReposScreen = ({
       isColumn={true}
       isCenterItems={true}
       backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
+      <MyStatusBar />
       <MyResponseBuilder
         response={MyFileService.listOwnedRepo}
         builder={response => {

@@ -3,7 +3,7 @@ import MyView from '../views/View';
 
 const MyModalHeader = ({text}: {text: string}) => {
   return (
-    <MyView isColumn={true} isCenterItems={true} padding={20}>
+    <MyView isColumn isCenterItems padding={20}>
       <MyText text={text} />
     </MyView>
   );

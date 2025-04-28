@@ -41,9 +41,9 @@ const MyLoginScreen = ({
 }) => {
   return (
     <MySafeAreaView>
-      <MyView isColumn={true} isExpanded={true}>
+      <MyView isColumn isExpanded>
         <MyView height="30%">
-          <MyView isCenterItems={true}>
+          <MyView isCenterItems>
             <MyImage
               path={require('../../assets/logos/logo_kdpp.png')}
               height="100%"
@@ -72,8 +72,8 @@ const MyLoginScreen = ({
         </MyView>
         <MyDivider />
         <MyView
-          isExpanded={true}
-          isColumn={true}
+          isExpanded
+          isColumn
           paddingHorizontal={20}
           alignItems={MyAligns.Center}
           backgroundColor={MyColorUtils.getColorWithOpacity(
@@ -91,7 +91,7 @@ const MyLoginScreen = ({
             textAlign={MyTextAligns.Center}
           />
           <MyView height={20} />
-          <MyView isExpanded={true}>
+          <MyView isExpanded>
             <MyView
               borderRadius={10}
               borderWidth={1}

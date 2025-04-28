@@ -1,7 +1,8 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import MyStatusBar from '../components/bars/StatusBar';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
+import MyFlatList from '../components/lists/FlatList';
 import MyText from '../components/texts/Text';
+import MySafeAreaView from '../components/views/SafeAreaView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -16,17 +17,22 @@ const MyReposScreen = ({
 }) => {
   return (
     <MyView
-      isExpanded={true}
-      isColumn={true}
-      isCenterItems={true}
+      isExpanded
       backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
-      <MyStatusBar />
-      <MyResponseBuilder
-        response={MyFileService.listOwnedRepo}
-        builder={response => {
-          return <MyText text="Repos" />;
-        }}
-      />
+      <MySafeAreaView safeOnlyTop>
+        <MyResponseBuilder
+          response={MyFileService.listOwnedRepo}
+          builder={response => {
+            return (
+              <MyFlatList
+                data={response.data}
+                keyExtractor={(item, index) => item.repoId ?? index}
+                renderItem={({item}) => <MyText text={item.name} />}
+              />
+            );
+          }}
+        />
+      </MySafeAreaView>
     </MyView>
   );
 };

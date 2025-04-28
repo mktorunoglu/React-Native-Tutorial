@@ -3,6 +3,7 @@ import {ReactNode, useEffect} from 'react';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyResponseModel from '../../models/ResponseModel';
 import MyProgressIndicator from '../indicators/ProgressIndicator';
+import MyView from '../views/View';
 
 const response_ = new MyObservableValueModel<MyResponseModel | null>(null);
 
@@ -30,7 +31,11 @@ const getResponse = async ({
 const Builder_ = observer(
   ({builder}: {builder: (response: MyResponseModel) => ReactNode}) => {
     if (response_.value == null) {
-      return <MyProgressIndicator />;
+      return (
+        <MyView isExpanded isCenterItems>
+          <MyProgressIndicator />
+        </MyView>
+      );
     }
     return builder(response_.value);
   },

@@ -42,7 +42,7 @@ const MySplashScreen = ({
   }, []);
   return (
     <MySafeAreaView>
-      <MyView isColumn={true} isExpanded={true} isCenterItems={true}>
+      <MyView isColumn isExpanded isCenterItems>
         <MyImage
           path={require('../../assets/logos/logo_kdpp.png')}
           height={100}
@@ -50,7 +50,7 @@ const MySplashScreen = ({
         />
         <MyView height={100} />
         <MyProgressIndicator />
-        <MyView isColumn={true} zIndex={1} bottom={0}>
+        <MyView isColumn zIndex={1} bottom={0}>
           <MyText
             text={MyLocalizationUtils.getLocalizedText(
               MyLocalizationTextKeys.AppCopyrightDescription,

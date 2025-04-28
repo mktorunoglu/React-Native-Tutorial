@@ -15,10 +15,10 @@ const MyModalSelectionButton = ({
   onPress: () => void;
 }) => {
   return (
-    <MyView isColumn={true}>
+    <MyView isColumn>
       <MyDivider />
       <MyButton
-        isTextButton={true}
+        isTextButton
         borderRadius={0}
         paddingVertical={5}
         icon={

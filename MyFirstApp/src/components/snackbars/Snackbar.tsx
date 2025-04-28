@@ -24,13 +24,13 @@ const Snackbar_ = observer(() => {
         backgroundColor: MySnackbarUtils.snackbarBackgroundColor.value!,
         margin: 10,
       }}>
-      <MyView isRow={true} isCenterItems={true}>
+      <MyView isRow isCenterItems>
         <MyIcon
           icon={MySnackbarUtils.snackbarIcon.value!}
           color={MySnackbarUtils.snackbarForegroundColor.value!}
         />
         <MyView width={15} />
-        <MyView isExpanded={true}>
+        <MyView isExpanded>
           <MyText
             text={MySnackbarUtils.snackbarText.value}
             color={MySnackbarUtils.snackbarForegroundColor.value!}
@@ -39,7 +39,7 @@ const Snackbar_ = observer(() => {
         </MyView>
         <MyView width={10} />
         <MyButton
-          isTextButton={true}
+          isTextButton
           foregroundColor={MySnackbarUtils.snackbarForegroundColor.value!}
           text={MyLocalizationUtils.getLocalizedText(
             MyLocalizationTextKeys.Okey,

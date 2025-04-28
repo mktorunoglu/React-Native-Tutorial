@@ -14,9 +14,9 @@ const MyFavoritesScreen = ({
 }) => {
   return (
     <MyView
-      isExpanded={true}
-      isColumn={true}
-      isCenterItems={true}
+      isExpanded
+      isColumn
+      isCenterItems
       backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
       <MyStatusBar />
       <MyText text="Favorites" />

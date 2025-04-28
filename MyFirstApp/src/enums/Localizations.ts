@@ -1,4 +1,4 @@
 export enum MyLocalizations {
-    English = "en",
-    Turkish = "tr",
-};
+  English = 'en',
+  Turkish = 'tr',
+}

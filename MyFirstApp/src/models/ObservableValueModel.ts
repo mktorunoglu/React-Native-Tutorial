@@ -1,12 +1,12 @@
-import { makeAutoObservable } from "mobx";
+import {makeAutoObservable} from 'mobx';
 
 class MyObservableValueModel<T> {
-    public value: T;
+  public value: T;
 
-    constructor(value: T) {
-        this.value = value;
-        makeAutoObservable(this);
-    };
-};
+  constructor(value: T) {
+    this.value = value;
+    makeAutoObservable(this);
+  }
+}
 
 export default MyObservableValueModel;

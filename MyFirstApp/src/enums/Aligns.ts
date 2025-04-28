@@ -1,5 +1,5 @@
 export enum MyAligns {
-    FlexStart = "flex-start",
-    FlexEnd = "flex-end",
-    Center = "center",
-};
+  FlexStart = 'flex-start',
+  FlexEnd = 'flex-end',
+  Center = 'center',
+}

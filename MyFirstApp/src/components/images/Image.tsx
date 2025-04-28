@@ -1,26 +1,29 @@
-import { DimensionValue, Image, ImageSourcePropType } from "react-native";
-import { MyFills } from "../../enums/Fills";
+import {DimensionValue, Image, ImageSourcePropType} from 'react-native';
+import {MyFills} from '../../enums/Fills';
 
 const MyImage = ({
-    url,
-    path,
-    height,
-    width,
-    resizeMode = MyFills.Contain,
+  url,
+  path,
+  height,
+  width,
+  resizeMode = MyFills.Contain,
 }: {
-    url?: string,
-    path?: ImageSourcePropType,
-    width?: DimensionValue,
-    height?: DimensionValue,
-    resizeMode?: MyFills,
+  url?: string;
+  path?: ImageSourcePropType;
+  width?: DimensionValue;
+  height?: DimensionValue;
+  resizeMode?: MyFills;
 }) => {
-    return <Image
-        source={url != null ? { uri: url } : path}
-        style={{
-            height,
-            width,
-        }}
-        resizeMode={resizeMode} />;
+  return (
+    <Image
+      source={url != null ? {uri: url} : path}
+      style={{
+        height,
+        width,
+      }}
+      resizeMode={resizeMode}
+    />
+  );
 };
 
 export default MyImage;

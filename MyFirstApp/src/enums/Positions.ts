@@ -1,5 +1,5 @@
 export enum MyPositions {
-    Absolute = "absolute",
-    Relative = "relative",
-    Static = "static",
-};
+  Absolute = 'absolute',
+  Relative = 'relative',
+  Static = 'static',
+}

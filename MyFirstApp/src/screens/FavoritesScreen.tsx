@@ -1,24 +1,25 @@
-import { StackNavigationProp } from "@react-navigation/stack";
-import MyText from "../components/texts/Text";
-import MyView from "../components/views/View";
-import { MyRouteProps } from "../constants/RouteProps";
-import { MyColors } from "../enums/Colors";
-import { MyRoutes } from "../enums/Routes";
-import MyColorUtils from "../utils/ColorUtils";
+import {StackNavigationProp} from '@react-navigation/stack';
+import MyText from '../components/texts/Text';
+import MyView from '../components/views/View';
+import {MyRouteProps} from '../constants/RouteProps';
+import {MyColors} from '../enums/Colors';
+import {MyRoutes} from '../enums/Routes';
+import MyColorUtils from '../utils/ColorUtils';
 
 const MyFavoritesScreen = ({
-    navigation,
+  navigation,
 }: {
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>,
+  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
 }) => {
-    return <MyView
-        isExpanded={true}
-        isColumn={true}
-        isCenterItems={true}
-        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
-        <MyText
-            text="Favorites" />
-    </MyView>;
+  return (
+    <MyView
+      isExpanded={true}
+      isColumn={true}
+      isCenterItems={true}
+      backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
+      <MyText text="Favorites" />
+    </MyView>
+  );
 };
 
 export default MyFavoritesScreen;

@@ -1,19 +1,16 @@
-import { Icon } from "react-native-paper";
-import { MyIcons } from "../../enums/Icons";
+import {Icon} from 'react-native-paper';
+import {MyIcons} from '../../enums/Icons';
 
 const MyIcon = ({
-    icon,
-    color,
-    size = 24,
+  icon,
+  color,
+  size = 24,
 }: {
-    icon: MyIcons,
-    color?: string,
-    size?: number,
+  icon: MyIcons;
+  color?: string;
+  size?: number;
 }) => {
-    return <Icon
-        source={icon}
-        color={color}
-        size={size} />;
+  return <Icon source={icon} color={color} size={size} />;
 };
 
 export default MyIcon;

@@ -1,7 +1,7 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
+import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
-import MyText from '../components/texts/Text';
 import MySafeAreaView from '../components/views/SafeAreaView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
@@ -27,7 +27,8 @@ const MyReposScreen = ({
               <MyFlatList
                 data={response.data}
                 keyExtractor={(item, index) => item.repoId ?? index}
-                renderItem={({item}) => <MyText text={item.name} />}
+                renderItem={({item}) => <MyRepoItem repo={item} />}
+                padding={5}
               />
             );
           }}

@@ -1,0 +1,46 @@
+import {MyAligns} from '../../enums/Aligns';
+import {MyColors} from '../../enums/Colors';
+import {MyIcons} from '../../enums/Icons';
+import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
+import {MyTextOverflows} from '../../enums/TextOverflows';
+import MyRepoModel from '../../models/RepoModel';
+import MyConverterUtils from '../../utils/ConverterUtils';
+import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyIconButton from '../buttons/IconButton';
+import MyCard from '../cards/Card';
+import MyText from '../texts/Text';
+import MyView from '../views/View';
+
+const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
+  return (
+    <MyView padding={5}>
+      <MyCard>
+        <MyView isExpanded isRow alignItems={MyAligns.Center}>
+          <MyView isExpanded paddingHorizontal={15}>
+            <MyText
+              text={repo.name}
+              maxLines={2}
+              textOverflow={MyTextOverflows.End}
+            />
+          </MyView>
+          <MyText
+            text={MyConverterUtils.convertNumberToSizeText({
+              number: repo.size ?? 0,
+            })}
+            fontSize={12}
+            color={MyColors.Grey}
+          />
+          <MyIconButton
+            icon={MyIcons.MoreVertical}
+            tooltip={MyLocalizationUtils.getLocalizedText(
+              MyLocalizationTextKeys.Operations,
+            )}
+            onPress={() => {}}
+          />
+        </MyView>
+      </MyCard>
+    </MyView>
+  );
+};
+
+export default MyRepoItem;

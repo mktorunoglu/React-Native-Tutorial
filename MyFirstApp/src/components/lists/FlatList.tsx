@@ -1,16 +1,23 @@
-import {FlatList, ListRenderItem} from 'react-native';
+import {DimensionValue, FlatList, ListRenderItem} from 'react-native';
 
 const MyFlatList = ({
   data,
   keyExtractor,
   renderItem,
+  padding,
 }: {
   data: ArrayLike<any>;
   keyExtractor?: (item: any, index: number) => string;
   renderItem: ListRenderItem<any>;
+  padding?: DimensionValue;
 }) => {
   return (
-    <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem} />
+    <FlatList
+      data={data}
+      keyExtractor={keyExtractor}
+      renderItem={renderItem}
+      style={{padding: padding}}
+    />
   );
 };
 

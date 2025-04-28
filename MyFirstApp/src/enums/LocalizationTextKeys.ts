@@ -1,4 +1,5 @@
 export enum MyLocalizationTextKeys {
+  Operations,
   Profile,
   Favorites,
   Sharing,

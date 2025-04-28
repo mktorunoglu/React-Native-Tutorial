@@ -1,6 +1,7 @@
 import {Text} from 'react-native-paper';
 import {MyFontWeights} from '../../enums/FontWeights';
 import {MyTextAligns} from '../../enums/TextAligns';
+import {MyTextOverflows} from '../../enums/TextOverflows';
 
 const MyText = ({
   text,
@@ -8,15 +9,21 @@ const MyText = ({
   fontSize,
   fontWeight,
   textAlign,
+  maxLines,
+  textOverflow,
 }: {
-  text: string;
+  text?: string;
   color?: string;
   fontSize?: number;
   fontWeight?: MyFontWeights;
   textAlign?: MyTextAligns;
+  maxLines?: number;
+  textOverflow?: MyTextOverflows;
 }) => {
   return (
     <Text
+      numberOfLines={maxLines}
+      ellipsizeMode={textOverflow}
       style={{
         color,
         fontSize,

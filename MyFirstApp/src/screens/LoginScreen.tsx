@@ -2,6 +2,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import MyButton from '../components/buttons/Button';
 import MyIconButton from '../components/buttons/IconButton';
+import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyOptionsModal from '../components/modals/OptionsModal';
@@ -87,11 +88,7 @@ const MyLoginScreen = ({
         />
         <MyView height={20} />
         <MyView isExpanded>
-          <MyView
-            borderRadius={10}
-            borderWidth={1}
-            borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
-            backgroundColor={MyColors.White}>
+          <MyCard>
             <MyScrollView padding={20}>
               <ServerAddressTextInput_ />
               <MyView height={10} />
@@ -107,7 +104,7 @@ const MyLoginScreen = ({
               <MyView height={20} />
               <LoginButton_ navigation={navigation} />
             </MyScrollView>
-          </MyView>
+          </MyCard>
         </MyView>
         <MyView height={20} />
         <MyText

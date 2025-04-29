@@ -8,6 +8,7 @@ import MyColorUtils from '../../utils/ColorUtils';
 import MyConverterUtils from '../../utils/ConverterUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyIconButton from '../buttons/IconButton';
+import MyCard from '../cards/Card';
 import MyIcon from '../icons/Icon';
 import MyText from '../texts/Text';
 import MyView from '../views/View';
@@ -15,11 +16,7 @@ import MyView from '../views/View';
 const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
   return (
     <MyView padding={5}>
-      <MyView
-        borderRadius={10}
-        borderWidth={1}
-        borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
-        backgroundColor={MyColors.White}>
+      <MyCard>
         <MyView isExpanded isRow alignItems={MyAligns.Center}>
           <MyView width={10} />
           <MyView
@@ -54,7 +51,7 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
             onPress={() => {}}
           />
         </MyView>
-      </MyView>
+      </MyCard>
     </MyView>
   );
 };

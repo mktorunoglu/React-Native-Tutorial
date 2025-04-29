@@ -1,6 +1,8 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import MyIconButton from '../components/buttons/IconButton';
+import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
+import MyTextInput from '../components/texts/TextInput';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -22,8 +24,11 @@ const MyProfileScreen = ({
       <MyView
         isColumn
         isExpanded
-        isCenterItems
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
+        <MyCard>
+          <MyTextInput></MyTextInput>
+          <MyTextInput></MyTextInput>
+        </MyCard>
         <MyIconButton
           icon={MyIcons.Logout}
           tooltip={MyLocalizationUtils.getLocalizedText(

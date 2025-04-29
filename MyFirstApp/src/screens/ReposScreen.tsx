@@ -1,8 +1,8 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
+import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
-import MySafeAreaView from '../components/views/SafeAreaView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -16,10 +16,10 @@ const MyReposScreen = ({
   navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
 }) => {
   return (
-    <MyView
-      isExpanded
-      backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
-      <MySafeAreaView safeOnlyTop>
+    <MyView isColumn isExpanded>
+      <MyView
+        isExpanded
+        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
         <MyResponseBuilder
           response={MyFileService.listOwnedRepo}
           builder={response => {
@@ -33,7 +33,8 @@ const MyReposScreen = ({
             );
           }}
         />
-      </MySafeAreaView>
+      </MyView>
+      <MyDivider />
     </MyView>
   );
 };

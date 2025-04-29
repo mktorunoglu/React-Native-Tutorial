@@ -41,7 +41,8 @@ const MySplashScreen = ({
     });
   }, []);
   return (
-    <MySafeAreaView>
+    <MyView isColumn isExpanded>
+      <MySafeAreaView safeOnlyTop />
       <MyView isColumn isExpanded isCenterItems>
         <MyImage
           path={require('../../assets/logos/logo_kdpp.png')}
@@ -69,7 +70,8 @@ const MySplashScreen = ({
           <MyView height={20} />
         </MyView>
       </MyView>
-    </MySafeAreaView>
+      <MySafeAreaView safeOnlyBottom />
+    </MyView>
   );
 };
 

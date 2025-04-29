@@ -1,6 +1,6 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import MyStatusBar from '../components/bars/StatusBar';
 import MyIconButton from '../components/buttons/IconButton';
+import MyDivider from '../components/dividers/Divider';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -18,25 +18,27 @@ const MyProfileScreen = ({
   navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
 }) => {
   return (
-    <MyView
-      isExpanded
-      isColumn
-      isCenterItems
-      backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
-      <MyStatusBar />
-      <MyIconButton
-        icon={MyIcons.Logout}
-        tooltip={MyLocalizationUtils.getLocalizedText(
-          MyLocalizationTextKeys.Logout,
-        )}
-        onPress={async () => {
-          MyModalUtils.showProgressModal();
-          await MyAuthenticationUtils.logout({
-            navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-          });
-          MyModalUtils.hideModal();
-        }}
-      />
+    <MyView isColumn isExpanded>
+      <MyView
+        isColumn
+        isExpanded
+        isCenterItems
+        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
+        <MyIconButton
+          icon={MyIcons.Logout}
+          tooltip={MyLocalizationUtils.getLocalizedText(
+            MyLocalizationTextKeys.Logout,
+          )}
+          onPress={async () => {
+            MyModalUtils.showProgressModal();
+            await MyAuthenticationUtils.logout({
+              navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
+            });
+            MyModalUtils.hideModal();
+          }}
+        />
+      </MyView>
+      <MyDivider />
     </MyView>
   );
 };

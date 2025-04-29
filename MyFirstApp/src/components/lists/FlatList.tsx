@@ -16,7 +16,7 @@ const MyFlatList = ({
       data={data}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
-      style={{padding: padding}}
+      style={{padding}}
     />
   );
 };

@@ -1,4 +1,7 @@
 export enum MyLocalizationTextKeys {
+  Messages,
+  Notifications,
+  Actions,
   Operations,
   Profile,
   Favorites,

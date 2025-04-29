@@ -33,9 +33,23 @@ const MyProfileScreen = ({
           </MyCard>
           <MyView height={10} />
           <MyCard padding={20}>
-            <MyTextInput></MyTextInput>
+            <MyTextInput
+              isEditable={false}
+              labelText={MyLocalizationUtils.getLocalizedText(
+                MyLocalizationTextKeys.UserId,
+              )}
+              labelTextColor={MyColors.Theme}
+              value="value1"
+            />
             <MyView height={20} />
-            <MyTextInput></MyTextInput>
+            <MyTextInput
+              isEditable={false}
+              labelText={MyLocalizationUtils.getLocalizedText(
+                MyLocalizationTextKeys.User,
+              )}
+              labelTextColor={MyColors.Theme}
+              value="value2"
+            />
           </MyCard>
           <MyView height={10} />
           <MyCard padding={20}>

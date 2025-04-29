@@ -12,7 +12,9 @@ const MyTextInput = ({
   textCapitalize = MyTextCapitalizes.None,
   keyboardType = MyKeyboardTypes.Default,
   isTextObscured = false,
+  isEditable = true,
   labelText,
+  labelTextColor,
   rightIcon,
   value,
   onChangeText,
@@ -23,7 +25,9 @@ const MyTextInput = ({
   textCapitalize?: MyTextCapitalizes;
   keyboardType?: MyKeyboardTypes;
   isTextObscured?: boolean;
+  isEditable?: boolean;
   labelText?: string;
+  labelTextColor?: string;
   rightIcon?: MyIcons;
   value?: string;
   onChangeText?: (text: string) => void;
@@ -37,6 +41,7 @@ const MyTextInput = ({
       autoCapitalize={textCapitalize}
       keyboardType={keyboardType}
       secureTextEntry={isTextObscured}
+      editable={isEditable}
       label={labelText}
       right={
         rightIcon == null ? undefined : (
@@ -55,6 +60,11 @@ const MyTextInput = ({
       }
       value={value}
       onChangeText={onChangeText}
+      theme={{
+        colors: {
+          onSurfaceVariant: labelTextColor,
+        },
+      }}
       style={{
         backgroundColor,
       }}

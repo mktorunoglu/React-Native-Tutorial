@@ -2,6 +2,10 @@ import {MyLocalizations} from '../enums/Localizations';
 import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 
 export const MyLocalizationTexts = {
+  [MyLocalizationTextKeys.AnErrorOccurred]: {
+    [MyLocalizations.English]: 'An error occurred',
+    [MyLocalizations.Turkish]: 'Bir hata oluştu',
+  },
   [MyLocalizationTextKeys.User]: {
     [MyLocalizations.English]: 'User',
     [MyLocalizations.Turkish]: 'Kullanıcı',

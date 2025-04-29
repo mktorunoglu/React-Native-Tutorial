@@ -1,8 +1,11 @@
 import {observer} from 'mobx-react-lite';
 import {ReactNode, useEffect} from 'react';
+import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyResponseModel from '../../models/ResponseModel';
+import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyProgressIndicator from '../indicators/ProgressIndicator';
+import MyText from '../texts/Text';
 import MyView from '../views/View';
 
 const response_ = new MyObservableValueModel<MyResponseModel | null>(null);
@@ -34,6 +37,17 @@ const Builder_ = observer(
       return (
         <MyView isExpanded isCenterItems>
           <MyProgressIndicator />
+        </MyView>
+      );
+    }
+    if (!response_.value.isSuccessful) {
+      return (
+        <MyView isExpanded isCenterItems>
+          <MyText
+            text={MyLocalizationUtils.getLocalizedText(
+              MyLocalizationTextKeys.AnErrorOccurred,
+            )}
+          />
         </MyView>
       );
     }

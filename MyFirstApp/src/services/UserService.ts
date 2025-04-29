@@ -1,6 +1,8 @@
 import {MyRequestMethods} from '../enums/RequestMethods';
 import MyResponseModel from '../models/ResponseModel';
+import MyUserInfoModel from '../models/UserInfoModel';
 import MyApiUtils from '../utils/ApiUtils';
+import MyConverterUtils from '../utils/ConverterUtils';
 import MyServiceUtils from '../utils/ServiceUtils';
 
 class MyUserService {
@@ -45,6 +47,17 @@ class MyUserService {
         isSessionDropped: false,
       },
     });
+  }
+
+  public async getUserInfo(): Promise<MyResponseModel> {
+    const response = await MyApiUtils.request({
+      method: MyRequestMethods.Get,
+      url: MyServiceUtils.getUserApiUrl() + '/get_user_info',
+    });
+    if (response.isSuccessful) {
+      response.data = response.data['result'];
+    }
+    return response;
   }
 }
 

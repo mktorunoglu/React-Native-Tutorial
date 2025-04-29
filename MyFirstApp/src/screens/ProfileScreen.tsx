@@ -1,4 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyButton from '../components/buttons/Button';
 import MyIconButton from '../components/buttons/IconButton';
 import MyCard from '../components/cards/Card';
@@ -11,6 +12,8 @@ import {MyColors} from '../enums/Colors';
 import {MyIcons} from '../enums/Icons';
 import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
+import MyUserInfoModel from '../models/UserInfoModel';
+import MyUserService from '../services/UserService';
 import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
@@ -33,22 +36,32 @@ const MyProfileScreen = ({
           </MyCard>
           <MyView height={10} />
           <MyCard padding={20}>
-            <MyTextInput
-              isEditable={false}
-              labelText={MyLocalizationUtils.getLocalizedText(
-                MyLocalizationTextKeys.UserId,
-              )}
-              labelTextColor={MyColors.Theme}
-              value="value1"
-            />
-            <MyView height={20} />
-            <MyTextInput
-              isEditable={false}
-              labelText={MyLocalizationUtils.getLocalizedText(
-                MyLocalizationTextKeys.User,
-              )}
-              labelTextColor={MyColors.Theme}
-              value="value2"
+            <MyResponseBuilder
+              response={MyUserService.getUserInfo}
+              builder={response => {
+                const userInfo: MyUserInfoModel = response.data;
+                return (
+                  <MyView isColumn>
+                    <MyTextInput
+                      isEditable={false}
+                      labelText={MyLocalizationUtils.getLocalizedText(
+                        MyLocalizationTextKeys.UserId,
+                      )}
+                      labelTextColor={MyColors.Theme}
+                      value={userInfo.user}
+                    />
+                    <MyView height={20} />
+                    <MyTextInput
+                      isEditable={false}
+                      labelText={MyLocalizationUtils.getLocalizedText(
+                        MyLocalizationTextKeys.User,
+                      )}
+                      labelTextColor={MyColors.Theme}
+                      value={userInfo.name}
+                    />
+                  </MyView>
+                );
+              }}
             />
           </MyCard>
           <MyView height={10} />

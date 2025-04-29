@@ -1,8 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import MyButton from '../components/buttons/Button';
 import MyIconButton from '../components/buttons/IconButton';
 import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
 import MyTextInput from '../components/texts/TextInput';
+import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -25,23 +27,40 @@ const MyProfileScreen = ({
         isColumn
         isExpanded
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
-        <MyCard>
-          <MyTextInput></MyTextInput>
-          <MyTextInput></MyTextInput>
-        </MyCard>
-        <MyIconButton
-          icon={MyIcons.Logout}
-          tooltip={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.Logout,
-          )}
-          onPress={async () => {
-            MyModalUtils.showProgressModal();
-            await MyAuthenticationUtils.logout({
-              navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-            });
-            MyModalUtils.hideModal();
-          }}
-        />
+        <MyScrollView padding={10}>
+          <MyCard padding={20}>
+            <MyView height={20} />
+          </MyCard>
+          <MyView height={10} />
+          <MyCard padding={20}>
+            <MyTextInput></MyTextInput>
+            <MyView height={20} />
+            <MyTextInput></MyTextInput>
+          </MyCard>
+          <MyView height={10} />
+          <MyCard padding={20}>
+            <MyButton
+              icon={MyIcons.SettingsOutlined}
+              text={MyLocalizationUtils.getLocalizedText(
+                MyLocalizationTextKeys.Options,
+              )}
+              onPress={() => {}}
+            />
+          </MyCard>
+          <MyIconButton
+            icon={MyIcons.Logout}
+            tooltip={MyLocalizationUtils.getLocalizedText(
+              MyLocalizationTextKeys.Logout,
+            )}
+            onPress={async () => {
+              MyModalUtils.showProgressModal();
+              await MyAuthenticationUtils.logout({
+                navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
+              });
+              MyModalUtils.hideModal();
+            }}
+          />
+        </MyScrollView>
       </MyView>
       <MyDivider />
     </MyView>

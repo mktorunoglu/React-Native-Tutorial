@@ -29,18 +29,18 @@ const getResponse = async ({
   response,
 }: {
   response: () => Promise<MyResponseModel>;
-}) => (response_.value = await response());
+}) => response_.setValue(await response());
 
 const Builder_ = observer(
   ({builder}: {builder: (response: MyResponseModel) => ReactNode}) => {
-    if (response_.value == null) {
+    if (response_.getValue() == null) {
       return (
         <MyView isExpanded isCenterItems>
           <MyProgressIndicator />
         </MyView>
       );
     }
-    if (!response_.value.isSuccessful) {
+    if (!response_.getValue()!.isSuccessful) {
       return (
         <MyView isExpanded isCenterItems>
           <MyText
@@ -51,7 +51,7 @@ const Builder_ = observer(
         </MyView>
       );
     }
-    return builder(response_.value);
+    return builder(response_.getValue()!);
   },
 );
 

@@ -12,7 +12,7 @@ const MyTransparentModal = ({children}: {children: ReactNode}) => {
 const Modal_ = observer(({children}: {children: ReactNode}) => {
   return (
     <Modal
-      visible={MyModalUtils.isModalVisible.value}
+      visible={MyModalUtils.isModalVisible.getValue()}
       onDismiss={() => MyModalUtils.hideModal()}
       style={{
         backgroundColor: MyColorUtils.getColorWithOpacity(MyColors.Black, 0.4),

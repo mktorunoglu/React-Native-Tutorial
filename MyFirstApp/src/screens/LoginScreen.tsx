@@ -97,7 +97,7 @@ const MyLoginScreen = ({
                   MyLocalizationTextKeys.UserId,
                 )}
                 rightIcon={MyIcons.AccountOutlined}
-                onChangeText={text => (userId.value = text)}
+                onChangeText={text => userId.setValue(text)}
               />
               <MyView height={10} />
               <PasswordTextInput_ />
@@ -139,9 +139,9 @@ const LoginButton_ = observer(
     return (
       <MyButton
         isDisable={
-          serverAddress.value.length == 0 ||
-          userId.value.length == 0 ||
-          password.value.length == 0
+          serverAddress.getValue().length == 0 ||
+          userId.getValue().length == 0 ||
+          password.getValue().length == 0
         }
         icon={MyIcons.Login}
         text={MyLocalizationUtils.getLocalizedText(
@@ -150,9 +150,9 @@ const LoginButton_ = observer(
         onPress={async () => {
           MyModalUtils.showProgressModal();
           const isLoginSuccessful = await MyAuthenticationUtils.login({
-            serverAddress: serverAddress.value,
-            userId: userId.value,
-            password: password.value,
+            serverAddress: serverAddress.getValue(),
+            userId: userId.getValue(),
+            password: password.getValue(),
             navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
           });
           MyModalUtils.hideModal();
@@ -177,8 +177,8 @@ const ServerAddressTextInput_ = observer(() => {
         MyLocalizationTextKeys.ServerAddress,
       )}
       rightIcon={MyIcons.Web}
-      value={serverAddress.value}
-      onChangeText={text => (serverAddress.value = text)}
+      value={serverAddress.getValue()}
+      onChangeText={text => serverAddress.setValue(text)}
     />
   );
 });
@@ -186,17 +186,19 @@ const ServerAddressTextInput_ = observer(() => {
 const PasswordTextInput_ = observer(() => {
   return (
     <MyTextInput
-      isTextObscured={!isPasswordVisible.value}
+      isTextObscured={!isPasswordVisible.getValue()}
       labelText={MyLocalizationUtils.getLocalizedText(
         MyLocalizationTextKeys.Password,
       )}
       rightIcon={
-        isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined
+        isPasswordVisible.getValue()
+          ? MyIcons.EyeOffOutlined
+          : MyIcons.EyeOutlined
       }
       onPressRightIcon={() =>
-        (isPasswordVisible.value = !isPasswordVisible.value)
+        isPasswordVisible.setValue(!isPasswordVisible.getValue())
       }
-      onChangeText={text => (password.value = text)}
+      onChangeText={text => password.setValue(text)}
     />
   );
 });

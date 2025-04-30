@@ -44,21 +44,21 @@ class MySnackbarUtils {
     isSuccessful?: boolean;
   }) {
     this.hideSnackbar();
-    this.snackbarIcon.value = isSuccessful ? MyIcons.CheckCircle : icon;
-    this.snackbarText.value = text;
-    this.snackbarDurationMilliseconds.value = durationMilliseconds;
-    this.snackbarBackgroundColor.value = isSuccessful
-      ? MyColors.Green
-      : backgroundColor;
-    this.snackbarForegroundColor.value = foregroundColor;
+    this.snackbarIcon.setValue(isSuccessful ? MyIcons.CheckCircle : icon);
+    this.snackbarText.setValue(text);
+    this.snackbarDurationMilliseconds.setValue(durationMilliseconds);
+    this.snackbarBackgroundColor.setValue(
+      isSuccessful ? MyColors.Green : backgroundColor,
+    );
+    this.snackbarForegroundColor.setValue(foregroundColor);
     TimerUtils.setTimer({
       durationMilliseconds: 150,
-      onFinished: () => (this.isSnackbarVisible.value = true),
+      onFinished: () => this.isSnackbarVisible.setValue(true),
     });
   }
 
   public hideSnackbar() {
-    this.isSnackbarVisible.value = false;
+    this.isSnackbarVisible.setValue(false);
   }
 }
 

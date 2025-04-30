@@ -13,7 +13,7 @@ const MyModal = ({children}: {children: ReactNode}) => {
 const Modal_ = observer(({children}: {children: ReactNode}) => {
   return (
     <Modal
-      visible={MyModalUtils.isModalVisible.value}
+      visible={MyModalUtils.isModalVisible.getValue()}
       onDismiss={() => MyModalUtils.hideModal()}
       contentContainerStyle={{
         backgroundColor: MyColors.White,

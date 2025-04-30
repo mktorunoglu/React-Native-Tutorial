@@ -15,32 +15,32 @@ const MySnackbar = () => {
 const Snackbar_ = observer(() => {
   return (
     <Snackbar
-      visible={MySnackbarUtils.isSnackbarVisible.value}
+      visible={MySnackbarUtils.isSnackbarVisible.getValue()}
       onDismiss={() => MySnackbarUtils.hideSnackbar()}
-      icon={MySnackbarUtils.snackbarIcon.value!}
-      duration={MySnackbarUtils.snackbarDurationMilliseconds.value!}
+      icon={MySnackbarUtils.snackbarIcon.getValue()!}
+      duration={MySnackbarUtils.snackbarDurationMilliseconds.getValue()!}
       style={{
         borderRadius: 5,
-        backgroundColor: MySnackbarUtils.snackbarBackgroundColor.value!,
+        backgroundColor: MySnackbarUtils.snackbarBackgroundColor.getValue()!,
         margin: 10,
       }}>
       <MyView isRow isCenterItems>
         <MyIcon
-          icon={MySnackbarUtils.snackbarIcon.value!}
-          color={MySnackbarUtils.snackbarForegroundColor.value!}
+          icon={MySnackbarUtils.snackbarIcon.getValue()!}
+          color={MySnackbarUtils.snackbarForegroundColor.getValue()!}
         />
         <MyView width={15} />
         <MyView isExpanded>
           <MyText
-            text={MySnackbarUtils.snackbarText.value}
-            color={MySnackbarUtils.snackbarForegroundColor.value!}
+            text={MySnackbarUtils.snackbarText.getValue()}
+            color={MySnackbarUtils.snackbarForegroundColor.getValue()!}
             fontSize={16}
           />
         </MyView>
         <MyView width={10} />
         <MyButton
           isTextButton
-          foregroundColor={MySnackbarUtils.snackbarForegroundColor.value!}
+          foregroundColor={MySnackbarUtils.snackbarForegroundColor.getValue()!}
           text={MyLocalizationUtils.getLocalizedText(
             MyLocalizationTextKeys.Okey,
           )}

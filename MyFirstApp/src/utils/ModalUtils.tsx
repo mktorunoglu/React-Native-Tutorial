@@ -18,17 +18,17 @@ class MyModalUtils {
   public isModalVisible = new MyObservableValueModel(false);
 
   public showModal({modal}: {modal: ReactElement}) {
-    this.modal.value = modal;
-    this.isModalVisible.value = true;
+    this.modal.setValue(modal);
+    this.isModalVisible.setValue(true);
   }
 
   public showProgressModal() {
-    this.modal.value = <MyProgressModal />;
-    this.isModalVisible.value = true;
+    this.modal.setValue(<MyProgressModal />);
+    this.isModalVisible.setValue(true);
   }
 
   public hideModal() {
-    this.isModalVisible.value = false;
+    this.isModalVisible.setValue(false);
   }
 }
 

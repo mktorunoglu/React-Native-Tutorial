@@ -37,9 +37,9 @@ const BottomNavigation_ = observer(
         <MyHomeAppBar />
         <MyView isExpanded>
           <MyBottomNavigation
-            selectedIndex={selectedBottomNavigationIndex.value}
+            selectedIndex={selectedBottomNavigationIndex.getValue()}
             onIndexChange={index =>
-              (selectedBottomNavigationIndex.value = index)
+              selectedBottomNavigationIndex.setValue(index)
             }
             routeList={[
               {

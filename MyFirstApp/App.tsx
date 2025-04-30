@@ -38,7 +38,7 @@ const App: React.FC = () => {
         </Portal>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName={MyRoutes.Test}
+            initialRouteName={MyRoutes.Splash}
             screenOptions={{
               headerShown: false,
             }}>

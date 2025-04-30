@@ -18,9 +18,11 @@ class MyAuthenticationUtils {
   public async autoLogin({
     navigateToLoginScreen,
     navigateToHomeScreen,
+    navigateToTestScreen,
   }: {
     navigateToLoginScreen: () => void;
     navigateToHomeScreen: () => void;
+    navigateToTestScreen: () => void;
   }) {
     const userId = (await MyStorageUtils.getData(MyKeys.CurrentUserId)) ?? '';
     const password =
@@ -31,7 +33,7 @@ class MyAuthenticationUtils {
       (await this.login({
         userId: userId,
         password: password,
-        navigateToHomeScreen: navigateToHomeScreen,
+        navigateToHomeScreen: navigateToTestScreen,
         isAutoLogin: true,
       }))
     ) {

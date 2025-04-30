@@ -18,14 +18,17 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 const onInit = async ({
   navigateToLoginScreen,
   navigateToHomeScreen,
+  navigateToTestScreen,
 }: {
   navigateToLoginScreen: () => void;
   navigateToHomeScreen: () => void;
+  navigateToTestScreen: () => void;
 }) => {
   await MyLocalizationUtils.initialize();
   await MyAuthenticationUtils.autoLogin({
     navigateToLoginScreen: navigateToLoginScreen,
     navigateToHomeScreen: navigateToHomeScreen,
+    navigateToTestScreen: navigateToTestScreen,
   });
 };
 
@@ -38,6 +41,7 @@ const MySplashScreen = ({
     onInit({
       navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
       navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
+      navigateToTestScreen: () => navigation.replace(MyRoutes.Test),
     });
   }, []);
   return (

@@ -33,7 +33,7 @@ class MyAuthenticationUtils {
       (await this.login({
         userId: userId,
         password: password,
-        navigateToHomeScreen: navigateToTestScreen,
+        navigateToHomeScreen: navigateToHomeScreen,
         isAutoLogin: true,
       }))
     ) {

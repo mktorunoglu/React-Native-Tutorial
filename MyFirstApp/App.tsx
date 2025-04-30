@@ -10,6 +10,7 @@ import {MyRoutes} from './src/enums/Routes';
 import MyHomeScreen from './src/screens/HomeScreen';
 import MyLoginScreen from './src/screens/LoginScreen';
 import MySplashScreen from './src/screens/SplashScreen';
+import MyTestScreen from './src/test/TestScreen';
 import MyModalUtils from './src/utils/ModalUtils';
 
 const theme = {
@@ -24,7 +25,7 @@ const theme = {
 const Stack = createStackNavigator<MyRouteProps>();
 
 const Modal_ = observer(() => {
-  return MyModalUtils.modal.value;
+  return MyModalUtils.modal.getValue();
 });
 
 const App: React.FC = () => {
@@ -37,13 +38,14 @@ const App: React.FC = () => {
         </Portal>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName={MyRoutes.Splash}
+            initialRouteName={MyRoutes.Test}
             screenOptions={{
               headerShown: false,
             }}>
             <Stack.Screen name={MyRoutes.Splash} component={MySplashScreen} />
             <Stack.Screen name={MyRoutes.Login} component={MyLoginScreen} />
             <Stack.Screen name={MyRoutes.Home} component={MyHomeScreen} />
+            <Stack.Screen name={MyRoutes.Test} component={MyTestScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

@@ -7,4 +7,5 @@ export enum MyRoutes {
   Repos = 'repos',
   Sharing = 'sharing',
   Splash = 'splash',
+  Test = 'test',
 }

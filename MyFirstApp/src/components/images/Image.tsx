@@ -10,8 +10,8 @@ const MyImage = ({
 }: {
   url?: string;
   path?: ImageSourcePropType;
-  width?: DimensionValue;
   height?: DimensionValue;
+  width?: DimensionValue;
   resizeMode?: MyFills;
 }) => {
   return (

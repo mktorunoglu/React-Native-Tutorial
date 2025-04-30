@@ -1,10 +1,10 @@
 class MyResponseModel {
-  isSuccessful?: boolean;
+  isSuccessful: boolean;
   data?: any;
   message?: string;
 
   constructor({
-    isSuccessful,
+    isSuccessful = false,
     data,
     message,
   }: {

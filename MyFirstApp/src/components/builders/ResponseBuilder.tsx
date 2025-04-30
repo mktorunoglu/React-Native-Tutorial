@@ -40,7 +40,7 @@ const Builder_ = observer(
         </MyView>
       );
     }
-    if (response_.value.isSuccessful != true) {
+    if (!response_.value.isSuccessful) {
       return (
         <MyView isExpanded isCenterItems>
           <MyText

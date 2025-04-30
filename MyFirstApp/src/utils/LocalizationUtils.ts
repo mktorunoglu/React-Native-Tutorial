@@ -2,7 +2,7 @@ import {MyLocalizationTexts} from '../constants/LocalizationTexts';
 import {MyKeys} from '../enums/Keys';
 import {MyLocalizations} from '../enums/Localizations';
 import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
-import MyStorageUtils from '../utils/StorageUtils';
+import MyStorageUtils from './StorageUtils';
 
 class MyLocalizationUtils {
   private static instance: MyLocalizationUtils;

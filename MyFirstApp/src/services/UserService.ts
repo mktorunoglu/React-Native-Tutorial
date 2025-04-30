@@ -1,8 +1,7 @@
 import {MyRequestMethods} from '../enums/RequestMethods';
 import MyResponseModel from '../models/ResponseModel';
-import MyUserInfoModel from '../models/UserInfoModel';
 import MyApiUtils from '../utils/ApiUtils';
-import MyConverterUtils from '../utils/ConverterUtils';
+import MyFileUtils from '../utils/FileUtils';
 import MyServiceUtils from '../utils/ServiceUtils';
 
 class MyUserService {
@@ -58,6 +57,14 @@ class MyUserService {
       response.data = response.data['result'];
     }
     return response;
+  }
+
+  public async getUserAvatar(): Promise<MyResponseModel> {
+    return await MyApiUtils.download({
+      method: MyRequestMethods.Get,
+      url: MyServiceUtils.getUserApiUrl() + '/get_user_avatar',
+      savePath: MyFileUtils.getApplicationCacheDirectory() + '/user_avatar',
+    });
   }
 }
 

@@ -1,8 +1,10 @@
 import axios, {AxiosInstance} from 'axios';
+import BlobUtil from 'react-native-blob-util';
 import {MyRequestMethods} from '../enums/RequestMethods';
 import {MyResponseTypes} from '../enums/ResponseTypes';
 import MyResponseModel from '../models/ResponseModel';
-import MyServiceUtils from '../utils/ServiceUtils';
+import MyFileUtils from './FileUtils';
+import MyServiceUtils from './ServiceUtils';
 
 class MyApiUtils {
   private static instance: MyApiUtils;
@@ -51,6 +53,34 @@ class MyApiUtils {
       return new MyResponseModel({
         isSuccessful: response.status == 200,
         data: response.data,
+      });
+    } catch (error: any) {
+      console.error('TEST api error request url: ' + url);
+      console.error('TEST api error method: ' + method);
+      console.error('TEST api error message: ' + error?.message);
+      throw error;
+    }
+  }
+
+  public async download({
+    method,
+    url,
+    savePath,
+  }: {
+    method: MyRequestMethods;
+    url: string;
+    savePath: string;
+  }): Promise<MyResponseModel> {
+    try {
+      await BlobUtil.config({
+        fileCache: true,
+        path: savePath,
+      }).fetch(method, url, {
+        'X-CSRF-TOKEN': MyServiceUtils.token!,
+      });
+      return new MyResponseModel({
+        isSuccessful: await MyFileUtils.getIsFilePathExists(savePath),
+        data: savePath,
       });
     } catch (error: any) {
       console.error('TEST api error request url: ' + url);

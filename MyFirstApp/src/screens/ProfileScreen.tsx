@@ -4,6 +4,7 @@ import MyButton from '../components/buttons/Button';
 import MyIconButton from '../components/buttons/IconButton';
 import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
+import MyImage from '../components/images/Image';
 import MyTextInput from '../components/texts/TextInput';
 import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
@@ -32,14 +33,27 @@ const MyProfileScreen = ({
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
         <MyScrollView padding={10}>
           <MyCard padding={20}>
-            <MyView height={20} />
+            <MyResponseBuilder
+              response={MyUserService.getUserAvatar}
+              builder={response => {
+                return (
+                  <MyView isColumn isCenterItems>
+                    <MyImage
+                      url={'file://' + response.data}
+                      height={100}
+                      width={100}
+                    />
+                  </MyView>
+                );
+              }}
+            />
           </MyCard>
           <MyView height={10} />
           <MyCard padding={20}>
             <MyResponseBuilder
               response={MyUserService.getUserInfo}
               builder={response => {
-                const userInfo: MyUserInfoModel = response.data;
+                const userInfo = response.data as MyUserInfoModel;
                 return (
                   <MyView isColumn>
                     <MyTextInput

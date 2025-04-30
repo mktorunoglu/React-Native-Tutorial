@@ -19,6 +19,7 @@
     "mobx-react-lite": "^4.1.0",
     "react": "19.0.0",
     "react-native": "0.78.0",
+    "react-native-blob-util": "^0.21.2",
     "react-native-gesture-handler": "^2.24.0",
     "react-native-paper": "^5.13.1",
     "react-native-reanimated": "^3.17.1",

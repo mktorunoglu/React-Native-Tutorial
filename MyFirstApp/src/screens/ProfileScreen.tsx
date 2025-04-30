@@ -5,6 +5,7 @@ import MyIconButton from '../components/buttons/IconButton';
 import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
+import MyProgressModal from '../components/modals/ProgressModal';
 import MyTextInput from '../components/texts/TextInput';
 import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
@@ -94,7 +95,7 @@ const MyProfileScreen = ({
               MyLocalizationTextKeys.Logout,
             )}
             onPress={async () => {
-              MyModalUtils.showProgressModal();
+              MyModalUtils.showModal({modal: <MyProgressModal />});
               await MyAuthenticationUtils.logout({
                 navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
               });

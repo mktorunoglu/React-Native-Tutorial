@@ -6,6 +6,7 @@ import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyOptionsModal from '../components/modals/OptionsModal';
+import MyProgressModal from '../components/modals/ProgressModal';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
 import MySafeAreaView from '../components/views/SafeAreaView';
@@ -148,7 +149,7 @@ const LoginButton_ = observer(
           MyLocalizationTextKeys.Login,
         )}
         onPress={async () => {
-          MyModalUtils.showProgressModal();
+          MyModalUtils.showModal({modal: <MyProgressModal />});
           const isLoginSuccessful = await MyAuthenticationUtils.login({
             serverAddress: serverAddress.getValue(),
             userId: userId.getValue(),

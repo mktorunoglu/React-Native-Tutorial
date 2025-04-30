@@ -5,6 +5,7 @@ import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyModal from './Modal';
+import MyProgressModal from './ProgressModal';
 
 const MyChangeLanguageModal = ({onChange}: {onChange: () => void}) => {
   return (
@@ -25,7 +26,7 @@ const MyChangeLanguageModal = ({onChange}: {onChange: () => void}) => {
             }[localization],
           )}
           onPress={async () => {
-            MyModalUtils.showProgressModal();
+            MyModalUtils.showModal({modal: <MyProgressModal />});
             await MyLocalizationUtils.setLocalization(localization);
             MyModalUtils.hideModal();
             onChange();

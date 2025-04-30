@@ -9,7 +9,7 @@ const MyCard = ({
   children,
 }: {
   padding?: DimensionValue;
-  children: ReactNode;
+  children?: ReactNode;
 }) => {
   return (
     <MyView

@@ -1,5 +1,6 @@
 import axios, {AxiosInstance} from 'axios';
 import {MyRequestMethods} from '../enums/RequestMethods';
+import {MyResponseTypes} from '../enums/ResponseTypes';
 import MyResponseModel from '../models/ResponseModel';
 import MyServiceUtils from '../utils/ServiceUtils';
 
@@ -24,11 +25,13 @@ class MyApiUtils {
     url,
     data,
     headers,
+    responseType,
   }: {
     method: MyRequestMethods;
     url: string;
     data?: any;
     headers?: Record<string, string>;
+    responseType?: MyResponseTypes;
   }): Promise<MyResponseModel> {
     try {
       const response = await this.api({
@@ -39,9 +42,11 @@ class MyApiUtils {
           'X-CSRF-TOKEN': MyServiceUtils.token,
           ...headers,
         },
+        responseType,
       });
       console.log('TEST api request url: ' + url);
       console.log('TEST api method: ' + method);
+      console.log('TEST api response status: ' + response.status);
       console.log('TEST api response data: ' + JSON.stringify(response.data));
       return new MyResponseModel({
         isSuccessful: response.status == 200,

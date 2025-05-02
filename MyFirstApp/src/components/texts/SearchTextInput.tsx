@@ -4,7 +4,11 @@ import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyTextInput from './TextInput';
 
-const MySearchTextInput = () => {
+const MySearchTextInput = ({
+  onChangeText,
+}: {
+  onChangeText?: (text: string) => void;
+}) => {
   return (
     <MyTextInput
       outlineColor={MyColors.Transparent}
@@ -14,6 +18,7 @@ const MySearchTextInput = () => {
       )}
       hintTextColor={MyColors.Grey}
       leftIcon={MyIcons.Search}
+      onChangeText={onChangeText}
     />
   );
 };

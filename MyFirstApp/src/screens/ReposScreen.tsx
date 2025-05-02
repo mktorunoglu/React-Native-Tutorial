@@ -1,4 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import {observer} from 'mobx-react-lite';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
@@ -8,8 +9,13 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyRoutes} from '../enums/Routes';
+import MyObservableValueModel from '../models/ObservableValueModel';
+import MyRepoModel from '../models/RepoModel';
 import MyFileService from '../services/FileService';
 import MyColorUtils from '../utils/ColorUtils';
+import MyFilterUtils from '../utils/FilterUtils';
+
+const searchText = new MyObservableValueModel('');
 
 const MyReposScreen = ({
   navigation,
@@ -18,7 +24,7 @@ const MyReposScreen = ({
 }) => {
   return (
     <MyView isColumn isExpanded>
-      <MySearchTextInput />
+      <MySearchTextInput onChangeText={text => searchText.setValue(text)} />
       <MyDivider />
       <MyView
         isExpanded
@@ -26,14 +32,7 @@ const MyReposScreen = ({
         <MyResponseBuilder
           response={MyFileService.listOwnedRepo}
           builder={response => {
-            return (
-              <MyFlatList
-                data={response.data}
-                keyExtractor={(item, index) => item.repoId ?? index}
-                renderItem={({item}) => <MyRepoItem repo={item} />}
-                padding={5}
-              />
-            );
+            return <RepoItemList_ repoList={response.data} />;
           }}
         />
       </MyView>
@@ -41,5 +40,22 @@ const MyReposScreen = ({
     </MyView>
   );
 };
+
+const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
+  const filteredRepoList = repoList.filter(repo =>
+    MyFilterUtils.isTextListContainsSearchText({
+      textList: [repo.name],
+      searchText: searchText.getValue(),
+    }),
+  );
+  return (
+    <MyFlatList
+      data={filteredRepoList}
+      keyExtractor={(item, index) => item.repoId ?? index}
+      renderItem={({item}) => <MyRepoItem repo={item} />}
+      padding={5}
+    />
+  );
+});
 
 export default MyReposScreen;

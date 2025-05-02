@@ -6,7 +6,7 @@ const MyFlatList = ({
   renderItem,
   padding,
 }: {
-  data: ArrayLike<any>;
+  data: any[];
   keyExtractor?: (item: any, index: number) => string;
   renderItem: ListRenderItem<any>;
   padding?: DimensionValue;

@@ -27,6 +27,7 @@ export enum MyIcons {
   Null = '',
   RadioboxBlank = 'radiobox-blank',
   RadioboxMarked = 'radiobox-marked',
+  Search = 'magnify',
   Settings = 'cog',
   SettingsOutlined = 'cog-outline',
   Share = 'share-variant',

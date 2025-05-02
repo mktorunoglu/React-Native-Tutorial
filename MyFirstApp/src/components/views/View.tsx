@@ -23,9 +23,17 @@ const MyView = ({
   margin,
   marginVertical,
   marginHorizontal,
+  marginLeft,
+  marginTop,
+  marginRight,
+  marginBottom,
   padding,
   paddingVertical,
   paddingHorizontal,
+  paddingLeft,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
   alignItems,
   justifyContent,
   backgroundColor,
@@ -50,9 +58,17 @@ const MyView = ({
   margin?: DimensionValue;
   marginVertical?: DimensionValue;
   marginHorizontal?: DimensionValue;
+  marginLeft?: DimensionValue;
+  marginTop?: DimensionValue;
+  marginRight?: DimensionValue;
+  marginBottom?: DimensionValue;
   padding?: DimensionValue;
   paddingVertical?: DimensionValue;
   paddingHorizontal?: DimensionValue;
+  paddingLeft?: DimensionValue;
+  paddingTop?: DimensionValue;
+  paddingRight?: DimensionValue;
+  paddingBottom?: DimensionValue;
   alignItems?: MyAligns;
   justifyContent?: MyAligns;
   backgroundColor?: string;
@@ -77,9 +93,17 @@ const MyView = ({
         margin,
         marginVertical,
         marginHorizontal,
+        marginLeft,
+        marginTop,
+        marginRight,
+        marginBottom,
         padding,
         paddingVertical,
         paddingHorizontal,
+        paddingLeft,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
         alignItems: isCenterItems ? MyAligns.Center : alignItems,
         justifyContent: isCenterItems ? MyAligns.Center : justifyContent,
         backgroundColor,

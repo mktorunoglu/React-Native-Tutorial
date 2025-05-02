@@ -3,6 +3,7 @@ import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
+import MySearchTextInput from '../components/texts/SearchTextInput';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -17,6 +18,8 @@ const MyReposScreen = ({
 }) => {
   return (
     <MyView isColumn isExpanded>
+      <MySearchTextInput />
+      <MyDivider />
       <MyView
         isExpanded
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>

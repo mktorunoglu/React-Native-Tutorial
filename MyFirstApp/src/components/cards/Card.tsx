@@ -6,9 +6,13 @@ import MyView from '../views/View';
 
 const MyCard = ({
   padding,
+  paddingVertical,
+  paddingHorizontal,
   children,
 }: {
   padding?: DimensionValue;
+  paddingVertical?: DimensionValue;
+  paddingHorizontal?: DimensionValue;
   children?: ReactNode;
 }) => {
   return (
@@ -17,7 +21,9 @@ const MyCard = ({
       borderWidth={1}
       borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
       backgroundColor={MyColors.White}
-      padding={padding}>
+      padding={padding}
+      paddingVertical={paddingVertical}
+      paddingHorizontal={paddingHorizontal}>
       {children}
     </MyView>
   );

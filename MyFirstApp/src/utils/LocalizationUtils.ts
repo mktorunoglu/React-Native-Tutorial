@@ -73,6 +73,20 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedPercentValueText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        this.variableTextPattern + '%',
+        '%' + this.variableTextPattern,
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
   public getLocalizedFilesText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Files', 'Dosyalar'],

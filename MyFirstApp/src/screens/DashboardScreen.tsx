@@ -1,8 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {ReactNode} from 'react';
+import {DimensionValue} from 'react-native';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
+import MyIcon from '../components/icons/Icon';
 import MyPercentProgressIndicator from '../components/indicators/PercentProgressIndicator';
 import MyText from '../components/texts/Text';
 import MyScrollView from '../components/views/ScrollView';
@@ -10,6 +12,7 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
+import {MyIcons} from '../enums/Icons';
 import {MyRoutes} from '../enums/Routes';
 import MyDashboardInfoModel from '../models/DashboardInfoModel';
 import MyFileService from '../services/FileService';
@@ -57,11 +60,17 @@ const MyDashboardScreen = ({
                               />
                               <MyView height={10} />
                               <MyText
-                                text={Math.ceil(
-                                  ((dashboardInfo.usage ?? 0) /
-                                    (dashboardInfo.quota ?? 1)) *
-                                    100,
-                                ).toString()}
+                                text={MyLocalizationUtils.getLocalizedPercentValueText(
+                                  {
+                                    variableTextList: [
+                                      Math.ceil(
+                                        ((dashboardInfo.usage ?? 0) /
+                                          (dashboardInfo.quota ?? 1)) *
+                                          100,
+                                      ).toString(),
+                                    ],
+                                  },
+                                )}
                                 color={MyColors.Theme}
                                 fontWeight={MyFontWeights.Bold}
                                 fontSize={20}
@@ -75,6 +84,7 @@ const MyDashboardScreen = ({
                         value={MyConverterUtils.convertNumberToSizeText(
                           dashboardInfo.usage ?? 0,
                         )}
+                        paddingBottom={5}
                         isImportant={true}
                       />
                       <MyCardDataLine_
@@ -87,45 +97,56 @@ const MyDashboardScreen = ({
                   </MyCard_>
                   <MyView height={10} />
                   <MyCard_>
-                    <MyCardTitleText_
-                      text={MyLocalizationUtils.getLocalizedSharedWithYouText()}
-                    />
-                    <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedWithYouText()}
-                      value={(dashboardInfo.inPerson ?? 0).toString()}
-                    />
-                    <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
-                      value={(dashboardInfo.inGroup ?? 0).toString()}
-                    />
+                    <MyCardDataBody_ titleIcon={MyIcons.Share}>
+                      <MyCardTitleText_
+                        text={MyLocalizationUtils.getLocalizedSharedWithYouText()}
+                      />
+                      <MyCardDataLine_
+                        text={MyLocalizationUtils.getLocalizedWithYouText()}
+                        value={(dashboardInfo.inPerson ?? 0).toString()}
+                        paddingBottom={5}
+                      />
+                      <MyCardDataLine_
+                        text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
+                        value={(dashboardInfo.inGroup ?? 0).toString()}
+                      />
+                    </MyCardDataBody_>
                   </MyCard_>
                   <MyView height={10} />
                   <MyCard_>
-                    <MyCardTitleText_
-                      text={MyLocalizationUtils.getLocalizedSharedByYouText()}
-                    />
-                    <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedSharedLinksText()}
-                      value={(dashboardInfo.outDownlink ?? 0).toString()}
-                    />
-                    <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedWithUsersText()}
-                      value={(dashboardInfo.outPerson ?? 0).toString()}
-                    />
-                    <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
-                      value={(dashboardInfo.outDownlink ?? 0).toString()}
-                    />
+                    <MyCardDataBody_ titleIcon={MyIcons.Send}>
+                      <MyCardTitleText_
+                        text={MyLocalizationUtils.getLocalizedSharedByYouText()}
+                      />
+                      <MyCardDataLine_
+                        text={MyLocalizationUtils.getLocalizedSharedLinksText()}
+                        value={(dashboardInfo.outDownlink ?? 0).toString()}
+                        paddingBottom={5}
+                      />
+                      <MyCardDataLine_
+                        text={MyLocalizationUtils.getLocalizedWithUsersText()}
+                        value={(dashboardInfo.outPerson ?? 0).toString()}
+                        paddingBottom={5}
+                      />
+                      <MyCardDataLine_
+                        text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
+                        value={(dashboardInfo.outDownlink ?? 0).toString()}
+                      />
+                    </MyCardDataBody_>
                   </MyCard_>
                   <MyView height={10} />
                   <MyCard_>
-                    <MyCardTitleText_
-                      text={MyLocalizationUtils.getLocalizedFavoritesText()}
-                    />
-                    <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedFilesText()}
-                      value={(dashboardInfo.favs ?? 0).toString()}
-                    />
+                    <MyCardDataBody_
+                      titleIcon={MyIcons.Star}
+                      titleIconColor={MyColors.Orange}>
+                      <MyCardTitleText_
+                        text={MyLocalizationUtils.getLocalizedFavoritesText()}
+                      />
+                      <MyCardDataLine_
+                        text={MyLocalizationUtils.getLocalizedFilesText()}
+                        value={(dashboardInfo.favs ?? 0).toString()}
+                      />
+                    </MyCardDataBody_>
                   </MyCard_>
                 </MyScrollView>
               </MyView>
@@ -138,17 +159,46 @@ const MyDashboardScreen = ({
   );
 };
 
+const MyCardDataBody_ = ({
+  titleIcon,
+  titleIconColor = MyColors.Theme,
+  children,
+}: {
+  titleIcon: MyIcons;
+  titleIconColor?: string;
+  children?: ReactNode[];
+}) => {
+  return (
+    <MyView isRow isCenterItems>
+      <MyView
+        isCenterItems
+        height={70}
+        width={70}
+        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}
+        borderRadius={70}>
+        <MyIcon icon={titleIcon} color={titleIconColor} size={30} />
+      </MyView>
+      <MyView width={10} />
+      <MyView isColumn isExpanded>
+        {children}
+      </MyView>
+    </MyView>
+  );
+};
+
 const MyCardDataLine_ = ({
   text,
   value,
+  paddingBottom,
   isImportant = false,
 }: {
   text: string;
   value: string;
+  paddingBottom?: DimensionValue;
   isImportant?: boolean;
 }) => {
   return (
-    <MyView isRow>
+    <MyView isRow paddingBottom={paddingBottom}>
       <MyView width="auto" isExpanded>
         <MyText text={text} color={MyColors.Grey} />
       </MyView>
@@ -171,7 +221,11 @@ const MyCardTitleText_ = ({text}: {text: string}) => {
 };
 
 const MyCard_ = ({children}: {children?: ReactNode}) => {
-  return <MyCard padding={10}>{children}</MyCard>;
+  return (
+    <MyCard paddingVertical={15} paddingHorizontal={10}>
+      {children}
+    </MyCard>
+  );
 };
 
 export default MyDashboardScreen;

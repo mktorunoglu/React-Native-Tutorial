@@ -28,6 +28,8 @@ export enum MyIcons {
   RadioboxBlank = 'radiobox-blank',
   RadioboxMarked = 'radiobox-marked',
   Search = 'magnify',
+  Send = 'send',
+  SendOutlined = 'send-outline',
   Settings = 'cog',
   SettingsOutlined = 'cog-outline',
   Share = 'share-variant',

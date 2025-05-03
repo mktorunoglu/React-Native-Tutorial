@@ -1,7 +1,6 @@
 import {MyAligns} from '../../enums/Aligns';
 import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
-import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import {MyTextOverflows} from '../../enums/TextOverflows';
 import MyRepoModel from '../../models/RepoModel';
 import MyColorUtils from '../../utils/ColorUtils';
@@ -43,9 +42,7 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
           />
           <MyIconButton
             icon={MyIcons.MoreVertical}
-            tooltip={MyLocalizationUtils.getLocalizedText(
-              MyLocalizationTextKeys.Operations,
-            )}
+            tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
             onPress={() => {}}
           />
         </MyView>

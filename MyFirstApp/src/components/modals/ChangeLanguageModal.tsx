@@ -1,5 +1,4 @@
 import {MyLocalizations} from '../../enums/Localizations';
-import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
@@ -11,20 +10,20 @@ const MyChangeLanguageModal = ({onChange}: {onChange: () => void}) => {
   return (
     <MyModal>
       <MyModalHeader
-        text={MyLocalizationUtils.getLocalizedText(
-          MyLocalizationTextKeys.ChangeLanguage,
-        )}
+        text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
       />
       {Object.values(MyLocalizations).map(localization => (
         <MyModalSelectionButton
           key={localization}
           isSelected={MyLocalizationUtils.localization == localization}
-          text={MyLocalizationUtils.getLocalizedText(
+          text={
             {
-              [MyLocalizations.English]: MyLocalizationTextKeys.English,
-              [MyLocalizations.Turkish]: MyLocalizationTextKeys.Turkish,
-            }[localization],
-          )}
+              [MyLocalizations.English]:
+                MyLocalizationUtils.getLocalizedEnglishText(),
+              [MyLocalizations.Turkish]:
+                MyLocalizationUtils.getLocalizedTurkishText(),
+            }[localization]
+          }
           onPress={async () => {
             MyModalUtils.showModal({modal: <MyProgressModal />});
             await MyLocalizationUtils.setLocalization(localization);

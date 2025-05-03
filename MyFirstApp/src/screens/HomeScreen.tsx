@@ -6,7 +6,6 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyIcons} from '../enums/Icons';
-import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
@@ -44,41 +43,31 @@ const BottomNavigation_ = observer(
             routeList={[
               {
                 key: MyRoutes.Dashboard,
-                title: MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.Home,
-                ),
+                title: MyLocalizationUtils.getLocalizedHomeText(),
                 focusedIcon: MyIcons.Home,
                 unfocusedIcon: MyIcons.HomeOutlined,
               },
               {
                 key: MyRoutes.Repos,
-                title: MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.Repos,
-                ),
+                title: MyLocalizationUtils.getLocalizedReposText(),
                 focusedIcon: MyIcons.Folder,
                 unfocusedIcon: MyIcons.FolderOutlined,
               },
               {
                 key: MyRoutes.Sharing,
-                title: MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.Sharing,
-                ),
+                title: MyLocalizationUtils.getLocalizedSharingText(),
                 focusedIcon: MyIcons.Share,
                 unfocusedIcon: MyIcons.ShareOutlined,
               },
               {
                 key: MyRoutes.Favorites,
-                title: MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.Favorites,
-                ),
+                title: MyLocalizationUtils.getLocalizedFavoritesText(),
                 focusedIcon: MyIcons.Star,
                 unfocusedIcon: MyIcons.StarOutlined,
               },
               {
                 key: MyRoutes.Profile,
-                title: MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.Profile,
-                ),
+                title: MyLocalizationUtils.getLocalizedProfileText(),
                 focusedIcon: MyIcons.Account,
                 unfocusedIcon: MyIcons.AccountOutlined,
               },

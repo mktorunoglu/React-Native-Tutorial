@@ -10,7 +10,6 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
-import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
 import MyDashboardInfoModel from '../models/DashboardInfoModel';
 import MyFileService from '../services/FileService';
@@ -38,9 +37,7 @@ const MyDashboardScreen = ({
                   <MyCard_>
                     <MyView isColumn>
                       <MyCardTitleText_
-                        text={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.MyUsage,
-                        )}
+                        text={MyLocalizationUtils.getLocalizedMyUsageText()}
                       />
                       <MyView isRow isCenterItems>
                         <MyPercentProgressIndicator
@@ -54,9 +51,7 @@ const MyDashboardScreen = ({
                           {() => (
                             <MyView isColumn isCenterItems>
                               <MyText
-                                text={MyLocalizationUtils.getLocalizedText(
-                                  MyLocalizationTextKeys.Usage,
-                                )}
+                                text={MyLocalizationUtils.getLocalizedUsageText()}
                                 color={MyColors.Grey}
                                 fontSize={12}
                               />
@@ -76,18 +71,14 @@ const MyDashboardScreen = ({
                         </MyPercentProgressIndicator>
                       </MyView>
                       <MyCardDataLine_
-                        text={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.Usage,
-                        )}
+                        text={MyLocalizationUtils.getLocalizedUsageText()}
                         value={MyConverterUtils.convertNumberToSizeText(
                           dashboardInfo.usage ?? 0,
                         )}
                         isImportant={true}
                       />
                       <MyCardDataLine_
-                        text={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.Total,
-                        )}
+                        text={MyLocalizationUtils.getLocalizedTotalText()}
                         value={MyConverterUtils.convertNumberToSizeText(
                           dashboardInfo.quota ?? 0,
                         )}
@@ -97,60 +88,42 @@ const MyDashboardScreen = ({
                   <MyView height={10} />
                   <MyCard_>
                     <MyCardTitleText_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.SharedWithYou,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedSharedWithYouText()}
                     />
                     <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.WithYou,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedWithYouText()}
                       value={(dashboardInfo.inPerson ?? 0).toString()}
                     />
                     <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.WithYourGroups,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
                       value={(dashboardInfo.inGroup ?? 0).toString()}
                     />
                   </MyCard_>
                   <MyView height={10} />
                   <MyCard_>
                     <MyCardTitleText_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.SharedByYou,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedSharedByYouText()}
                     />
                     <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.SharedLinks,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedSharedLinksText()}
                       value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
                     <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.WithUsers,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedWithUsersText()}
                       value={(dashboardInfo.outPerson ?? 0).toString()}
                     />
                     <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.WithYourGroups,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
                       value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
                   </MyCard_>
                   <MyView height={10} />
                   <MyCard_>
                     <MyCardTitleText_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.Favorites,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedFavoritesText()}
                     />
                     <MyCardDataLine_
-                      text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.Files,
-                      )}
+                      text={MyLocalizationUtils.getLocalizedFilesText()}
                       value={(dashboardInfo.favs ?? 0).toString()}
                     />
                   </MyCard_>

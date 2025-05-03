@@ -1,6 +1,5 @@
 import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
-import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyTextInput from './TextInput';
 
@@ -13,9 +12,7 @@ const MySearchTextInput = ({
     <MyTextInput
       outlineColor={MyColors.Transparent}
       activeOutlineColor={MyColors.Transparent}
-      hintText={MyLocalizationUtils.getLocalizedText(
-        MyLocalizationTextKeys.Search,
-      )}
+      hintText={MyLocalizationUtils.getLocalizedSearchText()}
       hintTextColor={MyColors.Grey}
       leftIcon={MyIcons.Search}
       onChangeText={onChangeText}

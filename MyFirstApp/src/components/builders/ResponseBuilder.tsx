@@ -1,6 +1,5 @@
 import {observer} from 'mobx-react-lite';
 import {ReactNode, useEffect} from 'react';
-import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyResponseModel from '../../models/ResponseModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
@@ -44,9 +43,7 @@ const Builder_ = observer(
       return (
         <MyView isExpanded isCenterItems>
           <MyText
-            text={MyLocalizationUtils.getLocalizedText(
-              MyLocalizationTextKeys.AnErrorOccurred,
-            )}
+            text={MyLocalizationUtils.getLocalizedAnErrorOccurredText()}
           />
         </MyView>
       );

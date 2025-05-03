@@ -1,5 +1,4 @@
 import {MyIcons} from '../../enums/Icons';
-import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyIconButton from '../buttons/IconButton';
 import MyDivider from '../dividers/Divider';
@@ -14,9 +13,7 @@ const MyHomeAppBar = () => {
       <MyView isRow>
         <MyIconButton
           icon={MyIcons.List}
-          tooltip={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.Actions,
-          )}
+          tooltip={MyLocalizationUtils.getLocalizedActionsText()}
           onPress={() => {}}
         />
         <MyIconButton icon={MyIcons.Null} />
@@ -29,16 +26,12 @@ const MyHomeAppBar = () => {
         </MyView>
         <MyIconButton
           icon={MyIcons.BellOutlined}
-          tooltip={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.Notifications,
-          )}
+          tooltip={MyLocalizationUtils.getLocalizedNotificationsText()}
           onPress={() => {}}
         />
         <MyIconButton
           icon={MyIcons.MessageOutlined}
-          tooltip={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.Messages,
-          )}
+          tooltip={MyLocalizationUtils.getLocalizedMessagesText()}
           onPress={() => {}}
         />
       </MyView>

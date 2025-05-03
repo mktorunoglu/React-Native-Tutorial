@@ -8,7 +8,6 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
-import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
 import {MyTextAligns} from '../enums/TextAligns';
 import MyAuthenticationUtils from '../utils/AuthenticationUtils';
@@ -57,9 +56,7 @@ const MySplashScreen = ({
         <MyProgressIndicator />
         <MyView isColumn zIndex={1} bottom={0}>
           <MyText
-            text={MyLocalizationUtils.getLocalizedText(
-              MyLocalizationTextKeys.AppCopyrightDescription,
-            )}
+            text={MyLocalizationUtils.getLocalizedAppCopyrightDescriptionText()}
             fontSize={12}
             color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
             fontWeight={MyFontWeights.W300}

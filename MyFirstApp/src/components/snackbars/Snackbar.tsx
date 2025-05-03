@@ -1,6 +1,5 @@
 import {observer} from 'mobx-react-lite';
 import {Snackbar} from 'react-native-paper';
-import {MyLocalizationTextKeys} from '../../enums/LocalizationTextKeys';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MySnackbarUtils from '../../utils/SnackbarUtils';
 import MyButton from '../buttons/Button';
@@ -41,9 +40,7 @@ const Snackbar_ = observer(() => {
         <MyButton
           isTextButton
           foregroundColor={MySnackbarUtils.snackbarForegroundColor.getValue()!}
-          text={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.Okey,
-          )}
+          text={MyLocalizationUtils.getLocalizedOkeyText()}
           onPress={() => MySnackbarUtils.hideSnackbar()}
         />
       </MyView>

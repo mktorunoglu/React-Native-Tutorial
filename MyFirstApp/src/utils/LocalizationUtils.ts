@@ -1,7 +1,5 @@
-import {MyLocalizationTexts} from '../constants/LocalizationTexts';
 import {MyKeys} from '../enums/Keys';
 import {MyLocalizations} from '../enums/Localizations';
-import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import MyStorageUtils from './StorageUtils';
 
 class MyLocalizationUtils {
@@ -17,6 +15,10 @@ class MyLocalizationUtils {
   }
 
   public localization = MyLocalizations.English;
+  private variableTextPattern = '_______';
+  private variableTextPattern1 = '___1___';
+  private variableTextPattern2 = '___2___';
+  private variableTextPattern3 = '___3___';
 
   public async initialize() {
     const localization = await MyStorageUtils.getData(MyKeys.Localization);
@@ -30,8 +32,264 @@ class MyLocalizationUtils {
     this.localization = localization;
   }
 
-  public getLocalizedText(localizationTextKey: MyLocalizationTextKeys): string {
-    return MyLocalizationTexts[localizationTextKey][this.localization];
+  public getLocalizedText({
+    localizationTextList,
+    variableTextList = [],
+  }: {
+    localizationTextList: string[];
+    variableTextList?: string[];
+  }): string {
+    let localizedText = {
+      [MyLocalizations.English]: localizationTextList[0],
+      [MyLocalizations.Turkish]: localizationTextList[1],
+    }[this.localization];
+    if (localizedText.includes(this.variableTextPattern1)) {
+      if (variableTextList.length > 0) {
+        localizedText = localizedText.replace(
+          this.variableTextPattern1,
+          variableTextList[0],
+        );
+      }
+      if (variableTextList.length > 1) {
+        localizedText = localizedText.replace(
+          this.variableTextPattern2,
+          variableTextList[1],
+        );
+      }
+      if (variableTextList.length > 2) {
+        localizedText = localizedText.replace(
+          this.variableTextPattern3,
+          variableTextList[2],
+        );
+      }
+    } else {
+      for (const variableText of variableTextList) {
+        localizedText = localizedText.replace(
+          this.variableTextPattern,
+          variableText,
+        );
+      }
+    }
+    return localizedText;
+  }
+
+  public getLocalizedFilesText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Files', 'Dosyalar'],
+    });
+  }
+
+  public getLocalizedWithUsersText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['With Users', 'Kullanıcılarla'],
+    });
+  }
+
+  public getLocalizedSharedLinksText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Shared Links', 'Paylaşım Bağlantıları'],
+    });
+  }
+
+  public getLocalizedWithYourGroupsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['With Your Groups', 'Gruplarınızla'],
+    });
+  }
+
+  public getLocalizedWithYouText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['With You', 'Sizinle'],
+    });
+  }
+
+  public getLocalizedTotalText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Total', 'Toplam'],
+    });
+  }
+
+  public getLocalizedUsageText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Usage', 'Kullanım'],
+    });
+  }
+
+  public getLocalizedSharedByYouText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Shared By You', 'Paylaştıklarınız'],
+    });
+  }
+
+  public getLocalizedSharedWithYouText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Shared With You', 'Sizinle Paylaşılanlar'],
+    });
+  }
+
+  public getLocalizedMyUsageText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['My Usage', 'Kullanımım'],
+    });
+  }
+
+  public getLocalizedSearchText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Search', 'Ara'],
+    });
+  }
+
+  public getLocalizedAnErrorOccurredText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['An error occurred', 'Bir hata oluştu'],
+    });
+  }
+
+  public getLocalizedUserText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['User', 'Kullanıcı'],
+    });
+  }
+
+  public getLocalizedMessagesText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Messages', 'Mesajlar'],
+    });
+  }
+
+  public getLocalizedNotificationsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Notifications', 'Bildirimler'],
+    });
+  }
+
+  public getLocalizedActionsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Actions', 'Eylemler'],
+    });
+  }
+
+  public getLocalizedOperationsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Operations', 'İşlemler'],
+    });
+  }
+
+  public getLocalizedProfileText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Profile', 'Profil'],
+    });
+  }
+
+  public getLocalizedFavoritesText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Favorites', 'Favoriler'],
+    });
+  }
+
+  public getLocalizedSharingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Sharing', 'Paylaşım'],
+    });
+  }
+
+  public getLocalizedReposText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Repos', 'Depolar'],
+    });
+  }
+
+  public getLocalizedHomeText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Home', 'Ana Sayfa'],
+    });
+  }
+
+  public getLocalizedCheckLoginInformationText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Please check your login information and try again.',
+        'Lütfen giriş bilgilerinizi kontrol edip tekrar deneyiniz.',
+      ],
+    });
+  }
+
+  public getLocalizedOkeyText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Okey', 'Tamam'],
+    });
+  }
+
+  public getLocalizedChangeLanguageText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Change Language', 'Dili Değiştir'],
+    });
+  }
+
+  public getLocalizedTurkishText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Turkish', 'Türkçe'],
+    });
+  }
+
+  public getLocalizedEnglishText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['English', 'İngilizce'],
+    });
+  }
+
+  public getLocalizedOptionsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Options', 'Seçenekler'],
+    });
+  }
+
+  public getLocalizedLogoutText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Logout', 'Çıkış Yap'],
+    });
+  }
+
+  public getLocalizedLoginText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Login', 'Giriş Yap'],
+    });
+  }
+
+  public getLocalizedPasswordText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Password', 'Şifre'],
+    });
+  }
+
+  public getLocalizedUserIdText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['User ID', 'Kullanıcı Kimliği'],
+    });
+  }
+
+  public getLocalizedServerAddressText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Server Address', 'Sunucu Adresi'],
+    });
+  }
+
+  public getLocalizedAppCopyrightDescriptionText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Copyright © 2023, All Rights Reserved',
+        'Copyright © 2023, Tüm Hakları Saklıdır',
+      ],
+    });
+  }
+
+  public getLocalizedAppNameFullText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Corporate File Sharing Platform',
+        'Kurumsal Dosya Paylaşım Platformu',
+      ],
+    });
   }
 }
 

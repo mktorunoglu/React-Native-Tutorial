@@ -18,7 +18,6 @@ import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
 import {MyIcons} from '../enums/Icons';
 import {MyKeyboardTypes} from '../enums/KeyboardTypes';
-import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
 import {MyTextAligns} from '../enums/TextAligns';
 import {MyUrls} from '../enums/Urls';
@@ -55,9 +54,7 @@ const MyLoginScreen = ({
         <MyView zIndex={1} alignItems={MyAligns.FlexEnd}>
           <MyIconButton
             icon={MyIcons.MoreVertical}
-            tooltip={MyLocalizationUtils.getLocalizedText(
-              MyLocalizationTextKeys.Options,
-            )}
+            tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
             onPress={() =>
               MyModalUtils.showModal({
                 modal: (
@@ -79,9 +76,7 @@ const MyLoginScreen = ({
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
         <MyView height={20} />
         <MyText
-          text={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.AppNameFull,
-          )}
+          text={MyLocalizationUtils.getLocalizedAppNameFullText()}
           fontSize={16}
           color={MyColors.Theme}
           fontWeight={MyFontWeights.Bold}
@@ -94,9 +89,7 @@ const MyLoginScreen = ({
               <ServerAddressTextInput_ />
               <MyView height={10} />
               <MyTextInput
-                labelText={MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.UserId,
-                )}
+                labelText={MyLocalizationUtils.getLocalizedUserIdText()}
                 rightIcon={MyIcons.AccountOutlined}
                 onChangeText={text => userId.setValue(text)}
               />
@@ -109,9 +102,7 @@ const MyLoginScreen = ({
         </MyView>
         <MyView height={20} />
         <MyText
-          text={MyLocalizationUtils.getLocalizedText(
-            MyLocalizationTextKeys.AppCopyrightDescription,
-          )}
+          text={MyLocalizationUtils.getLocalizedAppCopyrightDescriptionText()}
           fontSize={12}
           color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
           fontWeight={MyFontWeights.W300}
@@ -145,9 +136,7 @@ const LoginButton_ = observer(
           password.getValue().length == 0
         }
         icon={MyIcons.Login}
-        text={MyLocalizationUtils.getLocalizedText(
-          MyLocalizationTextKeys.Login,
-        )}
+        text={MyLocalizationUtils.getLocalizedLoginText()}
         onPress={async () => {
           MyModalUtils.showModal({modal: <MyProgressModal />});
           const isLoginSuccessful = await MyAuthenticationUtils.login({
@@ -159,9 +148,7 @@ const LoginButton_ = observer(
           MyModalUtils.hideModal();
           if (!isLoginSuccessful) {
             MySnackbarUtils.showSnackbar({
-              text: MyLocalizationUtils.getLocalizedText(
-                MyLocalizationTextKeys.CheckLoginInformation,
-              ),
+              text: MyLocalizationUtils.getLocalizedCheckLoginInformationText(),
             });
           }
         }}
@@ -174,9 +161,7 @@ const ServerAddressTextInput_ = observer(() => {
   return (
     <MyTextInput
       keyboardType={MyKeyboardTypes.Url}
-      labelText={MyLocalizationUtils.getLocalizedText(
-        MyLocalizationTextKeys.ServerAddress,
-      )}
+      labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
       rightIcon={MyIcons.Web}
       value={serverAddress.getValue()}
       onChangeText={text => serverAddress.setValue(text)}
@@ -188,9 +173,7 @@ const PasswordTextInput_ = observer(() => {
   return (
     <MyTextInput
       isTextObscured={!isPasswordVisible.getValue()}
-      labelText={MyLocalizationUtils.getLocalizedText(
-        MyLocalizationTextKeys.Password,
-      )}
+      labelText={MyLocalizationUtils.getLocalizedPasswordText()}
       rightIcon={
         isPasswordVisible.getValue()
           ? MyIcons.EyeOffOutlined

@@ -16,7 +16,6 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyIcons} from '../enums/Icons';
-import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyUserInfoModel from '../models/UserInfoModel';
@@ -117,18 +116,14 @@ const Screen_ = observer(
                     <MyView isColumn>
                       <MyTextInput
                         isEditable={false}
-                        labelText={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.UserId,
-                        )}
+                        labelText={MyLocalizationUtils.getLocalizedUserIdText()}
                         labelTextColor={MyColors.Theme}
                         value={userInfo.user}
                       />
                       <MyView height={20} />
                       <MyTextInput
                         isEditable={false}
-                        labelText={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.User,
-                        )}
+                        labelText={MyLocalizationUtils.getLocalizedUserText()}
                         labelTextColor={MyColors.Theme}
                         value={userInfo.name}
                       />
@@ -141,17 +136,13 @@ const Screen_ = observer(
             <MyCard padding={20}>
               <MyButton
                 icon={MyIcons.SettingsOutlined}
-                text={MyLocalizationUtils.getLocalizedText(
-                  MyLocalizationTextKeys.Options,
-                )}
+                text={MyLocalizationUtils.getLocalizedOptionsText()}
                 onPress={() => {}}
               />
             </MyCard>
             <MyIconButton
               icon={MyIcons.Logout}
-              tooltip={MyLocalizationUtils.getLocalizedText(
-                MyLocalizationTextKeys.Logout,
-              )}
+              tooltip={MyLocalizationUtils.getLocalizedLogoutText()}
               onPress={async () => {
                 MyModalUtils.showModal({modal: <MyProgressModal />});
                 await MyAuthenticationUtils.logout({

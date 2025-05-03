@@ -1,4 +1,9 @@
 export enum MyLocalizationTextKeys {
+  Files,
+  WithUsers,
+  SharedLinks,
+  WithYourGroups,
+  WithYou,
   Usage,
   Total,
   SharedByYou,

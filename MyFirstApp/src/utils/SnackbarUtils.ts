@@ -21,10 +21,10 @@ class MySnackbarUtils {
   public snackbarDurationMilliseconds = new MyObservableValueModel<
     number | null
   >(null);
-  public snackbarBackgroundColor = new MyObservableValueModel<MyColors | null>(
+  public snackbarBackgroundColor = new MyObservableValueModel<string | null>(
     null,
   );
-  public snackbarForegroundColor = new MyObservableValueModel<MyColors | null>(
+  public snackbarForegroundColor = new MyObservableValueModel<string | null>(
     null,
   );
 
@@ -39,8 +39,8 @@ class MySnackbarUtils {
     icon?: MyIcons;
     text: string;
     durationMilliseconds?: number;
-    backgroundColor?: MyColors;
-    foregroundColor?: MyColors;
+    backgroundColor?: string;
+    foregroundColor?: string;
     isSuccessful?: boolean;
   }) {
     this.hideSnackbar();

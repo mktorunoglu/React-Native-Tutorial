@@ -5,7 +5,7 @@ const MyProgressIndicator = ({
   color = MyColors.Theme,
   size = 40,
 }: {
-  color?: MyColors;
+  color?: string;
   size?: number;
 }) => {
   return <ActivityIndicator color={color} size={size} />;

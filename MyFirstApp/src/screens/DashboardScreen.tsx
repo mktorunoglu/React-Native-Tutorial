@@ -3,6 +3,7 @@ import {ReactNode} from 'react';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
+import MyPercentProgressIndicator from '../components/indicators/PercentProgressIndicator';
 import MyText from '../components/texts/Text';
 import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
@@ -41,6 +42,39 @@ const MyDashboardScreen = ({
                           MyLocalizationTextKeys.MyUsage,
                         )}
                       />
+                      <MyView isRow isCenterItems>
+                        <MyPercentProgressIndicator
+                          size={140}
+                          strokeWidth={10}
+                          percent={
+                            ((dashboardInfo.usage ?? 0) /
+                              (dashboardInfo.quota ?? 1)) *
+                            100
+                          }>
+                          {() => (
+                            <MyView isColumn isCenterItems>
+                              <MyText
+                                text={MyLocalizationUtils.getLocalizedText(
+                                  MyLocalizationTextKeys.Usage,
+                                )}
+                                color={MyColors.Grey}
+                                fontSize={12}
+                              />
+                              <MyView height={10} />
+                              <MyText
+                                text={Math.ceil(
+                                  ((dashboardInfo.usage ?? 0) /
+                                    (dashboardInfo.quota ?? 1)) *
+                                    100,
+                                ).toString()}
+                                color={MyColors.Theme}
+                                fontWeight={MyFontWeights.Bold}
+                                fontSize={20}
+                              />
+                            </MyView>
+                          )}
+                        </MyPercentProgressIndicator>
+                      </MyView>
                       <MyCardDataLine_
                         text={MyLocalizationUtils.getLocalizedText(
                           MyLocalizationTextKeys.Usage,
@@ -69,13 +103,13 @@ const MyDashboardScreen = ({
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.MyUsage,
+                        MyLocalizationTextKeys.WithYou,
                       )}
                       value={(dashboardInfo.inPerson ?? 0).toString()}
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.MyUsage,
+                        MyLocalizationTextKeys.WithYourGroups,
                       )}
                       value={(dashboardInfo.inGroup ?? 0).toString()}
                     />
@@ -89,19 +123,19 @@ const MyDashboardScreen = ({
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.MyUsage,
+                        MyLocalizationTextKeys.SharedLinks,
                       )}
                       value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.MyUsage,
+                        MyLocalizationTextKeys.WithUsers,
                       )}
                       value={(dashboardInfo.outPerson ?? 0).toString()}
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.MyUsage,
+                        MyLocalizationTextKeys.WithYourGroups,
                       )}
                       value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
@@ -115,7 +149,7 @@ const MyDashboardScreen = ({
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
-                        MyLocalizationTextKeys.MyUsage,
+                        MyLocalizationTextKeys.Files,
                       )}
                       value={(dashboardInfo.favs ?? 0).toString()}
                     />

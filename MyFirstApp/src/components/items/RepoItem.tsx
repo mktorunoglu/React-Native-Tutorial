@@ -31,15 +31,13 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
           </MyView>
           <MyView isExpanded paddingHorizontal={15}>
             <MyText
-              text={repo.name}
+              text={repo.repoName}
               maxLines={2}
               textOverflow={MyTextOverflows.End}
             />
           </MyView>
           <MyText
-            text={MyConverterUtils.convertNumberToSizeText({
-              number: repo.size ?? 0,
-            })}
+            text={MyConverterUtils.convertNumberToSizeText(repo.size ?? 0)}
             fontSize={12}
             color={MyColors.Grey}
           />

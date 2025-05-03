@@ -12,17 +12,7 @@ class MyConverterUtils {
     return MyConverterUtils.instance;
   }
 
-  public convertJsonToModelList<T>({
-    json,
-    model,
-  }: {
-    json: any[];
-    model: new (item: any) => T;
-  }): T[] {
-    return json.map(item => new model(item));
-  }
-
-  public convertNumberToSizeText({number}: {number: number}) {
+  public convertNumberToSizeText(number: number) {
     return filesize(number, {
       standard: 'jedec',
       round: 1,

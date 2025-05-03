@@ -188,6 +188,57 @@ class MyRepoModel {
     this.owner = owner;
     this.path = path;
   }
+
+  static fromJson(json: any): MyRepoModel {
+    return new MyRepoModel({
+      autoSync: json.auto_sync,
+      desc: json.desc,
+      encVersion: json.enc_version,
+      encrypted: json.encrypted,
+      fileCount: json.file_count,
+      groupId: json.group_id,
+      groupName: json.group_name,
+      headCmmtId: json.head_cmmt_id,
+      id: json.id,
+      isCorrupted: json.is_corrupted,
+      isOriginalOwner: json.is_original_owner,
+      isShared: json.is_shared,
+      isVirtual: json.is_virtual,
+      lastModified: json.last_modified,
+      lastModifier: json.last_modifier,
+      lastModify: json.last_modify,
+      lastSyncTime: json.last_sync_time,
+      magic: json.magic,
+      name: json.name,
+      needDecrypt: json.need_decrypt,
+      originPath: json.origin_path,
+      originRepoId: json.origin_repo_id,
+      originRepoName: json.origin_repo_name,
+      parentGroupId: json.parent_group_id,
+      permission: json.permission,
+      randomKey: json.random_key,
+      relayId: json.relay_id,
+      repaired: json.repaired,
+      repoDesc: json.repo_desc,
+      repoId: json.repo_id,
+      repoName: json.repo_name,
+      root: json.root,
+      salt: json.salt,
+      shareType: json.share_type,
+      size: json.size,
+      smtime: json.smtime,
+      status: json.status,
+      storeId: json.store_id,
+      timestamp: json.timestamp,
+      user: json.user,
+      version: json.version,
+      virtualPerm: json.virtual_perm,
+      worktree: json.worktree,
+      worktreeInvalid: json.worktree_invalid,
+      owner: json.owner,
+      path: json.path,
+    });
+  }
 }
 
 export default MyRepoModel;

@@ -8,11 +8,13 @@ import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
+import {MyFontWeights} from '../enums/FontWeights';
 import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 import {MyRoutes} from '../enums/Routes';
 import MyDashboardInfoModel from '../models/DashboardInfoModel';
 import MyFileService from '../services/FileService';
 import MyColorUtils from '../utils/ColorUtils';
+import MyConverterUtils from '../utils/ConverterUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 
 const MyDashboardScreen = ({
@@ -41,15 +43,20 @@ const MyDashboardScreen = ({
                       />
                       <MyCardDataLine_
                         text={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.MyUsage,
+                          MyLocalizationTextKeys.Usage,
                         )}
-                        value={(dashboardInfo.usage ?? 0).toString()}
+                        value={MyConverterUtils.convertNumberToSizeText(
+                          dashboardInfo.usage ?? 0,
+                        )}
+                        isImportant={true}
                       />
                       <MyCardDataLine_
                         text={MyLocalizationUtils.getLocalizedText(
-                          MyLocalizationTextKeys.MyUsage,
+                          MyLocalizationTextKeys.Total,
                         )}
-                        value={(dashboardInfo.usage ?? 0).toString()}
+                        value={MyConverterUtils.convertNumberToSizeText(
+                          dashboardInfo.quota ?? 0,
+                        )}
                       />
                     </MyView>
                   </MyCard_>
@@ -64,13 +71,13 @@ const MyDashboardScreen = ({
                       text={MyLocalizationUtils.getLocalizedText(
                         MyLocalizationTextKeys.MyUsage,
                       )}
-                      value={(dashboardInfo.usage ?? 0).toString()}
+                      value={(dashboardInfo.inPerson ?? 0).toString()}
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
                         MyLocalizationTextKeys.MyUsage,
                       )}
-                      value={(dashboardInfo.usage ?? 0).toString()}
+                      value={(dashboardInfo.inGroup ?? 0).toString()}
                     />
                   </MyCard_>
                   <MyView height={10} />
@@ -84,19 +91,19 @@ const MyDashboardScreen = ({
                       text={MyLocalizationUtils.getLocalizedText(
                         MyLocalizationTextKeys.MyUsage,
                       )}
-                      value={(dashboardInfo.usage ?? 0).toString()}
+                      value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
                         MyLocalizationTextKeys.MyUsage,
                       )}
-                      value={(dashboardInfo.usage ?? 0).toString()}
+                      value={(dashboardInfo.outPerson ?? 0).toString()}
                     />
                     <MyCardDataLine_
                       text={MyLocalizationUtils.getLocalizedText(
                         MyLocalizationTextKeys.MyUsage,
                       )}
-                      value={(dashboardInfo.usage ?? 0).toString()}
+                      value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
                   </MyCard_>
                   <MyView height={10} />
@@ -110,7 +117,7 @@ const MyDashboardScreen = ({
                       text={MyLocalizationUtils.getLocalizedText(
                         MyLocalizationTextKeys.MyUsage,
                       )}
-                      value={(dashboardInfo.usage ?? 0).toString()}
+                      value={(dashboardInfo.favs ?? 0).toString()}
                     />
                   </MyCard_>
                 </MyScrollView>
@@ -124,14 +131,26 @@ const MyDashboardScreen = ({
   );
 };
 
-const MyCardDataLine_ = ({text, value}: {text: string; value: string}) => {
+const MyCardDataLine_ = ({
+  text,
+  value,
+  isImportant = false,
+}: {
+  text: string;
+  value: string;
+  isImportant?: boolean;
+}) => {
   return (
     <MyView isRow>
       <MyView width="auto" isExpanded>
         <MyText text={text} color={MyColors.Grey} />
       </MyView>
       <MyView width={10} />
-      <MyText text={value} />
+      <MyText
+        text={value}
+        fontWeight={MyFontWeights.Bold}
+        color={isImportant ? MyColors.Theme : undefined}
+      />
     </MyView>
   );
 };

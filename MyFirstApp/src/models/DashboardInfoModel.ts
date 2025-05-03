@@ -44,6 +44,21 @@ class MyDashboardInfoModel {
     this.usage = usage;
     this.username = username;
   }
+
+  static fromJson(json: any): MyDashboardInfoModel {
+    return new MyDashboardInfoModel({
+      favs: json.favs,
+      inPerson: json.in,
+      inGroup: json.in_group,
+      outDownlink: json.out_downlink,
+      outGroup: json.out_group,
+      outPerson: json.out_person,
+      quota: json.quota,
+      result: json.result,
+      usage: json.usage,
+      username: json.username,
+    });
+  }
 }
 
 export default MyDashboardInfoModel;

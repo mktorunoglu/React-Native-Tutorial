@@ -1,5 +1,6 @@
 import {MyRequestMethods} from '../enums/RequestMethods';
 import MyResponseModel from '../models/ResponseModel';
+import MyUserInfoModel from '../models/UserInfoModel';
 import MyApiUtils from '../utils/ApiUtils';
 import MyFileUtils from '../utils/FileUtils';
 import MyServiceUtils from '../utils/ServiceUtils';
@@ -54,7 +55,7 @@ class MyUserService {
       url: MyServiceUtils.getUserApiUrl() + '/get_user_info',
     });
     if (response.isSuccessful) {
-      response.data = response.data['result'];
+      response.data = MyUserInfoModel.fromJson(response.data['result']);
     }
     return response;
   }

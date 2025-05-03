@@ -2,6 +2,14 @@ import {MyLocalizations} from '../enums/Localizations';
 import {MyLocalizationTextKeys} from '../enums/LocalizationTextKeys';
 
 export const MyLocalizationTexts = {
+  [MyLocalizationTextKeys.Total]: {
+    [MyLocalizations.English]: 'Total',
+    [MyLocalizations.Turkish]: 'Toplam',
+  },
+  [MyLocalizationTextKeys.Usage]: {
+    [MyLocalizations.English]: 'Usage',
+    [MyLocalizations.Turkish]: 'Kullanım',
+  },
   [MyLocalizationTextKeys.SharedByYou]: {
     [MyLocalizations.English]: 'Shared By You',
     [MyLocalizations.Turkish]: 'Paylaştıklarınız',

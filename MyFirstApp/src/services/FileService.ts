@@ -1,8 +1,8 @@
 import {MyRequestMethods} from '../enums/RequestMethods';
+import MyDashboardInfoModel from '../models/DashboardInfoModel';
 import MyRepoModel from '../models/RepoModel';
 import MyResponseModel from '../models/ResponseModel';
 import MyApiUtils from '../utils/ApiUtils';
-import MyConverterUtils from '../utils/ConverterUtils';
 import MyServiceUtils from '../utils/ServiceUtils';
 import MyTimeUtils from '../utils/TimeUtils';
 
@@ -25,20 +25,23 @@ class MyFileService {
     });
     response.isSuccessful = response.data['result'] == true;
     if (response.isSuccessful) {
-      response.data = MyConverterUtils.convertJsonToModelList({
-        json: response.data['repos'],
-        model: MyRepoModel,
-      });
+      response.data = response.data['repos'].map((item: any) =>
+        MyRepoModel.fromJson(item),
+      );
     }
     return response;
   }
 
   public async getDashboardInfo(): Promise<MyResponseModel> {
-    return await MyApiUtils.request({
+    const response = await MyApiUtils.request({
       method: MyRequestMethods.Get,
       url: MyServiceUtils.getFileApiUrl() + '/get_dashboard_info',
       params: {t: await MyTimeUtils.getTime()},
     });
+    if (response.isSuccessful) {
+      response.data = MyDashboardInfoModel.fromJson(response.data);
+    }
+    return response;
   }
 }
 

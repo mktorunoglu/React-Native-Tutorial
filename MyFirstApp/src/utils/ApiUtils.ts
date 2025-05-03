@@ -26,12 +26,14 @@ class MyApiUtils {
     method,
     url,
     data,
+    params,
     headers,
     responseType,
   }: {
     method: MyRequestMethods;
     url: string;
     data?: any;
+    params?: any;
     headers?: Record<string, string>;
     responseType?: MyResponseTypes;
   }): Promise<MyResponseModel> {
@@ -40,6 +42,7 @@ class MyApiUtils {
         method,
         url,
         data,
+        params,
         headers: {
           'X-CSRF-TOKEN': MyServiceUtils.token,
           ...headers,

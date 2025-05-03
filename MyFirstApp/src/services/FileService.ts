@@ -4,6 +4,7 @@ import MyResponseModel from '../models/ResponseModel';
 import MyApiUtils from '../utils/ApiUtils';
 import MyConverterUtils from '../utils/ConverterUtils';
 import MyServiceUtils from '../utils/ServiceUtils';
+import MyTimeUtils from '../utils/TimeUtils';
 
 class MyFileService {
   private static instance: MyFileService;
@@ -30,6 +31,14 @@ class MyFileService {
       });
     }
     return response;
+  }
+
+  public async getDashboardInfo(): Promise<MyResponseModel> {
+    return await MyApiUtils.request({
+      method: MyRequestMethods.Get,
+      url: MyServiceUtils.getFileApiUrl() + '/get_dashboard_info',
+      params: {t: await MyTimeUtils.getTime()},
+    });
   }
 }
 

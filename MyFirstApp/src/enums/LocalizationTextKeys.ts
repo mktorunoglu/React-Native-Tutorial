@@ -1,4 +1,7 @@
 export enum MyLocalizationTextKeys {
+  SharedByYou,
+  SharedWithYou,
+  MyUsage,
   Search,
   AnErrorOccurred,
   User,

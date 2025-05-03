@@ -13,6 +13,7 @@
     "@react-native-async-storage/async-storage": "^2.1.2",
     "@react-navigation/native": "^7.1.7",
     "@react-navigation/stack": "^7.3.0",
+    "@ruanitto/react-native-ntp-sync": "^1.1.2",
     "axios": "^1.9.0",
     "filesize": "^10.1.6",
     "mobx": "^6.13.7",

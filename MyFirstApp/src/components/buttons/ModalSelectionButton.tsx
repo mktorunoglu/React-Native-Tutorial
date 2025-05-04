@@ -5,11 +5,13 @@ import MyButton from './Button';
 
 const MyModalSelectionButton = ({
   isSelected,
+  color,
   icon,
   text,
   onPress,
 }: {
   isSelected?: boolean;
+  color?: string;
   icon?: MyIcons;
   text: string;
   onPress: () => void;
@@ -20,13 +22,14 @@ const MyModalSelectionButton = ({
       <MyButton
         isTextButton
         borderRadius={0}
+        foregroundColor={color}
         paddingVertical={5}
         icon={
           isSelected == null
             ? icon
             : isSelected
-            ? MyIcons.RadioboxMarked
-            : MyIcons.RadioboxBlank
+              ? MyIcons.RadioboxMarked
+              : MyIcons.RadioboxBlank
         }
         text={text}
         onPress={isSelected ? () => {} : onPress}

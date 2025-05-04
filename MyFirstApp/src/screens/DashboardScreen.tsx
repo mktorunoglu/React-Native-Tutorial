@@ -166,7 +166,7 @@ const MyCardDataBody_ = ({
 }: {
   titleIcon: MyIcons;
   titleIconColor?: string;
-  children?: ReactNode[];
+  children?: ReactNode;
 }) => {
   return (
     <MyView isRow isCenterItems>

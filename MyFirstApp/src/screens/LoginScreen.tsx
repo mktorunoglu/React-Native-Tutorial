@@ -60,6 +60,7 @@ const MyLoginScreen = ({
                 modal: (
                   <MyOptionsModal
                     onChangeLanguage={() => navigation.replace(MyRoutes.Login)}
+                    isLoginScreen={true}
                   />
                 ),
               })

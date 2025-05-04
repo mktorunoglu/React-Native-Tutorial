@@ -1,11 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyButton from '../components/buttons/Button';
-import MyIconButton from '../components/buttons/IconButton';
 import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
-import MyProgressModal from '../components/modals/ProgressModal';
+import MyOptionsModal from '../components/modals/OptionsModal';
 import MyTextInput from '../components/texts/TextInput';
 import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
@@ -15,7 +14,6 @@ import {MyIcons} from '../enums/Icons';
 import {MyRoutes} from '../enums/Routes';
 import MyUserInfoModel from '../models/UserInfoModel';
 import MyUserService from '../services/UserService';
-import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
@@ -79,20 +77,18 @@ const MyProfileScreen = ({
             <MyButton
               icon={MyIcons.SettingsOutlined}
               text={MyLocalizationUtils.getLocalizedOptionsText()}
-              onPress={() => {}}
+              onPress={() =>
+                MyModalUtils.showModal({
+                  modal: (
+                    <MyOptionsModal
+                      onChangeLanguage={() => navigation.replace(MyRoutes.Home)}
+                      onLogout={() => navigation.replace(MyRoutes.Login)}
+                    />
+                  ),
+                })
+              }
             />
           </MyCard>
-          <MyIconButton
-            icon={MyIcons.Logout}
-            tooltip={MyLocalizationUtils.getLocalizedLogoutText()}
-            onPress={async () => {
-              MyModalUtils.showModal({modal: <MyProgressModal />});
-              await MyAuthenticationUtils.logout({
-                navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-              });
-              MyModalUtils.hideModal();
-            }}
-          />
         </MyScrollView>
       </MyView>
       <MyDivider />

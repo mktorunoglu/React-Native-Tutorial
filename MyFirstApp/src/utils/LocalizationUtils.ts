@@ -260,13 +260,13 @@ class MyLocalizationUtils {
 
   public getLocalizedLogoutText(): string {
     return this.getLocalizedText({
-      localizationTextList: ['Logout', 'Çıkış Yap'],
+      localizationTextList: ['Log Out', 'Çıkış Yap'],
     });
   }
 
   public getLocalizedLoginText(): string {
     return this.getLocalizedText({
-      localizationTextList: ['Login', 'Giriş Yap'],
+      localizationTextList: ['Log In', 'Giriş Yap'],
     });
   }
 

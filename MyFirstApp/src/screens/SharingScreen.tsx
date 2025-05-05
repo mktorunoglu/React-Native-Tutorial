@@ -1,5 +1,6 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import MyDivider from '../components/dividers/Divider';
+import MyHomeAppBar from '../components/bars/HomeAppBar';
+import MyHomeNavigationBar from '../components/bars/HomeNavigationBar';
 import MyText from '../components/texts/Text';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
@@ -14,6 +15,7 @@ const MySharingScreen = ({
 }) => {
   return (
     <MyView isColumn isExpanded>
+      <MyHomeAppBar />
       <MyView
         isColumn
         isExpanded
@@ -21,7 +23,7 @@ const MySharingScreen = ({
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
         <MyText text="Sharing" />
       </MyView>
-      <MyDivider />
+      <MyHomeNavigationBar currentRoute={MyRoutes.Sharing} />
     </MyView>
   );
 };

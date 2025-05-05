@@ -1,8 +1,9 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import MyHomeAppBar from '../components/bars/HomeAppBar';
+import MyHomeNavigationBar from '../components/bars/HomeNavigationBar';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyButton from '../components/buttons/Button';
 import MyCard from '../components/cards/Card';
-import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyOptionsModal from '../components/modals/OptionsModal';
 import MyTextInput from '../components/texts/TextInput';
@@ -25,6 +26,7 @@ const MyProfileScreen = ({
 }) => {
   return (
     <MyView isColumn isExpanded>
+      <MyHomeAppBar />
       <MyView
         isColumn
         isExpanded
@@ -93,7 +95,7 @@ const MyProfileScreen = ({
           </MyCard>
         </MyScrollView>
       </MyView>
-      <MyDivider />
+      <MyHomeNavigationBar currentRoute={MyRoutes.Profile} />
     </MyView>
   );
 };

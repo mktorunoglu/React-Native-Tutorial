@@ -1,5 +1,7 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
+import MyHomeAppBar from '../components/bars/HomeAppBar';
+import MyHomeNavigationBar from '../components/bars/HomeNavigationBar';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
@@ -24,6 +26,7 @@ const MyReposScreen = ({
 }) => {
   return (
     <MyView isColumn isExpanded>
+      <MyHomeAppBar />
       <MySearchTextInput onChangeText={text => searchText.setValue(text)} />
       <MyDivider />
       <MyView
@@ -36,7 +39,7 @@ const MyReposScreen = ({
           }}
         />
       </MyView>
-      <MyDivider />
+      <MyHomeNavigationBar currentRoute={MyRoutes.Repos} />
     </MyView>
   );
 };

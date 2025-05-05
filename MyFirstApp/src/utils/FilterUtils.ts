@@ -20,7 +20,6 @@ class MyFilterUtils {
     if (searchText.trim() == '') {
       return true;
     }
-    console.log(textList);
     const searchWordList = searchText
       .split(' ')
       .map(word => word.trim())

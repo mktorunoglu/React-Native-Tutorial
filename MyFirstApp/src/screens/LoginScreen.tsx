@@ -123,18 +123,18 @@ const LoginButton_ = observer(
     return (
       <MyButton
         isDisable={
-          serverAddress.getValue().length == 0 ||
-          userId.getValue().length == 0 ||
-          password.getValue().length == 0
+          serverAddress.value.length == 0 ||
+          userId.value.length == 0 ||
+          password.value.length == 0
         }
         icon={MyIcons.Login}
         text={MyLocalizationUtils.getLocalizedLoginText()}
         onPress={async () => {
           MyModalUtils.showModal({modal: <MyProgressModal />});
           const isLoginSuccessful = await MyAuthenticationUtils.login({
-            serverAddress: serverAddress.getValue(),
-            userId: userId.getValue(),
-            password: password.getValue(),
+            serverAddress: serverAddress.value,
+            userId: userId.value,
+            password: password.value,
             navigateToDashboardScreen: () =>
               navigation.replace(MyRoutes.Dashboard),
           });
@@ -156,7 +156,7 @@ const ServerAddressTextInput_ = observer(() => {
       keyboardType={MyKeyboardTypes.Url}
       labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
       rightIcon={MyIcons.Web}
-      value={serverAddress.getValue()}
+      value={serverAddress.value}
       onChangeText={text => serverAddress.setValue(text)}
     />
   );
@@ -165,15 +165,13 @@ const ServerAddressTextInput_ = observer(() => {
 const PasswordTextInput_ = observer(() => {
   return (
     <MyTextInput
-      isTextObscured={!isPasswordVisible.getValue()}
+      isTextObscured={!isPasswordVisible.value}
       labelText={MyLocalizationUtils.getLocalizedPasswordText()}
       rightIcon={
-        isPasswordVisible.getValue()
-          ? MyIcons.EyeOffOutlined
-          : MyIcons.EyeOutlined
+        isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined
       }
       onPressRightIcon={() =>
-        isPasswordVisible.setValue(!isPasswordVisible.getValue())
+        isPasswordVisible.setValue(!isPasswordVisible.value)
       }
       onChangeText={text => password.setValue(text)}
     />

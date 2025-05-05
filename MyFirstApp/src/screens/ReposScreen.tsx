@@ -48,7 +48,7 @@ const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
   const filteredRepoList = repoList.filter(repo =>
     MyFilterUtils.isTextListContainsSearchText({
       textList: [repo.repoName],
-      searchText: searchText.getValue(),
+      searchText: searchText.value,
     }),
   );
   return (

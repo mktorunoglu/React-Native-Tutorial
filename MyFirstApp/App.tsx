@@ -29,7 +29,7 @@ const theme = {
 const Stack = createStackNavigator<MyRouteProps>();
 
 const Modal_ = observer(() => {
-  return MyModalUtils.modal.getValue();
+  return MyModalUtils.modal.value;
 });
 
 const App: React.FC = () => {

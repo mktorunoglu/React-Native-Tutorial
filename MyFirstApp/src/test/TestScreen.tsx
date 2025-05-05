@@ -38,10 +38,7 @@ const MyTestScreen = ({
       <MyView isExpanded>
         <Screen_ navigation={navigation} />
       </MyView>
-      <MyButton
-        text="test"
-        onPress={() => screen.setValue(!screen.getValue())}
-      />
+      <MyButton text="test" onPress={() => screen.setValue(!screen.value)} />
       <MySafeAreaView safeOnlyBottom />
     </MyView>
   );
@@ -49,7 +46,7 @@ const MyTestScreen = ({
 
 const Screen_ = observer(
   ({navigation}: {navigation: StackNavigationProp<MyRouteProps>}) => {
-    if (screen.getValue()) {
+    if (screen.value) {
       return (
         <MyView isColumn isExpanded>
           <MyView

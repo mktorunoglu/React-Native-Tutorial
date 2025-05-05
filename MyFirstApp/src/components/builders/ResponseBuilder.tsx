@@ -19,37 +19,14 @@ const MyResponseBuilder = ({
       this.value = value;
     },
   }));
+
+  const getResponse = async () => response_.setValue(await response());
+
   useEffect(() => {
-    getResponse({
-      response: response,
-      response_: response_,
-    });
+    getResponse();
   }, []);
-  return <Builder_ builder={builder} response_={response_} />;
-};
 
-const getResponse = async ({
-  response,
-  response_,
-}: {
-  response: () => Promise<MyResponseModel>;
-  response_: {
-    value: MyResponseModel | null;
-    setValue(value: MyResponseModel): void;
-  };
-}) => response_.setValue(await response());
-
-const Builder_ = observer(
-  ({
-    builder,
-    response_,
-  }: {
-    builder: (response: MyResponseModel) => ReactNode;
-    response_: {
-      value: MyResponseModel | null;
-      setValue(value: MyResponseModel): void;
-    };
-  }) => {
+  const Builder_ = observer(() => {
     if (response_.value == null) {
       return (
         <MyView isExpanded isCenterItems>
@@ -67,7 +44,9 @@ const Builder_ = observer(
       );
     }
     return builder(response_.value!);
-  },
-);
+  });
+
+  return <Builder_ />;
+};
 
 export default MyResponseBuilder;

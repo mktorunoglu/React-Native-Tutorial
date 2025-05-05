@@ -21,7 +21,7 @@ import MyModalUtils from '../utils/ModalUtils';
 const MyProfileScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
+  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Profile>;
 }) => {
   return (
     <MyView isColumn isExpanded>
@@ -81,7 +81,9 @@ const MyProfileScreen = ({
                 MyModalUtils.showModal({
                   modal: (
                     <MyOptionsModal
-                      onChangeLanguage={() => navigation.replace(MyRoutes.Home)}
+                      onChangeLanguage={() =>
+                        navigation.replace(MyRoutes.Profile)
+                      }
                       onLogout={() => navigation.replace(MyRoutes.Login)}
                     />
                   ),

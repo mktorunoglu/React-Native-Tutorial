@@ -1,9 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {ReactNode} from 'react';
 import {DimensionValue} from 'react-native';
+import MyHomeAppBar from '../components/bars/HomeAppBar';
+import MyHomeNavigationBar from '../components/bars/HomeNavigationBar';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
 import MyCard from '../components/cards/Card';
-import MyDivider from '../components/dividers/Divider';
 import MyIcon from '../components/icons/Icon';
 import MyPercentProgressIndicator from '../components/indicators/PercentProgressIndicator';
 import MyText from '../components/texts/Text';
@@ -23,10 +24,11 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 const MyDashboardScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
+  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Dashboard>;
 }) => {
   return (
     <MyView isColumn isExpanded>
+      <MyHomeAppBar />
       <MyView
         isExpanded
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}>
@@ -154,7 +156,7 @@ const MyDashboardScreen = ({
           }}
         />
       </MyView>
-      <MyDivider />
+      <MyHomeNavigationBar currentRoute={MyRoutes.Dashboard} />
     </MyView>
   );
 };

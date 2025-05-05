@@ -7,8 +7,12 @@ import MySnackbar from './src/components/snackbars/Snackbar';
 import {MyRouteProps} from './src/constants/RouteProps';
 import {MyColors} from './src/enums/Colors';
 import {MyRoutes} from './src/enums/Routes';
-import MyHomeScreen from './src/screens/HomeScreen';
+import MyDashboardScreen from './src/screens/DashboardScreen';
+import MyFavoritesScreen from './src/screens/FavoritesScreen';
 import MyLoginScreen from './src/screens/LoginScreen';
+import MyProfileScreen from './src/screens/ProfileScreen';
+import MyReposScreen from './src/screens/ReposScreen';
+import MySharingScreen from './src/screens/SharingScreen';
 import MySplashScreen from './src/screens/SplashScreen';
 import MyTestScreen from './src/test/TestScreen';
 import MyModalUtils from './src/utils/ModalUtils';
@@ -42,9 +46,19 @@ const App: React.FC = () => {
             screenOptions={{
               headerShown: false,
             }}>
-            <Stack.Screen name={MyRoutes.Splash} component={MySplashScreen} />
+            <Stack.Screen
+              name={MyRoutes.Dashboard}
+              component={MyDashboardScreen}
+            />
+            <Stack.Screen
+              name={MyRoutes.Favorites}
+              component={MyFavoritesScreen}
+            />
             <Stack.Screen name={MyRoutes.Login} component={MyLoginScreen} />
-            <Stack.Screen name={MyRoutes.Home} component={MyHomeScreen} />
+            <Stack.Screen name={MyRoutes.Profile} component={MyProfileScreen} />
+            <Stack.Screen name={MyRoutes.Repos} component={MyReposScreen} />
+            <Stack.Screen name={MyRoutes.Sharing} component={MySharingScreen} />
+            <Stack.Screen name={MyRoutes.Splash} component={MySplashScreen} />
             <Stack.Screen name={MyRoutes.Test} component={MyTestScreen} />
           </Stack.Navigator>
         </NavigationContainer>

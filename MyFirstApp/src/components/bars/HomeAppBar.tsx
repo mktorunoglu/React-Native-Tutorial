@@ -1,3 +1,4 @@
+import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyIconButton from '../buttons/IconButton';
@@ -8,7 +9,7 @@ import MyView from '../views/View';
 
 const MyHomeAppBar = () => {
   return (
-    <MyView isColumn>
+    <MyView isColumn backgroundColor={MyColors.White}>
       <MySafeAreaView safeOnlyTop />
       <MyView isRow>
         <MyIconButton

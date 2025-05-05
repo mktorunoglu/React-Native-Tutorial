@@ -20,7 +20,7 @@ const searchText = new MyObservableValueModel('');
 const MyReposScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
+  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Repos>;
 }) => {
   return (
     <MyView isColumn isExpanded>

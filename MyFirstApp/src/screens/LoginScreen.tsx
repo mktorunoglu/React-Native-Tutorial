@@ -144,7 +144,7 @@ const LoginButton_ = observer(
             serverAddress: serverAddress.getValue(),
             userId: userId.getValue(),
             password: password.getValue(),
-            navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
+            navigateToHomeScreen: () => navigation.replace(MyRoutes.Dashboard),
           });
           MyModalUtils.hideModal();
           if (!isLoginSuccessful) {

@@ -10,7 +10,7 @@ import MyColorUtils from '../utils/ColorUtils';
 const MyFavoritesScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Home>;
+  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Favorites>;
 }) => {
   return (
     <MyView isColumn isExpanded>

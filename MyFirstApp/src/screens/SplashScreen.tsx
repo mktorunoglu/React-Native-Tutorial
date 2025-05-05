@@ -39,7 +39,7 @@ const MySplashScreen = ({
   useEffect(() => {
     onInit({
       navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-      navigateToHomeScreen: () => navigation.replace(MyRoutes.Home),
+      navigateToHomeScreen: () => navigation.replace(MyRoutes.Dashboard),
       navigateToTestScreen: () => navigation.replace(MyRoutes.Test),
     });
   }, []);

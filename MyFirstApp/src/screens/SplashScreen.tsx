@@ -16,17 +16,17 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 
 const onInit = async ({
   navigateToLoginScreen,
-  navigateToHomeScreen,
+  navigateToDashboardScreen,
   navigateToTestScreen,
 }: {
   navigateToLoginScreen: () => void;
-  navigateToHomeScreen: () => void;
+  navigateToDashboardScreen: () => void;
   navigateToTestScreen: () => void;
 }) => {
   await MyLocalizationUtils.initialize();
   await MyAuthenticationUtils.autoLogin({
     navigateToLoginScreen: navigateToLoginScreen,
-    navigateToHomeScreen: navigateToHomeScreen,
+    navigateToDashboardScreen: navigateToDashboardScreen,
     navigateToTestScreen: navigateToTestScreen,
   });
 };
@@ -34,12 +34,12 @@ const onInit = async ({
 const MySplashScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Splash>;
+  navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   useEffect(() => {
     onInit({
       navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
-      navigateToHomeScreen: () => navigation.replace(MyRoutes.Dashboard),
+      navigateToDashboardScreen: () => navigation.replace(MyRoutes.Dashboard),
       navigateToTestScreen: () => navigation.replace(MyRoutes.Test),
     });
   }, []);

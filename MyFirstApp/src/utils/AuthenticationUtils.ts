@@ -17,11 +17,11 @@ class MyAuthenticationUtils {
 
   public async autoLogin({
     navigateToLoginScreen,
-    navigateToHomeScreen,
+    navigateToDashboardScreen,
     navigateToTestScreen,
   }: {
     navigateToLoginScreen: () => void;
-    navigateToHomeScreen: () => void;
+    navigateToDashboardScreen: () => void;
     navigateToTestScreen: () => void;
   }) {
     const userId = (await MyStorageUtils.getData(MyKeys.CurrentUserId)) ?? '';
@@ -33,7 +33,7 @@ class MyAuthenticationUtils {
       (await this.login({
         userId: userId,
         password: password,
-        navigateToHomeScreen: navigateToHomeScreen,
+        navigateToDashboardScreen: navigateToDashboardScreen,
         isAutoLogin: true,
       }))
     ) {
@@ -46,13 +46,13 @@ class MyAuthenticationUtils {
     serverAddress,
     userId,
     password,
-    navigateToHomeScreen,
+    navigateToDashboardScreen,
     isAutoLogin = false,
   }: {
     serverAddress?: string;
     userId: string;
     password: string;
-    navigateToHomeScreen: () => void;
+    navigateToDashboardScreen: () => void;
     isAutoLogin?: boolean;
   }): Promise<boolean> {
     MyServiceUtils.serverAddress =
@@ -72,7 +72,7 @@ class MyAuthenticationUtils {
         await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
       }
       MyServiceUtils.token = response.data;
-      navigateToHomeScreen();
+      navigateToDashboardScreen();
       return true;
     }
     return false;

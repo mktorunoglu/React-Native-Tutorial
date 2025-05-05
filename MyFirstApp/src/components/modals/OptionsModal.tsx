@@ -1,5 +1,9 @@
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {MyRouteProps} from '../../constants/RouteProps';
 import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
+import {MyRoutes} from '../../enums/Routes';
 import MyAuthenticationUtils from '../../utils/AuthenticationUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
@@ -9,15 +13,8 @@ import MyChangeLanguageModal from './ChangeLanguageModal';
 import MyModal from './Modal';
 import MyProgressModal from './ProgressModal';
 
-const MyOptionsModal = ({
-  onChangeLanguage,
-  onLogout,
-  isLoginScreen = false,
-}: {
-  onChangeLanguage: () => void;
-  onLogout?: () => void;
-  isLoginScreen?: boolean;
-}) => {
+const MyOptionsModal = ({isLoginScreen = false}: {isLoginScreen?: boolean}) => {
+  const navigation = useNavigation<StackNavigationProp<MyRouteProps>>();
   return (
     <MyModal>
       <MyModalHeader text={MyLocalizationUtils.getLocalizedOptionsText()} />
@@ -26,7 +23,7 @@ const MyOptionsModal = ({
         text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
         onPress={() =>
           MyModalUtils.showModal({
-            modal: <MyChangeLanguageModal onChange={onChangeLanguage} />,
+            modal: <MyChangeLanguageModal isLoginScreen={isLoginScreen} />,
           })
         }
       />
@@ -38,7 +35,7 @@ const MyOptionsModal = ({
           onPress={async () => {
             MyModalUtils.showModal({modal: <MyProgressModal />});
             await MyAuthenticationUtils.logout({
-              navigateToLoginScreen: onLogout!,
+              navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
             });
             MyModalUtils.hideModal();
           }}

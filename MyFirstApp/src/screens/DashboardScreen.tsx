@@ -24,7 +24,7 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 const MyDashboardScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Dashboard>;
+  navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   return (
     <MyView isColumn isExpanded>

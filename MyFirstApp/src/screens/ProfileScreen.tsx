@@ -22,7 +22,7 @@ import MyModalUtils from '../utils/ModalUtils';
 const MyProfileScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Profile>;
+  navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   return (
     <MyView isColumn isExpanded>
@@ -81,14 +81,7 @@ const MyProfileScreen = ({
               text={MyLocalizationUtils.getLocalizedOptionsText()}
               onPress={() =>
                 MyModalUtils.showModal({
-                  modal: (
-                    <MyOptionsModal
-                      onChangeLanguage={() =>
-                        navigation.replace(MyRoutes.Profile)
-                      }
-                      onLogout={() => navigation.replace(MyRoutes.Login)}
-                    />
-                  ),
+                  modal: <MyOptionsModal />,
                 })
               }
             />

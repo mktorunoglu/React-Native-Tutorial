@@ -31,7 +31,7 @@ const screen = new MyObservableValueModel(false);
 const MyTestScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Test>;
+  navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   return (
     <MyView isColumn isExpanded>
@@ -48,11 +48,7 @@ const MyTestScreen = ({
 };
 
 const Screen_ = observer(
-  ({
-    navigation,
-  }: {
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Test>;
-  }) => {
+  ({navigation}: {navigation: StackNavigationProp<MyRouteProps>}) => {
     if (screen.getValue()) {
       return (
         <MyView isColumn isExpanded>

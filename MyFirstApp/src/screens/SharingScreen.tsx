@@ -11,7 +11,7 @@ import MyColorUtils from '../utils/ColorUtils';
 const MySharingScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Sharing>;
+  navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   return (
     <MyView isColumn isExpanded>

@@ -38,7 +38,7 @@ const isPasswordVisible = new MyObservableValueModel(false);
 const MyLoginScreen = ({
   navigation,
 }: {
-  navigation: StackNavigationProp<MyRouteProps, MyRoutes.Login>;
+  navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   return (
     <MyView isColumn isExpanded>
@@ -57,12 +57,7 @@ const MyLoginScreen = ({
             tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
             onPress={() =>
               MyModalUtils.showModal({
-                modal: (
-                  <MyOptionsModal
-                    onChangeLanguage={() => navigation.replace(MyRoutes.Login)}
-                    isLoginScreen={true}
-                  />
-                ),
+                modal: <MyOptionsModal isLoginScreen={true} />,
               })
             }
           />
@@ -124,11 +119,7 @@ const MyLoginScreen = ({
 };
 
 const LoginButton_ = observer(
-  ({
-    navigation,
-  }: {
-    navigation: StackNavigationProp<MyRouteProps, MyRoutes.Login>;
-  }) => {
+  ({navigation}: {navigation: StackNavigationProp<MyRouteProps>}) => {
     return (
       <MyButton
         isDisable={
@@ -144,7 +135,8 @@ const LoginButton_ = observer(
             serverAddress: serverAddress.getValue(),
             userId: userId.getValue(),
             password: password.getValue(),
-            navigateToHomeScreen: () => navigation.replace(MyRoutes.Dashboard),
+            navigateToDashboardScreen: () =>
+              navigation.replace(MyRoutes.Dashboard),
           });
           MyModalUtils.hideModal();
           if (!isLoginSuccessful) {

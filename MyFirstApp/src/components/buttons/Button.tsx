@@ -17,6 +17,8 @@ const MyButton = ({
   foregroundColor = isTextButton ? MyColors.Theme : MyColors.White,
   icon,
   text,
+  textSize,
+  textFontWeight = MyFontWeights.Bold,
   onPress,
 }: {
   isTextButton?: boolean;
@@ -29,7 +31,9 @@ const MyButton = ({
   foregroundColor?: string;
   icon?: string;
   text: string;
-  onPress: () => void;
+  textSize?: number;
+  textFontWeight?: MyFontWeights;
+  onPress?: () => void;
 }) => {
   const backgroundColor_ = isTextButton
     ? MyColors.Transparent
@@ -59,7 +63,8 @@ const MyButton = ({
       <MyText
         text={text}
         color={foregroundColor_}
-        fontWeight={MyFontWeights.Bold}
+        fontWeight={textFontWeight}
+        fontSize={textSize}
       />
     </Button>
   );

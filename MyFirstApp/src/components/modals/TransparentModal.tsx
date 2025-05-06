@@ -5,7 +5,7 @@ import {MyColors} from '../../enums/Colors';
 import MyColorUtils from '../../utils/ColorUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 
-const MyTransparentModal = ({children}: {children: ReactNode}) => {
+const MyTransparentModal = ({children}: {children?: ReactNode}) => {
   const Modal_ = observer(() => {
     return (
       <Modal

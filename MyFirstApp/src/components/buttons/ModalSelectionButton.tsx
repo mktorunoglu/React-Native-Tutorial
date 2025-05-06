@@ -1,3 +1,4 @@
+import {MyFontWeights} from '../../enums/FontWeights';
 import {MyIcons} from '../../enums/Icons';
 import MyDivider from '../dividers/Divider';
 import MyView from '../views/View';
@@ -14,7 +15,7 @@ const MyModalSelectionButton = ({
   color?: string;
   icon?: MyIcons;
   text: string;
-  onPress: () => void;
+  onPress?: () => void;
 }) => {
   return (
     <MyView isColumn>
@@ -32,6 +33,7 @@ const MyModalSelectionButton = ({
               : MyIcons.RadioboxBlank
         }
         text={text}
+        textFontWeight={MyFontWeights.Normal}
         onPress={isSelected ? () => {} : onPress}
       />
     </MyView>

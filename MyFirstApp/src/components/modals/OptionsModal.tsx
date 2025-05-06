@@ -7,6 +7,7 @@ import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
+import MyAlertModal from './AlertModal';
 import MyChangeLanguageModal from './ChangeLanguageModal';
 import MyModal from './Modal';
 import MyProgressModal from './ProgressModal';
@@ -40,13 +41,25 @@ const MyOptionsModal = ({
           color={MyColors.Red}
           icon={MyIcons.Logout}
           text={MyLocalizationUtils.getLocalizedLogoutText()}
-          onPress={async () => {
-            MyModalUtils.showModal({modal: <MyProgressModal />});
-            await MyAuthenticationUtils.logout({
-              navigation: navigation,
-            });
-            MyModalUtils.hideModal();
-          }}
+          onPress={() =>
+            MyModalUtils.showModal({
+              modal: (
+                <MyAlertModal
+                  titleText={MyLocalizationUtils.getLocalizedAccountWillBeLoggedOutText()}
+                  messageText={MyLocalizationUtils.getLocalizedAreYouSureText()}
+                  buttonText={MyLocalizationUtils.getLocalizedLogoutText()}
+                  buttonColor={MyColors.Red}
+                  buttonOnPress={async () => {
+                    MyModalUtils.showModal({modal: <MyProgressModal />});
+                    await MyAuthenticationUtils.logout({
+                      navigation: navigation,
+                    });
+                    MyModalUtils.hideModal();
+                  }}
+                />
+              ),
+            })
+          }
         />
       )}
     </MyModal>

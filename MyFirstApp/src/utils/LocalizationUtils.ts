@@ -87,6 +87,21 @@ class MyLocalizationUtils {
     });
   }
 
+  public getLocalizedAreYouSureText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Are you sure?', 'Emin misiniz?'],
+    });
+  }
+
+  public getLocalizedAccountWillBeLoggedOutText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'You will be logged out of your account',
+        'Hesabınızdan çıkış yapılacak',
+      ],
+    });
+  }
+
   public getLocalizedFilesText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Files', 'Dosyalar'],

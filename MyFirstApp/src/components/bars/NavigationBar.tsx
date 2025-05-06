@@ -1,10 +1,9 @@
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {MyRouteProps} from '../../constants/RouteProps';
+import {observer} from 'mobx-react-lite';
 import {MyColors} from '../../enums/Colors';
 import {MyFontWeights} from '../../enums/FontWeights';
-import {MyRoutes} from '../../enums/Routes';
+import {MyNavigationBarRoutes} from '../../enums/NavigationBarRoutes';
 import MyNavigationBarButtonModel from '../../models/NavigationBarButtonModel';
+import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyRawButton from '../buttons/RawButton';
 import MyDivider from '../dividers/Divider';
 import MyIcon from '../icons/Icon';
@@ -14,49 +13,51 @@ import MyView from '../views/View';
 
 const MyNavigationBar = ({
   buttonList,
-  currentRoute,
+  selectedRoute,
 }: {
   buttonList: MyNavigationBarButtonModel[];
-  currentRoute: MyRoutes;
+  selectedRoute: MyObservableValueModel<MyNavigationBarRoutes>;
 }) => {
-  const navigation = useNavigation<StackNavigationProp<MyRouteProps>>();
+  const NavigationBarButton_ = observer(
+    ({button}: {button: MyNavigationBarButtonModel}) => {
+      const isSelected = selectedRoute.value == button.route;
+      const color = isSelected ? MyColors.Theme : undefined;
+      return (
+        <MyRawButton
+          onPress={
+            isSelected ? undefined : () => selectedRoute.setValue(button.route)
+          }>
+          <MyView isColumn isCenterItems paddingVertical={10}>
+            <MyView
+              width="auto"
+              backgroundColor={color}
+              paddingHorizontal={15}
+              paddingVertical={2}
+              borderRadius={100}>
+              <MyIcon
+                icon={isSelected ? button.activeIcon : button.icon}
+                color={isSelected ? MyColors.White : undefined}
+              />
+            </MyView>
+            <MyText
+              text={button.text}
+              color={color}
+              fontWeight={isSelected ? MyFontWeights.Bold : undefined}
+            />
+          </MyView>
+        </MyRawButton>
+      );
+    },
+  );
   return (
     <MyView isColumn backgroundColor={MyColors.White}>
       <MyDivider />
       <MyView isRow>
-        {buttonList.map(button => {
-          const isSelected = currentRoute == button.route;
-          const color = isSelected ? MyColors.Theme : undefined;
-          return (
-            <MyView key={button.text} isExpanded>
-              <MyRawButton
-                onPress={
-                  isSelected
-                    ? undefined
-                    : () => navigation.replace(button.route)
-                }>
-                <MyView isColumn isCenterItems paddingVertical={10}>
-                  <MyView
-                    width="auto"
-                    backgroundColor={color}
-                    paddingHorizontal={15}
-                    paddingVertical={2}
-                    borderRadius={100}>
-                    <MyIcon
-                      icon={isSelected ? button.activeIcon : button.icon}
-                      color={isSelected ? MyColors.White : undefined}
-                    />
-                  </MyView>
-                  <MyText
-                    text={button.text}
-                    color={color}
-                    fontWeight={isSelected ? MyFontWeights.Bold : undefined}
-                  />
-                </MyView>
-              </MyRawButton>
-            </MyView>
-          );
-        })}
+        {buttonList.map(button => (
+          <MyView key={button.route} isExpanded>
+            <NavigationBarButton_ button={button} />
+          </MyView>
+        ))}
       </MyView>
       <MySafeAreaView safeOnlyBottom />
     </MyView>

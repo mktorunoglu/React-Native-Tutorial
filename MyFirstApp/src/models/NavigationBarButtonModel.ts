@@ -1,11 +1,11 @@
 import {MyIcons} from '../enums/Icons';
-import {MyRoutes} from '../enums/Routes';
+import {MyNavigationBarRoutes} from '../enums/NavigationBarRoutes';
 
 class MyNavigationBarButtonModel {
   icon: MyIcons;
   activeIcon: MyIcons;
   text: string;
-  route: MyRoutes;
+  route: MyNavigationBarRoutes;
 
   constructor({
     icon,
@@ -16,7 +16,7 @@ class MyNavigationBarButtonModel {
     icon: MyIcons;
     activeIcon: MyIcons;
     text: string;
-    route: MyRoutes;
+    route: MyNavigationBarRoutes;
   }) {
     this.icon = icon;
     this.activeIcon = activeIcon;

@@ -71,7 +71,7 @@ class MyAuthenticationUtils {
         await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
       }
       MyServiceUtils.token = response.data;
-      navigation.replace(MyRoutes.Dashboard);
+      navigation.replace(MyRoutes.Home);
       return true;
     }
     return false;

@@ -1,10 +1,15 @@
 import {MyIcons} from '../../enums/Icons';
-import {MyRoutes} from '../../enums/Routes';
+import {MyNavigationBarRoutes} from '../../enums/NavigationBarRoutes';
 import MyNavigationBarButtonModel from '../../models/NavigationBarButtonModel';
+import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyNavigationBar from './NavigationBar';
 
-const MyHomeNavigationBar = ({currentRoute}: {currentRoute: MyRoutes}) => {
+const MyHomeNavigationBar = ({
+  selectedRoute,
+}: {
+  selectedRoute: MyObservableValueModel<MyNavigationBarRoutes>;
+}) => {
   return (
     <MyNavigationBar
       buttonList={[
@@ -12,34 +17,34 @@ const MyHomeNavigationBar = ({currentRoute}: {currentRoute: MyRoutes}) => {
           icon: MyIcons.HomeOutlined,
           activeIcon: MyIcons.Home,
           text: MyLocalizationUtils.getLocalizedHomeText(),
-          route: MyRoutes.Dashboard,
+          route: MyNavigationBarRoutes.Dashboard,
         }),
         new MyNavigationBarButtonModel({
           icon: MyIcons.FolderOutlined,
           activeIcon: MyIcons.Folder,
           text: MyLocalizationUtils.getLocalizedReposText(),
-          route: MyRoutes.Repos,
+          route: MyNavigationBarRoutes.Repos,
         }),
         new MyNavigationBarButtonModel({
           icon: MyIcons.ShareOutlined,
           activeIcon: MyIcons.Share,
           text: MyLocalizationUtils.getLocalizedSharingText(),
-          route: MyRoutes.Sharing,
+          route: MyNavigationBarRoutes.Sharing,
         }),
         new MyNavigationBarButtonModel({
           icon: MyIcons.StarOutlined,
           activeIcon: MyIcons.Star,
           text: MyLocalizationUtils.getLocalizedFavoritesText(),
-          route: MyRoutes.Favorites,
+          route: MyNavigationBarRoutes.Favorites,
         }),
         new MyNavigationBarButtonModel({
           icon: MyIcons.AccountOutlined,
           activeIcon: MyIcons.Account,
           text: MyLocalizationUtils.getLocalizedProfileText(),
-          route: MyRoutes.Profile,
+          route: MyNavigationBarRoutes.Profile,
         }),
       ]}
-      currentRoute={currentRoute}
+      selectedRoute={selectedRoute}
     />
   );
 };

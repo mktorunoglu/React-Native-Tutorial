@@ -37,9 +37,7 @@ const MyChangeLanguageModal = ({
             MyModalUtils.showModal({modal: <MyProgressModal />});
             await MyLocalizationUtils.setLocalization(localization);
             MyModalUtils.hideModal();
-            navigation.replace(
-              isLoginScreen ? MyRoutes.Login : MyRoutes.Profile,
-            );
+            navigation.replace(isLoginScreen ? MyRoutes.Login : MyRoutes.Home);
           }}
         />
       ))}

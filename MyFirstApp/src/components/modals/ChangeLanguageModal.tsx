@@ -1,6 +1,7 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MyRouteProps} from '../../constants/RouteProps';
 import {MyLocalizations} from '../../enums/Localizations';
+import {MyNavigationBarRoutes} from '../../enums/NavigationBarRoutes';
 import {MyRoutes} from '../../enums/Routes';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
@@ -37,7 +38,13 @@ const MyChangeLanguageModal = ({
             MyModalUtils.showModal({modal: <MyProgressModal />});
             await MyLocalizationUtils.setLocalization(localization);
             MyModalUtils.hideModal();
-            navigation.replace(isLoginScreen ? MyRoutes.Login : MyRoutes.Home);
+            if (isLoginScreen) {
+              navigation.replace(MyRoutes.Login);
+            } else {
+              navigation.replace(MyRoutes.Home, {
+                initialRoute: MyNavigationBarRoutes.Profile,
+              });
+            }
           }}
         />
       ))}

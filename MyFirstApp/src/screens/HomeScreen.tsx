@@ -1,3 +1,4 @@
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import MyHomeAppBar from '../components/bars/HomeAppBar';
@@ -6,6 +7,7 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyNavigationBarRoutes} from '../enums/NavigationBarRoutes';
+import {MyRoutes} from '../enums/Routes';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyColorUtils from '../utils/ColorUtils';
 import MyDashboardBodyScreen from './DashboardBodyScreen';
@@ -19,9 +21,9 @@ const MyHomeScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
-  const selectedRoute = new MyObservableValueModel(
-    MyNavigationBarRoutes.Dashboard,
-  );
+  const route = useRoute<RouteProp<MyRouteProps, MyRoutes.Home>>();
+  const {initialRoute = MyNavigationBarRoutes.Dashboard} = route.params ?? {};
+  const selectedRoute = new MyObservableValueModel(initialRoute);
   const BodyScreen_ = observer(() => {
     switch (selectedRoute.value) {
       case MyNavigationBarRoutes.Repos:

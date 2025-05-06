@@ -24,6 +24,22 @@ const MyReposScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
+  const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
+    const filteredRepoList = repoList.filter(repo =>
+      MyFilterUtils.isTextListContainsSearchText({
+        textList: [repo.repoName],
+        searchText: searchText.value,
+      }),
+    );
+    return (
+      <MyFlatList
+        data={filteredRepoList}
+        keyExtractor={(item, index) => item.repoId ?? index}
+        renderItem={({item}) => <MyRepoItem repo={item} />}
+        padding={5}
+      />
+    );
+  });
   return (
     <MyView isColumn isExpanded>
       <MyHomeAppBar />
@@ -43,22 +59,5 @@ const MyReposScreen = ({
     </MyView>
   );
 };
-
-const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
-  const filteredRepoList = repoList.filter(repo =>
-    MyFilterUtils.isTextListContainsSearchText({
-      textList: [repo.repoName],
-      searchText: searchText.value,
-    }),
-  );
-  return (
-    <MyFlatList
-      data={filteredRepoList}
-      keyExtractor={(item, index) => item.repoId ?? index}
-      renderItem={({item}) => <MyRepoItem repo={item} />}
-      padding={5}
-    />
-  );
-});
 
 export default MyReposScreen;

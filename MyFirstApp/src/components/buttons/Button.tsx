@@ -34,8 +34,8 @@ const MyButton = ({
   const backgroundColor_ = isTextButton
     ? MyColors.Transparent
     : isDisable
-    ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)
-    : backgroundColor;
+      ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)
+      : backgroundColor;
   const foregroundColor_ = isDisable
     ? MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.6)
     : foregroundColor;

@@ -19,13 +19,10 @@ const MyResponseBuilder = ({
       this.value = value;
     },
   }));
-
   const getResponse = async () => response_.setValue(await response());
-
   useEffect(() => {
     getResponse();
   }, []);
-
   const Builder_ = observer(() => {
     if (response_.value == null) {
       return (
@@ -45,7 +42,6 @@ const MyResponseBuilder = ({
     }
     return builder(response_.value!);
   });
-
   return <Builder_ />;
 };
 

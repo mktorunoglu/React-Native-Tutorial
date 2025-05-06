@@ -26,6 +26,74 @@ const MyDashboardScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
+  const MyCard_ = ({children}: {children?: ReactNode}) => {
+    return (
+      <MyCard paddingVertical={15} paddingHorizontal={10}>
+        {children}
+      </MyCard>
+    );
+  };
+  const MyCardTitleText_ = ({text}: {text: string}) => {
+    return (
+      <MyView paddingBottom={10}>
+        <MyText text={text} fontSize={16} />
+      </MyView>
+    );
+  };
+  const MyCardDataLine_ = ({
+    text,
+    value,
+    paddingBottom,
+    isImportant = false,
+  }: {
+    text: string;
+    value: string;
+    paddingBottom?: DimensionValue;
+    isImportant?: boolean;
+  }) => {
+    return (
+      <MyView isRow paddingBottom={paddingBottom}>
+        <MyView width="auto" isExpanded>
+          <MyText text={text} color={MyColors.Grey} />
+        </MyView>
+        <MyView width={10} />
+        <MyText
+          text={value}
+          fontWeight={MyFontWeights.Bold}
+          color={isImportant ? MyColors.Theme : undefined}
+        />
+      </MyView>
+    );
+  };
+  const MyCardDataBody_ = ({
+    titleIcon,
+    titleIconColor = MyColors.Theme,
+    children,
+  }: {
+    titleIcon: MyIcons;
+    titleIconColor?: string;
+    children?: ReactNode;
+  }) => {
+    return (
+      <MyView isRow isCenterItems>
+        <MyView
+          isCenterItems
+          height={70}
+          width={70}
+          backgroundColor={MyColorUtils.getColorWithOpacity(
+            MyColors.Theme,
+            0.2,
+          )}
+          borderRadius={70}>
+          <MyIcon icon={titleIcon} color={titleIconColor} size={30} />
+        </MyView>
+        <MyView width={10} />
+        <MyView isColumn isExpanded>
+          {children}
+        </MyView>
+      </MyView>
+    );
+  };
   return (
     <MyView isColumn isExpanded>
       <MyHomeAppBar />
@@ -158,75 +226,6 @@ const MyDashboardScreen = ({
       </MyView>
       <MyHomeNavigationBar currentRoute={MyRoutes.Dashboard} />
     </MyView>
-  );
-};
-
-const MyCardDataBody_ = ({
-  titleIcon,
-  titleIconColor = MyColors.Theme,
-  children,
-}: {
-  titleIcon: MyIcons;
-  titleIconColor?: string;
-  children?: ReactNode;
-}) => {
-  return (
-    <MyView isRow isCenterItems>
-      <MyView
-        isCenterItems
-        height={70}
-        width={70}
-        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}
-        borderRadius={70}>
-        <MyIcon icon={titleIcon} color={titleIconColor} size={30} />
-      </MyView>
-      <MyView width={10} />
-      <MyView isColumn isExpanded>
-        {children}
-      </MyView>
-    </MyView>
-  );
-};
-
-const MyCardDataLine_ = ({
-  text,
-  value,
-  paddingBottom,
-  isImportant = false,
-}: {
-  text: string;
-  value: string;
-  paddingBottom?: DimensionValue;
-  isImportant?: boolean;
-}) => {
-  return (
-    <MyView isRow paddingBottom={paddingBottom}>
-      <MyView width="auto" isExpanded>
-        <MyText text={text} color={MyColors.Grey} />
-      </MyView>
-      <MyView width={10} />
-      <MyText
-        text={value}
-        fontWeight={MyFontWeights.Bold}
-        color={isImportant ? MyColors.Theme : undefined}
-      />
-    </MyView>
-  );
-};
-
-const MyCardTitleText_ = ({text}: {text: string}) => {
-  return (
-    <MyView paddingBottom={10}>
-      <MyText text={text} fontSize={16} />
-    </MyView>
-  );
-};
-
-const MyCard_ = ({children}: {children?: ReactNode}) => {
-  return (
-    <MyCard paddingVertical={15} paddingHorizontal={10}>
-      {children}
-    </MyCard>
   );
 };
 

@@ -40,6 +40,61 @@ const MyLoginScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
+  const PasswordTextInput_ = observer(() => {
+    return (
+      <MyTextInput
+        isTextObscured={!isPasswordVisible.value}
+        labelText={MyLocalizationUtils.getLocalizedPasswordText()}
+        rightIcon={
+          isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined
+        }
+        onPressRightIcon={() =>
+          isPasswordVisible.setValue(!isPasswordVisible.value)
+        }
+        onChangeText={text => password.setValue(text)}
+      />
+    );
+  });
+  const ServerAddressTextInput_ = observer(() => {
+    return (
+      <MyTextInput
+        keyboardType={MyKeyboardTypes.Url}
+        labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
+        rightIcon={MyIcons.Web}
+        value={serverAddress.value}
+        onChangeText={text => serverAddress.setValue(text)}
+      />
+    );
+  });
+  const LoginButton_ = observer(() => {
+    return (
+      <MyButton
+        isDisable={
+          serverAddress.value.length == 0 ||
+          userId.value.length == 0 ||
+          password.value.length == 0
+        }
+        icon={MyIcons.Login}
+        text={MyLocalizationUtils.getLocalizedLoginText()}
+        onPress={async () => {
+          MyModalUtils.showModal({modal: <MyProgressModal />});
+          const isLoginSuccessful = await MyAuthenticationUtils.login({
+            serverAddress: serverAddress.value,
+            userId: userId.value,
+            password: password.value,
+            navigateToDashboardScreen: () =>
+              navigation.replace(MyRoutes.Dashboard),
+          });
+          MyModalUtils.hideModal();
+          if (!isLoginSuccessful) {
+            MySnackbarUtils.showSnackbar({
+              text: MyLocalizationUtils.getLocalizedCheckLoginInformationText(),
+            });
+          }
+        }}
+      />
+    );
+  });
   return (
     <MyView isColumn isExpanded>
       <MySafeAreaView safeOnlyTop />
@@ -92,7 +147,7 @@ const MyLoginScreen = ({
               <MyView height={10} />
               <PasswordTextInput_ />
               <MyView height={20} />
-              <LoginButton_ navigation={navigation} />
+              <LoginButton_ />
             </MyScrollView>
           </MyCard>
         </MyView>
@@ -117,65 +172,5 @@ const MyLoginScreen = ({
     </MyView>
   );
 };
-
-const LoginButton_ = observer(
-  ({navigation}: {navigation: StackNavigationProp<MyRouteProps>}) => {
-    return (
-      <MyButton
-        isDisable={
-          serverAddress.value.length == 0 ||
-          userId.value.length == 0 ||
-          password.value.length == 0
-        }
-        icon={MyIcons.Login}
-        text={MyLocalizationUtils.getLocalizedLoginText()}
-        onPress={async () => {
-          MyModalUtils.showModal({modal: <MyProgressModal />});
-          const isLoginSuccessful = await MyAuthenticationUtils.login({
-            serverAddress: serverAddress.value,
-            userId: userId.value,
-            password: password.value,
-            navigateToDashboardScreen: () =>
-              navigation.replace(MyRoutes.Dashboard),
-          });
-          MyModalUtils.hideModal();
-          if (!isLoginSuccessful) {
-            MySnackbarUtils.showSnackbar({
-              text: MyLocalizationUtils.getLocalizedCheckLoginInformationText(),
-            });
-          }
-        }}
-      />
-    );
-  },
-);
-
-const ServerAddressTextInput_ = observer(() => {
-  return (
-    <MyTextInput
-      keyboardType={MyKeyboardTypes.Url}
-      labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
-      rightIcon={MyIcons.Web}
-      value={serverAddress.value}
-      onChangeText={text => serverAddress.setValue(text)}
-    />
-  );
-});
-
-const PasswordTextInput_ = observer(() => {
-  return (
-    <MyTextInput
-      isTextObscured={!isPasswordVisible.value}
-      labelText={MyLocalizationUtils.getLocalizedPasswordText()}
-      rightIcon={
-        isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined
-      }
-      onPressRightIcon={() =>
-        isPasswordVisible.setValue(!isPasswordVisible.value)
-      }
-      onChangeText={text => password.setValue(text)}
-    />
-  );
-});
 
 export default MyLoginScreen;

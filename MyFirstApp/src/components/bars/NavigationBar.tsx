@@ -33,7 +33,7 @@ const MyNavigationBar = ({
               backgroundColor={color}
               paddingHorizontal={15}
               paddingVertical={2}
-              borderRadius={100}>
+              borderRadius={isSelected ? 100 : 0}>
               <MyIcon
                 icon={isSelected ? button.activeIcon : button.icon}
                 color={isSelected ? MyColors.White : undefined}

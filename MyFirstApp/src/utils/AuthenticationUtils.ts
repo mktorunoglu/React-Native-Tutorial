@@ -1,4 +1,7 @@
+import {StackNavigationProp} from '@react-navigation/stack';
+import {MyRouteProps} from '../constants/RouteProps';
 import {MyKeys} from '../enums/Keys';
+import {MyRoutes} from '../enums/Routes';
 import MyUserService from '../services/UserService';
 import MyServiceUtils from './ServiceUtils';
 import MyStorageUtils from './StorageUtils';
@@ -16,13 +19,9 @@ class MyAuthenticationUtils {
   }
 
   public async autoLogin({
-    navigateToLoginScreen,
-    navigateToDashboardScreen,
-    navigateToTestScreen,
+    navigation,
   }: {
-    navigateToLoginScreen: () => void;
-    navigateToDashboardScreen: () => void;
-    navigateToTestScreen: () => void;
+    navigation: StackNavigationProp<MyRouteProps>;
   }) {
     const userId = (await MyStorageUtils.getData(MyKeys.CurrentUserId)) ?? '';
     const password =
@@ -31,28 +30,28 @@ class MyAuthenticationUtils {
       userId !== '' &&
       password !== '' &&
       (await this.login({
+        navigation: navigation,
         userId: userId,
         password: password,
-        navigateToDashboardScreen: navigateToDashboardScreen,
         isAutoLogin: true,
       }))
     ) {
       return;
     }
-    navigateToLoginScreen();
+    navigation.replace(MyRoutes.Login);
   }
 
   public async login({
+    navigation,
     serverAddress,
     userId,
     password,
-    navigateToDashboardScreen,
     isAutoLogin = false,
   }: {
+    navigation: StackNavigationProp<MyRouteProps>;
     serverAddress?: string;
     userId: string;
     password: string;
-    navigateToDashboardScreen: () => void;
     isAutoLogin?: boolean;
   }): Promise<boolean> {
     MyServiceUtils.serverAddress =
@@ -72,22 +71,22 @@ class MyAuthenticationUtils {
         await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
       }
       MyServiceUtils.token = response.data;
-      navigateToDashboardScreen();
+      navigation.replace(MyRoutes.Dashboard);
       return true;
     }
     return false;
   }
 
   public async logout({
-    navigateToLoginScreen,
+    navigation,
   }: {
-    navigateToLoginScreen: () => void;
+    navigation: StackNavigationProp<MyRouteProps>;
   }): Promise<void> {
     await MyUserService.logout();
     await MyStorageUtils.storeData(MyKeys.CurrentServerAddress, '');
     await MyStorageUtils.storeData(MyKeys.CurrentUserId, '');
     await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, '');
-    navigateToLoginScreen();
+    navigation.replace(MyRoutes.Login);
   }
 }
 

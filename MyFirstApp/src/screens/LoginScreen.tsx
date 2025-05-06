@@ -18,7 +18,6 @@ import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
 import {MyIcons} from '../enums/Icons';
 import {MyKeyboardTypes} from '../enums/KeyboardTypes';
-import {MyRoutes} from '../enums/Routes';
 import {MyTextAligns} from '../enums/TextAligns';
 import {MyUrls} from '../enums/Urls';
 import MyObservableValueModel from '../models/ObservableValueModel';
@@ -78,11 +77,10 @@ const MyLoginScreen = ({
         onPress={async () => {
           MyModalUtils.showModal({modal: <MyProgressModal />});
           const isLoginSuccessful = await MyAuthenticationUtils.login({
+            navigation: navigation,
             serverAddress: serverAddress.value,
             userId: userId.value,
             password: password.value,
-            navigateToDashboardScreen: () =>
-              navigation.replace(MyRoutes.Dashboard),
           });
           MyModalUtils.hideModal();
           if (!isLoginSuccessful) {
@@ -111,7 +109,12 @@ const MyLoginScreen = ({
             tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
             onPress={() =>
               MyModalUtils.showModal({
-                modal: <MyOptionsModal isLoginScreen={true} />,
+                modal: (
+                  <MyOptionsModal
+                    navigation={navigation}
+                    isLoginScreen={true}
+                  />
+                ),
               })
             }
           />

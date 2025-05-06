@@ -17,30 +17,27 @@ import MySplashScreen from './src/screens/SplashScreen';
 import MyTestScreen from './src/test/TestScreen';
 import MyModalUtils from './src/utils/ModalUtils';
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: MyColors.Theme,
-    accent: MyColors.Theme,
-  },
-};
-
-const Stack = createStackNavigator<MyRouteProps>();
-
-const Modal_ = observer(() => {
-  return MyModalUtils.modal.value;
-});
-
 const App: React.FC = () => {
+  const theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: MyColors.Theme,
+      accent: MyColors.Theme,
+    },
+  };
+  const Stack = createStackNavigator<MyRouteProps>();
+  const Modal_ = observer(() => {
+    return MyModalUtils.modal.value;
+  });
   return (
     <SafeAreaProvider>
       <PaperProvider theme={theme}>
-        <Portal>
-          <MySnackbar />
-          <Modal_ />
-        </Portal>
         <NavigationContainer>
+          <Portal>
+            <MySnackbar />
+            <Modal_ />
+          </Portal>
           <Stack.Navigator
             initialRouteName={MyRoutes.Splash}
             screenOptions={{

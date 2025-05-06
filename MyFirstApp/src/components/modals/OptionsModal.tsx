@@ -1,9 +1,7 @@
-import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MyRouteProps} from '../../constants/RouteProps';
 import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
-import {MyRoutes} from '../../enums/Routes';
 import MyAuthenticationUtils from '../../utils/AuthenticationUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
@@ -13,8 +11,13 @@ import MyChangeLanguageModal from './ChangeLanguageModal';
 import MyModal from './Modal';
 import MyProgressModal from './ProgressModal';
 
-const MyOptionsModal = ({isLoginScreen = false}: {isLoginScreen?: boolean}) => {
-  const navigation = useNavigation<StackNavigationProp<MyRouteProps>>();
+const MyOptionsModal = ({
+  navigation,
+  isLoginScreen = false,
+}: {
+  navigation: StackNavigationProp<MyRouteProps>;
+  isLoginScreen?: boolean;
+}) => {
   return (
     <MyModal>
       <MyModalHeader text={MyLocalizationUtils.getLocalizedOptionsText()} />
@@ -23,7 +26,12 @@ const MyOptionsModal = ({isLoginScreen = false}: {isLoginScreen?: boolean}) => {
         text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
         onPress={() =>
           MyModalUtils.showModal({
-            modal: <MyChangeLanguageModal isLoginScreen={isLoginScreen} />,
+            modal: (
+              <MyChangeLanguageModal
+                navigation={navigation}
+                isLoginScreen={isLoginScreen}
+              />
+            ),
           })
         }
       />
@@ -35,7 +43,7 @@ const MyOptionsModal = ({isLoginScreen = false}: {isLoginScreen?: boolean}) => {
           onPress={async () => {
             MyModalUtils.showModal({modal: <MyProgressModal />});
             await MyAuthenticationUtils.logout({
-              navigateToLoginScreen: () => navigation.replace(MyRoutes.Login),
+              navigation: navigation,
             });
             MyModalUtils.hideModal();
           }}

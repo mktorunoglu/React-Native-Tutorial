@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MyRouteProps} from '../../constants/RouteProps';
 import {MyLocalizations} from '../../enums/Localizations';
@@ -10,8 +9,13 @@ import MyModalHeader from '../headers/ModalHeader';
 import MyModal from './Modal';
 import MyProgressModal from './ProgressModal';
 
-const MyChangeLanguageModal = ({isLoginScreen}: {isLoginScreen: boolean}) => {
-  const navigation = useNavigation<StackNavigationProp<MyRouteProps>>();
+const MyChangeLanguageModal = ({
+  navigation,
+  isLoginScreen,
+}: {
+  navigation: StackNavigationProp<MyRouteProps>;
+  isLoginScreen: boolean;
+}) => {
   return (
     <MyModal>
       <MyModalHeader

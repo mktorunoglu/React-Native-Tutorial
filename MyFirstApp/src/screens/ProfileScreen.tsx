@@ -81,7 +81,7 @@ const MyProfileScreen = ({
               text={MyLocalizationUtils.getLocalizedOptionsText()}
               onPress={() =>
                 MyModalUtils.showModal({
-                  modal: <MyOptionsModal />,
+                  modal: <MyOptionsModal navigation={navigation} />,
                 })
               }
             />

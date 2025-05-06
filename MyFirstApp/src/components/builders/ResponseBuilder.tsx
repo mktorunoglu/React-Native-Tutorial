@@ -1,5 +1,6 @@
-import {observer, useLocalObservable} from 'mobx-react-lite';
+import {observer} from 'mobx-react-lite';
 import {ReactNode, useEffect} from 'react';
+import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyResponseModel from '../../models/ResponseModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyProgressIndicator from '../indicators/ProgressIndicator';
@@ -13,12 +14,7 @@ const MyResponseBuilder = ({
   response: () => Promise<MyResponseModel>;
   builder: (response: MyResponseModel) => ReactNode;
 }) => {
-  const response_ = useLocalObservable(() => ({
-    value: null as MyResponseModel | null,
-    setValue(value: MyResponseModel) {
-      this.value = value;
-    },
-  }));
+  const response_ = new MyObservableValueModel<MyResponseModel | null>(null);
   const getResponse = async () => response_.setValue(await response());
   useEffect(() => {
     getResponse();

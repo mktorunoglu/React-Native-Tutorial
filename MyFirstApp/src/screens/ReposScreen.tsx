@@ -17,13 +17,12 @@ import MyFileService from '../services/FileService';
 import MyColorUtils from '../utils/ColorUtils';
 import MyFilterUtils from '../utils/FilterUtils';
 
-const searchText = new MyObservableValueModel('');
-
 const MyReposScreen = ({
   navigation,
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
+  const searchText = new MyObservableValueModel('');
   const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
     const filteredRepoList = repoList.filter(repo =>
       MyFilterUtils.isTextListContainsSearchText({

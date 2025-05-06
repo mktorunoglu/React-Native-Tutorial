@@ -28,18 +28,17 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
 import MySnackbarUtils from '../utils/SnackbarUtils';
 
-const serverAddress = new MyObservableValueModel<string>(
-  MyUrls.DefaultServerAddress,
-);
-const userId = new MyObservableValueModel('');
-const password = new MyObservableValueModel('');
-const isPasswordVisible = new MyObservableValueModel(false);
-
 const MyLoginScreen = ({
   navigation,
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
+  const serverAddress = new MyObservableValueModel<string>(
+    MyUrls.DefaultServerAddress,
+  );
+  const userId = new MyObservableValueModel('');
+  const password = new MyObservableValueModel('');
+  const isPasswordVisible = new MyObservableValueModel(false);
   const PasswordTextInput_ = observer(() => {
     return (
       <MyTextInput

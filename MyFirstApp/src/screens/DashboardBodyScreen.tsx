@@ -1,6 +1,7 @@
 import {ReactNode} from 'react';
 import {DimensionValue} from 'react-native';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
+import MyRawButton from '../components/buttons/RawButton';
 import MyCard from '../components/cards/Card';
 import MyIcon from '../components/icons/Icon';
 import MyPercentProgressIndicator from '../components/indicators/PercentProgressIndicator';
@@ -10,18 +11,32 @@ import MyView from '../components/views/View';
 import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
 import {MyIcons} from '../enums/Icons';
+import {MyNavigationBarRoutes} from '../enums/NavigationBarRoutes';
 import MyDashboardInfoModel from '../models/DashboardInfoModel';
+import MyObservableValueModel from '../models/ObservableValueModel';
 import MyFileService from '../services/FileService';
 import MyColorUtils from '../utils/ColorUtils';
 import MyConverterUtils from '../utils/ConverterUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 
-const MyDashboardBodyScreen = () => {
-  const MyCard_ = ({children}: {children?: ReactNode}) => {
+const MyDashboardBodyScreen = ({
+  selectedRoute,
+}: {
+  selectedRoute: MyObservableValueModel<MyNavigationBarRoutes>;
+}) => {
+  const MyCard_ = ({
+    onPress,
+    children,
+  }: {
+    onPress?: () => void;
+    children?: ReactNode;
+  }) => {
     return (
-      <MyCard paddingVertical={15} paddingHorizontal={10}>
-        {children}
-      </MyCard>
+      <MyRawButton onPress={onPress} color={MyColors.Transparent}>
+        <MyCard paddingVertical={15} paddingHorizontal={10}>
+          {children}
+        </MyCard>
+      </MyRawButton>
     );
   };
   const MyCardTitleText_ = ({text}: {text: string}) => {
@@ -153,7 +168,10 @@ const MyDashboardBodyScreen = () => {
                   </MyView>
                 </MyCard_>
                 <MyView height={10} />
-                <MyCard_>
+                <MyCard_
+                  onPress={() => {
+                    selectedRoute.setValue(MyNavigationBarRoutes.Sharing);
+                  }}>
                   <MyCardDataBody_ titleIcon={MyIcons.Share}>
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedSharedWithYouText()}
@@ -170,7 +188,10 @@ const MyDashboardBodyScreen = () => {
                   </MyCardDataBody_>
                 </MyCard_>
                 <MyView height={10} />
-                <MyCard_>
+                <MyCard_
+                  onPress={() => {
+                    selectedRoute.setValue(MyNavigationBarRoutes.Sharing);
+                  }}>
                   <MyCardDataBody_ titleIcon={MyIcons.Send}>
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedSharedByYouText()}
@@ -192,7 +213,10 @@ const MyDashboardBodyScreen = () => {
                   </MyCardDataBody_>
                 </MyCard_>
                 <MyView height={10} />
-                <MyCard_>
+                <MyCard_
+                  onPress={() => {
+                    selectedRoute.setValue(MyNavigationBarRoutes.Favorites);
+                  }}>
                   <MyCardDataBody_
                     titleIcon={MyIcons.Star}
                     titleIconColor={MyColors.Orange}>

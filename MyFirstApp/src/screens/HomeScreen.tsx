@@ -33,7 +33,7 @@ const MyHomeScreen = ({
       case MyNavigationBarRoutes.Profile:
         return <MyProfileBodyScreen />;
       default:
-        return <MyDashboardBodyScreen />;
+        return <MyDashboardBodyScreen selectedRoute={selectedRoute} />;
     }
   });
   return (

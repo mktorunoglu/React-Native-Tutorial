@@ -22,7 +22,7 @@ const MyHomeScreen = ({
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   const route = useRoute<RouteProp<MyRouteProps, MyRoutes.Home>>();
-  const {initialRoute = MyNavigationBarRoutes.Dashboard} = route.params ?? {};
+  const {initialRoute} = route.params;
   const selectedRoute = new MyObservableValueModel(initialRoute);
   const BodyScreen_ = observer(() => {
     switch (selectedRoute.value) {

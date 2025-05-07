@@ -12,7 +12,7 @@ const MyHomeNavigationBar = ({
 }) => {
   return (
     <MyNavigationBar
-      buttonList={[
+      buttonDataList={[
         new MyNavigationBarButtonDataModel({
           icon: MyIcons.HomeOutlined,
           activeIcon: MyIcons.Home,

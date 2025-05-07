@@ -12,6 +12,7 @@ import {MyTextAligns} from '../enums/TextAligns';
 import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
+import MySortingUtils from '../utils/SortingUtils';
 
 const MySplashScreen = ({
   navigation,
@@ -20,6 +21,7 @@ const MySplashScreen = ({
 }) => {
   const onInit = async () => {
     await MyLocalizationUtils.initialize();
+    await MySortingUtils.initialize();
     await MyAuthenticationUtils.autoLogin({
       navigation: navigation,
     });

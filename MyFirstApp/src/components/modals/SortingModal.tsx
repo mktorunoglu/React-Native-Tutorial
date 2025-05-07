@@ -1,9 +1,12 @@
 import {MySortingTypes} from '../../enums/SortingTypes';
 import MyModalSelectionButtonDataModel from '../../models/ModalSelectionButtonDataModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
+import MySortingUtils from '../../utils/SortingUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyModal from './Modal';
+import MyProgressModal from './ProgressModal';
 
 const MySortingModal = () => {
   return (
@@ -37,9 +40,13 @@ const MySortingModal = () => {
       ].map(buttonData => (
         <MyModalSelectionButton
           key={buttonData.value}
-          isSelected={'test' == buttonData.value}
+          isSelected={MySortingUtils.sortingType == buttonData.value}
           text={buttonData.text}
-          onPress={() => {}}
+          onPress={async () => {
+            MyModalUtils.showModal({modal: <MyProgressModal />});
+            await MySortingUtils.setSortingType(buttonData.value);
+            MyModalUtils.hideModal();
+          }}
         />
       ))}
     </MyModal>

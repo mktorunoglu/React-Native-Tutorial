@@ -2,7 +2,7 @@ import {observer} from 'mobx-react-lite';
 import {MyColors} from '../../enums/Colors';
 import {MyFontWeights} from '../../enums/FontWeights';
 import {MyNavigationBarRoutes} from '../../enums/NavigationBarRoutes';
-import MyNavigationBarButtonModel from '../../models/NavigationBarButtonModel';
+import MyNavigationBarButtonDataModel from '../../models/NavigationBarButtonDataModel';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyRawButton from '../buttons/RawButton';
 import MyDivider from '../dividers/Divider';
@@ -12,20 +12,22 @@ import MySafeAreaView from '../views/SafeAreaView';
 import MyView from '../views/View';
 
 const MyNavigationBar = ({
-  buttonList,
+  buttonDataList,
   selectedRoute,
 }: {
-  buttonList: MyNavigationBarButtonModel[];
+  buttonDataList: MyNavigationBarButtonDataModel[];
   selectedRoute: MyObservableValueModel<MyNavigationBarRoutes>;
 }) => {
   const NavigationBarButton_ = observer(
-    ({button}: {button: MyNavigationBarButtonModel}) => {
-      const isSelected = selectedRoute.value == button.route;
+    ({buttonData}: {buttonData: MyNavigationBarButtonDataModel}) => {
+      const isSelected = selectedRoute.value == buttonData.route;
       const color = isSelected ? MyColors.Theme : undefined;
       return (
         <MyRawButton
           onPress={
-            isSelected ? undefined : () => selectedRoute.setValue(button.route)
+            isSelected
+              ? undefined
+              : () => selectedRoute.setValue(buttonData.route)
           }>
           <MyView isColumn isCenterItems paddingVertical={10}>
             <MyView
@@ -35,12 +37,12 @@ const MyNavigationBar = ({
               paddingVertical={2}
               borderRadius={isSelected ? 100 : 0}>
               <MyIcon
-                icon={isSelected ? button.activeIcon : button.icon}
+                icon={isSelected ? buttonData.activeIcon : buttonData.icon}
                 color={isSelected ? MyColors.White : undefined}
               />
             </MyView>
             <MyText
-              text={button.text}
+              text={buttonData.text}
               color={color}
               fontWeight={isSelected ? MyFontWeights.Bold : undefined}
             />
@@ -53,9 +55,9 @@ const MyNavigationBar = ({
     <MyView isColumn backgroundColor={MyColors.White}>
       <MyDivider />
       <MyView isRow>
-        {buttonList.map(button => (
-          <MyView key={button.route} isExpanded>
-            <NavigationBarButton_ button={button} />
+        {buttonDataList.map(buttonData => (
+          <MyView key={buttonData.route} isExpanded>
+            <NavigationBarButton_ buttonData={buttonData} />
           </MyView>
         ))}
       </MyView>

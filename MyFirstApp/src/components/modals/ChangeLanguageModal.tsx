@@ -3,6 +3,7 @@ import {MyRouteProps} from '../../constants/RouteProps';
 import {MyLocalizations} from '../../enums/Localizations';
 import {MyNavigationBarRoutes} from '../../enums/NavigationBarRoutes';
 import {MyRoutes} from '../../enums/Routes';
+import MyModalSelectionButtonDataModel from '../../models/ModalSelectionButtonDataModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
@@ -22,21 +23,23 @@ const MyChangeLanguageModal = ({
       <MyModalHeader
         text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
       />
-      {Object.values(MyLocalizations).map(localization => (
+      {[
+        new MyModalSelectionButtonDataModel({
+          value: MyLocalizations.English,
+          text: MyLocalizationUtils.getLocalizedEnglishText(),
+        }),
+        new MyModalSelectionButtonDataModel({
+          value: MyLocalizations.Turkish,
+          text: MyLocalizationUtils.getLocalizedTurkishText(),
+        }),
+      ].map(buttonData => (
         <MyModalSelectionButton
-          key={localization}
-          isSelected={MyLocalizationUtils.localization == localization}
-          text={
-            {
-              [MyLocalizations.English]:
-                MyLocalizationUtils.getLocalizedEnglishText(),
-              [MyLocalizations.Turkish]:
-                MyLocalizationUtils.getLocalizedTurkishText(),
-            }[localization]
-          }
+          key={buttonData.value}
+          isSelected={MyLocalizationUtils.localization == buttonData.value}
+          text={buttonData.text}
           onPress={async () => {
             MyModalUtils.showModal({modal: <MyProgressModal />});
-            await MyLocalizationUtils.setLocalization(localization);
+            await MyLocalizationUtils.setLocalization(buttonData.value);
             MyModalUtils.hideModal();
             if (isLoginScreen) {
               navigation.replace(MyRoutes.Login);

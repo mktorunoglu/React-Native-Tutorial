@@ -1,7 +1,7 @@
 import {MyIcons} from '../enums/Icons';
 import {MyNavigationBarRoutes} from '../enums/NavigationBarRoutes';
 
-class MyNavigationBarButtonModel {
+class MyNavigationBarButtonDataModel {
   icon: MyIcons;
   activeIcon: MyIcons;
   text: string;
@@ -25,4 +25,4 @@ class MyNavigationBarButtonModel {
   }
 }
 
-export default MyNavigationBarButtonModel;
+export default MyNavigationBarButtonDataModel;

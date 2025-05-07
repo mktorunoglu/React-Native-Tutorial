@@ -87,6 +87,48 @@ class MyLocalizationUtils {
     });
   }
 
+  public getLocalizedSizeDescendingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Size (Descending)', 'Boyut (Azalan)'],
+    });
+  }
+
+  public getLocalizedSizeAscendingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Size (Ascending)', 'Boyut (Artan)'],
+    });
+  }
+
+  public getLocalizedLastUpdateDescendingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Last Update (Descending)',
+        'Son Güncelleme (Azalan)',
+      ],
+    });
+  }
+
+  public getLocalizedLastUpdateAscendingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Last Update (Ascending)',
+        'Son Güncelleme (Artan)',
+      ],
+    });
+  }
+
+  public getLocalizedAlphabeticalDescendingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Alphabetical (Descending)', 'Alfabetik (Azalan)'],
+    });
+  }
+
+  public getLocalizedAlphabeticalAscendingText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Alphabetical (Ascending)', 'Alfabetik (Artan)'],
+    });
+  }
+
   public getLocalizedSortText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Sort', 'Sırala'],

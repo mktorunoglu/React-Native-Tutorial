@@ -34,7 +34,7 @@ const MyModalSelectionButton = ({
         }
         text={text}
         textFontWeight={MyFontWeights.Normal}
-        onPress={isSelected ? () => {} : onPress}
+        onPress={isSelected ? undefined : onPress}
       />
     </MyView>
   );

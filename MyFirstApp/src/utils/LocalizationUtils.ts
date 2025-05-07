@@ -87,6 +87,12 @@ class MyLocalizationUtils {
     });
   }
 
+  public getLocalizedSortText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Sort', 'Sırala'],
+    });
+  }
+
   public getLocalizedAreYouSureText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Are you sure?', 'Emin misiniz?'],

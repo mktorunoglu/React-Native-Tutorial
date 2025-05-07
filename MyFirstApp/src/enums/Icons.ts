@@ -34,6 +34,7 @@ export enum MyIcons {
   SettingsOutlined = 'cog-outline',
   Share = 'share-variant',
   ShareOutlined = 'share-variant-outline',
+  Sort = 'sort-variant',
   Star = 'star',
   StarOutlined = 'star-outline',
   Web = 'web',

@@ -1,10 +1,12 @@
 import {observer} from 'mobx-react-lite';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
+import MySortingIconButton from '../components/buttons/SortingIconButton';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
 import MySearchTextInput from '../components/texts/SearchTextInput';
 import MyView from '../components/views/View';
+import {MyColors} from '../enums/Colors';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyRepoModel from '../models/RepoModel';
 import MyFileService from '../services/FileService';
@@ -30,7 +32,12 @@ const MyReposBodyScreen = () => {
   });
   return (
     <MyView isColumn isExpanded>
-      <MySearchTextInput onChangeText={text => searchText.setValue(text)} />
+      <MyView isRow backgroundColor={MyColors.White}>
+        <MyView isExpanded>
+          <MySearchTextInput onChangeText={text => searchText.setValue(text)} />
+        </MyView>
+        <MySortingIconButton />
+      </MyView>
       <MyDivider />
       <MyView isExpanded>
         <MyResponseBuilder

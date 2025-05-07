@@ -68,11 +68,11 @@ const MyProfileBodyScreen = () => {
           <MyButton
             icon={MyIcons.SettingsOutlined}
             text={MyLocalizationUtils.getLocalizedOptionsText()}
-            onPress={() =>
+            onPress={() => {
               MyModalUtils.showModal({
                 modal: <MyOptionsModal navigation={navigation} />,
-              })
-            }
+              });
+            }}
           />
         </MyCard>
       </MyScrollView>

@@ -1,6 +1,7 @@
 export enum MyIcons {
   Account = 'account',
   AccountOutlined = 'account-outline',
+  Add = 'plus',
   Archive = 'archive',
   ArchiveOutlined = 'archive-outline',
   Bell = 'bell',

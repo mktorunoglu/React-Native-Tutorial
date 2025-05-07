@@ -45,11 +45,11 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
           <MyIconButton
             icon={MyIcons.MoreVertical}
             tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
-            onPress={() =>
+            onPress={() => {
               MyModalUtils.showModal({
                 modal: <MyRepoOperationsModal repo={repo} />,
-              })
-            }
+              });
+            }}
           />
         </MyView>
       </MyCard>

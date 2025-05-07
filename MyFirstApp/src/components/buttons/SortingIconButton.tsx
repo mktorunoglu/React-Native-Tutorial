@@ -9,11 +9,11 @@ const MySortingIconButton = () => {
     <MyIconButton
       icon={MyIcons.Sort}
       tooltip={MyLocalizationUtils.getLocalizedSortText()}
-      onPress={() =>
+      onPress={() => {
         MyModalUtils.showModal({
           modal: <MySortingModal />,
-        })
-      }
+        });
+      }}
     />
   );
 };

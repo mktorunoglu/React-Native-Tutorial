@@ -37,18 +37,20 @@ const MySortingModal = () => {
           value: MySortingTypes.SizeDescending,
           text: MyLocalizationUtils.getLocalizedSizeDescendingText(),
         }),
-      ].map(buttonData => (
-        <MyModalSelectionButton
-          key={buttonData.value}
-          isSelected={MySortingUtils.sortingType.value == buttonData.value}
-          text={buttonData.text}
-          onPress={async () => {
-            MyModalUtils.showModal({modal: <MyProgressModal />});
-            await MySortingUtils.setSortingType(buttonData.value);
-            MyModalUtils.hideModal();
-          }}
-        />
-      ))}
+      ].map(buttonData => {
+        return (
+          <MyModalSelectionButton
+            key={buttonData.value}
+            isSelected={MySortingUtils.sortingType.value == buttonData.value}
+            text={buttonData.text}
+            onPress={async () => {
+              MyModalUtils.showModal({modal: <MyProgressModal />});
+              await MySortingUtils.setSortingType(buttonData.value);
+              MyModalUtils.hideModal();
+            }}
+          />
+        );
+      })}
     </MyModal>
   );
 };

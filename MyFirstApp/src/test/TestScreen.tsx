@@ -16,7 +16,7 @@ const MyTestScreen = ({
     <MyView isExpanded isCenterItems>
       <MyButton
         text="test"
-        onPress={() =>
+        onPress={() => {
           MyModalUtils.showModal({
             modal: (
               <MyAlertModal
@@ -26,8 +26,8 @@ const MyTestScreen = ({
                 buttonColor={MyColors.Red}
               />
             ),
-          })
-        }
+          });
+        }}
       />
     </MyView>
   );

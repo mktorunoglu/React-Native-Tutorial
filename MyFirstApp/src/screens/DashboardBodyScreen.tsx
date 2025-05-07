@@ -123,32 +123,34 @@ const MyDashboardBodyScreen = ({
                             (dashboardInfo.quota ?? 1)) *
                           100
                         }>
-                        {() => (
-                          <MyView isColumn isCenterItems>
-                            <MyText
-                              text={MyLocalizationUtils.getLocalizedUsageText()}
-                              color={MyColors.Grey}
-                              fontSize={12}
-                            />
-                            <MyView height={10} />
-                            <MyText
-                              text={MyLocalizationUtils.getLocalizedPercentValueText(
-                                {
-                                  variableTextList: [
-                                    Math.ceil(
-                                      ((dashboardInfo.usage ?? 0) /
-                                        (dashboardInfo.quota ?? 1)) *
-                                        100,
-                                    ).toString(),
-                                  ],
-                                },
-                              )}
-                              color={MyColors.Theme}
-                              fontWeight={MyFontWeights.Bold}
-                              fontSize={20}
-                            />
-                          </MyView>
-                        )}
+                        {() => {
+                          return (
+                            <MyView isColumn isCenterItems>
+                              <MyText
+                                text={MyLocalizationUtils.getLocalizedUsageText()}
+                                color={MyColors.Grey}
+                                fontSize={12}
+                              />
+                              <MyView height={10} />
+                              <MyText
+                                text={MyLocalizationUtils.getLocalizedPercentValueText(
+                                  {
+                                    variableTextList: [
+                                      Math.ceil(
+                                        ((dashboardInfo.usage ?? 0) /
+                                          (dashboardInfo.quota ?? 1)) *
+                                          100,
+                                      ).toString(),
+                                    ],
+                                  },
+                                )}
+                                color={MyColors.Theme}
+                                fontWeight={MyFontWeights.Bold}
+                                fontSize={20}
+                              />
+                            </MyView>
+                          );
+                        }}
                       </MyPercentProgressIndicator>
                     </MyView>
                     <MyCardDataLine_

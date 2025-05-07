@@ -11,7 +11,9 @@ const MyModal = ({children}: {children?: ReactNode}) => {
     return (
       <Modal
         visible={MyModalUtils.isModalVisible.value}
-        onDismiss={() => MyModalUtils.hideModal()}
+        onDismiss={() => {
+          MyModalUtils.hideModal();
+        }}
         contentContainerStyle={{
           backgroundColor: MyColors.White,
           width: '100%',

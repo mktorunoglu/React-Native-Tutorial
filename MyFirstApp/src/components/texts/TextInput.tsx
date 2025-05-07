@@ -63,12 +63,14 @@ const MyTextInput = ({
       left={
         leftIcon == null ? undefined : (
           <TextInput.Icon
-            icon={() => (
-              <MyIcon
-                icon={leftIcon}
-                color={isThereLeftIconFunction ? undefined : MyColors.Grey}
-              />
-            )}
+            icon={() => {
+              return (
+                <MyIcon
+                  icon={leftIcon}
+                  color={isThereLeftIconFunction ? undefined : MyColors.Grey}
+                />
+              );
+            }}
             forceTextInputFocus={!isThereLeftIconFunction}
             color={isThereLeftIconFunction ? undefined : MyColors.White}
             onPress={onPressLeftIcon}
@@ -78,12 +80,14 @@ const MyTextInput = ({
       right={
         rightIcon == null ? undefined : (
           <TextInput.Icon
-            icon={() => (
-              <MyIcon
-                icon={rightIcon}
-                color={isThereRightIconFunction ? undefined : MyColors.Grey}
-              />
-            )}
+            icon={() => {
+              return (
+                <MyIcon
+                  icon={rightIcon}
+                  color={isThereRightIconFunction ? undefined : MyColors.Grey}
+                />
+              );
+            }}
             forceTextInputFocus={!isThereRightIconFunction}
             color={isThereRightIconFunction ? undefined : MyColors.White}
             onPress={onPressRightIcon}

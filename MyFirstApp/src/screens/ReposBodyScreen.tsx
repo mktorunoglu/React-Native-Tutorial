@@ -1,31 +1,39 @@
 import {observer} from 'mobx-react-lite';
+import MyAlertBody from '../components/bodies/AlertBody';
 import MyResponseBuilder from '../components/builders/ResponseBuilder';
+import MyIconButton from '../components/buttons/IconButton';
 import MySortingIconButton from '../components/buttons/SortingIconButton';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
 import MySearchTextInput from '../components/texts/SearchTextInput';
+import MyText from '../components/texts/Text';
 import MyView from '../components/views/View';
 import {MyColors} from '../enums/Colors';
+import {MyIcons} from '../enums/Icons';
 import {MySortingTypes} from '../enums/SortingTypes';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyRepoModel from '../models/RepoModel';
 import MyFileService from '../services/FileService';
 import MyFilterUtils from '../utils/FilterUtils';
+import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MySortingUtils from '../utils/SortingUtils';
 
 const MyReposBodyScreen = () => {
   const searchText = new MyObservableValueModel('');
   const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
-    const filteredRepoList = repoList.filter(repo =>
-      MyFilterUtils.isTextListContainsSearchText({
+    const filteredRepoList = repoList.filter(repo => {
+      return MyFilterUtils.isTextListContainsSearchText({
         textList: [repo.repoName],
         searchText: searchText.value,
-      }),
-    );
-    filteredRepoList.sort((a, b) =>
-      MySortingUtils.compareStrings(a.repoName, b.repoName),
-    );
+      });
+    });
+    const isFilteredRepoListEmpty = filteredRepoList.length == 0;
+    const isSearchTextEmpty = searchText.value.trim() == '';
+    const isRepoListEmpty = isFilteredRepoListEmpty && isSearchTextEmpty;
+    filteredRepoList.sort((a, b) => {
+      return MySortingUtils.compareStrings(a.repoName, b.repoName);
+    });
     if (
       MySortingUtils.sortingType.value != MySortingTypes.AlphabeticalAscending
     ) {
@@ -51,31 +59,64 @@ const MyReposBodyScreen = () => {
       });
     }
     return (
-      <MyFlatList
-        data={filteredRepoList}
-        keyExtractor={(item, index) => item.repoId ?? index}
-        renderItem={({item}) => <MyRepoItem repo={item} />}
-        padding={5}
-      />
+      <MyView isColumn isExpanded>
+        <MyView isRow isCenterItems backgroundColor={MyColors.White}>
+          <MyView isExpanded>
+            {isRepoListEmpty ? (
+              <MyView paddingHorizontal={15}>
+                <MyText
+                  text={MyLocalizationUtils.getLocalizedAddNewRepoText()}
+                />
+              </MyView>
+            ) : (
+              <MySearchTextInput
+                onChangeText={text => {
+                  searchText.setValue(text);
+                }}
+              />
+            )}
+          </MyView>
+          <MyIconButton
+            icon={MyIcons.Add}
+            tooltip={MyLocalizationUtils.getLocalizedAddNewRepoText()}
+            onPress={() => {}}
+          />
+          {!isRepoListEmpty && <MySortingIconButton />}
+        </MyView>
+        <MyDivider />
+        {isFilteredRepoListEmpty ? (
+          <MyAlertBody
+            text={
+              isSearchTextEmpty
+                ? MyLocalizationUtils.getLocalizedThereIsNoRepoYetText()
+                : MyLocalizationUtils.getLocalizedThereIsNoRepoWithSearchedNameText()
+            }
+          />
+        ) : (
+          <MyView isExpanded>
+            <MyFlatList
+              data={filteredRepoList}
+              keyExtractor={(item, index) => {
+                return item.repoId ?? index;
+              }}
+              renderItem={({item}) => {
+                return <MyRepoItem repo={item} />;
+              }}
+              padding={5}
+            />
+          </MyView>
+        )}
+      </MyView>
     );
   });
   return (
-    <MyView isColumn isExpanded>
-      <MyView isRow backgroundColor={MyColors.White}>
-        <MyView isExpanded>
-          <MySearchTextInput onChangeText={text => searchText.setValue(text)} />
-        </MyView>
-        <MySortingIconButton />
-      </MyView>
-      <MyDivider />
-      <MyView isExpanded>
-        <MyResponseBuilder
-          response={MyFileService.listOwnedRepo}
-          builder={response => {
-            return <RepoItemList_ repoList={response.data} />;
-          }}
-        />
-      </MyView>
+    <MyView isExpanded>
+      <MyResponseBuilder
+        response={MyFileService.listOwnedRepo}
+        builder={response => {
+          return <RepoItemList_ repoList={response.data} />;
+        }}
+      />
     </MyView>
   );
 };

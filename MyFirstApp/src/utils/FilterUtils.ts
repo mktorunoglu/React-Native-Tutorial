@@ -22,10 +22,15 @@ class MyFilterUtils {
     }
     const searchWordList = searchText
       .split(' ')
-      .map(word => word.trim())
-      .filter(word => word !== '');
-    const normalizeText = (text: string): string =>
-      text.replace(/\s+/g, '').toLocaleLowerCase();
+      .map(word => {
+        return word.trim();
+      })
+      .filter(word => {
+        return word !== '';
+      });
+    const normalizeText = (text: string): string => {
+      return text.replace(/\s+/g, '').toLocaleLowerCase();
+    };
     let counter = 0;
     for (const searchWord of searchWordList) {
       for (const text of textList) {

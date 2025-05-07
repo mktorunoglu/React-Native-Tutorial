@@ -30,7 +30,7 @@ const MySplashScreen = ({
     onInit();
   }, []);
   return (
-    <MyView isColumn isExpanded>
+    <MyView isColumn isExpanded backgroundColor={MyColors.White}>
       <MySafeAreaView safeOnlyTop />
       <MyView isColumn isExpanded isCenterItems>
         <MyImage

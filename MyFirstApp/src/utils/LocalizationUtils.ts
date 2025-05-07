@@ -73,6 +73,27 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedAddNewRepoText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Add New Repo', 'Yeni Depo Ekle'],
+    });
+  }
+
+  public getLocalizedThereIsNoRepoWithSearchedNameText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'There is no repo with the searched name',
+        'Aranan isimde bir depo yok',
+      ],
+    });
+  }
+
+  public getLocalizedThereIsNoRepoYetText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['There is no repo yet', 'Henüz bir depo yok'],
+    });
+  }
+
   public getLocalizedPercentValueText({
     variableTextList,
   }: {

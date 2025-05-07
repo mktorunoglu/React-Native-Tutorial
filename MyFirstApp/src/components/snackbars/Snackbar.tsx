@@ -12,7 +12,9 @@ const MySnackbar = () => {
     return (
       <Snackbar
         visible={MySnackbarUtils.isSnackbarVisible.value}
-        onDismiss={() => MySnackbarUtils.hideSnackbar()}
+        onDismiss={() => {
+          MySnackbarUtils.hideSnackbar();
+        }}
         icon={MySnackbarUtils.snackbarIcon.value!}
         duration={MySnackbarUtils.snackbarDurationMilliseconds.value!}
         style={{
@@ -38,7 +40,9 @@ const MySnackbar = () => {
             isTextButton
             foregroundColor={MySnackbarUtils.snackbarForegroundColor.value!}
             text={MyLocalizationUtils.getLocalizedOkeyText()}
-            onPress={() => MySnackbarUtils.hideSnackbar()}
+            onPress={() => {
+              MySnackbarUtils.hideSnackbar();
+            }}
           />
         </MyView>
       </Snackbar>

@@ -32,25 +32,27 @@ const MyChangeLanguageModal = ({
           value: MyLocalizations.Turkish,
           text: MyLocalizationUtils.getLocalizedTurkishText(),
         }),
-      ].map(buttonData => (
-        <MyModalSelectionButton
-          key={buttonData.value}
-          isSelected={MyLocalizationUtils.localization == buttonData.value}
-          text={buttonData.text}
-          onPress={async () => {
-            MyModalUtils.showModal({modal: <MyProgressModal />});
-            await MyLocalizationUtils.setLocalization(buttonData.value);
-            MyModalUtils.hideModal();
-            if (isLoginScreen) {
-              navigation.replace(MyRoutes.Login);
-            } else {
-              navigation.replace(MyRoutes.Home, {
-                initialRoute: MyNavigationBarRoutes.Profile,
-              });
-            }
-          }}
-        />
-      ))}
+      ].map(buttonData => {
+        return (
+          <MyModalSelectionButton
+            key={buttonData.value}
+            isSelected={MyLocalizationUtils.localization == buttonData.value}
+            text={buttonData.text}
+            onPress={async () => {
+              MyModalUtils.showModal({modal: <MyProgressModal />});
+              await MyLocalizationUtils.setLocalization(buttonData.value);
+              MyModalUtils.hideModal();
+              if (isLoginScreen) {
+                navigation.replace(MyRoutes.Login);
+              } else {
+                navigation.replace(MyRoutes.Home, {
+                  initialRoute: MyNavigationBarRoutes.Profile,
+                });
+              }
+            }}
+          />
+        );
+      })}
     </MyModal>
   );
 };

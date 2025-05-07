@@ -27,7 +27,7 @@ const MyOptionsModal = ({
       <MyModalSelectionButton
         icon={MyIcons.Earth}
         text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
-        onPress={() =>
+        onPress={() => {
           MyModalUtils.showModal({
             modal: (
               <MyChangeLanguageModal
@@ -35,15 +35,15 @@ const MyOptionsModal = ({
                 isLoginScreen={isLoginScreen}
               />
             ),
-          })
-        }
+          });
+        }}
       />
       {!isLoginScreen && (
         <MyModalSelectionButton
           icon={MyIcons.Logout}
           text={MyLocalizationUtils.getLocalizedLogoutText()}
           color={MyColors.Red}
-          onPress={() =>
+          onPress={() => {
             MyModalUtils.showModal({
               modal: (
                 <MyAlertModal
@@ -60,8 +60,8 @@ const MyOptionsModal = ({
                   }}
                 />
               ),
-            })
-          }
+            });
+          }}
         />
       )}
     </MyModal>

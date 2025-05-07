@@ -46,10 +46,12 @@ const MyLoginScreen = ({
         rightIcon={
           isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined
         }
-        onPressRightIcon={() =>
-          isPasswordVisible.setValue(!isPasswordVisible.value)
-        }
-        onChangeText={text => password.setValue(text)}
+        onPressRightIcon={() => {
+          isPasswordVisible.setValue(!isPasswordVisible.value);
+        }}
+        onChangeText={text => {
+          password.setValue(text);
+        }}
       />
     );
   });
@@ -60,7 +62,9 @@ const MyLoginScreen = ({
         labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
         rightIcon={MyIcons.Web}
         value={serverAddress.value}
-        onChangeText={text => serverAddress.setValue(text)}
+        onChangeText={text => {
+          serverAddress.setValue(text);
+        }}
       />
     );
   });
@@ -93,7 +97,7 @@ const MyLoginScreen = ({
     );
   });
   return (
-    <MyView isColumn isExpanded>
+    <MyView isColumn isExpanded backgroundColor={MyColors.White}>
       <MySafeAreaView safeOnlyTop />
       <MyView height="30%">
         <MyView isCenterItems>
@@ -107,7 +111,7 @@ const MyLoginScreen = ({
           <MyIconButton
             icon={MyIcons.MoreVertical}
             tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
-            onPress={() =>
+            onPress={() => {
               MyModalUtils.showModal({
                 modal: (
                   <MyOptionsModal
@@ -115,8 +119,8 @@ const MyLoginScreen = ({
                     isLoginScreen={true}
                   />
                 ),
-              })
-            }
+              });
+            }}
           />
         </MyView>
       </MyView>
@@ -144,7 +148,9 @@ const MyLoginScreen = ({
               <MyTextInput
                 labelText={MyLocalizationUtils.getLocalizedUserIdText()}
                 rightIcon={MyIcons.AccountOutlined}
-                onChangeText={text => userId.setValue(text)}
+                onChangeText={text => {
+                  userId.setValue(text);
+                }}
               />
               <MyView height={10} />
               <PasswordTextInput_ />

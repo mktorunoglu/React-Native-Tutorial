@@ -25,9 +25,9 @@ class MyFileService {
     });
     response.isSuccessful = response.data['result'] == true;
     if (response.isSuccessful) {
-      response.data = response.data['repos'].map((item: any) =>
-        MyRepoModel.fromJson(item),
-      );
+      response.data = response.data['repos'].map((item: any) => {
+        return MyRepoModel.fromJson(item);
+      });
     }
     return response;
   }

@@ -53,7 +53,9 @@ class MySnackbarUtils {
     this.snackbarForegroundColor.setValue(foregroundColor);
     TimerUtils.setTimer({
       durationMilliseconds: 150,
-      onFinished: () => this.isSnackbarVisible.setValue(true),
+      onFinished: () => {
+        this.isSnackbarVisible.setValue(true);
+      },
     });
   }
 

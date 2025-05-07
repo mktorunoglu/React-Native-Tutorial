@@ -27,7 +27,9 @@ const MyNavigationBar = ({
           onPress={
             isSelected
               ? undefined
-              : () => selectedRoute.setValue(buttonData.route)
+              : () => {
+                  selectedRoute.setValue(buttonData.route);
+                }
           }>
           <MyView isColumn isCenterItems paddingVertical={10}>
             <MyView
@@ -55,11 +57,13 @@ const MyNavigationBar = ({
     <MyView isColumn backgroundColor={MyColors.White}>
       <MyDivider />
       <MyView isRow>
-        {buttonDataList.map(buttonData => (
-          <MyView key={buttonData.route} isExpanded>
-            <NavigationBarButton_ buttonData={buttonData} />
-          </MyView>
-        ))}
+        {buttonDataList.map(buttonData => {
+          return (
+            <MyView key={buttonData.route} isExpanded>
+              <NavigationBarButton_ buttonData={buttonData} />
+            </MyView>
+          );
+        })}
       </MyView>
       <MySafeAreaView safeOnlyBottom />
     </MyView>

@@ -40,7 +40,7 @@ const MySortingModal = () => {
       ].map(buttonData => (
         <MyModalSelectionButton
           key={buttonData.value}
-          isSelected={MySortingUtils.sortingType == buttonData.value}
+          isSelected={MySortingUtils.sortingType.value == buttonData.value}
           text={buttonData.text}
           onPress={async () => {
             MyModalUtils.showModal({modal: <MyProgressModal />});

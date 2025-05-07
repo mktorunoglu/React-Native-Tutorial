@@ -7,10 +7,13 @@ import MyFlatList from '../components/lists/FlatList';
 import MySearchTextInput from '../components/texts/SearchTextInput';
 import MyView from '../components/views/View';
 import {MyColors} from '../enums/Colors';
+import {MySortingTypes} from '../enums/SortingTypes';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyRepoModel from '../models/RepoModel';
 import MyFileService from '../services/FileService';
 import MyFilterUtils from '../utils/FilterUtils';
+import MyLocalizationUtils from '../utils/LocalizationUtils';
+import MySortingUtils from '../utils/SortingUtils';
 
 const MyReposBodyScreen = () => {
   const searchText = new MyObservableValueModel('');
@@ -21,6 +24,33 @@ const MyReposBodyScreen = () => {
         searchText: searchText.value,
       }),
     );
+    filteredRepoList.sort((a, b) =>
+      (a.repoName ?? '').localeCompare(
+        b.repoName ?? '',
+        MyLocalizationUtils.localization,
+      ),
+    );
+    if (
+      MySortingUtils.sortingType.value != MySortingTypes.AlphabeticalAscending
+    ) {
+      filteredRepoList.sort((a, b) => {
+        switch (MySortingUtils.sortingType.value) {
+          case MySortingTypes.AlphabeticalDescending:
+            return (b.repoName ?? '').localeCompare(
+              a.repoName ?? '',
+              MyLocalizationUtils.localization,
+            );
+          case MySortingTypes.LastUpdateAscending:
+            return (a.lastModified ?? 0) - (b.lastModified ?? 0);
+          case MySortingTypes.LastUpdateDescending:
+            return (b.lastModified ?? 0) - (a.lastModified ?? 0);
+          case MySortingTypes.SizeAscending:
+            return (a.size ?? 0) - (b.size ?? 0);
+          default:
+            return (b.size ?? 0) - (a.size ?? 0);
+        }
+      });
+    }
     return (
       <MyFlatList
         data={filteredRepoList}

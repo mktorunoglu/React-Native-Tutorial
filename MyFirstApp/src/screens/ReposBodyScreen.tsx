@@ -12,7 +12,6 @@ import MyObservableValueModel from '../models/ObservableValueModel';
 import MyRepoModel from '../models/RepoModel';
 import MyFileService from '../services/FileService';
 import MyFilterUtils from '../utils/FilterUtils';
-import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MySortingUtils from '../utils/SortingUtils';
 
 const MyReposBodyScreen = () => {
@@ -25,10 +24,7 @@ const MyReposBodyScreen = () => {
       }),
     );
     filteredRepoList.sort((a, b) =>
-      (a.repoName ?? '').localeCompare(
-        b.repoName ?? '',
-        MyLocalizationUtils.localization,
-      ),
+      MySortingUtils.compareStrings(a.repoName, b.repoName),
     );
     if (
       MySortingUtils.sortingType.value != MySortingTypes.AlphabeticalAscending
@@ -36,18 +32,21 @@ const MyReposBodyScreen = () => {
       filteredRepoList.sort((a, b) => {
         switch (MySortingUtils.sortingType.value) {
           case MySortingTypes.AlphabeticalDescending:
-            return (b.repoName ?? '').localeCompare(
-              a.repoName ?? '',
-              MyLocalizationUtils.localization,
-            );
+            return MySortingUtils.compareStrings(b.repoName, a.repoName);
           case MySortingTypes.LastUpdateAscending:
-            return (a.lastModified ?? 0) - (b.lastModified ?? 0);
+            return MySortingUtils.compareNumbers(
+              a.lastModified,
+              b.lastModified,
+            );
           case MySortingTypes.LastUpdateDescending:
-            return (b.lastModified ?? 0) - (a.lastModified ?? 0);
+            return MySortingUtils.compareNumbers(
+              b.lastModified,
+              a.lastModified,
+            );
           case MySortingTypes.SizeAscending:
-            return (a.size ?? 0) - (b.size ?? 0);
+            return MySortingUtils.compareNumbers(a.size, b.size);
           default:
-            return (b.size ?? 0) - (a.size ?? 0);
+            return MySortingUtils.compareNumbers(b.size, a.size);
         }
       });
     }

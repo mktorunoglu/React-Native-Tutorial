@@ -6,9 +6,11 @@ import MyRepoModel from '../../models/RepoModel';
 import MyColorUtils from '../../utils/ColorUtils';
 import MyConverterUtils from '../../utils/ConverterUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
 import MyIconButton from '../buttons/IconButton';
 import MyCard from '../cards/Card';
 import MyIcon from '../icons/Icon';
+import MyRepoOperationsModal from '../modals/RepoOperationsModal';
 import MyText from '../texts/Text';
 import MyView from '../views/View';
 
@@ -43,7 +45,11 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => {
           <MyIconButton
             icon={MyIcons.MoreVertical}
             tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
-            onPress={() => {}}
+            onPress={() =>
+              MyModalUtils.showModal({
+                modal: <MyRepoOperationsModal repo={repo} />,
+              })
+            }
           />
         </MyView>
       </MyCard>

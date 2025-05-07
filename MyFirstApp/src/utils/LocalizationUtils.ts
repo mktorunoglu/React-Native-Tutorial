@@ -87,6 +87,36 @@ class MyLocalizationUtils {
     });
   }
 
+  public getLocalizedDeleteText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Delete', 'Sil'],
+    });
+  }
+
+  public getLocalizedShareText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Share', 'Paylaş'],
+    });
+  }
+
+  public getLocalizedRenameText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Rename', 'Yeniden Adlandır'],
+    });
+  }
+
+  public getLocalizedDetailsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Details', 'Ayrıntılar'],
+    });
+  }
+
+  public getLocalizedRepoOperationsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Repo Operations', 'Depo İşlemleri'],
+    });
+  }
+
   public getLocalizedSizeDescendingText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Size (Descending)', 'Boyut (Azalan)'],

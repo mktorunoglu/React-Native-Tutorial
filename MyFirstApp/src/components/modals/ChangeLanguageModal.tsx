@@ -21,7 +21,7 @@ const MyChangeLanguageModal = ({
   return (
     <MyModal>
       <MyModalHeader
-        text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
+        titleText={MyLocalizationUtils.getLocalizedChangeLanguageText()}
       />
       {[
         new MyModalSelectionButtonDataModel({

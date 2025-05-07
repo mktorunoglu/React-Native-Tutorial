@@ -21,7 +21,9 @@ const MyOptionsModal = ({
 }) => {
   return (
     <MyModal>
-      <MyModalHeader text={MyLocalizationUtils.getLocalizedOptionsText()} />
+      <MyModalHeader
+        titleText={MyLocalizationUtils.getLocalizedOptionsText()}
+      />
       <MyModalSelectionButton
         icon={MyIcons.Earth}
         text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
@@ -38,9 +40,9 @@ const MyOptionsModal = ({
       />
       {!isLoginScreen && (
         <MyModalSelectionButton
-          color={MyColors.Red}
           icon={MyIcons.Logout}
           text={MyLocalizationUtils.getLocalizedLogoutText()}
+          color={MyColors.Red}
           onPress={() =>
             MyModalUtils.showModal({
               modal: (

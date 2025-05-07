@@ -6,15 +6,15 @@ import MyButton from './Button';
 
 const MyModalSelectionButton = ({
   isSelected,
-  color,
   icon,
   text,
+  color,
   onPress,
 }: {
   isSelected?: boolean;
-  color?: string;
   icon?: MyIcons;
   text: string;
+  color?: string;
   onPress?: () => void;
 }) => {
   return (

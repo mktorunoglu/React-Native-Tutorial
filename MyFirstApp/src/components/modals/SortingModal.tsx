@@ -11,7 +11,7 @@ import MyProgressModal from './ProgressModal';
 const MySortingModal = () => {
   return (
     <MyModal>
-      <MyModalHeader text={MyLocalizationUtils.getLocalizedSortText()} />
+      <MyModalHeader titleText={MyLocalizationUtils.getLocalizedSortText()} />
       {[
         new MyModalSelectionButtonDataModel({
           value: MySortingTypes.AlphabeticalAscending,

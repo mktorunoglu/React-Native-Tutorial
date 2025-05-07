@@ -17,19 +17,17 @@ const MyPercentProgressIndicator = ({
   backgroundColor?: string;
   tintColor?: string;
   children?: () => ReactNode;
-}) => {
-  return (
-    <AnimatedCircularProgress
-      size={size}
-      width={strokeWidth}
-      fill={percent}
-      backgroundColor={backgroundColor}
-      tintColor={tintColor}
-      tintTransparency={false}
-      rotation={0}>
-      {children}
-    </AnimatedCircularProgress>
-  );
-};
+}) => (
+  <AnimatedCircularProgress
+    size={size}
+    width={strokeWidth}
+    fill={percent}
+    backgroundColor={backgroundColor}
+    tintColor={tintColor}
+    tintTransparency={false}
+    rotation={0}>
+    {children}
+  </AnimatedCircularProgress>
+);
 
 export default MyPercentProgressIndicator;

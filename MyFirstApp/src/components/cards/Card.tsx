@@ -14,19 +14,17 @@ const MyCard = ({
   paddingVertical?: DimensionValue;
   paddingHorizontal?: DimensionValue;
   children?: ReactNode;
-}) => {
-  return (
-    <MyView
-      borderRadius={10}
-      borderWidth={1}
-      borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
-      backgroundColor={MyColors.White}
-      padding={padding}
-      paddingVertical={paddingVertical}
-      paddingHorizontal={paddingHorizontal}>
-      {children}
-    </MyView>
-  );
-};
+}) => (
+  <MyView
+    borderRadius={10}
+    borderWidth={1}
+    borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}
+    backgroundColor={MyColors.White}
+    padding={padding}
+    paddingVertical={paddingVertical}
+    paddingHorizontal={paddingHorizontal}>
+    {children}
+  </MyView>
+);
 
 export default MyCard;

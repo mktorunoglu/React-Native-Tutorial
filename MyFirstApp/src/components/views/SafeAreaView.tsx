@@ -7,15 +7,13 @@ const MySafeAreaView = ({
 }: {
   safeOnlyTop?: boolean;
   safeOnlyBottom?: boolean;
-}) => {
-  return (
-    <SafeAreaView
-      edges={
-        safeOnlyTop ? ['top'] : safeOnlyBottom ? ['bottom'] : ['top', 'bottom']
-      }>
-      <MyStatusBar />
-    </SafeAreaView>
-  );
-};
+}) => (
+  <SafeAreaView
+    edges={
+      safeOnlyTop ? ['top'] : safeOnlyBottom ? ['bottom'] : ['top', 'bottom']
+    }>
+    <MyStatusBar />
+  </SafeAreaView>
+);
 
 export default MySafeAreaView;

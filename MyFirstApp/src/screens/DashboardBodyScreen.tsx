@@ -30,22 +30,18 @@ const MyDashboardBodyScreen = ({
   }: {
     onPress?: () => void;
     children?: ReactNode;
-  }) => {
-    return (
-      <MyRawButton onPress={onPress} color={MyColors.Transparent}>
-        <MyCard paddingVertical={15} paddingHorizontal={10}>
-          {children}
-        </MyCard>
-      </MyRawButton>
-    );
-  };
-  const MyCardTitleText_ = ({text}: {text: string}) => {
-    return (
-      <MyView paddingBottom={10}>
-        <MyText text={text} fontSize={16} />
-      </MyView>
-    );
-  };
+  }) => (
+    <MyRawButton onPress={onPress} color={MyColors.Transparent}>
+      <MyCard paddingVertical={15} paddingHorizontal={10}>
+        {children}
+      </MyCard>
+    </MyRawButton>
+  );
+  const MyCardTitleText_ = ({text}: {text: string}) => (
+    <MyView paddingBottom={10}>
+      <MyText text={text} fontSize={16} />
+    </MyView>
+  );
   const MyCardDataLine_ = ({
     text,
     value,
@@ -56,21 +52,19 @@ const MyDashboardBodyScreen = ({
     value: string;
     paddingBottom?: DimensionValue;
     isImportant?: boolean;
-  }) => {
-    return (
-      <MyView isRow paddingBottom={paddingBottom}>
-        <MyView width="auto" isExpanded>
-          <MyText text={text} color={MyColors.Grey} />
-        </MyView>
-        <MyView width={10} />
-        <MyText
-          text={value}
-          fontWeight={MyFontWeights.Bold}
-          color={isImportant ? MyColors.Theme : undefined}
-        />
+  }) => (
+    <MyView isRow paddingBottom={paddingBottom}>
+      <MyView width="auto" isExpanded>
+        <MyText text={text} color={MyColors.Grey} />
       </MyView>
-    );
-  };
+      <MyView width={10} />
+      <MyText
+        text={value}
+        fontWeight={MyFontWeights.Bold}
+        color={isImportant ? MyColors.Theme : undefined}
+      />
+    </MyView>
+  );
   const MyCardDataBody_ = ({
     titleIcon,
     titleIconColor = MyColors.Theme,
@@ -79,27 +73,22 @@ const MyDashboardBodyScreen = ({
     titleIcon: MyIcons;
     titleIconColor?: string;
     children?: ReactNode;
-  }) => {
-    return (
-      <MyView isRow isCenterItems>
-        <MyView
-          isCenterItems
-          height={70}
-          width={70}
-          backgroundColor={MyColorUtils.getColorWithOpacity(
-            MyColors.Theme,
-            0.2,
-          )}
-          borderRadius={70}>
-          <MyIcon icon={titleIcon} color={titleIconColor} size={30} />
-        </MyView>
-        <MyView width={10} />
-        <MyView isColumn isExpanded>
-          {children}
-        </MyView>
+  }) => (
+    <MyView isRow isCenterItems>
+      <MyView
+        isCenterItems
+        height={70}
+        width={70}
+        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Theme, 0.2)}
+        borderRadius={70}>
+        <MyIcon icon={titleIcon} color={titleIconColor} size={30} />
       </MyView>
-    );
-  };
+      <MyView width={10} />
+      <MyView isColumn isExpanded>
+        {children}
+      </MyView>
+    </MyView>
+  );
   return (
     <MyView isExpanded>
       <MyResponseBuilder
@@ -123,34 +112,32 @@ const MyDashboardBodyScreen = ({
                             (dashboardInfo.quota ?? 1)) *
                           100
                         }>
-                        {() => {
-                          return (
-                            <MyView isColumn isCenterItems>
-                              <MyText
-                                text={MyLocalizationUtils.getLocalizedUsageText()}
-                                color={MyColors.Grey}
-                                fontSize={12}
-                              />
-                              <MyView height={10} />
-                              <MyText
-                                text={MyLocalizationUtils.getLocalizedPercentValueText(
-                                  {
-                                    variableTextList: [
-                                      Math.ceil(
-                                        ((dashboardInfo.usage ?? 0) /
-                                          (dashboardInfo.quota ?? 1)) *
-                                          100,
-                                      ).toString(),
-                                    ],
-                                  },
-                                )}
-                                color={MyColors.Theme}
-                                fontWeight={MyFontWeights.Bold}
-                                fontSize={20}
-                              />
-                            </MyView>
-                          );
-                        }}
+                        {() => (
+                          <MyView isColumn isCenterItems>
+                            <MyText
+                              text={MyLocalizationUtils.getLocalizedUsageText()}
+                              color={MyColors.Grey}
+                              fontSize={12}
+                            />
+                            <MyView height={10} />
+                            <MyText
+                              text={MyLocalizationUtils.getLocalizedPercentValueText(
+                                {
+                                  variableTextList: [
+                                    Math.ceil(
+                                      ((dashboardInfo.usage ?? 0) /
+                                        (dashboardInfo.quota ?? 1)) *
+                                        100,
+                                    ).toString(),
+                                  ],
+                                },
+                              )}
+                              color={MyColors.Theme}
+                              fontWeight={MyFontWeights.Bold}
+                              fontSize={20}
+                            />
+                          </MyView>
+                        )}
                       </MyPercentProgressIndicator>
                     </MyView>
                     <MyCardDataLine_
@@ -171,9 +158,9 @@ const MyDashboardBodyScreen = ({
                 </MyCard_>
                 <MyView height={10} />
                 <MyCard_
-                  onPress={() => {
-                    selectedRoute.setValue(MyNavigationBarRoutes.Sharing);
-                  }}>
+                  onPress={() =>
+                    selectedRoute.setValue(MyNavigationBarRoutes.Sharing)
+                  }>
                   <MyCardDataBody_ titleIcon={MyIcons.Share}>
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedSharedWithYouText()}
@@ -191,9 +178,9 @@ const MyDashboardBodyScreen = ({
                 </MyCard_>
                 <MyView height={10} />
                 <MyCard_
-                  onPress={() => {
-                    selectedRoute.setValue(MyNavigationBarRoutes.Sharing);
-                  }}>
+                  onPress={() =>
+                    selectedRoute.setValue(MyNavigationBarRoutes.Sharing)
+                  }>
                   <MyCardDataBody_ titleIcon={MyIcons.Send}>
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedSharedByYouText()}
@@ -216,9 +203,9 @@ const MyDashboardBodyScreen = ({
                 </MyCard_>
                 <MyView height={10} />
                 <MyCard_
-                  onPress={() => {
-                    selectedRoute.setValue(MyNavigationBarRoutes.Favorites);
-                  }}>
+                  onPress={() =>
+                    selectedRoute.setValue(MyNavigationBarRoutes.Favorites)
+                  }>
                   <MyCardDataBody_
                     titleIcon={MyIcons.Star}
                     titleIconColor={MyColors.Orange}>

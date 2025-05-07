@@ -22,18 +22,18 @@ import MySortingUtils from '../utils/SortingUtils';
 const MyReposBodyScreen = () => {
   const searchText = new MyObservableValueModel('');
   const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
-    const filteredRepoList = repoList.filter(repo => {
-      return MyFilterUtils.isTextListContainsSearchText({
+    const filteredRepoList = repoList.filter(repo =>
+      MyFilterUtils.isTextListContainsSearchText({
         textList: [repo.repoName],
         searchText: searchText.value,
-      });
-    });
+      }),
+    );
     const isFilteredRepoListEmpty = filteredRepoList.length == 0;
     const isSearchTextEmpty = searchText.value.trim() == '';
     const isRepoListEmpty = isFilteredRepoListEmpty && isSearchTextEmpty;
-    filteredRepoList.sort((a, b) => {
-      return MySortingUtils.compareStrings(a.repoName, b.repoName);
-    });
+    filteredRepoList.sort((a, b) =>
+      MySortingUtils.compareStrings(a.repoName, b.repoName),
+    );
     if (
       MySortingUtils.sortingType.value != MySortingTypes.AlphabeticalAscending
     ) {
@@ -70,9 +70,7 @@ const MyReposBodyScreen = () => {
               </MyView>
             ) : (
               <MySearchTextInput
-                onChangeText={text => {
-                  searchText.setValue(text);
-                }}
+                onChangeText={text => searchText.setValue(text)}
               />
             )}
           </MyView>
@@ -96,12 +94,8 @@ const MyReposBodyScreen = () => {
           <MyView isExpanded>
             <MyFlatList
               data={filteredRepoList}
-              keyExtractor={(item, index) => {
-                return item.repoId ?? index;
-              }}
-              renderItem={({item}) => {
-                return <MyRepoItem repo={item} />;
-              }}
+              keyExtractor={(item, index) => item.repoId ?? index}
+              renderItem={({item}) => <MyRepoItem repo={item} />}
               padding={5}
             />
           </MyView>
@@ -113,9 +107,7 @@ const MyReposBodyScreen = () => {
     <MyView isExpanded>
       <MyResponseBuilder
         response={MyFileService.listOwnedRepo}
-        builder={response => {
-          return <RepoItemList_ repoList={response.data} />;
-        }}
+        builder={response => <RepoItemList_ repoList={response.data} />}
       />
     </MyView>
   );

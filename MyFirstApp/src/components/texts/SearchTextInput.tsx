@@ -7,17 +7,15 @@ const MySearchTextInput = ({
   onChangeText,
 }: {
   onChangeText?: (text: string) => void;
-}) => {
-  return (
-    <MyTextInput
-      outlineColor={MyColors.Transparent}
-      activeOutlineColor={MyColors.Transparent}
-      hintText={MyLocalizationUtils.getLocalizedSearchText()}
-      hintTextColor={MyColors.Grey}
-      leftIcon={MyIcons.Search}
-      onChangeText={onChangeText}
-    />
-  );
-};
+}) => (
+  <MyTextInput
+    outlineColor={MyColors.Transparent}
+    activeOutlineColor={MyColors.Transparent}
+    hintText={MyLocalizationUtils.getLocalizedSearchText()}
+    hintTextColor={MyColors.Grey}
+    leftIcon={MyIcons.Search}
+    onChangeText={onChangeText}
+  />
+);
 
 export default MySearchTextInput;

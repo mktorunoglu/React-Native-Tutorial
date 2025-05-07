@@ -13,17 +13,15 @@ const MyImage = ({
   height?: DimensionValue;
   width?: DimensionValue;
   resizeMode?: MyFills;
-}) => {
-  return (
-    <Image
-      source={url != null ? {uri: url} : path}
-      style={{
-        height,
-        width,
-      }}
-      resizeMode={resizeMode}
-    />
-  );
-};
+}) => (
+  <Image
+    source={url != null ? {uri: url} : path}
+    style={{
+      height,
+      width,
+    }}
+    resizeMode={resizeMode}
+  />
+);
 
 export default MyImage;

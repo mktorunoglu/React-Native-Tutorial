@@ -11,14 +11,12 @@ const MyRawButton = ({
   onPress?: () => void;
   color?: string;
   children?: ReactNode;
-}) => {
-  return (
-    <TouchableRipple
-      onPress={onPress}
-      rippleColor={MyColorUtils.getColorWithOpacity(color, 0.2)}>
-      {children}
-    </TouchableRipple>
-  );
-};
+}) => (
+  <TouchableRipple
+    onPress={onPress}
+    rippleColor={MyColorUtils.getColorWithOpacity(color, 0.2)}>
+    {children}
+  </TouchableRipple>
+);
 
 export default MyRawButton;

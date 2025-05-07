@@ -8,51 +8,47 @@ import MyModalHeader from '../headers/ModalHeader';
 import MyModal from './Modal';
 import MyProgressModal from './ProgressModal';
 
-const MySortingModal = () => {
-  return (
-    <MyModal>
-      <MyModalHeader titleText={MyLocalizationUtils.getLocalizedSortText()} />
-      {[
-        new MyModalSelectionButtonDataModel({
-          value: MySortingTypes.AlphabeticalAscending,
-          text: MyLocalizationUtils.getLocalizedAlphabeticalAscendingText(),
-        }),
-        new MyModalSelectionButtonDataModel({
-          value: MySortingTypes.AlphabeticalDescending,
-          text: MyLocalizationUtils.getLocalizedAlphabeticalDescendingText(),
-        }),
-        new MyModalSelectionButtonDataModel({
-          value: MySortingTypes.LastUpdateAscending,
-          text: MyLocalizationUtils.getLocalizedLastUpdateAscendingText(),
-        }),
-        new MyModalSelectionButtonDataModel({
-          value: MySortingTypes.LastUpdateDescending,
-          text: MyLocalizationUtils.getLocalizedLastUpdateDescendingText(),
-        }),
-        new MyModalSelectionButtonDataModel({
-          value: MySortingTypes.SizeAscending,
-          text: MyLocalizationUtils.getLocalizedSizeAscendingText(),
-        }),
-        new MyModalSelectionButtonDataModel({
-          value: MySortingTypes.SizeDescending,
-          text: MyLocalizationUtils.getLocalizedSizeDescendingText(),
-        }),
-      ].map(buttonData => {
-        return (
-          <MyModalSelectionButton
-            key={buttonData.value}
-            isSelected={MySortingUtils.sortingType.value == buttonData.value}
-            text={buttonData.text}
-            onPress={async () => {
-              MyModalUtils.showModal({modal: <MyProgressModal />});
-              await MySortingUtils.setSortingType(buttonData.value);
-              MyModalUtils.hideModal();
-            }}
-          />
-        );
-      })}
-    </MyModal>
-  );
-};
+const MySortingModal = () => (
+  <MyModal>
+    <MyModalHeader titleText={MyLocalizationUtils.getLocalizedSortText()} />
+    {[
+      new MyModalSelectionButtonDataModel({
+        value: MySortingTypes.AlphabeticalAscending,
+        text: MyLocalizationUtils.getLocalizedAlphabeticalAscendingText(),
+      }),
+      new MyModalSelectionButtonDataModel({
+        value: MySortingTypes.AlphabeticalDescending,
+        text: MyLocalizationUtils.getLocalizedAlphabeticalDescendingText(),
+      }),
+      new MyModalSelectionButtonDataModel({
+        value: MySortingTypes.LastUpdateAscending,
+        text: MyLocalizationUtils.getLocalizedLastUpdateAscendingText(),
+      }),
+      new MyModalSelectionButtonDataModel({
+        value: MySortingTypes.LastUpdateDescending,
+        text: MyLocalizationUtils.getLocalizedLastUpdateDescendingText(),
+      }),
+      new MyModalSelectionButtonDataModel({
+        value: MySortingTypes.SizeAscending,
+        text: MyLocalizationUtils.getLocalizedSizeAscendingText(),
+      }),
+      new MyModalSelectionButtonDataModel({
+        value: MySortingTypes.SizeDescending,
+        text: MyLocalizationUtils.getLocalizedSizeDescendingText(),
+      }),
+    ].map(buttonData => (
+      <MyModalSelectionButton
+        key={buttonData.value}
+        isSelected={MySortingUtils.sortingType.value == buttonData.value}
+        text={buttonData.text}
+        onPress={async () => {
+          MyModalUtils.showModal({modal: <MyProgressModal />});
+          await MySortingUtils.setSortingType(buttonData.value);
+          MyModalUtils.hideModal();
+        }}
+      />
+    ))}
+  </MyModal>
+);
 
 export default MySortingModal;

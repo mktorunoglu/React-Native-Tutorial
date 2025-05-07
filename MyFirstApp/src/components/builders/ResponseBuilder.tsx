@@ -15,9 +15,7 @@ const MyResponseBuilder = ({
   builder: (response: MyResponseModel) => ReactNode;
 }) => {
   const response_ = new MyObservableValueModel<MyResponseModel | null>(null);
-  const getResponse = async () => {
-    response_.setValue(await response());
-  };
+  const getResponse = async () => response_.setValue(await response());
   useEffect(() => {
     getResponse();
   }, []);

@@ -19,20 +19,18 @@ const MyText = ({
   textAlign?: MyTextAligns;
   maxLines?: number;
   textOverflow?: MyTextOverflows;
-}) => {
-  return (
-    <Text
-      numberOfLines={maxLines}
-      ellipsizeMode={textOverflow}
-      style={{
-        color,
-        fontSize,
-        fontWeight,
-        textAlign,
-      }}>
-      {text}
-    </Text>
-  );
-};
+}) => (
+  <Text
+    numberOfLines={maxLines}
+    ellipsizeMode={textOverflow}
+    style={{
+      color,
+      fontSize,
+      fontWeight,
+      textAlign,
+    }}>
+    {text}
+  </Text>
+);
 
 export default MyText;

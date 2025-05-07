@@ -17,24 +17,22 @@ const MyAlertModal = ({
   buttonText: string;
   buttonColor?: string;
   buttonOnPress?: () => void;
-}) => {
-  return (
-    <MyModal>
-      <MyView isColumn>
-        <MyModalHeader titleText={titleText} messageText={messageText} />
-        <MyDivider />
-        <MyButton
-          isTextButton
-          borderRadius={0}
-          foregroundColor={buttonColor}
-          text={buttonText}
-          textFontWeight={MyFontWeights.Normal}
-          padding={5}
-          onPress={buttonOnPress}
-        />
-      </MyView>
-    </MyModal>
-  );
-};
+}) => (
+  <MyModal>
+    <MyView isColumn>
+      <MyModalHeader titleText={titleText} messageText={messageText} />
+      <MyDivider />
+      <MyButton
+        isTextButton
+        borderRadius={0}
+        foregroundColor={buttonColor}
+        text={buttonText}
+        textFontWeight={MyFontWeights.Normal}
+        padding={5}
+        onPress={buttonOnPress}
+      />
+    </MyView>
+  </MyModal>
+);
 
 export default MyAlertModal;

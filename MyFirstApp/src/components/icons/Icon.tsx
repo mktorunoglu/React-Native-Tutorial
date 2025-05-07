@@ -9,8 +9,6 @@ const MyIcon = ({
   icon: MyIcons;
   color?: string;
   size?: number;
-}) => {
-  return <Icon source={icon} color={color} size={size} />;
-};
+}) => <Icon source={icon} color={color} size={size} />;
 
 export default MyIcon;

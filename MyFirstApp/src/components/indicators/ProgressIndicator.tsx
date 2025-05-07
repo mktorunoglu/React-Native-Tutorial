@@ -7,8 +7,6 @@ const MyProgressIndicator = ({
 }: {
   color?: string;
   size?: number;
-}) => {
-  return <ActivityIndicator color={color} size={size} />;
-};
+}) => <ActivityIndicator color={color} size={size} />;
 
 export default MyProgressIndicator;

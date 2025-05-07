@@ -73,44 +73,42 @@ const MyView = ({
   justifyContent?: MyAligns;
   backgroundColor?: string;
   children?: ReactNode;
-}) => {
-  return (
-    <View
-      style={{
-        flexDirection: isColumn ? 'column' : isRow ? 'row' : flexDirection,
-        flex: isExpanded ? 1 : undefined,
-        position: zIndex == null ? position : MyPositions.Absolute,
-        height,
-        width,
-        zIndex,
-        top,
-        right,
-        bottom,
-        left,
-        borderRadius,
-        borderWidth,
-        borderColor,
-        margin,
-        marginVertical,
-        marginHorizontal,
-        marginLeft,
-        marginTop,
-        marginRight,
-        marginBottom,
-        padding,
-        paddingVertical,
-        paddingHorizontal,
-        paddingLeft,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        alignItems: isCenterItems ? MyAligns.Center : alignItems,
-        justifyContent: isCenterItems ? MyAligns.Center : justifyContent,
-        backgroundColor,
-      }}>
-      {children}
-    </View>
-  );
-};
+}) => (
+  <View
+    style={{
+      flexDirection: isColumn ? 'column' : isRow ? 'row' : flexDirection,
+      flex: isExpanded ? 1 : undefined,
+      position: zIndex == null ? position : MyPositions.Absolute,
+      height,
+      width,
+      zIndex,
+      top,
+      right,
+      bottom,
+      left,
+      borderRadius,
+      borderWidth,
+      borderColor,
+      margin,
+      marginVertical,
+      marginHorizontal,
+      marginLeft,
+      marginTop,
+      marginRight,
+      marginBottom,
+      padding,
+      paddingVertical,
+      paddingHorizontal,
+      paddingLeft,
+      paddingTop,
+      paddingRight,
+      paddingBottom,
+      alignItems: isCenterItems ? MyAligns.Center : alignItems,
+      justifyContent: isCenterItems ? MyAligns.Center : justifyContent,
+      backgroundColor,
+    }}>
+    {children}
+  </View>
+);
 
 export default MyView;

@@ -17,44 +17,40 @@ const MyChangeLanguageModal = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
   isLoginScreen: boolean;
-}) => {
-  return (
-    <MyModal>
-      <MyModalHeader
-        titleText={MyLocalizationUtils.getLocalizedChangeLanguageText()}
+}) => (
+  <MyModal>
+    <MyModalHeader
+      titleText={MyLocalizationUtils.getLocalizedChangeLanguageText()}
+    />
+    {[
+      new MyModalSelectionButtonDataModel({
+        value: MyLocalizations.English,
+        text: MyLocalizationUtils.getLocalizedEnglishText(),
+      }),
+      new MyModalSelectionButtonDataModel({
+        value: MyLocalizations.Turkish,
+        text: MyLocalizationUtils.getLocalizedTurkishText(),
+      }),
+    ].map(buttonData => (
+      <MyModalSelectionButton
+        key={buttonData.value}
+        isSelected={MyLocalizationUtils.localization == buttonData.value}
+        text={buttonData.text}
+        onPress={async () => {
+          MyModalUtils.showModal({modal: <MyProgressModal />});
+          await MyLocalizationUtils.setLocalization(buttonData.value);
+          MyModalUtils.hideModal();
+          if (isLoginScreen) {
+            navigation.replace(MyRoutes.Login);
+          } else {
+            navigation.replace(MyRoutes.Home, {
+              initialRoute: MyNavigationBarRoutes.Profile,
+            });
+          }
+        }}
       />
-      {[
-        new MyModalSelectionButtonDataModel({
-          value: MyLocalizations.English,
-          text: MyLocalizationUtils.getLocalizedEnglishText(),
-        }),
-        new MyModalSelectionButtonDataModel({
-          value: MyLocalizations.Turkish,
-          text: MyLocalizationUtils.getLocalizedTurkishText(),
-        }),
-      ].map(buttonData => {
-        return (
-          <MyModalSelectionButton
-            key={buttonData.value}
-            isSelected={MyLocalizationUtils.localization == buttonData.value}
-            text={buttonData.text}
-            onPress={async () => {
-              MyModalUtils.showModal({modal: <MyProgressModal />});
-              await MyLocalizationUtils.setLocalization(buttonData.value);
-              MyModalUtils.hideModal();
-              if (isLoginScreen) {
-                navigation.replace(MyRoutes.Login);
-              } else {
-                navigation.replace(MyRoutes.Home, {
-                  initialRoute: MyNavigationBarRoutes.Profile,
-                });
-              }
-            }}
-          />
-        );
-      })}
-    </MyModal>
-  );
-};
+    ))}
+  </MyModal>
+);
 
 export default MyChangeLanguageModal;

@@ -24,17 +24,15 @@ const MyProfileBodyScreen = () => {
         <MyCard padding={20}>
           <MyResponseBuilder
             response={MyUserService.getUserAvatar}
-            builder={response => {
-              return (
-                <MyView isColumn isCenterItems>
-                  <MyImage
-                    url={'file://' + response.data}
-                    height={100}
-                    width={100}
-                  />
-                </MyView>
-              );
-            }}
+            builder={response => (
+              <MyView isColumn isCenterItems>
+                <MyImage
+                  url={'file://' + response.data}
+                  height={100}
+                  width={100}
+                />
+              </MyView>
+            )}
           />
         </MyCard>
         <MyView height={10} />
@@ -68,11 +66,11 @@ const MyProfileBodyScreen = () => {
           <MyButton
             icon={MyIcons.SettingsOutlined}
             text={MyLocalizationUtils.getLocalizedOptionsText()}
-            onPress={() => {
+            onPress={() =>
               MyModalUtils.showModal({
                 modal: <MyOptionsModal navigation={navigation} />,
-              });
-            }}
+              })
+            }
           />
         </MyCard>
       </MyScrollView>

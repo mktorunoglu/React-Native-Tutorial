@@ -18,54 +18,50 @@ const MyOptionsModal = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
   isLoginScreen?: boolean;
-}) => {
-  return (
-    <MyModal>
-      <MyModalHeader
-        titleText={MyLocalizationUtils.getLocalizedOptionsText()}
-      />
+}) => (
+  <MyModal>
+    <MyModalHeader titleText={MyLocalizationUtils.getLocalizedOptionsText()} />
+    <MyModalSelectionButton
+      icon={MyIcons.Earth}
+      text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
+      onPress={() =>
+        MyModalUtils.showModal({
+          modal: (
+            <MyChangeLanguageModal
+              navigation={navigation}
+              isLoginScreen={isLoginScreen}
+            />
+          ),
+        })
+      }
+    />
+    {!isLoginScreen && (
       <MyModalSelectionButton
-        icon={MyIcons.Earth}
-        text={MyLocalizationUtils.getLocalizedChangeLanguageText()}
-        onPress={() => {
+        icon={MyIcons.Logout}
+        text={MyLocalizationUtils.getLocalizedLogoutText()}
+        color={MyColors.Red}
+        onPress={() =>
           MyModalUtils.showModal({
             modal: (
-              <MyChangeLanguageModal
-                navigation={navigation}
-                isLoginScreen={isLoginScreen}
+              <MyAlertModal
+                titleText={MyLocalizationUtils.getLocalizedAccountWillBeLoggedOutText()}
+                messageText={MyLocalizationUtils.getLocalizedAreYouSureText()}
+                buttonText={MyLocalizationUtils.getLocalizedLogoutText()}
+                buttonColor={MyColors.Red}
+                buttonOnPress={async () => {
+                  MyModalUtils.showModal({modal: <MyProgressModal />});
+                  await MyAuthenticationUtils.logout({
+                    navigation: navigation,
+                  });
+                  MyModalUtils.hideModal();
+                }}
               />
             ),
-          });
-        }}
+          })
+        }
       />
-      {!isLoginScreen && (
-        <MyModalSelectionButton
-          icon={MyIcons.Logout}
-          text={MyLocalizationUtils.getLocalizedLogoutText()}
-          color={MyColors.Red}
-          onPress={() => {
-            MyModalUtils.showModal({
-              modal: (
-                <MyAlertModal
-                  titleText={MyLocalizationUtils.getLocalizedAccountWillBeLoggedOutText()}
-                  messageText={MyLocalizationUtils.getLocalizedAreYouSureText()}
-                  buttonText={MyLocalizationUtils.getLocalizedLogoutText()}
-                  buttonColor={MyColors.Red}
-                  buttonOnPress={async () => {
-                    MyModalUtils.showModal({modal: <MyProgressModal />});
-                    await MyAuthenticationUtils.logout({
-                      navigation: navigation,
-                    });
-                    MyModalUtils.hideModal();
-                  }}
-                />
-              ),
-            });
-          }}
-        />
-      )}
-    </MyModal>
-  );
-};
+    )}
+  </MyModal>
+);
 
 export default MyOptionsModal;

@@ -19,22 +19,20 @@ const MyScrollView = ({
   paddingHorizontal?: DimensionValue;
   showScrollBar?: boolean;
   children?: ReactNode;
-}) => {
-  return (
-    <ScrollView
-      showsVerticalScrollIndicator={showScrollBar}
-      showsHorizontalScrollIndicator={showScrollBar}
-      style={{
-        margin,
-        marginVertical,
-        marginHorizontal,
-        padding,
-        paddingVertical,
-        paddingHorizontal,
-      }}>
-      {children}
-    </ScrollView>
-  );
-};
+}) => (
+  <ScrollView
+    showsVerticalScrollIndicator={showScrollBar}
+    showsHorizontalScrollIndicator={showScrollBar}
+    style={{
+      margin,
+      marginVertical,
+      marginHorizontal,
+      padding,
+      paddingVertical,
+      paddingHorizontal,
+    }}>
+    {children}
+  </ScrollView>
+);
 
 export default MyScrollView;

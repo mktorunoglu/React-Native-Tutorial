@@ -10,15 +10,13 @@ const MyFlatList = ({
   keyExtractor?: (item: any, index: number) => string;
   renderItem: ListRenderItem<any>;
   padding?: DimensionValue;
-}) => {
-  return (
-    <FlatList
-      data={data}
-      keyExtractor={keyExtractor}
-      renderItem={renderItem}
-      style={{padding}}
-    />
-  );
-};
+}) => (
+  <FlatList
+    data={data}
+    keyExtractor={keyExtractor}
+    renderItem={renderItem}
+    style={{padding}}
+  />
+);
 
 export default MyFlatList;

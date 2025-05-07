@@ -11,26 +11,24 @@ const MyTestScreen = ({
   navigation,
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
-}) => {
-  return (
-    <MyView isExpanded isCenterItems>
-      <MyButton
-        text="test"
-        onPress={() => {
-          MyModalUtils.showModal({
-            modal: (
-              <MyAlertModal
-                titleText="A"
-                messageText="B"
-                buttonText="C"
-                buttonColor={MyColors.Red}
-              />
-            ),
-          });
-        }}
-      />
-    </MyView>
-  );
-};
+}) => (
+  <MyView isExpanded isCenterItems>
+    <MyButton
+      text="test"
+      onPress={() =>
+        MyModalUtils.showModal({
+          modal: (
+            <MyAlertModal
+              titleText="A"
+              messageText="B"
+              buttonText="C"
+              buttonColor={MyColors.Red}
+            />
+          ),
+        })
+      }
+    />
+  </MyView>
+);
 
 export default MyTestScreen;

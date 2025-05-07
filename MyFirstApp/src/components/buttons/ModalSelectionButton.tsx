@@ -16,28 +16,26 @@ const MyModalSelectionButton = ({
   text: string;
   color?: string;
   onPress?: () => void;
-}) => {
-  return (
-    <MyView isColumn>
-      <MyDivider />
-      <MyButton
-        isTextButton
-        borderRadius={0}
-        foregroundColor={color}
-        paddingVertical={5}
-        icon={
-          isSelected == null
-            ? icon
-            : isSelected
-              ? MyIcons.RadioboxMarked
-              : MyIcons.RadioboxBlank
-        }
-        text={text}
-        textFontWeight={MyFontWeights.Normal}
-        onPress={isSelected ? undefined : onPress}
-      />
-    </MyView>
-  );
-};
+}) => (
+  <MyView isColumn>
+    <MyDivider />
+    <MyButton
+      isTextButton
+      borderRadius={0}
+      foregroundColor={color}
+      paddingVertical={5}
+      icon={
+        isSelected == null
+          ? icon
+          : isSelected
+            ? MyIcons.RadioboxMarked
+            : MyIcons.RadioboxBlank
+      }
+      text={text}
+      textFontWeight={MyFontWeights.Normal}
+      onPress={isSelected ? undefined : onPress}
+    />
+  </MyView>
+);
 
 export default MyModalSelectionButton;

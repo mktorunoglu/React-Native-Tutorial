@@ -7,8 +7,6 @@ const MyTooltip = ({
 }: {
   text?: string;
   children: ReactElement;
-}) => {
-  return <Tooltip title={text}>{children}</Tooltip>;
-};
+}) => <Tooltip title={text}>{children}</Tooltip>;
 
 export default MyTooltip;

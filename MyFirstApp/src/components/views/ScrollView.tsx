@@ -1,5 +1,6 @@
 import {ReactNode} from 'react';
 import {DimensionValue, ScrollView} from 'react-native';
+import MyView from './View';
 
 const MyScrollView = ({
   margin,
@@ -32,7 +33,8 @@ const MyScrollView = ({
       paddingHorizontal,
     }}>
     {children}
+    <MyView height={40} />
   </ScrollView>
-);
+); // TEST <MyView height={40} /> keyboard açıkken göster
 
 export default MyScrollView;

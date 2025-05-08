@@ -12,7 +12,7 @@ const MySafeAreaView = ({
     edges={
       safeOnlyTop ? ['top'] : safeOnlyBottom ? ['bottom'] : ['top', 'bottom']
     }>
-    <MyStatusBar />
+    {!safeOnlyBottom && <MyStatusBar />}
   </SafeAreaView>
 );
 

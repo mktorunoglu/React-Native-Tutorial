@@ -10,7 +10,7 @@ const MyModalHeader = ({
   titleText: string;
   messageText?: string;
 }) => (
-  <MyView isColumn isCenterItems padding={20}>
+  <MyView isColumn isCenterItems padding={15}>
     <MyText text={titleText} fontSize={16} textAlign={MyTextAligns.Center} />
     {messageText != null && <MyView height={10} />}
     {messageText != null && (

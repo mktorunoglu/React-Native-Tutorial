@@ -73,6 +73,79 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedJustNowText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Just now', 'Az önce'],
+    });
+  }
+
+  public getLocalizedMinutesText({
+    minutesCount,
+  }: {
+    minutesCount: number;
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'minute' + (minutesCount == 1 ? '' : 's'),
+        'dakika',
+      ],
+    });
+  }
+
+  public getLocalizedHoursText({hoursCount}: {hoursCount: number}): string {
+    return this.getLocalizedText({
+      localizationTextList: ['hour' + (hoursCount == 1 ? '' : 's'), 'saat'],
+    });
+  }
+
+  public getLocalizedDaysText({daysCount}: {daysCount: number}): string {
+    return this.getLocalizedText({
+      localizationTextList: ['day' + (daysCount == 1 ? '' : 's'), 'gün'],
+    });
+  }
+
+  public getLocalizedMonthsText({monthsCount}: {monthsCount: number}): string {
+    return this.getLocalizedText({
+      localizationTextList: ['month' + (monthsCount == 1 ? '' : 's'), 'ay'],
+    });
+  }
+
+  public getLocalizedYearsText({yearsCount}: {yearsCount: number}): string {
+    return this.getLocalizedText({
+      localizationTextList: ['year' + (yearsCount == 1 ? '' : 's'), 'yıl'],
+    });
+  }
+
+  public getLocalizedAgoText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['ago', 'önce'],
+    });
+  }
+
+  public getLocalizedLaterText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['later', 'sonra'],
+    });
+  }
+
+  public getLocalizedLastUpdateText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Last Update', 'Son Güncelleme'],
+    });
+  }
+
+  public getLocalizedSizeText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Size', 'Boyut'],
+    });
+  }
+
+  public getLocalizedRepoDetailsText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Repo Details', 'Depo Ayrıntıları'],
+    });
+  }
+
   public getLocalizedAddNewRepoText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Add New Repo', 'Yeni Depo Ekle'],

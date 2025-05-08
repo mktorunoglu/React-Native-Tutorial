@@ -2,9 +2,11 @@ import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
 import MyRepoModel from '../../models/RepoModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyModal from './Modal';
+import MyRepoDetailsModal from './RepoDetailsModal';
 
 const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
   <MyModal>
@@ -15,7 +17,11 @@ const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
     <MyModalSelectionButton
       icon={MyIcons.InformationOutlined}
       text={MyLocalizationUtils.getLocalizedDetailsText()}
-      onPress={() => {}}
+      onPress={() =>
+        MyModalUtils.showModal({
+          modal: <MyRepoDetailsModal repo={repo} />,
+        })
+      }
     />
     <MyModalSelectionButton
       icon={MyIcons.EditOutlined}

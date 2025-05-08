@@ -103,12 +103,7 @@ const MyLoginScreen = ({
             tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
             onPress={() =>
               MyModalUtils.showModal({
-                modal: (
-                  <MyOptionsModal
-                    navigation={navigation}
-                    isLoginScreen={true}
-                  />
-                ),
+                modal: <MyOptionsModal navigation={navigation} isLoginScreen />,
               })
             }
           />

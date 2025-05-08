@@ -32,6 +32,7 @@ const MyModalSelectionButton = ({
             : MyIcons.RadioboxBlank
       }
       text={text}
+      textSize={16}
       textFontWeight={MyFontWeights.Normal}
       onPress={isSelected ? undefined : onPress}
     />

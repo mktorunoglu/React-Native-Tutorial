@@ -42,7 +42,7 @@ const MyDashboardBodyScreen = ({
       <MyText text={text} fontSize={16} />
     </MyView>
   );
-  const MyCardDataLine_ = ({
+  const MyCardDataTile_ = ({
     text,
     value,
     paddingBottom,
@@ -54,7 +54,7 @@ const MyDashboardBodyScreen = ({
     isImportant?: boolean;
   }) => (
     <MyView isRow paddingBottom={paddingBottom}>
-      <MyView width="auto" isExpanded>
+      <MyView isExpanded width="auto">
         <MyText text={text} color={MyColors.Grey} />
       </MyView>
       <MyView width={10} />
@@ -140,15 +140,15 @@ const MyDashboardBodyScreen = ({
                         )}
                       </MyPercentProgressIndicator>
                     </MyView>
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedUsageText()}
                       value={MyConverterUtils.convertNumberToSizeText(
                         dashboardInfo.usage ?? 0,
                       )}
                       paddingBottom={5}
-                      isImportant={true}
+                      isImportant
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedTotalText()}
                       value={MyConverterUtils.convertNumberToSizeText(
                         dashboardInfo.quota ?? 0,
@@ -165,12 +165,12 @@ const MyDashboardBodyScreen = ({
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedSharedWithYouText()}
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedWithYouText()}
                       value={(dashboardInfo.inPerson ?? 0).toString()}
                       paddingBottom={5}
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
                       value={(dashboardInfo.inGroup ?? 0).toString()}
                     />
@@ -185,17 +185,17 @@ const MyDashboardBodyScreen = ({
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedSharedByYouText()}
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedSharedLinksText()}
                       value={(dashboardInfo.outDownlink ?? 0).toString()}
                       paddingBottom={5}
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedWithUsersText()}
                       value={(dashboardInfo.outPerson ?? 0).toString()}
                       paddingBottom={5}
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedWithYourGroupsText()}
                       value={(dashboardInfo.outDownlink ?? 0).toString()}
                     />
@@ -212,7 +212,7 @@ const MyDashboardBodyScreen = ({
                     <MyCardTitleText_
                       text={MyLocalizationUtils.getLocalizedFavoritesText()}
                     />
-                    <MyCardDataLine_
+                    <MyCardDataTile_
                       text={MyLocalizationUtils.getLocalizedFilesText()}
                       value={(dashboardInfo.favs ?? 0).toString()}
                     />

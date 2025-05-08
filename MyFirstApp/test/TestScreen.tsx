@@ -1,7 +1,13 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import React, {useState} from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+} from 'react-native';
 import {MyRouteProps} from '../src/constants/RouteProps';
-import {useState} from 'react';
-import {KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TextInput} from 'react-native';
 
 // TEST
 const MyTestScreen = ({
@@ -9,7 +15,7 @@ const MyTestScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
-  const initialValues = Array.from({length: 100}, (_, i) => (i + 1).toString());
+  const initialValues = Array.from({length: 20}, (_, i) => (i + 1).toString());
   const [values, setValues] = useState(initialValues);
 
   const handleChange = (text: string, index: number) => {
@@ -21,9 +27,8 @@ const MyTestScreen = ({
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0} // navigation bar varsa offset'i artır
-    >
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}>
       <ScrollView contentContainerStyle={styles.container}>
         {values.map((value, index) => (
           <TextInput
@@ -41,8 +46,7 @@ const MyTestScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    paddingBottom: 300, // klavye alanı için boşluk bırak
+    padding: 100,
   },
   input: {
     height: 40,

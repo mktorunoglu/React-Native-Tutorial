@@ -10,8 +10,8 @@ import {MyRoutes} from './src/enums/Routes';
 import MyHomeScreen from './src/screens/HomeScreen';
 import MyLoginScreen from './src/screens/LoginScreen';
 import MySplashScreen from './src/screens/SplashScreen';
-import MyTestScreen from './src/test/TestScreen';
 import MyModalUtils from './src/utils/ModalUtils';
+import MyTestScreen from './test/TestScreen';
 
 const App: React.FC = () => {
   const theme = {

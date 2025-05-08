@@ -38,6 +38,15 @@ const MyLoginScreen = ({
   const userId = new MyObservableValueModel('');
   const password = new MyObservableValueModel('');
   const isPasswordVisible = new MyObservableValueModel(false);
+  const ServerAddressTextInput_ = observer(() => (
+    <MyTextInput
+      keyboardType={MyKeyboardTypes.Url}
+      labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
+      rightIcon={MyIcons.Web}
+      value={serverAddress.value}
+      onChangeText={text => serverAddress.setValue(text)}
+    />
+  ));
   const PasswordTextInput_ = observer(() => (
     <MyTextInput
       isTextObscured={!isPasswordVisible.value}
@@ -49,15 +58,6 @@ const MyLoginScreen = ({
         isPasswordVisible.setValue(!isPasswordVisible.value)
       }
       onChangeText={text => password.setValue(text)}
-    />
-  ));
-  const ServerAddressTextInput_ = observer(() => (
-    <MyTextInput
-      keyboardType={MyKeyboardTypes.Url}
-      labelText={MyLocalizationUtils.getLocalizedServerAddressText()}
-      rightIcon={MyIcons.Web}
-      value={serverAddress.value}
-      onChangeText={text => serverAddress.setValue(text)}
     />
   ));
   const LoginButton_ = observer(() => (

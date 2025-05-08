@@ -6,6 +6,7 @@ import MySortingIconButton from '../components/buttons/SortingIconButton';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
+import MyRepoInputModal from '../components/modals/RepoInputModal';
 import MySearchTextInput from '../components/texts/SearchTextInput';
 import MyText from '../components/texts/Text';
 import MyView from '../components/views/View';
@@ -17,6 +18,7 @@ import MyRepoModel from '../models/RepoModel';
 import MyFileService from '../services/FileService';
 import MyFilterUtils from '../utils/FilterUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
+import MyModalUtils from '../utils/ModalUtils';
 import MySortingUtils from '../utils/SortingUtils';
 
 const MyReposBodyScreen = () => {
@@ -77,7 +79,11 @@ const MyReposBodyScreen = () => {
           <MyIconButton
             icon={MyIcons.Add}
             tooltip={MyLocalizationUtils.getLocalizedAddNewRepoText()}
-            onPress={() => {}}
+            onPress={() =>
+              MyModalUtils.showModal({
+                modal: <MyRepoInputModal />,
+              })
+            }
           />
           {!isRepoListEmpty && <MySortingIconButton />}
         </MyView>

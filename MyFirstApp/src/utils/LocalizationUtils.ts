@@ -73,6 +73,12 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedRepoNameText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Repo Name', 'Depo İsmi'],
+    });
+  }
+
   public getLocalizedJustNowText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Just now', 'Az önce'],

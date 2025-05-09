@@ -72,14 +72,9 @@ class MyAuthenticationUtils {
         await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
       }
       MyServiceUtils.token = response.data;
-      const isTestMode = false;
-      if (isTestMode) {
-        navigation.replace(MyRoutes.Test);
-      } else {
-        navigation.replace(MyRoutes.Home, {
-          initialRoute: MyNavigationBarRoutes.Dashboard,
-        });
-      }
+      navigation.replace(MyRoutes.Home, {
+        initialRoute: MyNavigationBarRoutes.Dashboard,
+      });
       return true;
     }
     return false;

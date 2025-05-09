@@ -7,9 +7,9 @@ import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyAlertModal from './AlertModal';
 import MyChangeLanguageModal from './ChangeLanguageModal';
-import MyModal from './Modal';
 import MyProgressModal from './ProgressModal';
 
 const MyOptionsModal = ({
@@ -19,7 +19,7 @@ const MyOptionsModal = ({
   navigation: StackNavigationProp<MyRouteProps>;
   isLoginScreen?: boolean;
 }) => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyModalHeader titleText={MyLocalizationUtils.getLocalizedOptionsText()} />
     <MyModalSelectionButton
       icon={MyIcons.Earth}
@@ -61,7 +61,7 @@ const MyOptionsModal = ({
         }
       />
     )}
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MyOptionsModal;

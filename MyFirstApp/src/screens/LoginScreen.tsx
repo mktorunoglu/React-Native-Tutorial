@@ -7,10 +7,9 @@ import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyOptionsModal from '../components/modals/OptionsModal';
 import MyProgressModal from '../components/modals/ProgressModal';
+import MyScreenScaffold from '../components/scaffolds/ScreenScaffold';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
-import MyKeyboardAvoidingView from '../components/views/KeyboardAvoidingView';
-import MySafeAreaView from '../components/views/SafeAreaView';
 import MyScrollView from '../components/views/ScrollView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
@@ -24,6 +23,7 @@ import {MyUrls} from '../enums/Urls';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
+import MyKeyboardUtils from '../utils/KeyboardUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
 import MySnackbarUtils from '../utils/SnackbarUtils';
@@ -87,90 +87,94 @@ const MyLoginScreen = ({
       }}
     />
   ));
+  const BottomArea_ = observer(() => {
+    if (MyKeyboardUtils.isKeyboardVisible.value) {
+      return <MyView height={20} />;
+    }
+    return (
+      <MyView isColumn paddingVertical={20}>
+        <MyText
+          text={MyLocalizationUtils.getLocalizedAppCopyrightDescriptionText()}
+          fontSize={12}
+          color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
+          fontWeight={MyFontWeights.W300}
+          textAlign={MyTextAligns.Center}
+        />
+        <MyView height={10} />
+        <MyImage
+          path={require('../../assets/logos/logo_turksat.png')}
+          height={20}
+          width="100%"
+        />
+      </MyView>
+    );
+  });
   return (
-    <MyView isColumn isExpanded backgroundColor={MyColors.White}>
-      <MySafeAreaView safeOnlyTop />
-      <MyKeyboardAvoidingView>
-        <MyView isColumn isExpanded>
-          <MyView height="30%">
-            <MyView isCenterItems>
-              <MyImage
-                path={require('../../assets/logos/logo_kdpp.png')}
-                height="100%"
-                width="70%"
-              />
-            </MyView>
-            <MyView zIndex={1} alignItems={MyAligns.FlexEnd}>
-              <MyIconButton
-                icon={MyIcons.MoreVertical}
-                tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
-                onPress={() =>
-                  MyModalUtils.showModal({
-                    modal: (
-                      <MyOptionsModal navigation={navigation} isLoginScreen />
-                    ),
-                  })
-                }
-              />
-            </MyView>
-          </MyView>
-          <MyDivider />
-          <MyView
-            isColumn
-            isExpanded
-            paddingHorizontal={20}
-            alignItems={MyAligns.Center}
-            backgroundColor={MyColorUtils.getColorWithOpacity(
-              MyColors.Theme,
-              0.2,
-            )}>
-            <MyView height={20} />
-            <MyText
-              text={MyLocalizationUtils.getLocalizedAppNameFullText()}
-              fontSize={16}
-              color={MyColors.Theme}
-              fontWeight={MyFontWeights.Bold}
-              textAlign={MyTextAligns.Center}
-            />
-            <MyView height={20} />
-            <MyView isColumn isExpanded>
-              <MyCard>
-                <MyScrollView padding={20}>
-                  <ServerAddressTextInput_ />
-                  <MyView height={10} />
-                  <MyTextInput
-                    labelText={MyLocalizationUtils.getLocalizedUserIdText()}
-                    rightIcon={MyIcons.AccountOutlined}
-                    onChangeText={text => userId.setValue(text)}
-                  />
-                  <MyView height={10} />
-                  <PasswordTextInput_ />
-                  <MyView height={20} />
-                  <LoginButton_ />
-                </MyScrollView>
-              </MyCard>
-            </MyView>
-            <MyView height={20} />
-            <MyText
-              text={MyLocalizationUtils.getLocalizedAppCopyrightDescriptionText()}
-              fontSize={12}
-              color={MyColorUtils.getColorWithOpacity(MyColors.Black, 0.5)}
-              fontWeight={MyFontWeights.W300}
-              textAlign={MyTextAligns.Center}
-            />
-            <MyView height={10} />
+    <MyScreenScaffold>
+      <MyView isColumn isExpanded backgroundColor={MyColors.White}>
+        <MyView height="30%">
+          <MyView isCenterItems>
             <MyImage
-              path={require('../../assets/logos/logo_turksat.png')}
-              height={20}
-              width="100%"
+              path={require('../../assets/logos/logo_kdpp.png')}
+              height="100%"
+              width="70%"
             />
-            <MyView height={20} />
           </MyView>
-          <MyDivider />
+          <MyView zIndex={1} alignItems={MyAligns.FlexEnd}>
+            <MyIconButton
+              icon={MyIcons.MoreVertical}
+              tooltip={MyLocalizationUtils.getLocalizedOptionsText()}
+              onPress={() =>
+                MyModalUtils.showModal({
+                  modal: (
+                    <MyOptionsModal navigation={navigation} isLoginScreen />
+                  ),
+                })
+              }
+            />
+          </MyView>
         </MyView>
-      </MyKeyboardAvoidingView>
-      <MySafeAreaView safeOnlyBottom />
-    </MyView>
+        <MyDivider />
+        <MyView
+          isColumn
+          isExpanded
+          paddingHorizontal={20}
+          alignItems={MyAligns.Center}
+          backgroundColor={MyColorUtils.getColorWithOpacity(
+            MyColors.Theme,
+            0.2,
+          )}>
+          <MyView height={20} />
+          <MyText
+            text={MyLocalizationUtils.getLocalizedAppNameFullText()}
+            fontSize={16}
+            color={MyColors.Theme}
+            fontWeight={MyFontWeights.Bold}
+            textAlign={MyTextAligns.Center}
+          />
+          <MyView height={20} />
+          <MyView isColumn isExpanded>
+            <MyCard>
+              <MyScrollView padding={20}>
+                <ServerAddressTextInput_ />
+                <MyView height={10} />
+                <MyTextInput
+                  labelText={MyLocalizationUtils.getLocalizedUserIdText()}
+                  rightIcon={MyIcons.AccountOutlined}
+                  onChangeText={text => userId.setValue(text)}
+                />
+                <MyView height={10} />
+                <PasswordTextInput_ />
+                <MyView height={20} />
+                <LoginButton_ />
+              </MyScrollView>
+            </MyCard>
+          </MyView>
+          <BottomArea_ />
+        </MyView>
+        <MyDivider />
+      </MyView>
+    </MyScreenScaffold>
   );
 };
 

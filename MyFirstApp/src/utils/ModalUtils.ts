@@ -1,4 +1,4 @@
-import {ReactElement} from 'react';
+import {ReactNode} from 'react';
 import MyObservableValueModel from '../models/ObservableValueModel';
 
 class MyModalUtils {
@@ -13,10 +13,10 @@ class MyModalUtils {
     return MyModalUtils.instance;
   }
 
-  public modal = new MyObservableValueModel<ReactElement | null>(null);
+  public modal = new MyObservableValueModel<ReactNode | null>(null);
   public isModalVisible = new MyObservableValueModel(false);
 
-  public showModal({modal}: {modal: ReactElement}) {
+  public showModal({modal}: {modal: ReactNode}) {
     this.modal.setValue(modal);
     this.isModalVisible.setValue(true);
   }

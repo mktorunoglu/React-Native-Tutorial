@@ -2,8 +2,8 @@ import {MyFontWeights} from '../../enums/FontWeights';
 import MyButton from '../buttons/Button';
 import MyDivider from '../dividers/Divider';
 import MyModalHeader from '../headers/ModalHeader';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyView from '../views/View';
-import MyModal from './Modal';
 
 const MyAlertModal = ({
   titleText,
@@ -18,7 +18,7 @@ const MyAlertModal = ({
   buttonColor?: string;
   buttonOnPress?: () => void;
 }) => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyView isColumn>
       <MyModalHeader titleText={titleText} messageText={messageText} />
       <MyDivider />
@@ -32,7 +32,7 @@ const MyAlertModal = ({
         onPress={buttonOnPress}
       />
     </MyView>
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MyAlertModal;

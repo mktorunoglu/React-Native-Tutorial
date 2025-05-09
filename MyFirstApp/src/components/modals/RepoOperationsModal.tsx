@@ -5,11 +5,11 @@ import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
-import MyModal from './Modal';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyRepoDetailsModal from './RepoDetailsModal';
 
 const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyModalHeader
       titleText={MyLocalizationUtils.getLocalizedRepoOperationsText()}
       messageText={repo.repoName}
@@ -39,7 +39,7 @@ const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
       color={MyColors.Red}
       onPress={() => {}}
     />
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MyRepoOperationsModal;

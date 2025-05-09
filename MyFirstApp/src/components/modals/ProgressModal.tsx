@@ -1,11 +1,14 @@
 import {MyColors} from '../../enums/Colors';
 import MyProgressIndicator from '../indicators/ProgressIndicator';
-import MyTransparentModal from './TransparentModal';
+import MyModalScaffold from '../scaffolds/ModalScaffold';
+import MyView from '../views/View';
 
 const MyProgressModal = () => (
-  <MyTransparentModal>
-    <MyProgressIndicator color={MyColors.White} />
-  </MyTransparentModal>
+  <MyModalScaffold isDismissable={false}>
+    <MyView isColumn isExpanded isCenterItems>
+      <MyProgressIndicator color={MyColors.White} />
+    </MyView>
+  </MyModalScaffold>
 );
 
 export default MyProgressModal;

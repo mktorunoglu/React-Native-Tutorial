@@ -15,41 +15,39 @@ import MyText from '../texts/Text';
 import MyView from '../views/View';
 
 const MyRepoItem = ({repo}: {repo: MyRepoModel}) => (
-  <MyView padding={5}>
-    <MyCard>
-      <MyView isExpanded isRow alignItems={MyAligns.Center}>
-        <MyView width={10} />
-        <MyView
-          width="auto"
-          padding={5}
-          backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)}
-          borderRadius={5}>
-          <MyIcon icon={MyIcons.Archive} color={MyColors.Grey} />
-        </MyView>
-        <MyView isExpanded paddingHorizontal={15}>
-          <MyText
-            text={repo.repoName}
-            maxLines={2}
-            textOverflow={MyTextOverflows.End}
-          />
-        </MyView>
+  <MyCard margin={5}>
+    <MyView isExpanded isRow alignItems={MyAligns.Center}>
+      <MyView width={10} />
+      <MyView
+        width="auto"
+        padding={5}
+        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)}
+        borderRadius={5}>
+        <MyIcon icon={MyIcons.Archive} color={MyColors.Grey} />
+      </MyView>
+      <MyView isExpanded paddingHorizontal={15}>
         <MyText
-          text={MyConverterUtils.convertNumberToSizeText(repo.size ?? 0)}
-          fontSize={12}
-          color={MyColors.Grey}
-        />
-        <MyIconButton
-          icon={MyIcons.MoreVertical}
-          tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
-          onPress={() =>
-            MyModalUtils.showModal({
-              modal: <MyRepoOperationsModal repo={repo} />,
-            })
-          }
+          text={repo.repoName}
+          maxLines={2}
+          textOverflow={MyTextOverflows.End}
         />
       </MyView>
-    </MyCard>
-  </MyView>
+      <MyText
+        text={MyConverterUtils.convertNumberToSizeText(repo.size ?? 0)}
+        fontSize={12}
+        color={MyColors.Grey}
+      />
+      <MyIconButton
+        icon={MyIcons.MoreVertical}
+        tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
+        onPress={() =>
+          MyModalUtils.showModal({
+            modal: <MyRepoOperationsModal repo={repo} />,
+          })
+        }
+      />
+    </MyView>
+  </MyCard>
 );
 
 export default MyRepoItem;

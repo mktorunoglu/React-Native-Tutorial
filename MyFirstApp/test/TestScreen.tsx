@@ -1,13 +1,13 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import React, {useState} from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  TextInput,
-} from 'react-native';
+import {observer} from 'mobx-react-lite';
+import MyButton from '../src/components/buttons/Button';
+import MyProgressModal from '../src/components/modals/ProgressModal';
+import MyModalScaffold from '../src/components/scaffolds/CardModalScaffold';
+import MyScreenScaffold from '../src/components/scaffolds/ScreenScaffold';
+import MyTextInput from '../src/components/texts/TextInput';
+import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
+import MyModalUtils from '../src/utils/ModalUtils';
 
 // TEST
 const MyTestScreen = ({
@@ -15,47 +15,33 @@ const MyTestScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
-  const initialValues = Array.from({length: 20}, (_, i) => (i + 1).toString());
-  const [values, setValues] = useState(initialValues);
-
-  const handleChange = (text: string, index: number) => {
-    const updatedValues = [...values];
-    updatedValues[index] = text;
-    setValues(updatedValues);
-  };
-
+  const Modal_ = observer(() => (
+    <MyModalScaffold>
+      <MyView isColumn isExpanded isCenterItems>
+        <MyView height={100}>
+          <MyTextInput />
+        </MyView>
+        <MyButton text="Hide Modal" onPress={() => MyModalUtils.hideModal()} />
+      </MyView>
+    </MyModalScaffold>
+  ));
   return (
-    <KeyboardAvoidingView
-      style={{flex: 1}}
-      behavior="padding"
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}>
-      <ScrollView contentContainerStyle={styles.container}>
-        {values.map((value, index) => (
-          <TextInput
-            key={index}
-            style={styles.input}
-            value={value}
-            onChangeText={text => handleChange(text, index)}
-            keyboardType="numeric"
-          />
-        ))}
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <MyScreenScaffold>
+      <MyView isColumn isExpanded isCenterItems>
+        <MyView height={100}>
+          <MyTextInput />
+        </MyView>
+        <MyButton
+          text="Show Modal"
+          onPress={() =>
+            MyModalUtils.showModal({
+              modal: <MyProgressModal />,
+            })
+          }
+        />
+      </MyView>
+    </MyScreenScaffold>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 100,
-  },
-  input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-});
 
 export default MyTestScreen;

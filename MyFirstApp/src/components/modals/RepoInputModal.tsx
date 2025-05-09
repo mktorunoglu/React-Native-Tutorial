@@ -1,12 +1,12 @@
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyDivider from '../dividers/Divider';
 import MyModalHeader from '../headers/ModalHeader';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyTextInput from '../texts/TextInput';
 import MyView from '../views/View';
-import MyModal from './Modal';
 
 const MyRepoInputModal = () => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyModalHeader
       titleText={MyLocalizationUtils.getLocalizedAddNewRepoText()}
     />
@@ -47,7 +47,7 @@ const MyRepoInputModal = () => (
     <MyView padding={15}>
       <MyTextInput labelText={MyLocalizationUtils.getLocalizedRepoNameText()} />
     </MyView>
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MyRepoInputModal;

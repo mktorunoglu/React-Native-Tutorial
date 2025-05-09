@@ -4,11 +4,11 @@ import MyDateUtils from '../../utils/DateUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyDivider from '../dividers/Divider';
 import MyModalHeader from '../headers/ModalHeader';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyModalDataTile from '../tiles/ModalDataTile';
-import MyModal from './Modal';
 
 const MyRepoDetailsModal = ({repo}: {repo: MyRepoModel}) => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyModalHeader
       titleText={MyLocalizationUtils.getLocalizedRepoDetailsText()}
       messageText={repo.repoName}
@@ -25,7 +25,7 @@ const MyRepoDetailsModal = ({repo}: {repo: MyRepoModel}) => (
       })}
       isLastItem
     />
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MyRepoDetailsModal;

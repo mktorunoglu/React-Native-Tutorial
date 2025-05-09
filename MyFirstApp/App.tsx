@@ -4,6 +4,7 @@ import {observer} from 'mobx-react-lite';
 import {DefaultTheme, PaperProvider, Portal} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import MySnackbar from './src/components/snackbars/Snackbar';
+import MyView from './src/components/views/View';
 import {MyRouteProps} from './src/constants/RouteProps';
 import {MyColors} from './src/enums/Colors';
 import {MyRoutes} from './src/enums/Routes';
@@ -14,6 +15,7 @@ import MyModalUtils from './src/utils/ModalUtils';
 import MyTestScreen from './test/TestScreen';
 
 const App: React.FC = () => {
+  const isTestMode = false;
   const theme = {
     ...DefaultTheme,
     colors: {
@@ -24,7 +26,10 @@ const App: React.FC = () => {
   };
   const Stack = createStackNavigator<MyRouteProps>();
   const Modal_ = observer(() => {
-    return MyModalUtils.modal.value;
+    if (MyModalUtils.isModalVisible.value) {
+      return MyModalUtils.modal.value;
+    }
+    return <MyView />;
   });
   return (
     <SafeAreaProvider>
@@ -35,7 +40,7 @@ const App: React.FC = () => {
             <Modal_ />
           </Portal>
           <Stack.Navigator
-            initialRouteName={MyRoutes.Splash}
+            initialRouteName={isTestMode ? MyRoutes.Test : MyRoutes.Splash}
             screenOptions={{
               headerShown: false,
             }}>

@@ -8,7 +8,7 @@ import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
-import MyModal from './Modal';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyProgressModal from './ProgressModal';
 
 const MyChangeLanguageModal = ({
@@ -18,7 +18,7 @@ const MyChangeLanguageModal = ({
   navigation: StackNavigationProp<MyRouteProps>;
   isLoginScreen: boolean;
 }) => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyModalHeader
       titleText={MyLocalizationUtils.getLocalizedChangeLanguageText()}
     />
@@ -50,7 +50,7 @@ const MyChangeLanguageModal = ({
         }}
       />
     ))}
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MyChangeLanguageModal;

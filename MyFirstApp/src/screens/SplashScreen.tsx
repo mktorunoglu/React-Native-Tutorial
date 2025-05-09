@@ -2,8 +2,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {useEffect} from 'react';
 import MyImage from '../components/images/Image';
 import MyProgressIndicator from '../components/indicators/ProgressIndicator';
+import MyScreenScaffold from '../components/scaffolds/ScreenScaffold';
 import MyText from '../components/texts/Text';
-import MySafeAreaView from '../components/views/SafeAreaView';
 import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
@@ -32,8 +32,7 @@ const MySplashScreen = ({
     onInit();
   }, []);
   return (
-    <MyView isColumn isExpanded backgroundColor={MyColors.White}>
-      <MySafeAreaView safeOnlyTop />
+    <MyScreenScaffold>
       <MyView isColumn isExpanded isCenterItems>
         <MyImage
           path={require('../../assets/logos/logo_kdpp.png')}
@@ -59,8 +58,7 @@ const MySplashScreen = ({
           <MyView height={20} />
         </MyView>
       </MyView>
-      <MySafeAreaView safeOnlyBottom />
-    </MyView>
+    </MyScreenScaffold>
   );
 };
 

@@ -1,19 +1,8 @@
+import {ReactNode} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import MyStatusBar from '../bars/StatusBar';
 
-const MySafeAreaView = ({
-  safeOnlyTop,
-  safeOnlyBottom,
-}: {
-  safeOnlyTop?: boolean;
-  safeOnlyBottom?: boolean;
-}) => (
-  <SafeAreaView
-    edges={
-      safeOnlyTop ? ['top'] : safeOnlyBottom ? ['bottom'] : ['top', 'bottom']
-    }>
-    {!safeOnlyBottom && <MyStatusBar />}
-  </SafeAreaView>
+const MySafeAreaView = ({children}: {children?: ReactNode}) => (
+  <SafeAreaView style={{flex: 1}}>{children}</SafeAreaView>
 );
 
 export default MySafeAreaView;

@@ -5,11 +5,11 @@ import MyModalUtils from '../../utils/ModalUtils';
 import MySortingUtils from '../../utils/SortingUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
-import MyModal from './Modal';
+import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyProgressModal from './ProgressModal';
 
 const MySortingModal = () => (
-  <MyModal>
+  <MyCardModalScaffold>
     <MyModalHeader titleText={MyLocalizationUtils.getLocalizedSortText()} />
     {[
       new MyModalSelectionButtonDataModel({
@@ -48,7 +48,7 @@ const MySortingModal = () => (
         }}
       />
     ))}
-  </MyModal>
+  </MyCardModalScaffold>
 );
 
 export default MySortingModal;

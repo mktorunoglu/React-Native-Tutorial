@@ -1,5 +1,7 @@
 import {StatusBar} from 'react-native';
 
-const MyStatusBar = () => <StatusBar barStyle="dark-content" />;
+const MyStatusBar = ({isContentDark = false}: {isContentDark?: boolean}) => (
+  <StatusBar barStyle={isContentDark ? 'dark-content' : 'light-content'} />
+);
 
 export default MyStatusBar;

@@ -73,6 +73,12 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedSetPasswordText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Set Password', 'Şifrele'],
+    });
+  }
+
   public getLocalizedRepoNameText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Repo Name', 'Depo İsmi'],

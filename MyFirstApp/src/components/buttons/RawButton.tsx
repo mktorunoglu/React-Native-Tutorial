@@ -4,17 +4,17 @@ import {MyColors} from '../../enums/Colors';
 import MyColorUtils from '../../utils/ColorUtils';
 
 const MyRawButton = ({
-  onPress,
   color = MyColors.Black,
+  onPress,
   children,
 }: {
-  onPress?: () => void;
   color?: string;
+  onPress?: () => void;
   children?: ReactNode;
 }) => (
   <TouchableRipple
-    onPress={onPress}
-    rippleColor={MyColorUtils.getColorWithOpacity(color, 0.2)}>
+    rippleColor={MyColorUtils.getColorWithOpacity(color, 0.2)}
+    onPress={onPress}>
     {children}
   </TouchableRipple>
 );

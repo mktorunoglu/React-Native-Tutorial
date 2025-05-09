@@ -32,7 +32,7 @@ const MyDashboardBodyScreen = ({
     onPress?: () => void;
     children?: ReactNode;
   }) => (
-    <MyRawButton onPress={onPress} color={MyColors.Transparent}>
+    <MyRawButton color={MyColors.Transparent} onPress={onPress}>
       <MyCard paddingVertical={15} paddingHorizontal={10}>
         {children}
       </MyCard>

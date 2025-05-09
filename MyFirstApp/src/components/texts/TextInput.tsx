@@ -15,6 +15,7 @@ const MyTextInput = ({
   keyboardType = MyKeyboardTypes.Default,
   isTextObscured = false,
   isEditable = true,
+  isAutoFocused = false,
   labelText,
   labelTextColor,
   hintText,
@@ -34,6 +35,7 @@ const MyTextInput = ({
   keyboardType?: MyKeyboardTypes;
   isTextObscured?: boolean;
   isEditable?: boolean;
+  isAutoFocused?: boolean;
   labelText?: string;
   labelTextColor?: string;
   hintText?: string;
@@ -57,6 +59,7 @@ const MyTextInput = ({
       keyboardType={keyboardType}
       secureTextEntry={isTextObscured}
       editable={isEditable}
+      autoFocus={isAutoFocused}
       label={labelText}
       placeholder={hintText}
       placeholderTextColor={hintTextColor}

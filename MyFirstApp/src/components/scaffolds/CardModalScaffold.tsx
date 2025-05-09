@@ -12,7 +12,11 @@ const MyCardModalScaffold = ({
   children?: ReactNode;
 }) => (
   <MyModalScaffold isDismissable={isDismissable}>
-    <MyView isColumn isExpanded justifyContent={MyAligns.FlexEnd}>
+    <MyView
+      isColumn
+      isExpanded
+      justifyContent={MyAligns.FlexEnd}
+      paddingTop={50}>
       <MyCard margin={10}>{children}</MyCard>
     </MyView>
   </MyModalScaffold>

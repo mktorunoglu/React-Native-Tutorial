@@ -11,6 +11,7 @@ import {MyFontWeights} from '../enums/FontWeights';
 import {MyTextAligns} from '../enums/TextAligns';
 import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
+import MyKeyboardUtils from '../utils/KeyboardUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MySortingUtils from '../utils/SortingUtils';
 
@@ -20,6 +21,7 @@ const MySplashScreen = ({
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   const onInit = async () => {
+    await MyKeyboardUtils.initialize();
     await MyLocalizationUtils.initialize();
     await MySortingUtils.initialize();
     await MyAuthenticationUtils.autoLogin({

@@ -1,5 +1,7 @@
+import {observer} from 'mobx-react-lite';
 import {ReactNode} from 'react';
 import {DimensionValue, ScrollView} from 'react-native';
+import MyKeyboardUtils from '../../utils/KeyboardUtils';
 import MyView from './View';
 
 const MyScrollView = ({
@@ -20,21 +22,26 @@ const MyScrollView = ({
   paddingHorizontal?: DimensionValue;
   showScrollBar?: boolean;
   children?: ReactNode;
-}) => (
-  <ScrollView
-    showsVerticalScrollIndicator={showScrollBar}
-    showsHorizontalScrollIndicator={showScrollBar}
-    style={{
-      margin,
-      marginVertical,
-      marginHorizontal,
-      padding,
-      paddingVertical,
-      paddingHorizontal,
-    }}>
-    {children}
-    <MyView height={40} />
-  </ScrollView>
-); // TEST <MyView height={40} /> keyboard açıkken göster
+}) => {
+  const Space_ = observer(() => (
+    <MyView height={MyKeyboardUtils.isKeyboardVisible.value ? 40 : 0} />
+  ));
+  return (
+    <ScrollView
+      showsVerticalScrollIndicator={showScrollBar}
+      showsHorizontalScrollIndicator={showScrollBar}
+      style={{
+        margin,
+        marginVertical,
+        marginHorizontal,
+        padding,
+        paddingVertical,
+        paddingHorizontal,
+      }}>
+      {children}
+      <Space_ />
+    </ScrollView>
+  );
+};
 
 export default MyScrollView;

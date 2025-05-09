@@ -25,6 +25,15 @@ const MyRepoInputModal = () => {
   const repoName = new MyObservableValueModel('');
   const password = new MyObservableValueModel('');
   const passwordAgain = new MyObservableValueModel('');
+  const RepoNameTextInput_ = observer(() => (
+    <MyTextInput
+      labelText={MyLocalizationUtils.getLocalizedRepoNameText()}
+      isAutoFocused
+      textCapitalize={MyTextCapitalizes.Words}
+      value={repoName.value}
+      onChangeText={text => repoName.setValue(text)}
+    />
+  ));
   const SetPasswordArea_ = observer(() => {
     if (isEncryptionActive.value) {
       return (
@@ -50,6 +59,7 @@ const MyRepoInputModal = () => {
           <MyPasswordTextInput
             isPasswordVisible={isPasswordVisible}
             password={password}
+            isAutoFocused
           />
           <MyView height={15} />
           <MyPasswordTextInput
@@ -63,6 +73,18 @@ const MyRepoInputModal = () => {
     }
     return <MyView />;
   });
+  const AddButton_ = observer(() => (
+    <MyButton
+      text={MyLocalizationUtils.getLocalizedAddText()}
+      isDisable={
+        repoName.value.trim() == '' ||
+        (isEncryptionActive.value
+          ? password.value.trim() == '' || passwordAgain.value.trim() == ''
+          : false)
+      }
+      onPress={() => {}}
+    />
+  ));
   return (
     <MyCardModalScaffold>
       <MyModalHeader
@@ -70,23 +92,19 @@ const MyRepoInputModal = () => {
       />
       <MyDivider />
       <MyScrollView padding={15}>
-        <MyTextInput
-          labelText={MyLocalizationUtils.getLocalizedRepoNameText()}
-          isAutoFocused
-          textCapitalize={MyTextCapitalizes.Words}
-        />
+        <RepoNameTextInput_ />
         <MyView height={15} />
         <MySwitchTile
           text={MyLocalizationUtils.getLocalizedSetPasswordText()}
           value={isEncryptionActive}
+          onChange={() => {
+            password.setValue('');
+            passwordAgain.setValue('');
+          }}
         />
         <MyView height={15} />
         <SetPasswordArea_ />
-        <MyButton
-          text={MyLocalizationUtils.getLocalizedAddText()}
-          isDisable
-          onPress={() => {}}
-        />
+        <AddButton_ />
         <MyView height={5} />
       </MyScrollView>
     </MyCardModalScaffold>

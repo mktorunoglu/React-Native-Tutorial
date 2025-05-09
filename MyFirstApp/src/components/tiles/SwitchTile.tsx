@@ -11,14 +11,21 @@ import MyView from '../views/View';
 const MySwitchTile = ({
   text,
   value,
+  onChange,
 }: {
   text: string;
   value: MyObservableValueModel<boolean>;
+  onChange?: () => void;
 }) => {
   const SwitchButton_ = observer(() => (
     <MySwitchButton
       value={value.value}
-      onChange={value_ => value.setValue(value_)}
+      onChange={value_ => {
+        value.setValue(value_);
+        if (onChange != null) {
+          onChange();
+        }
+      }}
     />
   ));
   return (

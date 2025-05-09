@@ -53,9 +53,9 @@ const MyLoginScreen = ({
   const LoginButton_ = observer(() => (
     <MyButton
       isDisable={
-        serverAddress.value.length == 0 ||
-        userId.value.length == 0 ||
-        password.value.length == 0
+        serverAddress.value.trim() == '' ||
+        userId.value.trim() == '' ||
+        password.value.trim() == ''
       }
       icon={MyIcons.Login}
       text={MyLocalizationUtils.getLocalizedLoginText()}

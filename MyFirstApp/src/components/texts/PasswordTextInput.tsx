@@ -8,14 +8,17 @@ const MyPasswordTextInput = ({
   labelText = MyLocalizationUtils.getLocalizedPasswordText(),
   isPasswordVisible,
   password,
+  isAutoFocused = false,
 }: {
   labelText?: string;
   isPasswordVisible: MyObservableValueModel<boolean>;
   password: MyObservableValueModel<string>;
+  isAutoFocused?: boolean;
 }) => {
   const PasswordTextInput_ = observer(() => (
     <MyTextInput
       isTextObscured={!isPasswordVisible.value}
+      isAutoFocused={isAutoFocused}
       labelText={labelText}
       rightIcon={
         isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined

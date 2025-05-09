@@ -1,4 +1,5 @@
 import {BackHandler} from 'react-native';
+import MyKeyboardUtils from './KeyboardUtils';
 import MyModalUtils from './ModalUtils';
 
 class MyNavigationUtils {
@@ -15,6 +16,10 @@ class MyNavigationUtils {
 
   public initialize() {
     BackHandler.addEventListener('hardwareBackPress', () => {
+      if (MyKeyboardUtils.isKeyboardVisible.value) {
+        MyKeyboardUtils.closeKeyboard();
+        return true;
+      }
       if (MyModalUtils.isModalVisible.value) {
         MyModalUtils.hideModal();
         return true;

@@ -1,5 +1,6 @@
 import {ReactNode} from 'react';
 import MyObservableValueModel from '../models/ObservableValueModel';
+import MyKeyboardUtils from './KeyboardUtils';
 
 class MyModalUtils {
   private static instance: MyModalUtils;
@@ -17,12 +18,15 @@ class MyModalUtils {
   public isModalVisible = new MyObservableValueModel(false);
 
   public showModal({modal}: {modal: ReactNode}) {
+    MyKeyboardUtils.closeKeyboard();
     this.modal.setValue(modal);
     this.isModalVisible.setValue(true);
   }
 
   public hideModal() {
-    this.isModalVisible.setValue(false);
+    if (this.isModalVisible.value) {
+      this.isModalVisible.setValue(false);
+    }
   }
 }
 

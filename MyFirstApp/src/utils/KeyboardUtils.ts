@@ -23,6 +23,12 @@ class MyKeyboardUtils {
       this.isKeyboardVisible.setValue(false),
     );
   }
+
+  public closeKeyboard() {
+    if (this.isKeyboardVisible.value) {
+      Keyboard.dismiss();
+    }
+  }
 }
 
 export default MyKeyboardUtils.getInstance();

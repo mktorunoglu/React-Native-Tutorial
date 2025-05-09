@@ -14,6 +14,7 @@ import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
 import MyKeyboardUtils from '../utils/KeyboardUtils';
 import MyLocalizationUtils from '../utils/LocalizationUtils';
+import MyNavigationUtils from '../utils/NavigationUtils';
 import MySortingUtils from '../utils/SortingUtils';
 
 const MySplashScreen = ({
@@ -22,7 +23,8 @@ const MySplashScreen = ({
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
   const onInit = async () => {
-    await MyKeyboardUtils.initialize();
+    MyKeyboardUtils.initialize();
+    MyNavigationUtils.initialize();
     await MyLocalizationUtils.initialize();
     await MySortingUtils.initialize();
     await MyAuthenticationUtils.autoLogin({

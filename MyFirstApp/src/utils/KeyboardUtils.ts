@@ -15,7 +15,7 @@ class MyKeyboardUtils {
 
   public isKeyboardVisible = new MyObservableValueModel(false);
 
-  public async initialize() {
+  public initialize() {
     Keyboard.addListener('keyboardDidShow', () =>
       this.isKeyboardVisible.setValue(true),
     );

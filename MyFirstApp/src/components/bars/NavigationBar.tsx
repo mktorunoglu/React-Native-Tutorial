@@ -9,7 +9,6 @@ import MyRawButton from '../buttons/RawButton';
 import MyDivider from '../dividers/Divider';
 import MyIcon from '../icons/Icon';
 import MyText from '../texts/Text';
-import MySafeAreaView from '../views/SafeAreaView';
 import MyView from '../views/View';
 
 const MyNavigationBar = ({
@@ -62,7 +61,6 @@ const MyNavigationBar = ({
           </MyView>
         ))}
       </MyView>
-      <MySafeAreaView safeOnlyBottom />
     </MyView>
   );
 };

@@ -103,6 +103,7 @@ const MyReposBodyScreen = () => {
               keyExtractor={(item, index) => item.repoId ?? index}
               renderItem={({item}) => <MyRepoItem repo={item} />}
               padding={5}
+              paddingBottom={5}
             />
           </MyView>
         )}

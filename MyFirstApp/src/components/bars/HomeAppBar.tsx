@@ -5,12 +5,10 @@ import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyIconButton from '../buttons/IconButton';
 import MyDivider from '../dividers/Divider';
 import MyImage from '../images/Image';
-import MySafeAreaView from '../views/SafeAreaView';
 import MyView from '../views/View';
 
 const MyHomeAppBar = () => (
   <MyView isColumn backgroundColor={MyColors.White}>
-    <MySafeAreaView safeOnlyTop />
     <MyView isRow>
       <MyIconButton
         icon={MyIcons.List}

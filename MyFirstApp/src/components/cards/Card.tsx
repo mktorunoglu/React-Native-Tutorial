@@ -1,6 +1,7 @@
 import {ReactNode} from 'react';
 import {DimensionValue} from 'react-native';
 import {MyColors} from '../../enums/Colors';
+import {MySizes} from '../../enums/Sizes';
 import MyColorUtils from '../../utils/ColorUtils';
 import MyView from '../views/View';
 
@@ -38,7 +39,7 @@ const MyCard = ({
   children?: ReactNode;
 }) => (
   <MyView
-    width="auto"
+    width={MySizes.Auto}
     borderRadius={10}
     borderWidth={1}
     borderColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.3)}

@@ -8,6 +8,7 @@ import MyView from '../components/views/View';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
+import {MySizes} from '../enums/Sizes';
 import {MyTextAligns} from '../enums/TextAligns';
 import MyAuthenticationUtils from '../utils/AuthenticationUtils';
 import MyColorUtils from '../utils/ColorUtils';
@@ -53,7 +54,7 @@ const MySplashScreen = ({
           <MyImage
             path={require('../../assets/logos/logo_turksat.png')}
             height={25}
-            width="100%"
+            width={MySizes.Full}
           />
           <MyView height={20} />
         </MyView>

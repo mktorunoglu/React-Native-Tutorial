@@ -2,6 +2,7 @@ import {ReactNode} from 'react';
 import {DimensionValue, View} from 'react-native';
 import {MyAligns} from '../../enums/Aligns';
 import {MyPositions} from '../../enums/Positions';
+import {MySizes} from '../../enums/Sizes';
 
 const MyView = ({
   flexDirection,
@@ -10,7 +11,7 @@ const MyView = ({
   isExpanded = false,
   isCenterItems = false,
   height,
-  width = '100%',
+  width = MySizes.Full,
   position,
   zIndex,
   top,

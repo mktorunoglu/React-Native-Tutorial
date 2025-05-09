@@ -12,6 +12,7 @@ import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
 import {MyIcons} from '../enums/Icons';
 import {MyNavigationBarRoutes} from '../enums/NavigationBarRoutes';
+import {MySizes} from '../enums/Sizes';
 import MyDashboardInfoModel from '../models/DashboardInfoModel';
 import MyObservableValueModel from '../models/ObservableValueModel';
 import MyFileService from '../services/FileService';
@@ -54,7 +55,7 @@ const MyDashboardBodyScreen = ({
     isImportant?: boolean;
   }) => (
     <MyView isRow paddingBottom={paddingBottom}>
-      <MyView isExpanded width="auto">
+      <MyView isExpanded width={MySizes.Auto}>
         <MyText text={text} color={MyColors.Grey} />
       </MyView>
       <MyView width={10} />

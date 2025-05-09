@@ -2,6 +2,7 @@ import {observer} from 'mobx-react-lite';
 import {MyColors} from '../../enums/Colors';
 import {MyFontWeights} from '../../enums/FontWeights';
 import {MyNavigationBarRoutes} from '../../enums/NavigationBarRoutes';
+import {MySizes} from '../../enums/Sizes';
 import MyNavigationBarButtonDataModel from '../../models/NavigationBarButtonDataModel';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyRawButton from '../buttons/RawButton';
@@ -31,7 +32,7 @@ const MyNavigationBar = ({
           }>
           <MyView isColumn isCenterItems paddingVertical={10}>
             <MyView
-              width="auto"
+              width={MySizes.Auto}
               backgroundColor={color}
               paddingHorizontal={15}
               paddingVertical={2}

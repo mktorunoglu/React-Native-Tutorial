@@ -18,6 +18,7 @@ import {MyColors} from '../enums/Colors';
 import {MyFontWeights} from '../enums/FontWeights';
 import {MyIcons} from '../enums/Icons';
 import {MyKeyboardTypes} from '../enums/KeyboardTypes';
+import {MySizes} from '../enums/Sizes';
 import {MyTextAligns} from '../enums/TextAligns';
 import {MyUrls} from '../enums/Urls';
 import MyObservableValueModel from '../models/ObservableValueModel';
@@ -104,7 +105,7 @@ const MyLoginScreen = ({
         <MyImage
           path={require('../../assets/logos/logo_turksat.png')}
           height={20}
-          width="100%"
+          width={MySizes.Full}
         />
       </MyView>
     );
@@ -116,7 +117,7 @@ const MyLoginScreen = ({
           <MyView isCenterItems>
             <MyImage
               path={require('../../assets/logos/logo_kdpp.png')}
-              height="100%"
+              height={MySizes.Full}
               width="70%"
             />
           </MyView>

@@ -1,5 +1,6 @@
 import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
+import {MySizes} from '../../enums/Sizes';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyIconButton from '../buttons/IconButton';
 import MyDivider from '../dividers/Divider';
@@ -21,7 +22,7 @@ const MyHomeAppBar = () => (
         <MyImage
           path={require('../../../assets/logos/logo_kdpp.png')}
           height="70%"
-          width="100%"
+          width={MySizes.Full}
         />
       </MyView>
       <MyIconButton

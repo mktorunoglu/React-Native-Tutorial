@@ -1,6 +1,7 @@
 import {MyAligns} from '../../enums/Aligns';
 import {MyColors} from '../../enums/Colors';
 import {MyIcons} from '../../enums/Icons';
+import {MySizes} from '../../enums/Sizes';
 import {MyTextOverflows} from '../../enums/TextOverflows';
 import MyRepoModel from '../../models/RepoModel';
 import MyColorUtils from '../../utils/ColorUtils';
@@ -19,7 +20,7 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => (
     <MyView isExpanded isRow alignItems={MyAligns.Center}>
       <MyView width={10} />
       <MyView
-        width="auto"
+        width={MySizes.Auto}
         padding={5}
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)}
         borderRadius={5}>

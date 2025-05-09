@@ -49,7 +49,10 @@ const MyOptionsModal = ({
                 buttonText={MyLocalizationUtils.getLocalizedLogoutText()}
                 buttonColor={MyColors.Red}
                 buttonOnPress={async () => {
-                  MyModalUtils.showModal({modal: <MyProgressModal />});
+                  MyModalUtils.showModal({
+                    modal: <MyProgressModal />,
+                    isDismissible: false,
+                  });
                   await MyAuthenticationUtils.logout({
                     navigation: navigation,
                   });

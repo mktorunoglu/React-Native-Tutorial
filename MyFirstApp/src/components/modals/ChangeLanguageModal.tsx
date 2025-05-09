@@ -37,7 +37,10 @@ const MyChangeLanguageModal = ({
         isSelected={MyLocalizationUtils.localization == buttonData.value}
         text={buttonData.text}
         onPress={async () => {
-          MyModalUtils.showModal({modal: <MyProgressModal />});
+          MyModalUtils.showModal({
+            modal: <MyProgressModal />,
+            isDismissible: false,
+          });
           await MyLocalizationUtils.setLocalization(buttonData.value);
           MyModalUtils.hideModal();
           if (isLoginScreen) {

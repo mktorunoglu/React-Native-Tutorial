@@ -42,7 +42,10 @@ const MySortingModal = () => (
         isSelected={MySortingUtils.sortingType.value == buttonData.value}
         text={buttonData.text}
         onPress={async () => {
-          MyModalUtils.showModal({modal: <MyProgressModal />});
+          MyModalUtils.showModal({
+            modal: <MyProgressModal />,
+            isDismissible: false,
+          });
           await MySortingUtils.setSortingType(buttonData.value);
           MyModalUtils.hideModal();
         }}

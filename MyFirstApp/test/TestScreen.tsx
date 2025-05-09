@@ -1,5 +1,6 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
+import {useEffect} from 'react';
 import MyButton from '../src/components/buttons/Button';
 import MyProgressModal from '../src/components/modals/ProgressModal';
 import MyModalScaffold from '../src/components/scaffolds/CardModalScaffold';
@@ -8,6 +9,7 @@ import MyTextInput from '../src/components/texts/TextInput';
 import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
 import MyModalUtils from '../src/utils/ModalUtils';
+import MyNavigationUtils from '../src/utils/NavigationUtils';
 
 // TEST
 const MyTestScreen = ({
@@ -15,6 +17,12 @@ const MyTestScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
+  const onInit = async () => {
+    MyNavigationUtils.initialize();
+  };
+  useEffect(() => {
+    onInit();
+  }, []);
   const Modal_ = observer(() => (
     <MyModalScaffold>
       <MyView isColumn isExpanded isCenterItems>
@@ -36,6 +44,7 @@ const MyTestScreen = ({
           onPress={() =>
             MyModalUtils.showModal({
               modal: <MyProgressModal />,
+              isDismissible: false,
             })
           }
         />

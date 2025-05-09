@@ -21,7 +21,9 @@ class MyNavigationUtils {
         return true;
       }
       if (MyModalUtils.isModalVisible.value) {
-        MyModalUtils.hideModal();
+        if (MyModalUtils.isModalDismissible) {
+          MyModalUtils.hideModal();
+        }
         return true;
       }
       return false;

@@ -72,7 +72,10 @@ const MyLoginScreen = ({
       icon={MyIcons.Login}
       text={MyLocalizationUtils.getLocalizedLoginText()}
       onPress={async () => {
-        MyModalUtils.showModal({modal: <MyProgressModal />});
+        MyModalUtils.showModal({
+          modal: <MyProgressModal />,
+          isDismissible: false,
+        });
         const isLoginSuccessful = await MyAuthenticationUtils.login({
           navigation: navigation,
           serverAddress: serverAddress.value,

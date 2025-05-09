@@ -16,10 +16,18 @@ class MyModalUtils {
 
   public modal = new MyObservableValueModel<ReactNode | null>(null);
   public isModalVisible = new MyObservableValueModel(false);
+  public isModalDismissible = true;
 
-  public showModal({modal}: {modal: ReactNode}) {
+  public showModal({
+    modal,
+    isDismissible = true,
+  }: {
+    modal: ReactNode;
+    isDismissible?: boolean;
+  }) {
     MyKeyboardUtils.closeKeyboard();
     this.modal.setValue(modal);
+    this.isModalDismissible = isDismissible;
     this.isModalVisible.setValue(true);
   }
 

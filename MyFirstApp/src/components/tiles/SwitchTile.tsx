@@ -10,20 +10,19 @@ import MyView from '../views/View';
 
 const MySwitchTile = ({
   text,
-  observableValue,
+  value,
 }: {
   text: string;
-  observableValue: MyObservableValueModel<boolean>;
+  value: MyObservableValueModel<boolean>;
 }) => {
   const SwitchButton_ = observer(() => (
     <MySwitchButton
-      value={observableValue.value}
-      onChange={value => observableValue.setValue(value)}
+      value={value.value}
+      onChange={value_ => value.setValue(value_)}
     />
   ));
   return (
-    <MyRawButton
-      onPress={() => observableValue.setValue(!observableValue.value)}>
+    <MyRawButton onPress={() => value.setValue(!value.value)}>
       <MyView isRow isCenterItems paddingVertical={10}>
         <SwitchButton_ />
         <MyView width={10} />

@@ -8,6 +8,7 @@ import MyImage from '../components/images/Image';
 import MyOptionsModal from '../components/modals/OptionsModal';
 import MyProgressModal from '../components/modals/ProgressModal';
 import MyScreenScaffold from '../components/scaffolds/ScreenScaffold';
+import MyPasswordTextInput from '../components/texts/PasswordTextInput';
 import MyText from '../components/texts/Text';
 import MyTextInput from '../components/texts/TextInput';
 import MyScrollView from '../components/views/ScrollView';
@@ -47,19 +48,6 @@ const MyLoginScreen = ({
       rightIcon={MyIcons.Web}
       value={serverAddress.value}
       onChangeText={text => serverAddress.setValue(text)}
-    />
-  ));
-  const PasswordTextInput_ = observer(() => (
-    <MyTextInput
-      isTextObscured={!isPasswordVisible.value}
-      labelText={MyLocalizationUtils.getLocalizedPasswordText()}
-      rightIcon={
-        isPasswordVisible.value ? MyIcons.EyeOffOutlined : MyIcons.EyeOutlined
-      }
-      onPressRightIcon={() =>
-        isPasswordVisible.setValue(!isPasswordVisible.value)
-      }
-      onChangeText={text => password.setValue(text)}
     />
   ));
   const LoginButton_ = observer(() => (
@@ -168,7 +156,10 @@ const MyLoginScreen = ({
                   onChangeText={text => userId.setValue(text)}
                 />
                 <MyView height={10} />
-                <PasswordTextInput_ />
+                <MyPasswordTextInput
+                  isPasswordVisible={isPasswordVisible}
+                  password={password}
+                />
                 <MyView height={20} />
                 <LoginButton_ />
               </MyScrollView>

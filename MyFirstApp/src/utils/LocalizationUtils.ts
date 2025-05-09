@@ -73,6 +73,27 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedPasswordAgainText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Password (Again)', 'Şifre (Tekrar)'],
+    });
+  }
+
+  public getLocalizedDontForgetPasswordDescriptionText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'If you forget your repo password, it will not be possible to recover the folders and files in your repo.',
+        'Depo şifrenizi unutmanız durumunda deponuzdaki klasörlerin ve dosyaların geri dönüşümü mümkün olmayacaktır.',
+      ],
+    });
+  }
+
+  public getLocalizedAddText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Add', 'Ekle'],
+    });
+  }
+
   public getLocalizedSetPasswordText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Set Password', 'Şifrele'],

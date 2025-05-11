@@ -43,6 +43,22 @@ class MyFileService {
     }
     return response;
   }
+
+  public async createRepo({
+    repoName,
+    repoPass,
+  }: {
+    repoName: string;
+    repoPass?: string;
+  }): Promise<MyResponseModel> {
+    const response = await MyApiUtils.request({
+      method: MyRequestMethods.Post,
+      url: MyServiceUtils.getFileApiUrl() + '/create_repo',
+      data: {repo_name: repoName, repo_pass: repoPass},
+    });
+    response.isSuccessful = response.data['result'] == true;
+    return response;
+  }
 }
 
 export default MyFileService.getInstance();

@@ -1,7 +1,8 @@
 import {MyColors} from '../enums/Colors';
 import {MyIcons} from '../enums/Icons';
 import MyObservableValueModel from '../models/ObservableValueModel';
-import TimerUtils from './TimerUtils';
+import MyLocalizationUtils from './LocalizationUtils';
+import MyTimerUtils from './TimerUtils';
 
 class MySnackbarUtils {
   private static instance: MySnackbarUtils;
@@ -51,7 +52,7 @@ class MySnackbarUtils {
       isSuccessful ? MyColors.Green : backgroundColor,
     );
     this.snackbarForegroundColor.setValue(foregroundColor);
-    TimerUtils.setTimer({
+    MyTimerUtils.setTimer({
       durationMilliseconds: 150,
       onFinished: () => this.isSnackbarVisible.setValue(true),
     });
@@ -59,6 +60,12 @@ class MySnackbarUtils {
 
   public hideSnackbar() {
     this.isSnackbarVisible.setValue(false);
+  }
+
+  public showErrorSnackbar() {
+    this.showSnackbar({
+      text: MyLocalizationUtils.getLocalizedAnErrorOccurredText(),
+    });
   }
 }
 

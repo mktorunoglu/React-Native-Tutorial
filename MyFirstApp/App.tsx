@@ -15,7 +15,7 @@ import MyModalUtils from './src/utils/ModalUtils';
 import MyTestScreen from './test/TestScreen';
 
 const App: React.FC = () => {
-  const isTestMode = true;
+  const isTestMode = false;
   const theme = {
     ...DefaultTheme,
     colors: {

@@ -73,6 +73,79 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedRepoAddedText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The repo named ' + this.variableTextPattern + ' has been added.',
+        this.variableTextPattern + ' isimli depo eklendi.',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
+  public getLocalizedPasswordsDontMatchValidationText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The entered passwords do not match.',
+        'Girilen şifreler uyuşmuyor.',
+      ],
+    });
+  }
+
+  public getLocalizedPasswordNumberValidationText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Your password must contain at least 1 number.',
+        'Şifreniz en az 1 adet rakam içermelidir.',
+      ],
+    });
+  }
+
+  public getLocalizedPasswordCapitalLetterValidationText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Your password must contain at least 1 capital letter.',
+        'Şifreniz en az 1 adet büyük harf içermelidir.',
+      ],
+    });
+  }
+
+  public getLocalizedPasswordLowercaseLetterValidationText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Your password must contain at least 1 lowercase letter.',
+        'Şifreniz en az 1 adet küçük harf içermelidir.',
+      ],
+    });
+  }
+
+  public getLocalizedPasswordLengthValidationText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Your password must be at least 8 characters length.',
+        'Şifreniz en az 8 karakter uzunluğunda olmalıdır.',
+      ],
+    });
+  }
+
+  public getLocalizedCharactersCannotBeUsedText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The characters ' + this.variableTextPattern + ' cannot be used.',
+        this.variableTextPattern + ' karakterleri kullanılamaz.',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
   public getLocalizedPasswordAgainText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Password (Again)', 'Şifre (Tekrar)'],

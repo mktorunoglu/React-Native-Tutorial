@@ -4,8 +4,12 @@ import {MyIcons} from '../../enums/Icons';
 import {MySizes} from '../../enums/Sizes';
 import {MyTextCapitalizes} from '../../enums/TextCapitalizes';
 import MyObservableValueModel from '../../models/ObservableValueModel';
+import MyFileService from '../../services/FileService';
 import MyColorUtils from '../../utils/ColorUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
+import MySnackbarUtils from '../../utils/SnackbarUtils';
+import MyValidationUtils from '../../utils/ValidationUtils';
 import MyButton from '../buttons/Button';
 import MyDivider from '../dividers/Divider';
 import MyModalHeader from '../headers/ModalHeader';
@@ -17,6 +21,7 @@ import MyTextInput from '../texts/TextInput';
 import MySwitchTile from '../tiles/SwitchTile';
 import MyScrollView from '../views/ScrollView';
 import MyView from '../views/View';
+import MyProgressModal from './ProgressModal';
 
 const MyRepoInputModal = () => {
   const isEncryptionActive = new MyObservableValueModel(false);
@@ -82,7 +87,50 @@ const MyRepoInputModal = () => {
           ? password.value.trim() == '' || passwordAgain.value.trim() == ''
           : false)
       }
-      onPress={() => {}}
+      onPress={async () => {
+        const validateNameResponse = MyValidationUtils.validateName({
+          name: repoName.value,
+        });
+        if (validateNameResponse != null) {
+          MySnackbarUtils.showSnackbar({
+            text: validateNameResponse,
+          });
+          return;
+        }
+        if (isEncryptionActive.value) {
+          const validatePasswordsResponse = MyValidationUtils.validatePasswords(
+            {
+              password: password.value,
+              passwordAgain: passwordAgain.value,
+            },
+          );
+          if (validatePasswordsResponse != null) {
+            MySnackbarUtils.showSnackbar({
+              text: validatePasswordsResponse,
+            });
+            return;
+          }
+        }
+        MyModalUtils.showModal({
+          modal: <MyProgressModal />,
+          isDismissible: false,
+        });
+        const response = await MyFileService.createRepo({
+          repoName: repoName.value,
+          repoPass: isEncryptionActive.value ? password.value : undefined,
+        });
+        MyModalUtils.hideModal();
+        if (response.isSuccessful) {
+          MySnackbarUtils.showSnackbar({
+            text: MyLocalizationUtils.getLocalizedRepoAddedText({
+              variableTextList: [repoName.value],
+            }),
+            isSuccessful: true,
+          });
+          return;
+        }
+        MySnackbarUtils.showErrorSnackbar();
+      }}
     />
   ));
   return (

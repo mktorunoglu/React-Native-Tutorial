@@ -73,6 +73,34 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedRepoDeletedText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The repo named ' + this.variableTextPattern + ' has been deleted',
+        this.variableTextPattern + ' isimli depo silindi',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
+  public getLocalizedRepoWillBeDeletedText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The repo named ' + this.variableTextPattern + ' will be deleted',
+        this.variableTextPattern + ' isimli depo silinecek',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
   public getLocalizedSaveText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Save', 'Kaydet'],

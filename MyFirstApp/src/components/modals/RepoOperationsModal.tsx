@@ -9,7 +9,13 @@ import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyRepoDetailsModal from './RepoDetailsModal';
 import MyRepoInputModal from './RepoInputModal';
 
-const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
+const MyRepoOperationsModal = ({
+  refreshContentFunctionList,
+  repo,
+}: {
+  refreshContentFunctionList: (() => void)[];
+  repo: MyRepoModel;
+}) => (
   <MyCardModalScaffold>
     <MyModalHeader
       titleText={MyLocalizationUtils.getLocalizedRepoOperationsText()}
@@ -29,7 +35,12 @@ const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
       text={MyLocalizationUtils.getLocalizedRenameText()}
       onPress={() =>
         MyModalUtils.showModal({
-          modal: <MyRepoInputModal repo={repo} />,
+          modal: (
+            <MyRepoInputModal
+              refreshContentFunctionList={refreshContentFunctionList}
+              repo={repo}
+            />
+          ),
         })
       }
     />

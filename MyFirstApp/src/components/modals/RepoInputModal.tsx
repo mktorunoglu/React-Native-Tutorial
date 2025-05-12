@@ -23,7 +23,13 @@ import MySwitchTile from '../tiles/SwitchTile';
 import MyScrollView from '../views/ScrollView';
 import MyView from '../views/View';
 
-const MyRepoInputModal = ({repo}: {repo?: MyRepoModel}) => {
+const MyRepoInputModal = ({
+  refreshContentFunctionList,
+  repo,
+}: {
+  refreshContentFunctionList: (() => void)[];
+  repo?: MyRepoModel;
+}) => {
   const isCreation = repo == null;
   const isEncryptionActive = new MyObservableValueModel(false);
   const isPasswordVisible = new MyObservableValueModel(false);
@@ -139,6 +145,11 @@ const MyRepoInputModal = ({repo}: {repo?: MyRepoModel}) => {
                 }),
             isSuccessful: true,
           });
+          for (const refreshContentFunction of [
+            ...refreshContentFunctionList,
+          ].reverse()) {
+            refreshContentFunction();
+          }
           return;
         }
         MySnackbarUtils.showErrorSnackbar();

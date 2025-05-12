@@ -15,7 +15,13 @@ import MyRepoOperationsModal from '../modals/RepoOperationsModal';
 import MyText from '../texts/Text';
 import MyView from '../views/View';
 
-const MyRepoItem = ({repo}: {repo: MyRepoModel}) => (
+const MyRepoItem = ({
+  refreshContentFunctionList,
+  repo,
+}: {
+  refreshContentFunctionList: (() => void)[];
+  repo: MyRepoModel;
+}) => (
   <MyCard margin={5}>
     <MyView isExpanded isRow alignItems={MyAligns.Center}>
       <MyView width={10} />
@@ -43,7 +49,12 @@ const MyRepoItem = ({repo}: {repo: MyRepoModel}) => (
         tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
         onPress={() =>
           MyModalUtils.showModal({
-            modal: <MyRepoOperationsModal repo={repo} />,
+            modal: (
+              <MyRepoOperationsModal
+                refreshContentFunctionList={refreshContentFunctionList}
+                repo={repo}
+              />
+            ),
           })
         }
       />

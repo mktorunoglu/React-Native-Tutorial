@@ -21,10 +21,26 @@ import MyLocalizationUtils from '../utils/LocalizationUtils';
 import MyModalUtils from '../utils/ModalUtils';
 import MySortingUtils from '../utils/SortingUtils';
 
-const MyReposBodyScreen = () => {
+const MyReposBodyScreen = ({
+  refreshContentFunctionList = [],
+}: {
+  refreshContentFunctionList?: (() => void)[];
+}) => {
+  const repoList = new MyObservableValueModel<MyRepoModel[]>([]);
+  const getContentFunction = () => MyFileService.listOwnedRepo();
+  const refreshContent = async () => {
+    const response = await getContentFunction();
+    if (response.isSuccessful) {
+      repoList.setValue(response.data);
+    }
+  };
+  const getRefreshContentFunctionList = () => [
+    ...refreshContentFunctionList,
+    refreshContent,
+  ];
   const searchText = new MyObservableValueModel('');
-  const RepoItemList_ = observer(({repoList}: {repoList: MyRepoModel[]}) => {
-    const filteredRepoList = repoList.filter(repo =>
+  const RepoItemList_ = observer(() => {
+    const filteredRepoList = repoList.value.filter(repo =>
       MyFilterUtils.isTextListContainsSearchText({
         textList: [repo.repoName],
         searchText: searchText.value,
@@ -81,7 +97,11 @@ const MyReposBodyScreen = () => {
             tooltip={MyLocalizationUtils.getLocalizedAddNewRepoText()}
             onPress={() =>
               MyModalUtils.showModal({
-                modal: <MyRepoInputModal />,
+                modal: (
+                  <MyRepoInputModal
+                    refreshContentFunctionList={getRefreshContentFunctionList()}
+                  />
+                ),
               })
             }
           />
@@ -101,7 +121,12 @@ const MyReposBodyScreen = () => {
             <MyFlatList
               data={filteredRepoList}
               keyExtractor={(item, index) => item.repoId ?? index}
-              renderItem={({item}) => <MyRepoItem repo={item} />}
+              renderItem={({item}) => (
+                <MyRepoItem
+                  refreshContentFunctionList={getRefreshContentFunctionList()}
+                  repo={item}
+                />
+              )}
               padding={5}
               paddingBottom={5}
             />
@@ -113,8 +138,11 @@ const MyReposBodyScreen = () => {
   return (
     <MyView isExpanded>
       <MyResponseBuilder
-        response={MyFileService.listOwnedRepo}
-        builder={response => <RepoItemList_ repoList={response.data} />}
+        response={getContentFunction}
+        builder={response => {
+          repoList.setValue(response.data);
+          return <RepoItemList_ />;
+        }}
       />
     </MyView>
   );

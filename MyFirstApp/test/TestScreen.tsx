@@ -2,7 +2,6 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import {useEffect} from 'react';
 import MyButton from '../src/components/buttons/Button';
-import MyRepoInputModal from '../src/components/modals/RepoInputModal';
 import MyModalScaffold from '../src/components/scaffolds/CardModalScaffold';
 import MyScreenScaffold from '../src/components/scaffolds/ScreenScaffold';
 import MyTextInput from '../src/components/texts/TextInput';
@@ -39,14 +38,7 @@ const MyTestScreen = ({
         <MyView height={100}>
           <MyTextInput />
         </MyView>
-        <MyButton
-          text="Show Modal"
-          onPress={() =>
-            MyModalUtils.showModal({
-              modal: <MyRepoInputModal />,
-            })
-          }
-        />
+        <MyButton text="Show Modal" onPress={() => {}} />
       </MyView>
     </MyScreenScaffold>
   );

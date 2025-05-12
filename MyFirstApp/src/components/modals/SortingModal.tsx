@@ -6,7 +6,6 @@ import MySortingUtils from '../../utils/SortingUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
-import MyProgressModal from './ProgressModal';
 
 const MySortingModal = () => (
   <MyCardModalScaffold>
@@ -42,11 +41,9 @@ const MySortingModal = () => (
         isSelected={MySortingUtils.sortingType.value == buttonData.value}
         text={buttonData.text}
         onPress={async () => {
-          MyModalUtils.showModal({
-            modal: <MyProgressModal />,
-            isDismissible: false,
-          });
+          MyModalUtils.showProgressModal();
           await MySortingUtils.setSortingType(buttonData.value);
+          MyModalUtils.hideProgressModal();
           MyModalUtils.hideModal();
         }}
       />

@@ -15,7 +15,7 @@ const MySnackbar = () => {
       icon={MySnackbarUtils.snackbarIcon.value!}
       duration={MySnackbarUtils.snackbarDurationMilliseconds.value!}
       style={{
-        borderRadius: 5,
+        borderRadius: 10,
         backgroundColor: MySnackbarUtils.snackbarBackgroundColor.value!,
         margin: 10,
       }}>

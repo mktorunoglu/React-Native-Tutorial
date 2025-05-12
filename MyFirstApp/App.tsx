@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {observer} from 'mobx-react-lite';
 import {DefaultTheme, PaperProvider, Portal} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import MyProgressModal from './src/components/modals/ProgressModal';
 import MySnackbar from './src/components/snackbars/Snackbar';
 import MyView from './src/components/views/View';
 import {MyRouteProps} from './src/constants/RouteProps';
@@ -31,12 +32,23 @@ const App: React.FC = () => {
     }
     return <MyView />;
   });
+  const ProgressModal_ = observer(() => {
+    if (MyModalUtils.isProgressModalVisible.value) {
+      return <MyProgressModal />;
+    }
+    return <MyView />;
+  });
   return (
     <SafeAreaProvider>
       <PaperProvider theme={theme}>
         <NavigationContainer>
           <Portal>
+            <ProgressModal_ />
+          </Portal>
+          <Portal>
             <MySnackbar />
+          </Portal>
+          <Portal>
             <Modal_ />
           </Portal>
           <Stack.Navigator

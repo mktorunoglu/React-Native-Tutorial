@@ -6,7 +6,6 @@ import MyCard from '../components/cards/Card';
 import MyDivider from '../components/dividers/Divider';
 import MyImage from '../components/images/Image';
 import MyOptionsModal from '../components/modals/OptionsModal';
-import MyProgressModal from '../components/modals/ProgressModal';
 import MyScreenScaffold from '../components/scaffolds/ScreenScaffold';
 import MyPasswordTextInput from '../components/texts/PasswordTextInput';
 import MyText from '../components/texts/Text';
@@ -60,17 +59,14 @@ const MyLoginScreen = ({
       icon={MyIcons.Login}
       text={MyLocalizationUtils.getLocalizedLoginText()}
       onPress={async () => {
-        MyModalUtils.showModal({
-          modal: <MyProgressModal />,
-          isDismissible: false,
-        });
+        MyModalUtils.showProgressModal();
         const isLoginSuccessful = await MyAuthenticationUtils.login({
           navigation: navigation,
           serverAddress: serverAddress.value,
           userId: userId.value,
           password: password.value,
         });
-        MyModalUtils.hideModal();
+        MyModalUtils.hideProgressModal();
         if (!isLoginSuccessful) {
           MySnackbarUtils.showSnackbar({
             text: MyLocalizationUtils.getLocalizedCheckLoginInformationText(),

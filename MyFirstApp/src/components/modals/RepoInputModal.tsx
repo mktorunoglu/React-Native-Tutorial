@@ -22,7 +22,6 @@ import MyTextInput from '../texts/TextInput';
 import MySwitchTile from '../tiles/SwitchTile';
 import MyScrollView from '../views/ScrollView';
 import MyView from '../views/View';
-import MyProgressModal from './ProgressModal';
 
 const MyRepoInputModal = ({repo}: {repo?: MyRepoModel}) => {
   const isCreation = repo == null;
@@ -117,10 +116,7 @@ const MyRepoInputModal = ({repo}: {repo?: MyRepoModel}) => {
             return;
           }
         }
-        MyModalUtils.showModal({
-          modal: <MyProgressModal />,
-          isDismissible: false,
-        });
+        MyModalUtils.showProgressModal();
         const response = await (isCreation
           ? MyFileService.createRepo({
               repoName: repoName.value,
@@ -130,6 +126,7 @@ const MyRepoInputModal = ({repo}: {repo?: MyRepoModel}) => {
               repoId: repo.repoId!,
               repoName: repoName.value,
             }));
+        MyModalUtils.hideProgressModal();
         MyModalUtils.hideModal();
         if (response.isSuccessful) {
           MySnackbarUtils.showSnackbar({

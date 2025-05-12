@@ -9,7 +9,6 @@ import MyModalUtils from '../../utils/ModalUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
-import MyProgressModal from './ProgressModal';
 
 const MyChangeLanguageModal = ({
   navigation,
@@ -37,11 +36,9 @@ const MyChangeLanguageModal = ({
         isSelected={MyLocalizationUtils.localization == buttonData.value}
         text={buttonData.text}
         onPress={async () => {
-          MyModalUtils.showModal({
-            modal: <MyProgressModal />,
-            isDismissible: false,
-          });
+          MyModalUtils.showProgressModal();
           await MyLocalizationUtils.setLocalization(buttonData.value);
+          MyModalUtils.hideProgressModal();
           MyModalUtils.hideModal();
           if (isLoginScreen) {
             navigation.replace(MyRoutes.Login);

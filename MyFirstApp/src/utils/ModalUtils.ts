@@ -17,6 +17,7 @@ class MyModalUtils {
   public modal = new MyObservableValueModel<ReactNode | null>(null);
   public isModalVisible = new MyObservableValueModel(false);
   public isModalDismissible = true;
+  public isProgressModalVisible = new MyObservableValueModel(false);
 
   public showModal({
     modal,
@@ -34,6 +35,19 @@ class MyModalUtils {
   public hideModal() {
     if (this.isModalVisible.value) {
       this.isModalVisible.setValue(false);
+    }
+  }
+
+  public showProgressModal() {
+    MyKeyboardUtils.closeKeyboard();
+    this.isModalDismissible = false;
+    this.isProgressModalVisible.setValue(true);
+  }
+
+  public hideProgressModal() {
+    if (this.isProgressModalVisible.value) {
+      this.isModalDismissible = true;
+      this.isProgressModalVisible.setValue(false);
     }
   }
 }

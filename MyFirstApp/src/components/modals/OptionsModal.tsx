@@ -10,7 +10,6 @@ import MyModalHeader from '../headers/ModalHeader';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyAlertModal from './AlertModal';
 import MyChangeLanguageModal from './ChangeLanguageModal';
-import MyProgressModal from './ProgressModal';
 
 const MyOptionsModal = ({
   navigation,
@@ -49,13 +48,11 @@ const MyOptionsModal = ({
                 buttonText={MyLocalizationUtils.getLocalizedLogoutText()}
                 buttonColor={MyColors.Red}
                 buttonOnPress={async () => {
-                  MyModalUtils.showModal({
-                    modal: <MyProgressModal />,
-                    isDismissible: false,
-                  });
+                  MyModalUtils.showProgressModal();
                   await MyAuthenticationUtils.logout({
                     navigation: navigation,
                   });
+                  MyModalUtils.hideProgressModal();
                   MyModalUtils.hideModal();
                 }}
               />

@@ -73,6 +73,39 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedSaveText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Save', 'Kaydet'],
+    });
+  }
+
+  public getLocalizedRepoRenamedText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The repo named ' +
+          this.variableTextPattern +
+          ' has been renamed to ' +
+          this.variableTextPattern +
+          '.',
+        this.variableTextPattern +
+          ' isimli depo ' +
+          this.variableTextPattern +
+          ' olarak yeniden adlandırıldı.',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
+  public getLocalizedRenameRepoText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Rename Repo', 'Depoyu Yeniden Adlandır'],
+    });
+  }
+
   public getLocalizedRepoAddedText({
     variableTextList,
   }: {

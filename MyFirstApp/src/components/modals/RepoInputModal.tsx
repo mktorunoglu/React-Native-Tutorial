@@ -4,6 +4,7 @@ import {MyIcons} from '../../enums/Icons';
 import {MySizes} from '../../enums/Sizes';
 import {MyTextCapitalizes} from '../../enums/TextCapitalizes';
 import MyObservableValueModel from '../../models/ObservableValueModel';
+import MyRepoModel from '../../models/RepoModel';
 import MyFileService from '../../services/FileService';
 import MyColorUtils from '../../utils/ColorUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
@@ -23,11 +24,12 @@ import MyScrollView from '../views/ScrollView';
 import MyView from '../views/View';
 import MyProgressModal from './ProgressModal';
 
-const MyRepoInputModal = () => {
+const MyRepoInputModal = ({repo}: {repo?: MyRepoModel}) => {
+  const isCreation = repo == null;
   const isEncryptionActive = new MyObservableValueModel(false);
   const isPasswordVisible = new MyObservableValueModel(false);
   const isPasswordAgainVisible = new MyObservableValueModel(false);
-  const repoName = new MyObservableValueModel('');
+  const repoName = new MyObservableValueModel(repo?.repoName ?? '');
   const password = new MyObservableValueModel('');
   const passwordAgain = new MyObservableValueModel('');
   const RepoNameTextInput_ = observer(() => (
@@ -78,9 +80,13 @@ const MyRepoInputModal = () => {
     }
     return <MyView />;
   });
-  const AddButton_ = observer(() => (
+  const ActionButton_ = observer(() => (
     <MyButton
-      text={MyLocalizationUtils.getLocalizedAddText()}
+      text={
+        isCreation
+          ? MyLocalizationUtils.getLocalizedAddText()
+          : MyLocalizationUtils.getLocalizedSaveText()
+      }
       isDisable={
         repoName.value.trim() == '' ||
         (isEncryptionActive.value
@@ -115,16 +121,25 @@ const MyRepoInputModal = () => {
           modal: <MyProgressModal />,
           isDismissible: false,
         });
-        const response = await MyFileService.createRepo({
-          repoName: repoName.value,
-          repoPass: isEncryptionActive.value ? password.value : undefined,
-        });
+        const response = await (isCreation
+          ? MyFileService.createRepo({
+              repoName: repoName.value,
+              repoPass: isEncryptionActive.value ? password.value : undefined,
+            })
+          : MyFileService.renameRepo({
+              repoId: repo.repoId!,
+              repoName: repoName.value,
+            }));
         MyModalUtils.hideModal();
         if (response.isSuccessful) {
           MySnackbarUtils.showSnackbar({
-            text: MyLocalizationUtils.getLocalizedRepoAddedText({
-              variableTextList: [repoName.value],
-            }),
+            text: isCreation
+              ? MyLocalizationUtils.getLocalizedRepoAddedText({
+                  variableTextList: [repoName.value],
+                })
+              : MyLocalizationUtils.getLocalizedRepoRenamedText({
+                  variableTextList: [repo.repoName!, repoName.value],
+                }),
             isSuccessful: true,
           });
           return;
@@ -136,23 +151,30 @@ const MyRepoInputModal = () => {
   return (
     <MyCardModalScaffold>
       <MyModalHeader
-        titleText={MyLocalizationUtils.getLocalizedAddNewRepoText()}
+        titleText={
+          isCreation
+            ? MyLocalizationUtils.getLocalizedAddNewRepoText()
+            : MyLocalizationUtils.getLocalizedRenameRepoText()
+        }
+        messageText={repo?.repoName}
       />
       <MyDivider />
       <MyScrollView padding={15}>
         <RepoNameTextInput_ />
         <MyView height={15} />
-        <MySwitchTile
-          text={MyLocalizationUtils.getLocalizedSetPasswordText()}
-          value={isEncryptionActive}
-          onChange={() => {
-            password.setValue('');
-            passwordAgain.setValue('');
-          }}
-        />
-        <MyView height={15} />
+        {isCreation && (
+          <MySwitchTile
+            text={MyLocalizationUtils.getLocalizedSetPasswordText()}
+            value={isEncryptionActive}
+            onChange={() => {
+              password.setValue('');
+              passwordAgain.setValue('');
+            }}
+          />
+        )}
+        {isCreation && <MyView height={15} />}
         <SetPasswordArea_ />
-        <AddButton_ />
+        <ActionButton_ />
         <MyView height={5} />
       </MyScrollView>
     </MyCardModalScaffold>

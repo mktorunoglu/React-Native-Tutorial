@@ -7,6 +7,7 @@ import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyRepoDetailsModal from './RepoDetailsModal';
+import MyRepoInputModal from './RepoInputModal';
 
 const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
   <MyCardModalScaffold>
@@ -26,7 +27,11 @@ const MyRepoOperationsModal = ({repo}: {repo: MyRepoModel}) => (
     <MyModalSelectionButton
       icon={MyIcons.EditOutlined}
       text={MyLocalizationUtils.getLocalizedRenameText()}
-      onPress={() => {}}
+      onPress={() =>
+        MyModalUtils.showModal({
+          modal: <MyRepoInputModal repo={repo} />,
+        })
+      }
     />
     <MyModalSelectionButton
       icon={MyIcons.ShareOutlined}

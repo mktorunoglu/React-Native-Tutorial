@@ -59,6 +59,22 @@ class MyFileService {
     response.isSuccessful = response.data['result'] == true;
     return response;
   }
+
+  public async renameRepo({
+    repoId,
+    repoName,
+  }: {
+    repoId: string;
+    repoName: string;
+  }): Promise<MyResponseModel> {
+    const response = await MyApiUtils.request({
+      method: MyRequestMethods.Post,
+      url: MyServiceUtils.getFileApiUrl() + '/rename_repo',
+      data: {repo_id: repoId, repo_name: repoName},
+    });
+    response.isSuccessful = response.data['result'] == true;
+    return response;
+  }
 }
 
 export default MyFileService.getInstance();

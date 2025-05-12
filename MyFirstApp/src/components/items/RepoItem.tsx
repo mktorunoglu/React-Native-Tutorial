@@ -30,7 +30,10 @@ const MyRepoItem = ({
         padding={5}
         backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)}
         borderRadius={5}>
-        <MyIcon icon={MyIcons.Archive} color={MyColors.Grey} />
+        <MyIcon
+          icon={repo.encrypted ? MyIcons.Lock : MyIcons.Archive}
+          color={MyColors.Grey}
+        />
       </MyView>
       <MyView isExpanded paddingHorizontal={15}>
         <MyText

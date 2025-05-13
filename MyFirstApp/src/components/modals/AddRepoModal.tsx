@@ -99,8 +99,8 @@ const MyAddRepoModal = ({
           repoPass: isEncryptionActive.value ? password.value : undefined,
         });
         MyModalUtils.hideProgressModal();
-        MyModalUtils.hideModal();
         if (response.isSuccessful) {
+          MyModalUtils.hideModal();
           MySnackbarUtils.showSnackbar({
             text: MyLocalizationUtils.getLocalizedRepoAddedText({
               variableTextList: [repoName.value],

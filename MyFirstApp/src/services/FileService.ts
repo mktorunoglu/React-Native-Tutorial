@@ -91,6 +91,26 @@ class MyFileService {
     response.isSuccessful = response.data['result'] == true;
     return response;
   }
+
+  public async changeRepoPass({
+    repoId,
+    currentPassword,
+    newPassword,
+  }: {
+    repoId: string;
+    currentPassword: string;
+    newPassword: string;
+  }): Promise<MyResponseModel> {
+    const response = await MyApiUtils.request({
+      method: MyRequestMethods.Post,
+      url: MyServiceUtils.getFileApiUrl() + '/change_repo_pass',
+      data: {repo_id: repoId, old_pass: currentPassword, new_pass: newPassword},
+    });
+    if (response.isSuccessful) {
+      response.data = response.data['result'] == true;
+    }
+    return response;
+  }
 }
 
 export default MyFileService.getInstance();

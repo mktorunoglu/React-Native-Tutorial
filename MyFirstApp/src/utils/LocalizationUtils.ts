@@ -73,6 +73,39 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedChangeRepoPasswordFailText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'You have entered the current password of repo named ' +
+          this.variableTextPattern +
+          ' incorrectly.',
+        this.variableTextPattern +
+          ' isimli deponun mevcut şifresini yanlış girdiniz.',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
+  public getLocalizedRepoPasswordChangedText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'The password for the repo named ' +
+          this.variableTextPattern +
+          ' has been changed.',
+        this.variableTextPattern + ' isimli deponun şifresi değiştirildi.',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
+
   public getLocalizedChangeRepoPasswordText(): string {
     return this.getLocalizedText({
       localizationTextList: ['Change Repo Password', 'Depo Şifresini Değiştir'],

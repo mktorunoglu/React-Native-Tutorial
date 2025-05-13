@@ -9,11 +9,11 @@ import MyValidationUtils from '../../utils/ValidationUtils';
 import MyButton from '../buttons/Button';
 import MyDivider from '../dividers/Divider';
 import MyModalHeader from '../headers/ModalHeader';
+import MyDontForgetPasswordAlertIndicator from '../indicators/DontForgetPasswordAlertIndicator';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyPasswordTextInput from '../texts/PasswordTextInput';
 import MyScrollView from '../views/ScrollView';
 import MyView from '../views/View';
-import MyDontForgetPasswordAlertIndicator from '../indicators/DontForgetPasswordAlertIndicator';
 
 const MyChangeRepoPasswordModal = ({
   refreshContentFunctionList,
@@ -37,51 +37,46 @@ const MyChangeRepoPasswordModal = ({
         newPasswordAgain.value.trim() == ''
       }
       onPress={async () => {
-        // const validateNameResponse = MyValidationUtils.validateName({
-        //   name: repoName.value,
-        // });
-        // if (validateNameResponse != null) {
-        //   MySnackbarUtils.showSnackbar({
-        //     text: validateNameResponse,
-        //   });
-        //   return;
-        // }
-        // if (isEncryptionActive.value) {
-        //   const validatePasswordsResponse = MyValidationUtils.validatePasswords(
-        //     {
-        //       password: password.value,
-        //       passwordAgain: passwordAgain.value,
-        //     },
-        //   );
-        //   if (validatePasswordsResponse != null) {
-        //     MySnackbarUtils.showSnackbar({
-        //       text: validatePasswordsResponse,
-        //     });
-        //     return;
-        //   }
-        // }
-        // MyModalUtils.showProgressModal();
-        // const response = await MyFileService.createRepo({
-        //   repoName: repoName.value,
-        //   repoPass: isEncryptionActive.value ? password.value : undefined,
-        // });
-        // MyModalUtils.hideProgressModal();
-        // MyModalUtils.hideModal();
-        // if (response.isSuccessful) {
-        //   MySnackbarUtils.showSnackbar({
-        //     text: MyLocalizationUtils.getLocalizedRepoAddedText({
-        //       variableTextList: [repoName.value],
-        //     }),
-        //     isSuccessful: true,
-        //   });
-        //   for (const refreshContentFunction of [
-        //     ...refreshContentFunctionList,
-        //   ].reverse()) {
-        //     refreshContentFunction();
-        //   }
-        //   return;
-        // }
-        // MySnackbarUtils.showErrorSnackbar();
+        const validatePasswordsResponse = MyValidationUtils.validatePasswords({
+          password: newPassword.value,
+          passwordAgain: newPasswordAgain.value,
+        });
+        if (validatePasswordsResponse != null) {
+          MySnackbarUtils.showSnackbar({
+            text: validatePasswordsResponse,
+          });
+          return;
+        }
+        MyModalUtils.showProgressModal();
+        const response = await MyFileService.changeRepoPass({
+          repoId: repo.repoId!,
+          currentPassword: currentPassword.value,
+          newPassword: newPassword.value,
+        });
+        MyModalUtils.hideProgressModal();
+        if (response.isSuccessful) {
+          const isSuccessful = response.data as boolean;
+          MySnackbarUtils.showSnackbar({
+            text: isSuccessful
+              ? MyLocalizationUtils.getLocalizedRepoPasswordChangedText({
+                  variableTextList: [repo.repoName!],
+                })
+              : MyLocalizationUtils.getLocalizedChangeRepoPasswordFailText({
+                  variableTextList: [repo.repoName!],
+                }),
+            isSuccessful: isSuccessful,
+          });
+          if (isSuccessful) {
+            MyModalUtils.hideModal();
+            for (const refreshContentFunction of [
+              ...refreshContentFunctionList,
+            ].reverse()) {
+              refreshContentFunction();
+            }
+          }
+          return;
+        }
+        MySnackbarUtils.showErrorSnackbar();
       }}
     />
   ));

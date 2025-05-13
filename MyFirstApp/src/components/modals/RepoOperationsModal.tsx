@@ -9,8 +9,8 @@ import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyAlertModal from './AlertModal';
+import MyRenameRepoModal from './RenameRepoModal';
 import MyRepoDetailsModal from './RepoDetailsModal';
-import MyRepoInputModal from './RepoInputModal';
 
 const MyRepoOperationsModal = ({
   refreshContentFunctionList,
@@ -39,7 +39,7 @@ const MyRepoOperationsModal = ({
       onPress={() =>
         MyModalUtils.showModal({
           modal: (
-            <MyRepoInputModal
+            <MyRenameRepoModal
               refreshContentFunctionList={refreshContentFunctionList}
               repo={repo}
             />

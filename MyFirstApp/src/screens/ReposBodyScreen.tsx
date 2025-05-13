@@ -6,7 +6,7 @@ import MySortingIconButton from '../components/buttons/SortingIconButton';
 import MyDivider from '../components/dividers/Divider';
 import MyRepoItem from '../components/items/RepoItem';
 import MyFlatList from '../components/lists/FlatList';
-import MyRepoInputModal from '../components/modals/RepoInputModal';
+import MyAddRepoModal from '../components/modals/AddRepoModal';
 import MySearchTextInput from '../components/texts/SearchTextInput';
 import MyText from '../components/texts/Text';
 import MyView from '../components/views/View';
@@ -98,7 +98,7 @@ const MyReposBodyScreen = ({
             onPress={() =>
               MyModalUtils.showModal({
                 modal: (
-                  <MyRepoInputModal
+                  <MyAddRepoModal
                     refreshContentFunctionList={getRefreshContentFunctionList()}
                   />
                 ),

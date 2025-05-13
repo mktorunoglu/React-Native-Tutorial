@@ -19,43 +19,30 @@ const MyRepoOperationsModal = ({
 }: {
   refreshContentFunctionList: (() => void)[];
   repo: MyRepoModel;
-}) => (
-  <MyCardModalScaffold>
-    <MyModalHeader
-      titleText={MyLocalizationUtils.getLocalizedRepoOperationsText()}
-      messageText={repo.repoName}
-    />
-    <MyModalSelectionButton
-      icon={MyIcons.InformationOutlined}
-      text={MyLocalizationUtils.getLocalizedDetailsText()}
-      onPress={() =>
-        MyModalUtils.showModal({
-          modal: <MyRepoDetailsModal repo={repo} />,
-        })
-      }
-    />
-    <MyModalSelectionButton
-      icon={MyIcons.EditOutlined}
-      text={MyLocalizationUtils.getLocalizedRenameText()}
-      onPress={() =>
-        MyModalUtils.showModal({
-          modal: (
-            <MyRenameRepoModal
-              refreshContentFunctionList={refreshContentFunctionList}
-              repo={repo}
-            />
-          ),
-        })
-      }
-    />
-    {repo.encrypted && (
+}) => {
+  const isRepoEncrypted = repo.encrypted == true;
+  return (
+    <MyCardModalScaffold>
+      <MyModalHeader
+        titleText={MyLocalizationUtils.getLocalizedRepoOperationsText()}
+        messageText={repo.repoName}
+      />
       <MyModalSelectionButton
-        icon={MyIcons.KeyOutlined}
-        text={MyLocalizationUtils.getLocalizedChangePasswordText()}
+        icon={MyIcons.InformationOutlined}
+        text={MyLocalizationUtils.getLocalizedDetailsText()}
+        onPress={() =>
+          MyModalUtils.showModal({
+            modal: <MyRepoDetailsModal repo={repo} />,
+          })
+        }
+      />
+      <MyModalSelectionButton
+        icon={MyIcons.EditOutlined}
+        text={MyLocalizationUtils.getLocalizedRenameText()}
         onPress={() =>
           MyModalUtils.showModal({
             modal: (
-              <MyChangeRepoPasswordModal
+              <MyRenameRepoModal
                 refreshContentFunctionList={refreshContentFunctionList}
                 repo={repo}
               />
@@ -63,56 +50,74 @@ const MyRepoOperationsModal = ({
           })
         }
       />
-    )}
-    <MyModalSelectionButton
-      icon={MyIcons.ShareOutlined}
-      text={MyLocalizationUtils.getLocalizedShareText()}
-      onPress={() => {}}
-    />
-    <MyModalSelectionButton
-      icon={MyIcons.DeleteOutlined}
-      text={MyLocalizationUtils.getLocalizedDeleteText()}
-      color={MyColors.Red}
-      onPress={() =>
-        MyModalUtils.showModal({
-          modal: (
-            <MyAlertModal
-              titleText={MyLocalizationUtils.getLocalizedRepoWillBeDeletedText({
-                variableTextList: [repo.repoName!],
-              })}
-              messageText={MyLocalizationUtils.getLocalizedAreYouSureText()}
-              buttonText={MyLocalizationUtils.getLocalizedDeleteText()}
-              buttonColor={MyColors.Red}
-              buttonOnPress={async () => {
-                MyModalUtils.showProgressModal();
-                const response = await MyFileService.deleteRepo({
-                  repoId: repo.repoId!,
-                  repoName: repo.repoName!,
-                });
-                MyModalUtils.hideProgressModal();
-                if (response.isSuccessful) {
-                  MyModalUtils.hideModal();
-                  MySnackbarUtils.showSnackbar({
-                    text: MyLocalizationUtils.getLocalizedRepoDeletedText({
-                      variableTextList: [repo.repoName!],
-                    }),
-                    isSuccessful: true,
+      {isRepoEncrypted && (
+        <MyModalSelectionButton
+          icon={MyIcons.KeyOutlined}
+          text={MyLocalizationUtils.getLocalizedChangePasswordText()}
+          onPress={() =>
+            MyModalUtils.showModal({
+              modal: (
+                <MyChangeRepoPasswordModal
+                  refreshContentFunctionList={refreshContentFunctionList}
+                  repo={repo}
+                />
+              ),
+            })
+          }
+        />
+      )}
+      <MyModalSelectionButton
+        icon={MyIcons.ShareOutlined}
+        text={MyLocalizationUtils.getLocalizedShareText()}
+        onPress={() => {}}
+      />
+      <MyModalSelectionButton
+        icon={MyIcons.DeleteOutlined}
+        text={MyLocalizationUtils.getLocalizedDeleteText()}
+        color={MyColors.Red}
+        onPress={() =>
+          MyModalUtils.showModal({
+            modal: (
+              <MyAlertModal
+                titleText={MyLocalizationUtils.getLocalizedRepoWillBeDeletedText(
+                  {
+                    variableTextList: [repo.repoName!],
+                  },
+                )}
+                messageText={MyLocalizationUtils.getLocalizedAreYouSureText()}
+                buttonText={MyLocalizationUtils.getLocalizedDeleteText()}
+                buttonColor={MyColors.Red}
+                buttonOnPress={async () => {
+                  MyModalUtils.showProgressModal();
+                  const response = await MyFileService.deleteRepo({
+                    repoId: repo.repoId!,
+                    repoName: repo.repoName!,
                   });
-                  for (const refreshContentFunction of [
-                    ...refreshContentFunctionList,
-                  ].reverse()) {
-                    refreshContentFunction();
+                  MyModalUtils.hideProgressModal();
+                  if (response.isSuccessful) {
+                    MyModalUtils.hideModal();
+                    MySnackbarUtils.showSnackbar({
+                      text: MyLocalizationUtils.getLocalizedRepoDeletedText({
+                        variableTextList: [repo.repoName!],
+                      }),
+                      isSuccessful: true,
+                    });
+                    for (const refreshContentFunction of [
+                      ...refreshContentFunctionList,
+                    ].reverse()) {
+                      refreshContentFunction();
+                    }
+                    return;
                   }
-                  return;
-                }
-                MySnackbarUtils.showErrorSnackbar();
-              }}
-            />
-          ),
-        })
-      }
-    />
-  </MyCardModalScaffold>
-);
+                  MySnackbarUtils.showErrorSnackbar();
+                }}
+              />
+            ),
+          })
+        }
+      />
+    </MyCardModalScaffold>
+  );
+};
 
 export default MyRepoOperationsModal;

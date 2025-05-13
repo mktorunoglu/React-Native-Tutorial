@@ -728,6 +728,21 @@ class MyLocalizationUtils {
       ],
     });
   }
+
+  public getLocalizedThereIsNoUserYetText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['There is no user yet', 'Henüz bir kullanıcı yok'],
+    });
+  }
+
+  public getLocalizedThereIsNoUserWithSearchedNameText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'There is no user with the searched name',
+        'Aranan isimde bir kullanıcı yok',
+      ],
+    });
+  }
 }
 
 export default MyLocalizationUtils.getInstance();

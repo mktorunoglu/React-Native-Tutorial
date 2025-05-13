@@ -4,11 +4,14 @@ import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyTextInput from './TextInput';
 
 const MySearchTextInput = ({
+  isAutoFocused = false,
   onChangeText,
 }: {
+  isAutoFocused?: boolean;
   onChangeText?: (text: string) => void;
 }) => (
   <MyTextInput
+    isAutoFocused={isAutoFocused}
     outlineColor={MyColors.Transparent}
     activeOutlineColor={MyColors.Transparent}
     hintText={MyLocalizationUtils.getLocalizedSearchText()}

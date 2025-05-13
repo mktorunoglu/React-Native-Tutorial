@@ -46,9 +46,9 @@ const MyReposBodyScreen = ({
         searchText: searchText.value,
       }),
     );
+    const isRepoListEmpty = repoList.value.length == 0;
     const isFilteredRepoListEmpty = filteredRepoList.length == 0;
     const isSearchTextEmpty = searchText.value.trim() == '';
-    const isRepoListEmpty = isFilteredRepoListEmpty && isSearchTextEmpty;
     filteredRepoList.sort((a, b) =>
       MySortingUtils.compareStrings(a.repoName, b.repoName),
     );
@@ -120,7 +120,7 @@ const MyReposBodyScreen = ({
           <MyView isExpanded>
             <MyFlatList
               data={filteredRepoList}
-              renderItem={({item}) => (
+              renderItem={({item}: {item: MyRepoModel}) => (
                 <MyRepoItem
                   refreshContentFunctionList={getRefreshContentFunctionList()}
                   repo={item}

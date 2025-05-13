@@ -21,48 +21,51 @@ const MyRepoItem = ({
 }: {
   refreshContentFunctionList: (() => void)[];
   repo: MyRepoModel;
-}) => (
-  <MyCard margin={5}>
-    <MyView isExpanded isRow alignItems={MyAligns.Center}>
-      <MyView width={10} />
-      <MyView
-        width={MySizes.Auto}
-        padding={5}
-        backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)}
-        borderRadius={5}>
-        <MyIcon
-          icon={repo.encrypted ? MyIcons.Lock : MyIcons.Archive}
+}) => {
+  const isRepoEncrypted = repo.encrypted == true;
+  return (
+    <MyCard margin={5}>
+      <MyView isExpanded isRow alignItems={MyAligns.Center}>
+        <MyView width={10} />
+        <MyView
+          width={MySizes.Auto}
+          padding={5}
+          backgroundColor={MyColorUtils.getColorWithOpacity(MyColors.Grey, 0.2)}
+          borderRadius={5}>
+          <MyIcon
+            icon={isRepoEncrypted ? MyIcons.Lock : MyIcons.Archive}
+            color={MyColors.Grey}
+          />
+        </MyView>
+        <MyView isExpanded paddingHorizontal={15}>
+          <MyText
+            text={repo.repoName}
+            maxLines={2}
+            textOverflow={MyTextOverflows.End}
+          />
+        </MyView>
+        <MyText
+          text={MyConverterUtils.convertNumberToSizeText(repo.size ?? 0)}
+          fontSize={12}
           color={MyColors.Grey}
         />
-      </MyView>
-      <MyView isExpanded paddingHorizontal={15}>
-        <MyText
-          text={repo.repoName}
-          maxLines={2}
-          textOverflow={MyTextOverflows.End}
+        <MyIconButton
+          icon={MyIcons.MoreVertical}
+          tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
+          onPress={() =>
+            MyModalUtils.showModal({
+              modal: (
+                <MyRepoOperationsModal
+                  refreshContentFunctionList={refreshContentFunctionList}
+                  repo={repo}
+                />
+              ),
+            })
+          }
         />
       </MyView>
-      <MyText
-        text={MyConverterUtils.convertNumberToSizeText(repo.size ?? 0)}
-        fontSize={12}
-        color={MyColors.Grey}
-      />
-      <MyIconButton
-        icon={MyIcons.MoreVertical}
-        tooltip={MyLocalizationUtils.getLocalizedOperationsText()}
-        onPress={() =>
-          MyModalUtils.showModal({
-            modal: (
-              <MyRepoOperationsModal
-                refreshContentFunctionList={refreshContentFunctionList}
-                repo={repo}
-              />
-            ),
-          })
-        }
-      />
-    </MyView>
-  </MyCard>
-);
+    </MyCard>
+  );
+};
 
 export default MyRepoItem;

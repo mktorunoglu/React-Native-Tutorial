@@ -1,11 +1,7 @@
 import {observer} from 'mobx-react-lite';
-import {MyColors} from '../../enums/Colors';
-import {MyIcons} from '../../enums/Icons';
-import {MySizes} from '../../enums/Sizes';
 import {MyTextCapitalizes} from '../../enums/TextCapitalizes';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyFileService from '../../services/FileService';
-import MyColorUtils from '../../utils/ColorUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MySnackbarUtils from '../../utils/SnackbarUtils';
@@ -13,10 +9,9 @@ import MyValidationUtils from '../../utils/ValidationUtils';
 import MyButton from '../buttons/Button';
 import MyDivider from '../dividers/Divider';
 import MyModalHeader from '../headers/ModalHeader';
-import MyIcon from '../icons/Icon';
+import MyDontForgetPasswordAlertIndicator from '../indicators/DontForgetPasswordAlertIndicator';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyPasswordTextInput from '../texts/PasswordTextInput';
-import MyText from '../texts/Text';
 import MyTextInput from '../texts/TextInput';
 import MySwitchTile from '../tiles/SwitchTile';
 import MyScrollView from '../views/ScrollView';
@@ -46,23 +41,7 @@ const MyAddRepoModal = ({
     if (isEncryptionActive.value) {
       return (
         <MyView isColumn>
-          <MyView
-            isRow
-            backgroundColor={MyColorUtils.getColorWithOpacity(
-              MyColors.Red,
-              0.1,
-            )}
-            padding={10}
-            borderRadius={5}>
-            <MyIcon icon={MyIcons.AlertCircle} color={MyColors.Red} />
-            <MyView width={10} />
-            <MyView isExpanded width={MySizes.Auto}>
-              <MyText
-                text={MyLocalizationUtils.getLocalizedDontForgetPasswordDescriptionText()}
-                color={MyColors.Red}
-              />
-            </MyView>
-          </MyView>
+          <MyDontForgetPasswordAlertIndicator />
           <MyView height={15} />
           <MyPasswordTextInput
             isPasswordVisible={isPasswordVisible}

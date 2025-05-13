@@ -9,6 +9,7 @@ import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
 import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MyAlertModal from './AlertModal';
+import MyChangeRepoPasswordModal from './ChangeRepoPasswordModal';
 import MyRenameRepoModal from './RenameRepoModal';
 import MyRepoDetailsModal from './RepoDetailsModal';
 
@@ -47,6 +48,22 @@ const MyRepoOperationsModal = ({
         })
       }
     />
+    {repo.encrypted && (
+      <MyModalSelectionButton
+        icon={MyIcons.KeyOutlined}
+        text={MyLocalizationUtils.getLocalizedChangePasswordText()}
+        onPress={() =>
+          MyModalUtils.showModal({
+            modal: (
+              <MyChangeRepoPasswordModal
+                refreshContentFunctionList={refreshContentFunctionList}
+                repo={repo}
+              />
+            ),
+          })
+        }
+      />
+    )}
     <MyModalSelectionButton
       icon={MyIcons.ShareOutlined}
       text={MyLocalizationUtils.getLocalizedShareText()}

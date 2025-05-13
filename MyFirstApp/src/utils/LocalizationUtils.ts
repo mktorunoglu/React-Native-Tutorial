@@ -73,6 +73,36 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedChangeRepoPasswordText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Change Repo Password', 'Depo Şifresini Değiştir'],
+    });
+  }
+
+  public getLocalizedNewPasswordAgainText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['New Password (Again)', 'Yeni Şifre (Tekrar)'],
+    });
+  }
+
+  public getLocalizedNewPasswordText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['New Password', 'Yeni Şifre'],
+    });
+  }
+
+  public getLocalizedCurrentPasswordText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Current Password', 'Mevcut Şifre'],
+    });
+  }
+
+  public getLocalizedChangePasswordText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Change Password', 'Şifreyi Değiştir'],
+    });
+  }
+
   public getLocalizedRepoDeletedText({
     variableTextList,
   }: {

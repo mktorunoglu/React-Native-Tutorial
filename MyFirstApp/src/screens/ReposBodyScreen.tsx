@@ -120,7 +120,6 @@ const MyReposBodyScreen = ({
           <MyView isExpanded>
             <MyFlatList
               data={filteredRepoList}
-              keyExtractor={(item, index) => item.repoId ?? index}
               renderItem={({item}) => (
                 <MyRepoItem
                   refreshContentFunctionList={getRefreshContentFunctionList()}

@@ -67,6 +67,18 @@ class MyUserService {
       savePath: MyFileUtils.getApplicationCacheDirectory() + '/user_avatar',
     });
   }
+
+  public async searchUser(): Promise<MyResponseModel> {
+    const response = await MyApiUtils.request({
+      method: MyRequestMethods.Get,
+      url: MyServiceUtils.getUserApiUrl() + '/search_user',
+      params: {query: ''},
+    });
+    if (response.isSuccessful) {
+      response.data = response.data['user_list'];
+    }
+    return response;
+  }
 }
 
 export default MyUserService.getInstance();

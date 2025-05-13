@@ -23,7 +23,7 @@ const MyProfileBodyScreen = () => {
       <MyScrollView padding={10}>
         <MyCard padding={20}>
           <MyResponseBuilder
-            response={MyUserService.getUserAvatar}
+            response={() => MyUserService.getUserAvatar()}
             builder={response => (
               <MyView isColumn isCenterItems>
                 <MyImage
@@ -38,7 +38,7 @@ const MyProfileBodyScreen = () => {
         <MyView height={10} />
         <MyCard padding={20}>
           <MyResponseBuilder
-            response={MyUserService.getUserInfo}
+            response={() => MyUserService.getUserInfo()}
             builder={response => {
               const userInfo = response.data as MyUserInfoModel;
               return (

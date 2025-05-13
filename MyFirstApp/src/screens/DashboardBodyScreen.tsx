@@ -93,7 +93,7 @@ const MyDashboardBodyScreen = ({
   return (
     <MyView isExpanded>
       <MyResponseBuilder
-        response={MyFileService.getDashboardInfo}
+        response={() => MyFileService.getDashboardInfo()}
         builder={response => {
           const dashboardInfo = response.data as MyDashboardInfoModel;
           return (

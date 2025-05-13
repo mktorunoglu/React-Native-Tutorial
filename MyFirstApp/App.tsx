@@ -16,7 +16,6 @@ import MyModalUtils from './src/utils/ModalUtils';
 import MyTestScreen from './test/TestScreen';
 
 const App: React.FC = () => {
-  const isTestMode = false;
   const theme = {
     ...DefaultTheme,
     colors: {
@@ -52,7 +51,7 @@ const App: React.FC = () => {
             <Modal_ />
           </Portal>
           <Stack.Navigator
-            initialRouteName={isTestMode ? MyRoutes.Test : MyRoutes.Splash}
+            initialRouteName={MyRoutes.Splash}
             screenOptions={{
               headerShown: false,
             }}>

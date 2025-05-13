@@ -5,9 +5,11 @@ import MyView from '../views/View';
 import MyModalScaffold from './ModalScaffold';
 
 const MyCardModalScaffold = ({
+  isExpanded = false,
   isDismissable = true,
   children,
 }: {
+  isExpanded?: boolean;
   isDismissable?: boolean;
   children?: ReactNode;
 }) => (
@@ -16,8 +18,10 @@ const MyCardModalScaffold = ({
       isColumn
       isExpanded
       justifyContent={MyAligns.FlexEnd}
-      paddingTop={50}>
-      <MyCard margin={10}>{children}</MyCard>
+      paddingTop={isExpanded ? 0 : 50}>
+      <MyCard isExpanded={isExpanded} margin={10}>
+        {children}
+      </MyCard>
     </MyView>
   </MyModalScaffold>
 );

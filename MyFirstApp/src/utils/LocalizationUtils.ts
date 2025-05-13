@@ -73,6 +73,12 @@ class MyLocalizationUtils {
     return localizedText;
   }
 
+  public getLocalizedSelectUserText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Select User', 'Kullanıcı Seçiniz'],
+    });
+  }
+
   public getLocalizedChangeRepoPasswordFailText({
     variableTextList,
   }: {

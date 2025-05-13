@@ -6,6 +6,7 @@ import MyColorUtils from '../../utils/ColorUtils';
 import MyView from '../views/View';
 
 const MyCard = ({
+  isExpanded = false,
   margin,
   marginVertical,
   marginHorizontal,
@@ -22,6 +23,7 @@ const MyCard = ({
   paddingBottom,
   children,
 }: {
+  isExpanded?: boolean;
   margin?: DimensionValue;
   marginVertical?: DimensionValue;
   marginHorizontal?: DimensionValue;
@@ -39,6 +41,7 @@ const MyCard = ({
   children?: ReactNode;
 }) => (
   <MyView
+    isExpanded={isExpanded}
     width={MySizes.Auto}
     borderRadius={10}
     borderWidth={1}

@@ -1,4 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import MyTestUtils from '../../test/TestUtils';
 import {MyRouteProps} from '../constants/RouteProps';
 import {MyKeys} from '../enums/Keys';
 import {MyNavigationBarRoutes} from '../enums/NavigationBarRoutes';
@@ -72,9 +73,13 @@ class MyAuthenticationUtils {
         await MyStorageUtils.storeData(MyKeys.CurrentUserPassword, password);
       }
       MyServiceUtils.token = response.data;
-      navigation.replace(MyRoutes.Home, {
-        initialRoute: MyNavigationBarRoutes.Dashboard,
-      });
+      if (MyTestUtils.isTestMode) {
+        navigation.replace(MyRoutes.Test);
+      } else {
+        navigation.replace(MyRoutes.Home, {
+          initialRoute: MyNavigationBarRoutes.Dashboard,
+        });
+      }
       return true;
     }
     return false;

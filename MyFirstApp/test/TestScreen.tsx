@@ -1,14 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import {observer} from 'mobx-react-lite';
 import {useEffect} from 'react';
-import MyButton from '../src/components/buttons/Button';
-import MyModalScaffold from '../src/components/scaffolds/CardModalScaffold';
+import MyUserPickerModal from '../src/components/modals/UserPickerModal';
 import MyScreenScaffold from '../src/components/scaffolds/ScreenScaffold';
-import MyTextInput from '../src/components/texts/TextInput';
 import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
 import MyModalUtils from '../src/utils/ModalUtils';
-import MyNavigationUtils from '../src/utils/NavigationUtils';
 
 // TEST
 const MyTestScreen = ({
@@ -16,30 +12,17 @@ const MyTestScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
-  const onInit = async () => {
-    MyNavigationUtils.initialize();
+  const onInit = () => {
+    MyModalUtils.showModal({
+      modal: <MyUserPickerModal />,
+    });
   };
   useEffect(() => {
     onInit();
   }, []);
-  const Modal_ = observer(() => (
-    <MyModalScaffold>
-      <MyView isColumn isExpanded isCenterItems>
-        <MyView height={100}>
-          <MyTextInput />
-        </MyView>
-        <MyButton text="Hide Modal" onPress={() => MyModalUtils.hideModal()} />
-      </MyView>
-    </MyModalScaffold>
-  ));
   return (
     <MyScreenScaffold>
-      <MyView isColumn isExpanded isCenterItems>
-        <MyView height={100}>
-          <MyTextInput />
-        </MyView>
-        <MyButton text="Show Modal" onPress={() => {}} />
-      </MyView>
+      <MyView isColumn isExpanded isCenterItems></MyView>
     </MyScreenScaffold>
   );
 };

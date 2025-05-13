@@ -55,9 +55,9 @@ const MyNavigationBar = ({
     <MyView isColumn backgroundColor={MyColors.White}>
       <MyDivider />
       <MyView isRow>
-        {buttonDataList.map(buttonData => (
-          <MyView key={buttonData.route} isExpanded>
-            <NavigationBarButton_ buttonData={buttonData} />
+        {buttonDataList.map(item => (
+          <MyView key={item.route} isExpanded>
+            <NavigationBarButton_ buttonData={item} />
           </MyView>
         ))}
       </MyView>

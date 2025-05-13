@@ -22,8 +22,8 @@ class MyFilterUtils {
     }
     const searchWordList = searchText
       .split(' ')
-      .map(word => word.trim())
-      .filter(word => word !== '');
+      .map(item => item.trim())
+      .filter(item => item !== '');
     const normalizeText = (text: string): string =>
       text.replace(/\s+/g, '').toLocaleLowerCase();
     let counter = 0;

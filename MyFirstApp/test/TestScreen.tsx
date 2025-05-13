@@ -1,9 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useEffect} from 'react';
-import MyUserPickerModal from '../src/components/modals/UserPickerModal';
+import MyGroupPickerModal from '../src/components/modals/GroupPickerModal';
 import MyScreenScaffold from '../src/components/scaffolds/ScreenScaffold';
 import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
+import MyGroupModel from '../src/models/GroupModel';
 import MyObservableValueModel from '../src/models/ObservableValueModel';
 import MyModalUtils from '../src/utils/ModalUtils';
 
@@ -13,10 +14,10 @@ const MyTestScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
-  const selectedUserId = new MyObservableValueModel('admin');
+  const selectedGroup = new MyObservableValueModel(new MyGroupModel({}));
   const onInit = () => {
     MyModalUtils.showModal({
-      modal: <MyUserPickerModal selectedUserId={selectedUserId} />,
+      modal: <MyGroupPickerModal selectedGroup={selectedGroup} />,
     });
   };
   useEffect(() => {

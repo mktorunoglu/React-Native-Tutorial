@@ -23,6 +23,10 @@ class MyServiceUtils {
     return this.getApiUrl(MyApiUrls.FileApi);
   }
 
+  public getGroupApiUrl(): string {
+    return this.getApiUrl(MyApiUrls.GroupApi);
+  }
+
   public getUserApiUrl(): string {
     return this.getApiUrl(MyApiUrls.UserApi);
   }

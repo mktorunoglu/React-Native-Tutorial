@@ -40,9 +40,9 @@ const MyReposBodyScreen = ({
   ];
   const searchText = new MyObservableValueModel('');
   const RepoItemList_ = observer(() => {
-    const filteredRepoList = repoList.value.filter(repo =>
+    const filteredRepoList = repoList.value.filter(item =>
       MyFilterUtils.isTextListContainsSearchText({
-        textList: [repo.repoName],
+        textList: [item.repoName],
         searchText: searchText.value,
       }),
     );

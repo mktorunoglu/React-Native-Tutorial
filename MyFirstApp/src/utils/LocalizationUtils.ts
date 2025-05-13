@@ -743,6 +743,27 @@ class MyLocalizationUtils {
       ],
     });
   }
+
+  public getLocalizedSelectGroupText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Select Group', 'Grup Seçiniz'],
+    });
+  }
+
+  public getLocalizedThereIsNoGroupYetText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['There is no group yet', 'Henüz bir grup yok'],
+    });
+  }
+
+  public getLocalizedThereIsNoGroupWithSearchedNameText(): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'There is no group with the searched name',
+        'Aranan isimde bir grup yok',
+      ],
+    });
+  }
 }
 
 export default MyLocalizationUtils.getInstance();

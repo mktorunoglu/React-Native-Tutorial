@@ -35,14 +35,14 @@ const MySortingModal = () => (
         value: MySortingTypes.SizeDescending,
         text: MyLocalizationUtils.getLocalizedSizeDescendingText(),
       }),
-    ].map(buttonData => (
+    ].map(item => (
       <MyModalSelectionButton
-        key={buttonData.value}
-        isSelected={MySortingUtils.sortingType.value == buttonData.value}
-        text={buttonData.text}
+        key={item.value}
+        isSelected={MySortingUtils.sortingType.value == item.value}
+        text={item.text}
         onPress={async () => {
           MyModalUtils.showProgressModal();
-          await MySortingUtils.setSortingType(buttonData.value);
+          await MySortingUtils.setSortingType(item.value);
           MyModalUtils.hideProgressModal();
           MyModalUtils.hideModal();
         }}

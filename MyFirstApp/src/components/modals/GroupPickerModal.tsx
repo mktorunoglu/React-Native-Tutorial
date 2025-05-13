@@ -1,6 +1,7 @@
 import {observer} from 'mobx-react-lite';
+import GroupModel from '../../models/GroupModel';
 import MyObservableValueModel from '../../models/ObservableValueModel';
-import MyUserService from '../../services/UserService';
+import MyGroupService from '../../services/GroupService';
 import MyFilterUtils from '../../utils/FilterUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyAlertBody from '../bodies/AlertBody';
@@ -13,52 +14,52 @@ import MyCardModalScaffold from '../scaffolds/CardModalScaffold';
 import MySearchTextInput from '../texts/SearchTextInput';
 import MyView from '../views/View';
 
-const MyUserPickerModal = ({
+const MyGroupPickerModal = ({
   message,
-  selectedUserId,
+  selectedGroup,
 }: {
   message?: string;
-  selectedUserId: MyObservableValueModel<string>;
+  selectedGroup: MyObservableValueModel<GroupModel>;
 }) => {
   const searchText = new MyObservableValueModel('');
-  const UserIdSelectionButtonList_ = observer(
-    ({userIdList}: {userIdList: string[]}) => {
-      const filteredUserIdList = userIdList.filter(item =>
+  const GroupSelectionButtonList_ = observer(
+    ({groupList}: {groupList: GroupModel[]}) => {
+      const filteredGroupList = groupList.filter(item =>
         MyFilterUtils.isTextListContainsSearchText({
-          textList: [item],
+          textList: [item.groupName],
           searchText: searchText.value,
         }),
       );
-      const isUserIdListEmpty = userIdList.length == 0;
-      const isFilteredUserIdListEmpty = filteredUserIdList.length == 0;
+      const isGroupListEmpty = groupList.length == 0;
+      const isFilteredGroupListEmpty = filteredGroupList.length == 0;
       const isSearchTextEmpty = searchText.value.trim() == '';
       return (
         <MyView isColumn isExpanded>
-          {!isUserIdListEmpty && (
+          {!isGroupListEmpty && (
             <MySearchTextInput
               isAutoFocused
               onChangeText={text => searchText.setValue(text)}
             />
           )}
-          {!isUserIdListEmpty && <MyDivider />}
-          {isFilteredUserIdListEmpty ? (
+          {!isGroupListEmpty && <MyDivider />}
+          {isFilteredGroupListEmpty ? (
             <MyAlertBody
               text={
                 isSearchTextEmpty
-                  ? MyLocalizationUtils.getLocalizedThereIsNoUserYetText()
-                  : MyLocalizationUtils.getLocalizedThereIsNoUserWithSearchedNameText()
+                  ? MyLocalizationUtils.getLocalizedThereIsNoGroupYetText()
+                  : MyLocalizationUtils.getLocalizedThereIsNoGroupWithSearchedNameText()
               }
             />
           ) : (
             <MyView isExpanded>
               <MyFlatList
-                data={filteredUserIdList}
-                renderItem={({item}: {item: string}) => (
+                data={filteredGroupList}
+                renderItem={({item}: {item: GroupModel}) => (
                   <MyModalSelectionButton
-                    key={item}
-                    isSelected={selectedUserId.value == item}
-                    text={item}
-                    onPress={() => selectedUserId.setValue(item)}
+                    key={item.groupId}
+                    isSelected={selectedGroup.value.groupId == item.groupId}
+                    text={item.groupName ?? ''}
+                    onPress={() => selectedGroup.setValue(item)}
                   />
                 )}
               />
@@ -71,15 +72,15 @@ const MyUserPickerModal = ({
   return (
     <MyCardModalScaffold isExpanded>
       <MyModalHeader
-        titleText={MyLocalizationUtils.getLocalizedSelectUserText()}
+        titleText={MyLocalizationUtils.getLocalizedSelectGroupText()}
         messageText={message}
       />
       <MyDivider />
       <MyView isExpanded>
         <MyResponseBuilder
-          response={() => MyUserService.searchUser()}
+          response={() => MyGroupService.searchGroup()}
           builder={response => (
-            <UserIdSelectionButtonList_ userIdList={response.data} />
+            <GroupSelectionButtonList_ groupList={response.data} />
           )}
         />
       </MyView>
@@ -87,4 +88,4 @@ const MyUserPickerModal = ({
   );
 };
 
-export default MyUserPickerModal;
+export default MyGroupPickerModal;

@@ -30,14 +30,14 @@ const MyChangeLanguageModal = ({
         value: MyLocalizations.Turkish,
         text: MyLocalizationUtils.getLocalizedTurkishText(),
       }),
-    ].map(buttonData => (
+    ].map(item => (
       <MyModalSelectionButton
-        key={buttonData.value}
-        isSelected={MyLocalizationUtils.localization == buttonData.value}
-        text={buttonData.text}
+        key={item.value}
+        isSelected={MyLocalizationUtils.localization == item.value}
+        text={item.text}
         onPress={async () => {
           MyModalUtils.showProgressModal();
-          await MyLocalizationUtils.setLocalization(buttonData.value);
+          await MyLocalizationUtils.setLocalization(item.value);
           MyModalUtils.hideProgressModal();
           MyModalUtils.hideModal();
           if (isLoginScreen) {

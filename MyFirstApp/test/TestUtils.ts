@@ -10,7 +10,7 @@ class MyTestUtils {
     return MyTestUtils.instance;
   }
 
-  public isTestMode = true;
+  public isTestMode = false;
 }
 
 export default MyTestUtils.getInstance();

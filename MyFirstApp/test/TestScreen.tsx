@@ -1,6 +1,8 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useEffect} from 'react';
 import MyTabBar from '../src/components/bars/TabBar';
+import MyDataPickerButton from '../src/components/buttons/DataPickerButton';
+import MyDivider from '../src/components/dividers/Divider';
 import MyScreenScaffold from '../src/components/scaffolds/ScreenScaffold';
 import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
@@ -31,7 +33,19 @@ const MyTestScreen = ({
   return (
     <MyScreenScaffold>
       <MyView isColumn isExpanded>
+        <MyDivider />
         <MyTabBar tabNameList={tabNameList} selectedTabName={selectedTabName} />
+        <MyDataPickerButton
+          labelText="Select Permission"
+          labelTextOnSelect="Permission"
+          onPress={() => {}}
+        />
+        <MyDataPickerButton
+          labelText="Select Permission"
+          labelTextOnSelect="Permission"
+          valueText="Read-Only"
+          onPress={() => {}}
+        />
         <MyView isColumn isExpanded isCenterItems></MyView>
       </MyView>
     </MyScreenScaffold>

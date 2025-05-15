@@ -53,7 +53,7 @@ const MyOptionsModal = ({
                     navigation: navigation,
                   });
                   MyModalUtils.hideProgressModal();
-                  MyModalUtils.hideModal();
+                  MyModalUtils.hideLastModal();
                 }}
               />
             ),

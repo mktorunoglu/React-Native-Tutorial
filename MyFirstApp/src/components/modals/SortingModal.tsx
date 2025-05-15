@@ -44,7 +44,7 @@ const MySortingModal = () => (
           MyModalUtils.showProgressModal();
           await MySortingUtils.setSortingType(item.value);
           MyModalUtils.hideProgressModal();
-          MyModalUtils.hideModal();
+          MyModalUtils.hideLastModal();
         }}
       />
     ))}

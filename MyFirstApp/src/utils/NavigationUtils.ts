@@ -20,10 +20,11 @@ class MyNavigationUtils {
         MyKeyboardUtils.closeKeyboard();
         return true;
       }
-      if (MyModalUtils.isModalVisible.value) {
-        if (MyModalUtils.isModalDismissible) {
-          MyModalUtils.hideModal();
-        }
+      if (MyModalUtils.isProgressModalVisible.value) {
+        return true;
+      }
+      if (MyModalUtils.modalModelList.value.length > 0) {
+        MyModalUtils.hideLastModalIfDismissible();
         return true;
       }
       return false;

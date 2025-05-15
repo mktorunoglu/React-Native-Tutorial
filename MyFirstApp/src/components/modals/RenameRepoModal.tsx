@@ -53,7 +53,7 @@ const MyRenameRepoModal = ({
         });
         MyModalUtils.hideProgressModal();
         if (response.isSuccessful) {
-          MyModalUtils.hideModal();
+          MyModalUtils.hideLastModal();
           MySnackbarUtils.showSnackbar({
             text: MyLocalizationUtils.getLocalizedRepoRenamedText({
               variableTextList: [repo.repoName!, repoName.value],

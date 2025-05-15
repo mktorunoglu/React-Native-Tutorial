@@ -100,7 +100,7 @@ const MyAddRepoModal = ({
         });
         MyModalUtils.hideProgressModal();
         if (response.isSuccessful) {
-          MyModalUtils.hideModal();
+          MyModalUtils.hideLastModal();
           MySnackbarUtils.showSnackbar({
             text: MyLocalizationUtils.getLocalizedRepoAddedText({
               variableTextList: [repoName.value],

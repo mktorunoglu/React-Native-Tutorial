@@ -1,19 +1,18 @@
 import {ReactNode} from 'react';
 import {MyAligns} from '../../enums/Aligns';
+import MyModalUtils from '../../utils/ModalUtils';
 import MyCard from '../cards/Card';
 import MyView from '../views/View';
 import MyModalScaffold from './ModalScaffold';
 
 const MyCardModalScaffold = ({
   isExpanded = false,
-  isDismissible = true,
   children,
 }: {
   isExpanded?: boolean;
-  isDismissible?: boolean;
   children?: ReactNode;
 }) => (
-  <MyModalScaffold isDismissible={isDismissible}>
+  <MyModalScaffold onDismiss={() => MyModalUtils.hideLastModalIfDismissible()}>
     <MyView
       isColumn
       isExpanded

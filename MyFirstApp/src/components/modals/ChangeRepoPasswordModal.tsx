@@ -67,7 +67,7 @@ const MyChangeRepoPasswordModal = ({
             isSuccessful: isSuccessful,
           });
           if (isSuccessful) {
-            MyModalUtils.hideModal();
+            MyModalUtils.hideLastModal();
             for (const refreshContentFunction of [
               ...refreshContentFunctionList,
             ].reverse()) {

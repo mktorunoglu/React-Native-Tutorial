@@ -7,9 +7,7 @@ import MyText from '../src/components/texts/Text';
 import MyTextInput from '../src/components/texts/TextInput';
 import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
-import {MyModalKeys} from '../src/enums/ModalKeys';
-import MyModalDataModel from '../src/models/ModalDataModel';
-import MyTestModalUtils from '../src/utils/TestModalUtils';
+import MyModalUtils from '../src/utils/ModalUtils';
 
 // TEST
 const MyTestScreen = ({
@@ -24,68 +22,44 @@ const MyTestScreen = ({
       <MyButton
         text={'add 1'}
         onPress={() =>
-          MyTestModalUtils.showModal({
-            modalModel: new MyModalDataModel({
-              key: MyModalKeys.TestOne,
-              modal: modal({text: '1'}),
-            }),
+          MyModalUtils.showModal({
+            modal: modal({text: '1'}),
           })
         }
       />
       <MyButton
         text={'add 2'}
         onPress={() =>
-          MyTestModalUtils.showModal({
-            modalModel: new MyModalDataModel({
-              key: MyModalKeys.TestTwo,
-              modal: modal({text: '2'}),
-            }),
+          MyModalUtils.showModal({
+            modal: modal({text: '2'}),
           })
         }
       />
       <MyButton
         text={'add 3'}
         onPress={() =>
-          MyTestModalUtils.showModal({
-            modalModel: new MyModalDataModel({
-              key: MyModalKeys.TestThree,
-              modal: modal({text: '3'}),
-            }),
+          MyModalUtils.showModal({
+            modal: modal({text: '3'}),
           })
         }
       />
       <MyButton
         text={'remove 1'}
-        onPress={() =>
-          MyTestModalUtils.hideModalByKey({
-            modalKey: MyModalKeys.TestOne,
-          })
-        }
+        onPress={() => MyModalUtils.hideLastModal()}
       />
       <MyButton
         text={'remove 2'}
-        onPress={() =>
-          MyTestModalUtils.hideModalByKey({
-            modalKey: MyModalKeys.TestTwo,
-          })
-        }
+        onPress={() => MyModalUtils.hideLastModal()}
       />
       <MyButton
         text={'remove 3'}
-        onPress={() =>
-          MyTestModalUtils.hideModalByKey({
-            modalKey: MyModalKeys.TestThree,
-          })
-        }
+        onPress={() => MyModalUtils.hideLastModal()}
       />
     </MyCardModalScaffold>
   );
   const onInit = () =>
-    MyTestModalUtils.showModal({
-      modalModel: new MyModalDataModel({
-        key: MyModalKeys.TestOne,
-        modal: modal({text: '1'}),
-      }),
+    MyModalUtils.showModal({
+      modal: modal({text: '1'}),
     });
   useEffect(() => {
     onInit();

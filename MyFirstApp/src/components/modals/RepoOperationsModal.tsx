@@ -95,7 +95,7 @@ const MyRepoOperationsModal = ({
                   });
                   MyModalUtils.hideProgressModal();
                   if (response.isSuccessful) {
-                    MyModalUtils.hideModal();
+                    MyModalUtils.hideLastModal();
                     MySnackbarUtils.showSnackbar({
                       text: MyLocalizationUtils.getLocalizedRepoDeletedText({
                         variableTextList: [repo.repoName!],

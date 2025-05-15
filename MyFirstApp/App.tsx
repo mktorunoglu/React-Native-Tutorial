@@ -13,7 +13,6 @@ import MyHomeScreen from './src/screens/HomeScreen';
 import MyLoginScreen from './src/screens/LoginScreen';
 import MySplashScreen from './src/screens/SplashScreen';
 import MyModalUtils from './src/utils/ModalUtils';
-import MyTestModalUtils from './src/utils/TestModalUtils';
 import MyTestScreen from './test/TestScreen';
 
 const App: React.FC = () => {
@@ -28,17 +27,11 @@ const App: React.FC = () => {
   const Stack = createStackNavigator<MyRouteProps>();
   const ModalStack_ = observer(() => (
     <MyView isExpanded>
-      {MyTestModalUtils.modalModelList.value.map(item => (
+      {MyModalUtils.modalModelList.value.map(item => (
         <Portal>{item.modal}</Portal>
       ))}
     </MyView>
   ));
-  const Modal_ = observer(() => {
-    if (MyModalUtils.isModalVisible.value) {
-      return MyModalUtils.modal.value;
-    }
-    return <MyView />;
-  });
   const ProgressModal_ = observer(() => {
     if (MyModalUtils.isProgressModalVisible.value) {
       return <MyProgressModal />;
@@ -54,9 +47,6 @@ const App: React.FC = () => {
           </Portal>
           <Portal>
             <MySnackbar />
-          </Portal>
-          <Portal>
-            <Modal_ />
           </Portal>
           <Portal>
             <ModalStack_ />

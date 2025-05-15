@@ -2,7 +2,6 @@ import {ReactNode} from 'react';
 import {Dimensions} from 'react-native';
 import {MyColors} from '../../enums/Colors';
 import MyColorUtils from '../../utils/ColorUtils';
-import MyModalUtils from '../../utils/ModalUtils';
 import MyStatusBar from '../bars/StatusBar';
 import MyRawButton from '../buttons/RawButton';
 import MyKeyboardAvoidingView from '../views/KeyboardAvoidingView';
@@ -10,10 +9,10 @@ import MySafeAreaView from '../views/SafeAreaView';
 import MyView from '../views/View';
 
 const MyModalScaffold = ({
-  isDismissible = true,
+  onDismiss,
   children,
 }: {
-  isDismissible?: boolean;
+  onDismiss?: () => void;
   children?: ReactNode;
 }) => {
   const {height} = Dimensions.get('window');
@@ -25,11 +24,7 @@ const MyModalScaffold = ({
         <MyStatusBar />
         <MyKeyboardAvoidingView>
           <MyView zIndex={0}>
-            <MyRawButton
-              color={MyColors.Transparent}
-              onPress={
-                isDismissible ? () => MyModalUtils.hideModal() : undefined
-              }>
+            <MyRawButton color={MyColors.Transparent} onPress={onDismiss}>
               <MyView height={height} />
             </MyRawButton>
           </MyView>

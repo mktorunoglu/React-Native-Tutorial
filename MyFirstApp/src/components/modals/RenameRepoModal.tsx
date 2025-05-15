@@ -22,7 +22,7 @@ const MyRenameRepoModal = ({
   refreshContentFunctionList: (() => void)[];
   repo: MyRepoModel;
 }) => {
-  const repoName = new MyObservableValueModel(repo?.repoName ?? '');
+  const repoName = new MyObservableValueModel(repo.repoName ?? '');
   const RepoNameTextInput_ = observer(() => (
     <MyTextInput
       labelText={MyLocalizationUtils.getLocalizedRepoNameText()}
@@ -75,7 +75,7 @@ const MyRenameRepoModal = ({
     <MyCardModalScaffold>
       <MyModalHeader
         titleText={MyLocalizationUtils.getLocalizedRenameRepoText()}
-        messageText={repo?.repoName}
+        messageText={repo.repoName}
       />
       <MyDivider />
       <MyScrollView padding={15}>

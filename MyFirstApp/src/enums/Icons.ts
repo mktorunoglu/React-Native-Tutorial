@@ -35,6 +35,7 @@ export enum MyIcons {
   Message = 'message',
   MessageOutlined = 'message-outline',
   MoreVertical = 'dots-vertical',
+  NavigateRight = 'chevron-right',
   Null = '',
   RadioboxBlank = 'radiobox-blank',
   RadioboxMarked = 'radiobox-marked',

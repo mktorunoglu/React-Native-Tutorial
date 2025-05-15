@@ -1,5 +1,6 @@
 import {observer} from 'mobx-react-lite';
 import {ReactNode, useEffect} from 'react';
+import {DimensionValue} from 'react-native';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyResponseModel from '../../models/ResponseModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
@@ -8,9 +9,13 @@ import MyProgressIndicator from '../indicators/ProgressIndicator';
 import MyView from '../views/View';
 
 const MyResponseBuilder = ({
+  statePaddingHorizontal,
+  statePaddingVertical,
   response,
   builder,
 }: {
+  statePaddingHorizontal?: DimensionValue;
+  statePaddingVertical?: DimensionValue;
   response: () => Promise<MyResponseModel>;
   builder: (response: MyResponseModel) => ReactNode;
 }) => {
@@ -22,7 +27,11 @@ const MyResponseBuilder = ({
   const Builder_ = observer(() => {
     if (response_.value == null) {
       return (
-        <MyView isExpanded isCenterItems>
+        <MyView
+          isExpanded
+          isCenterItems
+          paddingHorizontal={statePaddingHorizontal}
+          paddingVertical={statePaddingVertical}>
           <MyProgressIndicator />
         </MyView>
       );
@@ -30,6 +39,8 @@ const MyResponseBuilder = ({
     if (!response_.value!.isSuccessful) {
       return (
         <MyAlertBody
+          paddingHorizontal={statePaddingHorizontal}
+          paddingVertical={statePaddingVertical}
           text={MyLocalizationUtils.getLocalizedAnErrorOccurredText()}
         />
       );

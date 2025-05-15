@@ -764,6 +764,30 @@ class MyLocalizationUtils {
       ],
     });
   }
+
+  public getLocalizedShareRepoText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Share Repo', 'Depoyu Paylaş'],
+    });
+  }
+
+  public getLocalizedShareWithUserText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Share With User', 'Kullanıcıyla Paylaş'],
+    });
+  }
+
+  public getLocalizedShareWithGroupText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Share With Group', 'Grupla Paylaş'],
+    });
+  }
+
+  public getLocalizedPermissionText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Permission', 'İzin'],
+    });
+  }
 }
 
 export default MyLocalizationUtils.getInstance();

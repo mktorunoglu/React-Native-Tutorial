@@ -38,6 +38,7 @@ const MyTestScreen = ({
         <MyDataPickerButton
           labelText="Select Permission"
           labelTextOnSelect="Permission"
+          valueText=""
           onPress={() => {}}
         />
         <MyDataPickerButton

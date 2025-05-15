@@ -12,6 +12,7 @@ import MyAlertModal from './AlertModal';
 import MyChangeRepoPasswordModal from './ChangeRepoPasswordModal';
 import MyRenameRepoModal from './RenameRepoModal';
 import MyRepoDetailsModal from './RepoDetailsModal';
+import MyShareRepoModal from './ShareRepoModal';
 
 const MyRepoOperationsModal = ({
   refreshContentFunctionList,
@@ -72,7 +73,12 @@ const MyRepoOperationsModal = ({
       <MyModalSelectionButton
         icon={MyIcons.ShareOutlined}
         text={MyLocalizationUtils.getLocalizedShareText()}
-        onPress={() => {}}
+        onPress={() => {
+          MyModalUtils.hideLastModal();
+          MyModalUtils.showModal({
+            modal: <MyShareRepoModal repo={repo} />,
+          });
+        }}
       />
       <MyModalSelectionButton
         icon={MyIcons.DeleteOutlined}

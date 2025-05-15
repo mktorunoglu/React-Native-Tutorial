@@ -26,19 +26,19 @@ const App: React.FC = () => {
     },
   };
   const Stack = createStackNavigator<MyRouteProps>();
-  // const Modal_ = observer(() => {
-  //   if (MyModalUtils.isModalVisible.value) {
-  //     return MyModalUtils.modal.value;
-  //   }
-  //   return <MyView />;
-  // });
-  const Modal_ = observer(() => (
+  const ModalStack_ = observer(() => (
     <MyView isExpanded>
       {MyTestModalUtils.modalModelList.value.map(item => (
         <Portal>{item.modal}</Portal>
       ))}
     </MyView>
   ));
+  const Modal_ = observer(() => {
+    if (MyModalUtils.isModalVisible.value) {
+      return MyModalUtils.modal.value;
+    }
+    return <MyView />;
+  });
   const ProgressModal_ = observer(() => {
     if (MyModalUtils.isProgressModalVisible.value) {
       return <MyProgressModal />;
@@ -57,6 +57,9 @@ const App: React.FC = () => {
           </Portal>
           <Portal>
             <Modal_ />
+          </Portal>
+          <Portal>
+            <ModalStack_ />
           </Portal>
           <Stack.Navigator
             initialRouteName={MyRoutes.Splash}

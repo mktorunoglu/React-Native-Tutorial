@@ -6,14 +6,14 @@ import MyModalScaffold from './ModalScaffold';
 
 const MyCardModalScaffold = ({
   isExpanded = false,
-  isDismissable = true,
+  isDismissible = true,
   children,
 }: {
   isExpanded?: boolean;
-  isDismissable?: boolean;
+  isDismissible?: boolean;
   children?: ReactNode;
 }) => (
-  <MyModalScaffold isDismissable={isDismissable}>
+  <MyModalScaffold isDismissible={isDismissible}>
     <MyView
       isColumn
       isExpanded

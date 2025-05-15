@@ -4,7 +4,7 @@ import MyModalScaffold from '../scaffolds/ModalScaffold';
 import MyView from '../views/View';
 
 const MyProgressModal = () => (
-  <MyModalScaffold isDismissable={false}>
+  <MyModalScaffold isDismissible={false}>
     <MyView isColumn isExpanded isCenterItems>
       <MyProgressIndicator color={MyColors.White} />
     </MyView>

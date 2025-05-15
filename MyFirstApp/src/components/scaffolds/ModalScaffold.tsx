@@ -10,10 +10,10 @@ import MySafeAreaView from '../views/SafeAreaView';
 import MyView from '../views/View';
 
 const MyModalScaffold = ({
-  isDismissable = true,
+  isDismissible = true,
   children,
 }: {
-  isDismissable?: boolean;
+  isDismissible?: boolean;
   children?: ReactNode;
 }) => {
   const {height} = Dimensions.get('window');
@@ -28,7 +28,7 @@ const MyModalScaffold = ({
             <MyRawButton
               color={MyColors.Transparent}
               onPress={
-                isDismissable ? () => MyModalUtils.hideModal() : undefined
+                isDismissible ? () => MyModalUtils.hideModal() : undefined
               }>
               <MyView height={height} />
             </MyRawButton>

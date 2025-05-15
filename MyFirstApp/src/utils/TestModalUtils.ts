@@ -27,6 +27,14 @@ class MyTestModalUtils {
       this.modalModelList.value.filter(item => item.key != modalKey),
     );
   }
+
+  public hideModalByKeyAndDismissible({modalKey}: {modalKey: MyModalKeys}) {
+    this.modalModelList.setValue(
+      this.modalModelList.value.filter(
+        item => item.key != modalKey && item.isDismissible,
+      ),
+    );
+  }
 }
 
 export default MyTestModalUtils.getInstance();

@@ -16,6 +16,7 @@ class MyModalUtils {
   }
 
   public modalModelList = new MyObservableValueModel<MyModalDataModel[]>([]);
+  public modalModelCounter = 0;
   public isProgressModalVisible = new MyObservableValueModel(false);
 
   public showModal({
@@ -28,12 +29,20 @@ class MyModalUtils {
     MyKeyboardUtils.closeKeyboard();
     this.modalModelList.setValue([
       ...this.modalModelList.value,
-      new MyModalDataModel({modal: modal, isDismissible: isDismissible}),
+      new MyModalDataModel({
+        id: ++this.modalModelCounter,
+        modal: modal,
+        isDismissible: isDismissible,
+      }),
     ]);
   }
 
   public hideLastModal() {
-    this.modalModelList.value.pop();
+    if (this.modalModelList.value.length > 0) {
+      const modalModelList = [...this.modalModelList.value];
+      modalModelList.pop();
+      this.modalModelList.setValue(modalModelList);
+    }
   }
 
   public hideLastModalIfDismissible() {
@@ -42,7 +51,7 @@ class MyModalUtils {
       this.modalModelList.value[this.modalModelList.value.length - 1]
         .isDismissible
     ) {
-      this.modalModelList.value.pop();
+      this.hideLastModal();
     }
   }
 

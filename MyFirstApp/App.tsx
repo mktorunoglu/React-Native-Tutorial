@@ -28,7 +28,7 @@ const App: React.FC = () => {
   const ModalStack_ = observer(() => (
     <MyView isExpanded>
       {MyModalUtils.modalModelList.value.map(item => (
-        <Portal>{item.modal}</Portal>
+        <Portal key={item.id}>{item.modal}</Portal>
       ))}
     </MyView>
   ));

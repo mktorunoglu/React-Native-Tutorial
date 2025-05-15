@@ -30,16 +30,18 @@ const MyRepoOperationsModal = ({
       <MyModalSelectionButton
         icon={MyIcons.InformationOutlined}
         text={MyLocalizationUtils.getLocalizedDetailsText()}
-        onPress={() =>
+        onPress={() => {
+          MyModalUtils.hideLastModal();
           MyModalUtils.showModal({
             modal: <MyRepoDetailsModal repo={repo} />,
-          })
-        }
+          });
+        }}
       />
       <MyModalSelectionButton
         icon={MyIcons.EditOutlined}
         text={MyLocalizationUtils.getLocalizedRenameText()}
-        onPress={() =>
+        onPress={() => {
+          MyModalUtils.hideLastModal();
           MyModalUtils.showModal({
             modal: (
               <MyRenameRepoModal
@@ -47,14 +49,15 @@ const MyRepoOperationsModal = ({
                 repo={repo}
               />
             ),
-          })
-        }
+          });
+        }}
       />
       {isRepoEncrypted && (
         <MyModalSelectionButton
           icon={MyIcons.KeyOutlined}
           text={MyLocalizationUtils.getLocalizedChangePasswordText()}
-          onPress={() =>
+          onPress={() => {
+            MyModalUtils.hideLastModal();
             MyModalUtils.showModal({
               modal: (
                 <MyChangeRepoPasswordModal
@@ -62,8 +65,8 @@ const MyRepoOperationsModal = ({
                   repo={repo}
                 />
               ),
-            })
-          }
+            });
+          }}
         />
       )}
       <MyModalSelectionButton
@@ -75,7 +78,8 @@ const MyRepoOperationsModal = ({
         icon={MyIcons.DeleteOutlined}
         text={MyLocalizationUtils.getLocalizedDeleteText()}
         color={MyColors.Red}
-        onPress={() =>
+        onPress={() => {
+          MyModalUtils.hideLastModal();
           MyModalUtils.showModal({
             modal: (
               <MyAlertModal
@@ -113,8 +117,8 @@ const MyRepoOperationsModal = ({
                 }}
               />
             ),
-          })
-        }
+          });
+        }}
       />
     </MyCardModalScaffold>
   );

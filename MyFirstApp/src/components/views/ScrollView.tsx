@@ -2,28 +2,31 @@ import {ReactNode} from 'react';
 import {DimensionValue, ScrollView} from 'react-native';
 
 const MyScrollView = ({
+  isHorizontal = false,
+  showScrollBar = false,
   margin,
   marginVertical,
   marginHorizontal,
   padding,
   paddingVertical,
   paddingHorizontal,
-  showScrollBar = false,
   children,
 }: {
+  isHorizontal?: boolean;
+  showScrollBar?: boolean;
   margin?: DimensionValue;
   marginVertical?: DimensionValue;
   marginHorizontal?: DimensionValue;
   padding?: DimensionValue;
   paddingVertical?: DimensionValue;
   paddingHorizontal?: DimensionValue;
-  showScrollBar?: boolean;
   children?: ReactNode;
 }) => (
   <ScrollView
+    horizontal={isHorizontal}
     showsVerticalScrollIndicator={showScrollBar}
     showsHorizontalScrollIndicator={showScrollBar}
-    style={{
+    contentContainerStyle={{
       margin,
       marginVertical,
       marginHorizontal,

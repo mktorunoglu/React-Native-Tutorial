@@ -127,7 +127,6 @@ const MyReposBodyScreen = ({
                 />
               )}
               padding={5}
-              paddingBottom={5}
             />
           </MyView>
         )}

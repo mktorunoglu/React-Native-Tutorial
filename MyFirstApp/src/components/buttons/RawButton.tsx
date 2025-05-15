@@ -4,7 +4,7 @@ import {MyColors} from '../../enums/Colors';
 import MyColorUtils from '../../utils/ColorUtils';
 
 const MyRawButton = ({
-  color = MyColors.Black,
+  color = MyColors.Grey,
   onPress,
   children,
 }: {

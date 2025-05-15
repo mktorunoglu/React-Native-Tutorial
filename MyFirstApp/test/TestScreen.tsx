@@ -1,13 +1,10 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useEffect} from 'react';
-import MyButton from '../src/components/buttons/Button';
-import MyCardModalScaffold from '../src/components/scaffolds/CardModalScaffold';
+import MyTabBar from '../src/components/bars/TabBar';
 import MyScreenScaffold from '../src/components/scaffolds/ScreenScaffold';
-import MyText from '../src/components/texts/Text';
-import MyTextInput from '../src/components/texts/TextInput';
 import MyView from '../src/components/views/View';
 import {MyRouteProps} from '../src/constants/RouteProps';
-import MyModalUtils from '../src/utils/ModalUtils';
+import MyObservableValueModel from '../src/models/ObservableValueModel';
 
 // TEST
 const MyTestScreen = ({
@@ -15,58 +12,28 @@ const MyTestScreen = ({
 }: {
   navigation: StackNavigationProp<MyRouteProps>;
 }) => {
-  const modal = ({text}: {text: string}) => (
-    <MyCardModalScaffold>
-      <MyTextInput labelText={text} />
-      <MyText text={'screen' + text} />
-      <MyButton
-        text={'add 1'}
-        onPress={() =>
-          MyModalUtils.showModal({
-            modal: modal({text: '1'}),
-          })
-        }
-      />
-      <MyButton
-        text={'add 2'}
-        onPress={() =>
-          MyModalUtils.showModal({
-            modal: modal({text: '2'}),
-          })
-        }
-      />
-      <MyButton
-        text={'add 3'}
-        onPress={() =>
-          MyModalUtils.showModal({
-            modal: modal({text: '3'}),
-          })
-        }
-      />
-      <MyButton
-        text={'remove 1'}
-        onPress={() => MyModalUtils.hideLastModal()}
-      />
-      <MyButton
-        text={'remove 2'}
-        onPress={() => MyModalUtils.hideLastModal()}
-      />
-      <MyButton
-        text={'remove 3'}
-        onPress={() => MyModalUtils.hideLastModal()}
-      />
-    </MyCardModalScaffold>
-  );
-  const onInit = () =>
-    MyModalUtils.showModal({
-      modal: modal({text: '1'}),
-    });
+  const tabNameList = [
+    'Test 1',
+    'Test 2',
+    'Test 3',
+    'Test 4',
+    'Test 5',
+    'Test 6',
+    'Test 7',
+    'Test 8',
+    'Test 9',
+  ];
+  const selectedTabName = new MyObservableValueModel(tabNameList[0]);
+  const onInit = () => {};
   useEffect(() => {
     onInit();
   }, []);
   return (
     <MyScreenScaffold>
-      <MyView isColumn isExpanded isCenterItems></MyView>
+      <MyView isColumn isExpanded>
+        <MyTabBar tabNameList={tabNameList} selectedTabName={selectedTabName} />
+        <MyView isColumn isExpanded isCenterItems></MyView>
+      </MyView>
     </MyScreenScaffold>
   );
 };

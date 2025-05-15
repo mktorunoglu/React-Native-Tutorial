@@ -1,20 +1,18 @@
 import {DimensionValue, FlatList, ListRenderItem} from 'react-native';
 
 const MyFlatList = ({
+  padding,
   data,
   renderItem,
-  padding,
-  paddingBottom,
 }: {
+  padding?: DimensionValue;
   data: any[];
   renderItem: ListRenderItem<any>;
-  padding?: DimensionValue;
-  paddingBottom?: DimensionValue;
 }) => (
   <FlatList
     data={data}
     renderItem={renderItem}
-    contentContainerStyle={{padding, paddingBottom}}
+    contentContainerStyle={{padding}}
   />
 );
 

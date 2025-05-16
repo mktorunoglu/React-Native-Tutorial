@@ -1,5 +1,5 @@
 import {MyRequestMethods} from '../enums/RequestMethods';
-import GroupModel from '../models/GroupModel';
+import MyGroupModel from '../models/GroupModel';
 import MyResponseModel from '../models/ResponseModel';
 import MyApiUtils from '../utils/ApiUtils';
 import MyServiceUtils from '../utils/ServiceUtils';
@@ -24,7 +24,7 @@ class MyGroupService {
     });
     if (response.isSuccessful) {
       response.data = response.data['group_list'].map((item: any) =>
-        GroupModel.fromJson(item),
+        MyGroupModel.fromJson(item),
       );
     }
     return response;

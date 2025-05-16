@@ -2,6 +2,7 @@ import {MyPermissions} from '../../enums/Permissions';
 import MyModalSelectionButtonDataModel from '../../models/ModalSelectionButtonDataModel';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
 import MyPermissionUtils from '../../utils/PermissionUtils';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
 import MyModalHeader from '../headers/ModalHeader';
@@ -41,7 +42,10 @@ const MyPermissionPickerModal = ({
               key={item.value}
               isSelected={selectedPermission.value == item.value}
               text={item.text}
-              onPress={() => {}}
+              onPress={() => {
+                selectedPermission.setValue(item.value);
+                MyModalUtils.hideLastModal();
+              }}
             />
           ))}
   </MyCardModalScaffold>

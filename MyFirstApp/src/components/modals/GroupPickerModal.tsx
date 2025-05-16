@@ -1,9 +1,10 @@
 import {observer} from 'mobx-react-lite';
-import GroupModel from '../../models/GroupModel';
+import MyGroupModel from '../../models/GroupModel';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyGroupService from '../../services/GroupService';
 import MyFilterUtils from '../../utils/FilterUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
 import MyAlertBody from '../bodies/AlertBody';
 import MyResponseBuilder from '../builders/ResponseBuilder';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
@@ -19,11 +20,11 @@ const MyGroupPickerModal = ({
   selectedGroup,
 }: {
   message?: string;
-  selectedGroup: MyObservableValueModel<GroupModel>;
+  selectedGroup: MyObservableValueModel<MyGroupModel>;
 }) => {
   const searchText = new MyObservableValueModel('');
   const GroupSelectionButtonList_ = observer(
-    ({groupList}: {groupList: GroupModel[]}) => {
+    ({groupList}: {groupList: MyGroupModel[]}) => {
       const filteredGroupList = groupList.filter(item =>
         MyFilterUtils.isTextListContainsSearchText({
           textList: [item.groupName],
@@ -54,12 +55,15 @@ const MyGroupPickerModal = ({
             <MyView isExpanded>
               <MyFlatList
                 data={filteredGroupList}
-                renderItem={({item}: {item: GroupModel}) => (
+                renderItem={({item}: {item: MyGroupModel}) => (
                   <MyModalSelectionButton
                     key={item.groupId}
                     isSelected={selectedGroup.value.groupId == item.groupId}
                     text={item.groupName ?? ''}
-                    onPress={() => selectedGroup.setValue(item)}
+                    onPress={() => {
+                      selectedGroup.setValue(item);
+                      MyModalUtils.hideLastModal();
+                    }}
                   />
                 )}
               />

@@ -3,6 +3,7 @@ import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyUserService from '../../services/UserService';
 import MyFilterUtils from '../../utils/FilterUtils';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
+import MyModalUtils from '../../utils/ModalUtils';
 import MyAlertBody from '../bodies/AlertBody';
 import MyResponseBuilder from '../builders/ResponseBuilder';
 import MyModalSelectionButton from '../buttons/ModalSelectionButton';
@@ -58,7 +59,10 @@ const MyUserPickerModal = ({
                     key={item}
                     isSelected={selectedUserId.value == item}
                     text={item}
-                    onPress={() => selectedUserId.setValue(item)}
+                    onPress={() => {
+                      selectedUserId.setValue(item);
+                      MyModalUtils.hideLastModal();
+                    }}
                   />
                 )}
               />

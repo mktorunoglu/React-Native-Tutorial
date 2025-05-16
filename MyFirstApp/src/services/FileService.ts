@@ -111,6 +111,26 @@ class MyFileService {
     }
     return response;
   }
+
+  public async getUsersForSharedRepo({
+    repoId,
+    vid,
+  }: {
+    repoId: string;
+    vid?: string;
+  }): Promise<MyResponseModel> {
+    const response = await MyApiUtils.request({
+      method: MyRequestMethods.Get,
+      url: MyServiceUtils.getFileApiUrl() + '/get_users_for_shared_repo',
+      data: {repo_id: repoId, vid: vid},
+    });
+    if (response.isSuccessful) {
+      response.data = response.data['user_list'].map((item: any) =>
+        MyRepoModel.fromJson(item),
+      );
+    }
+    return response;
+  }
 }
 
 export default MyFileService.getInstance();

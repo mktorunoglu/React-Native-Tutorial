@@ -3,6 +3,7 @@ import {MyPermissions} from '../../enums/Permissions';
 import {MySizes} from '../../enums/Sizes';
 import MyObservableValueModel from '../../models/ObservableValueModel';
 import MyRepoModel from '../../models/RepoModel';
+import MyFileService from '../../services/FileService';
 import MyLocalizationUtils from '../../utils/LocalizationUtils';
 import MyModalUtils from '../../utils/ModalUtils';
 import MyPermissionUtils from '../../utils/PermissionUtils';
@@ -65,9 +66,9 @@ const MyShareRepoWithUserBodyModal = ({repo}: {repo: MyRepoModel}) => {
   return (
     <MyResponseBuilder
       statePaddingVertical={100}
-      response={function () {
-        throw new Error('Function not implemented.');
-      }}
+      response={() =>
+        MyFileService.getUsersForSharedRepo({repoId: repo.repoId!})
+      }
       builder={response => (
         <MyView isColumn>
           <UserPicker_ />

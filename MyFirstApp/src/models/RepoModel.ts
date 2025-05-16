@@ -215,7 +215,7 @@ class MyRepoModel {
       originRepoId: json.origin_repo_id,
       originRepoName: json.origin_repo_name,
       parentGroupId: json.parent_group_id,
-      permission: json.permission,
+      permission: json.permission ?? json.perm,
       randomKey: json.random_key,
       relayId: json.relay_id,
       repaired: json.repaired,

@@ -812,6 +812,29 @@ class MyLocalizationUtils {
       localizationTextList: ['Select Permission', 'İzin Seçiniz'],
     });
   }
+
+  public getLocalizedUsersSharedWithText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Users Shared With', 'Paylaşılan Kullanıcılar'],
+    });
+  }
+
+  public getLocalizedSelectPermissionToShareRepoText({
+    variableTextList,
+  }: {
+    variableTextList: string[];
+  }): string {
+    return this.getLocalizedText({
+      localizationTextList: [
+        'Select a permission to share the repo named ' +
+          this.variableTextPattern +
+          '.',
+        this.variableTextPattern +
+          ' isimli depoyu paylaşmak için bir izin seçiniz.',
+      ],
+      variableTextList: variableTextList,
+    });
+  }
 }
 
 export default MyLocalizationUtils.getInstance();

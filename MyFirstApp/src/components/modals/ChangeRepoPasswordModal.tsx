@@ -59,10 +59,10 @@ const MyChangeRepoPasswordModal = ({
           MySnackbarUtils.showSnackbar({
             text: isSuccessful
               ? MyLocalizationUtils.getLocalizedRepoPasswordChangedText({
-                  variableTextList: [repo.repoName!],
+                  variableTextList: [repo.repoName ?? ''],
                 })
               : MyLocalizationUtils.getLocalizedChangeRepoPasswordFailText({
-                  variableTextList: [repo.repoName!],
+                  variableTextList: [repo.repoName ?? ''],
                 }),
             isSuccessful: isSuccessful,
           });

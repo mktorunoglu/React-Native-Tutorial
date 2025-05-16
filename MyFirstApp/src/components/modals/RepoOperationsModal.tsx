@@ -91,7 +91,7 @@ const MyRepoOperationsModal = ({
               <MyAlertModal
                 titleText={MyLocalizationUtils.getLocalizedRepoWillBeDeletedText(
                   {
-                    variableTextList: [repo.repoName!],
+                    variableTextList: [repo.repoName ?? ''],
                   },
                 )}
                 messageText={MyLocalizationUtils.getLocalizedAreYouSureText()}
@@ -108,7 +108,7 @@ const MyRepoOperationsModal = ({
                     MyModalUtils.hideLastModal();
                     MySnackbarUtils.showSnackbar({
                       text: MyLocalizationUtils.getLocalizedRepoDeletedText({
-                        variableTextList: [repo.repoName!],
+                        variableTextList: [repo.repoName ?? ''],
                       }),
                       isSuccessful: true,
                     });

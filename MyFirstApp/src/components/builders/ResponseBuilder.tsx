@@ -9,7 +9,7 @@ import MyProgressIndicator from '../indicators/ProgressIndicator';
 import MyView from '../views/View';
 
 const MyResponseBuilder = ({
-  statePaddingHorizontal,
+  statePaddingHorizontal = 20,
   statePaddingVertical,
   response,
   builder,

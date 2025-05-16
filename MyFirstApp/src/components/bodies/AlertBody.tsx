@@ -4,7 +4,7 @@ import MyText from '../texts/Text';
 import MyView from '../views/View';
 
 const MyAlertBody = ({
-  paddingHorizontal,
+  paddingHorizontal = 20,
   paddingVertical,
   text,
 }: {

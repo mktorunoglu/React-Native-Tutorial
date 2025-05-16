@@ -788,6 +788,30 @@ class MyLocalizationUtils {
       localizationTextList: ['Permission', 'İzin'],
     });
   }
+
+  public getLocalizedReadOnlyText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Read-Only', 'Salt Okunur'],
+    });
+  }
+
+  public getLocalizedWriteOnlyText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Write-Only', 'Sadece Yazma'],
+    });
+  }
+
+  public getLocalizedReadWriteText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Read / Write', 'Okuma / Yazma'],
+    });
+  }
+
+  public getLocalizedSelectPermissionText(): string {
+    return this.getLocalizedText({
+      localizationTextList: ['Select Permission', 'İzin Seçiniz'],
+    });
+  }
 }
 
 export default MyLocalizationUtils.getInstance();
